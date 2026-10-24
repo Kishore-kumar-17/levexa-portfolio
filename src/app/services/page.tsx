@@ -15,6 +15,8 @@ import {
   CheckCircle2,
   AlertCircle
 } from "lucide-react";
+import { SpotlightCard } from "@/components/ui/SpotlightCard";
+import { CountUp } from "@/components/ui/CountUp";
 
 export const metadata: Metadata = constructMetadata({
   title: "Growth Advisory Services — Strategy, Marketing, Sales & Automation",
@@ -105,6 +107,42 @@ export default function ServicesPage() {
                   0{idx + 1} {s.title.toUpperCase()}
                 </Link>
               ))}
+            </div>
+
+            {/* Commercial Impact Ticker with CountUp */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-12 mt-12 border-t border-[#D7D3CB]/70">
+              <div>
+                <div className="text-3xl sm:text-4xl font-mono font-black text-[#07192F]">
+                  <CountUp to={185} prefix="$" suffix="M+" duration={2.2} />
+                </div>
+                <span className="text-[11px] font-mono uppercase tracking-wider text-slate-500 font-bold block mt-1">
+                  Client Pipeline Generated
+                </span>
+              </div>
+              <div>
+                <div className="text-3xl sm:text-4xl font-mono font-black text-[#07192F]">
+                  <CountUp to={4.8} decimals={1} suffix="x" duration={2} />
+                </div>
+                <span className="text-[11px] font-mono uppercase tracking-wider text-slate-500 font-bold block mt-1">
+                  Average Revenue ROI
+                </span>
+              </div>
+              <div>
+                <div className="text-3xl sm:text-4xl font-mono font-black text-[#07192F]">
+                  <CountUp to={94} suffix="%" duration={1.8} />
+                </div>
+                <span className="text-[11px] font-mono uppercase tracking-wider text-slate-500 font-bold block mt-1">
+                  Contract Renewal Rate
+                </span>
+              </div>
+              <div>
+                <div className="text-3xl sm:text-4xl font-mono font-black text-[#07192F]">
+                  <CountUp to={32} suffix=" Days" duration={1.6} />
+                </div>
+                <span className="text-[11px] font-mono uppercase tracking-wider text-slate-500 font-bold block mt-1">
+                  Avg. GTM Velocity Sprints
+                </span>
+              </div>
             </div>
           </div>
         </Container>
@@ -219,7 +257,12 @@ export default function ServicesPage() {
                       <div className="space-y-8">
                         
                         {/* 1. Deliverables & Blueprints */}
-                        <div className="bg-white p-6 sm:p-8 rounded-2xl border border-stone-200/80 shadow-xs">
+                        <SpotlightCard
+                          theme="light"
+                          spotlightColor="#C88A1A"
+                          intensity={0.25}
+                          className="bg-white p-6 sm:p-8 rounded-2xl border border-stone-200/80 shadow-xs"
+                        >
                           <div className="flex items-center gap-2.5 mb-5 text-[#07192F]">
                             <CheckCircle2 className="w-5 h-5 text-[#C88A1A]" />
                             <h3 className="text-base sm:text-lg font-bold uppercase tracking-[0.05em]">
@@ -240,10 +283,15 @@ export default function ServicesPage() {
                               </div>
                             ))}
                           </div>
-                        </div>
+                        </SpotlightCard>
 
                         {/* 2. Common Friction Points Eliminated */}
-                        <div className="bg-white p-6 sm:p-8 rounded-2xl border border-stone-200/80 shadow-xs">
+                        <SpotlightCard
+                          theme="gold"
+                          spotlightColor="#C88A1A"
+                          intensity={0.2}
+                          className="bg-[#FAF8F5] p-6 sm:p-8 rounded-2xl border border-stone-200/80 shadow-xs"
+                        >
                           <div className="flex items-center gap-2.5 mb-5 text-[#07192F]">
                             <AlertCircle className="w-5 h-5 text-slate-400" />
                             <h3 className="text-base sm:text-lg font-bold uppercase tracking-[0.05em]">
@@ -264,7 +312,7 @@ export default function ServicesPage() {
                               </div>
                             ))}
                           </div>
-                        </div>
+                        </SpotlightCard>
 
                       </div>
 
@@ -321,7 +369,12 @@ export default function ServicesPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {/* Step 1 */}
-            <div className="bg-white p-7 rounded-2xl border border-stone-200/80 shadow-xs flex flex-col justify-between">
+            <SpotlightCard
+              theme="light"
+              spotlightColor="#C88A1A"
+              intensity={0.22}
+              className="bg-white p-7 rounded-2xl border border-stone-200/80 shadow-xs flex flex-col justify-between"
+            >
               <div>
                 <span className="text-xs font-mono font-bold text-[#C88A1A] uppercase tracking-wider block mb-2">
                   STAGE 01
@@ -335,10 +388,15 @@ export default function ServicesPage() {
                 <span>FEEDS MARKETING</span>
                 <span>→</span>
               </div>
-            </div>
+            </SpotlightCard>
 
             {/* Step 2 */}
-            <div className="bg-white p-7 rounded-2xl border border-stone-200/80 shadow-xs flex flex-col justify-between">
+            <SpotlightCard
+              theme="light"
+              spotlightColor="#C88A1A"
+              intensity={0.22}
+              className="bg-white p-7 rounded-2xl border border-stone-200/80 shadow-xs flex flex-col justify-between"
+            >
               <div>
                 <span className="text-xs font-mono font-bold text-[#C88A1A] uppercase tracking-wider block mb-2">
                   STAGE 02
@@ -352,10 +410,15 @@ export default function ServicesPage() {
                 <span>FEEDS SALES</span>
                 <span>→</span>
               </div>
-            </div>
+            </SpotlightCard>
 
             {/* Step 3 */}
-            <div className="bg-white p-7 rounded-2xl border border-stone-200/80 shadow-xs flex flex-col justify-between">
+            <SpotlightCard
+              theme="light"
+              spotlightColor="#C88A1A"
+              intensity={0.22}
+              className="bg-white p-7 rounded-2xl border border-stone-200/80 shadow-xs flex flex-col justify-between"
+            >
               <div>
                 <span className="text-xs font-mono font-bold text-[#C88A1A] uppercase tracking-wider block mb-2">
                   STAGE 03
@@ -369,10 +432,15 @@ export default function ServicesPage() {
                 <span>FEEDS AUTOMATION</span>
                 <span>→</span>
               </div>
-            </div>
+            </SpotlightCard>
 
             {/* Step 4 */}
-            <div className="bg-white p-7 rounded-2xl border border-stone-200/80 shadow-xs flex flex-col justify-between">
+            <SpotlightCard
+              theme="light"
+              spotlightColor="#C88A1A"
+              intensity={0.22}
+              className="bg-white p-7 rounded-2xl border border-stone-200/80 shadow-xs flex flex-col justify-between"
+            >
               <div>
                 <span className="text-xs font-mono font-bold text-[#C88A1A] uppercase tracking-wider block mb-2">
                   STAGE 04
@@ -386,7 +454,7 @@ export default function ServicesPage() {
                 <span>COMPOUNDS SCALE</span>
                 <span>↻</span>
               </div>
-            </div>
+            </SpotlightCard>
           </div>
         </Container>
       </section>

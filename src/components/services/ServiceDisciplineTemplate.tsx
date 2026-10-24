@@ -14,6 +14,61 @@ import {
   ChevronDown,
   ShieldCheck,
 } from "lucide-react";
+import { SpotlightCard } from "@/components/ui/SpotlightCard";
+import { CountUp } from "@/components/ui/CountUp";
+
+type ParsedMetric =
+  | { isNumeric: true; num: number; prefix: string; suffix: string; decimals: number }
+  | { isNumeric: false; raw: string };
+
+function parseMetric(val: string): ParsedMetric {
+  let prefix = "";
+  let suffix = "";
+  let clean = val.trim();
+
+  if (clean.startsWith("+")) {
+    prefix = "+";
+    clean = clean.slice(1);
+  } else if (clean.startsWith("-")) {
+    prefix = "-";
+    clean = clean.slice(1);
+  } else if (clean.startsWith("$")) {
+    prefix = "$";
+    clean = clean.slice(1);
+  } else if (clean.startsWith("£")) {
+    prefix = "£";
+    clean = clean.slice(1);
+  }
+
+  if (clean.endsWith("%")) {
+    suffix = "%";
+    clean = clean.slice(0, -1);
+  } else if (clean.endsWith("x") || clean.endsWith("X")) {
+    suffix = "x";
+    clean = clean.slice(0, -1);
+  } else if (clean.endsWith("M+")) {
+    suffix = "M+";
+    clean = clean.slice(0, -2);
+  } else if (clean.endsWith("+")) {
+    suffix = "+";
+    clean = clean.slice(0, -1);
+  }
+
+  const num = parseFloat(clean);
+  const decimals = clean.includes(".") ? clean.split(".")[1].length : 0;
+
+  if (isNaN(num)) {
+    return { isNumeric: false, raw: val };
+  }
+
+  return {
+    isNumeric: true,
+    num,
+    prefix,
+    suffix,
+    decimals,
+  };
+}
 
 export interface MetricItem {
   label: string;
@@ -193,24 +248,40 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
       <section className="py-12 border-b border-[#D7D3CB] bg-white">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {metrics.map((metric, i) => (
-              <div
-                key={i}
-                className="p-6 rounded-2xl bg-[#FAF8F5] border border-stone-200/90 flex flex-col justify-between"
-              >
-                <div>
-                  <span className="text-xs font-mono uppercase tracking-widest text-slate-500 font-bold block mb-2">
-                    {metric.label}
-                  </span>
-                  <div className="text-3xl sm:text-4xl font-bold font-mono text-[#07192F] mb-2 tracking-tight">
-                    {metric.value}
+            {metrics.map((metric, i) => {
+              const parsed = parseMetric(metric.value);
+              return (
+                <SpotlightCard
+                  key={i}
+                  theme="gold"
+                  spotlightColor="#C88A1A"
+                  intensity={0.25}
+                  className="p-6 rounded-2xl bg-[#FAF8F5] border border-stone-200/90 flex flex-col justify-between"
+                >
+                  <div>
+                    <span className="text-xs font-mono uppercase tracking-widest text-slate-500 font-bold block mb-2">
+                      {metric.label}
+                    </span>
+                    <div className="text-3xl sm:text-4xl font-bold font-mono text-[#07192F] mb-2 tracking-tight">
+                      {parsed.isNumeric ? (
+                        <CountUp
+                          to={parsed.num}
+                          prefix={parsed.prefix}
+                          suffix={parsed.suffix}
+                          decimals={parsed.decimals}
+                          duration={2}
+                        />
+                      ) : (
+                        metric.value
+                      )}
+                    </div>
                   </div>
-                </div>
-                <p className="text-xs text-slate-600 leading-relaxed border-t border-stone-200 pt-3">
-                  {metric.detail}
-                </p>
-              </div>
-            ))}
+                  <p className="text-xs text-slate-600 leading-relaxed border-t border-stone-200/80 pt-3">
+                    {metric.detail}
+                  </p>
+                </SpotlightCard>
+              );
+            })}
           </div>
         </Container>
       </section>
@@ -235,8 +306,11 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {deliverablesDetailed.map((deliv, index) => (
-              <div
+              <SpotlightCard
                 key={index}
+                theme="light"
+                spotlightColor="#C88A1A"
+                intensity={0.22}
                 className="bg-white p-8 rounded-2xl border border-stone-200 shadow-2xs hover:border-[#C88A1A]/40 transition-all flex flex-col justify-between"
               >
                 <div>
@@ -264,7 +338,7 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
                     ))}
                   </div>
                 </div>
-              </div>
+              </SpotlightCard>
             ))}
           </div>
         </Container>
@@ -308,7 +382,12 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
             </div>
 
             {/* The Levexa Method (Scale) */}
-            <div className="p-8 rounded-2xl bg-[#07192F] text-white border border-stone-800 shadow-xl">
+            <SpotlightCard
+              theme="dark"
+              spotlightColor="#C88A1A"
+              intensity={0.35}
+              className="p-8 rounded-2xl bg-[#07192F] text-white border border-stone-800 shadow-xl"
+            >
               <div className="flex items-center gap-2.5 pb-4 border-b border-stone-800 text-[#C88A1A] mb-6">
                 <ShieldCheck className="w-5 h-5 text-[#C88A1A]" />
                 <h3 className="font-bold text-base uppercase tracking-wider text-white">
@@ -323,7 +402,7 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
                   </div>
                 ))}
               </div>
-            </div>
+            </SpotlightCard>
           </div>
         </Container>
       </section>
@@ -348,8 +427,11 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {roadmap.map((step, idx) => (
-              <div
+              <SpotlightCard
                 key={idx}
+                theme="light"
+                spotlightColor="#C88A1A"
+                intensity={0.2}
                 className="bg-white p-6 rounded-2xl border border-stone-200/90 shadow-2xs flex flex-col justify-between"
               >
                 <div>
@@ -374,7 +456,7 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
                   </span>
                   {step.deliverable}
                 </div>
-              </div>
+              </SpotlightCard>
             ))}
           </div>
         </Container>

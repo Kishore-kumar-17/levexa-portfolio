@@ -5,6 +5,8 @@ import { CTASection } from "@/components/sections/CTASection";
 import { WorkClient } from "./WorkClient";
 import { constructMetadata } from "@/lib/metadata";
 
+import { CountUp } from "@/components/ui/CountUp";
+
 export const metadata: Metadata = constructMetadata({
   title: "Case Studies & Proven Impact — Levexa Strategic Growth",
   description:
@@ -49,28 +51,36 @@ export default function WorkPage() {
               deploys scalable automated architectures.
             </p>
 
-            {/* In-Page Quick Stats */}
+            {/* In-Page Quick Stats with CountUp */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6 border-t border-[#D7D3CB]">
               <div>
-                <div className="text-3xl font-bold text-[#07192F] mb-1">4</div>
+                <div className="text-3xl font-bold font-mono text-[#07192F] mb-1">
+                  <CountUp to={4} duration={1.2} />
+                </div>
                 <div className="text-[11px] font-mono font-semibold text-slate-600 uppercase tracking-wider">
                   COMMERCIAL DISCIPLINES
                 </div>
               </div>
               <div className="border-l border-[#D7D3CB] pl-6">
-                <div className="text-3xl font-bold text-[#07192F] mb-1">10-16</div>
+                <div className="text-3xl font-bold font-mono text-[#07192F] mb-1">
+                  <CountUp to={16} prefix="10-" suffix=" Wks" duration={1.6} />
+                </div>
                 <div className="text-[11px] font-mono font-semibold text-slate-600 uppercase tracking-wider">
                   WEEKS PER SPRINT
                 </div>
               </div>
               <div className="border-l border-[#D7D3CB] pl-6">
-                <div className="text-3xl font-bold text-[#07192F] mb-1">360°</div>
+                <div className="text-3xl font-bold font-mono text-[#07192F] mb-1">
+                  <CountUp to={360} suffix="°" duration={1.8} />
+                </div>
                 <div className="text-[11px] font-mono font-semibold text-slate-600 uppercase tracking-wider">
                   REVENUE ALIGNMENT
                 </div>
               </div>
               <div className="border-l border-[#D7D3CB] pl-6">
-                <div className="text-3xl font-bold text-[#07192F] mb-1">100%</div>
+                <div className="text-3xl font-bold font-mono text-[#07192F] mb-1">
+                  <CountUp to={100} suffix="%" duration={1.5} />
+                </div>
                 <div className="text-[11px] font-mono font-semibold text-slate-600 uppercase tracking-wider">
                   EXECUTIVE OWNERSHIP
                 </div>

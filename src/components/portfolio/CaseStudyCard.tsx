@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, Building2 } from "lucide-react";
 import { CaseStudy } from "@/types";
+import { SpotlightCard } from "@/components/ui/SpotlightCard";
 
 interface CaseStudyCardProps {
   caseStudy: CaseStudy;
@@ -15,7 +16,12 @@ export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ caseStudy }) => {
   );
 
   return (
-    <div className="group relative rounded-2xl border border-stone-200/80 bg-white p-7 sm:p-9 flex flex-col justify-between hover:border-[#C88A1A] hover:shadow-card-elevated transition-all duration-300 shadow-xs">
+    <SpotlightCard
+      theme="light"
+      spotlightColor="#C88A1A"
+      intensity={0.25}
+      className="group relative rounded-2xl border border-stone-200/80 bg-white p-7 sm:p-9 flex flex-col justify-between hover:border-[#C88A1A] hover:shadow-card-elevated transition-all duration-300 shadow-xs"
+    >
       <div>
         {/* Top meta tags */}
         <div className="flex flex-wrap items-center justify-between gap-3 mb-5">
@@ -121,6 +127,6 @@ export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ caseStudy }) => {
           <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-1" />
         </Link>
       </div>
-    </div>
+    </SpotlightCard>
   );
 };

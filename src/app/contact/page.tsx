@@ -5,6 +5,8 @@ import { ContactForm } from "@/components/forms/ContactForm";
 import { companyConfig } from "@/data/company";
 import { constructMetadata } from "@/lib/metadata";
 import { Mail, Clock, MapPin, ShieldCheck } from "lucide-react";
+import { BlurText } from "@/components/ui/BlurText";
+import { SpotlightCard } from "@/components/ui/SpotlightCard";
 
 export const metadata: Metadata = constructMetadata({
   title: "Contact Levexa — Request Strategic Growth Consultation",
@@ -51,8 +53,8 @@ export default function ContactPage() {
 
             {/* Monumental Dual-Tone Headline */}
             <h1 className="text-5xl sm:text-7xl lg:text-[5rem] xl:text-[5.75rem] font-bold tracking-[-0.035em] leading-[0.98] mb-8 sm:mb-10">
-              <span className="text-[#07192F]">Let&apos;s talk</span> <br />
-              <span className="text-[#C88A1A]">growth.</span>
+              <BlurText text="Let's talk" className="text-[#07192F] inline-flex" delay={80} /> <br />
+              <BlurText text="growth." className="text-[#C88A1A] inline-flex" delay={120} />
             </h1>
 
             {/* Signature Gold Accent Line */}
@@ -81,86 +83,90 @@ export default function ContactPage() {
             <div className="lg:col-span-5 space-y-10">
               
               {/* Direct Inboxes Card */}
-              <div className="bg-white p-8 rounded-2xl border border-stone-200/80 shadow-xs space-y-6">
-                <h3 className="text-xl font-bold text-[#07192F] tracking-tight border-b border-stone-100 pb-4">
-                  Direct Advisory Channels
-                </h3>
-
-                <div className="space-y-5">
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-full bg-[#FAF8F5] border border-stone-200 flex items-center justify-center text-[#C88A1A] shrink-0">
-                      <Mail className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">
-                        Official Inquiry Inbox
-                      </p>
-                      <a
-                        href={`mailto:${companyConfig.contact.email}`}
-                        className="text-base font-bold text-[#07192F] hover:text-[#C88A1A] transition-colors"
-                      >
-                        {companyConfig.contact.email}
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-full bg-[#FAF8F5] border border-stone-200 flex items-center justify-center text-[#C88A1A] shrink-0">
-                      <Clock className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">
-                        Advisory Sprint Hours
-                      </p>
-                      <p className="text-sm font-semibold text-[#07192F]">
-                        {companyConfig.contact.supportHours}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-full bg-[#FAF8F5] border border-stone-200 flex items-center justify-center text-[#C88A1A] shrink-0">
-                      <MapPin className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">
-                        Operational Footprint
-                      </p>
-                      <p className="text-sm font-semibold text-[#07192F]">
-                        Global Remote &amp; On-Site Executive Advisory
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* What Happens Next Card */}
-              <div className="bg-white p-8 rounded-2xl border border-stone-200/80 shadow-xs space-y-6">
-                <div className="flex items-center gap-2.5">
-                  <span className="w-6 h-[2px] bg-[#C88A1A]" />
-                  <h3 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#07192F]">
-                    WHAT HAPPENS NEXT:
+              <SpotlightCard theme="light" spotlightColor="#C88A1A" intensity={0.22}>
+                <div className="p-8 space-y-6">
+                  <h3 className="text-xl font-bold text-[#07192F] tracking-tight border-b border-stone-100 pb-4">
+                    Direct Advisory Channels
                   </h3>
-                </div>
 
-                <div className="space-y-6">
-                  {steps.map((st) => (
-                    <div key={st.number} className="flex items-start gap-4">
-                      <span className="font-mono text-xs font-bold text-[#C88A1A] pt-0.5 shrink-0">
-                        {st.number}
-                      </span>
+                  <div className="space-y-5">
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-full bg-[#FAF8F5] border border-stone-200 flex items-center justify-center text-[#C88A1A] shrink-0">
+                        <Mail className="w-4 h-4" />
+                      </div>
                       <div>
-                        <h4 className="text-sm font-bold text-[#07192F] mb-1">
-                          {st.title}
-                        </h4>
-                        <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                          {st.desc}
+                        <p className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">
+                          Official Inquiry Inbox
+                        </p>
+                        <a
+                          href={`mailto:${companyConfig.contact.email}`}
+                          className="text-base font-bold text-[#07192F] hover:text-[#C88A1A] transition-colors"
+                        >
+                          {companyConfig.contact.email}
+                        </a>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-full bg-[#FAF8F5] border border-stone-200 flex items-center justify-center text-[#C88A1A] shrink-0">
+                        <Clock className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <p className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">
+                          Advisory Sprint Hours
+                        </p>
+                        <p className="text-sm font-semibold text-[#07192F]">
+                          {companyConfig.contact.supportHours}
                         </p>
                       </div>
                     </div>
-                  ))}
+
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-full bg-[#FAF8F5] border border-stone-200 flex items-center justify-center text-[#C88A1A] shrink-0">
+                        <MapPin className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <p className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">
+                          Operational Footprint
+                        </p>
+                        <p className="text-sm font-semibold text-[#07192F]">
+                          Global Remote &amp; On-Site Executive Advisory
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </SpotlightCard>
+
+              {/* What Happens Next Card */}
+              <SpotlightCard theme="gold" spotlightColor="#C88A1A" intensity={0.22}>
+                <div className="p-8 space-y-6">
+                  <div className="flex items-center gap-2.5">
+                    <span className="w-6 h-[2px] bg-[#C88A1A]" />
+                    <h3 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#07192F]">
+                      WHAT HAPPENS NEXT:
+                    </h3>
+                  </div>
+
+                  <div className="space-y-6">
+                    {steps.map((st) => (
+                      <div key={st.number} className="flex items-start gap-4">
+                        <span className="font-mono text-xs font-bold text-[#C88A1A] pt-0.5 shrink-0">
+                          {st.number}
+                        </span>
+                        <div>
+                          <h4 className="text-sm font-bold text-[#07192F] mb-1">
+                            {st.title}
+                          </h4>
+                          <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                            {st.desc}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </SpotlightCard>
 
               {/* Strict NDA Assurance Banner */}
               <div className="p-5 rounded-2xl bg-[#07192F] text-white flex items-center gap-4">

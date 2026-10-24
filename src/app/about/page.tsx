@@ -18,6 +18,9 @@ import {
   Layers,
   ArrowDown
 } from "lucide-react";
+import { BlurText } from "@/components/ui/BlurText";
+import { SpotlightCard } from "@/components/ui/SpotlightCard";
+import { CountUp } from "@/components/ui/CountUp";
 
 export const metadata: Metadata = constructMetadata({
   title: "About Levexa — Strategic Business Growth Advisory",
@@ -104,8 +107,8 @@ export default function AboutPage() {
 
             {/* Monumental Dual-Tone Headline */}
             <h1 className="text-5xl sm:text-7xl lg:text-[5rem] xl:text-[5.75rem] font-bold tracking-[-0.035em] leading-[0.98] mb-8 sm:mb-10">
-              <span className="text-[#07192F]">Built for scale.</span> <br />
-              <span className="text-[#C88A1A]">Driven by excellence.</span>
+              <BlurText text="Built for scale." className="text-[#07192F] inline-flex" delay={80} /> <br />
+              <BlurText text="Driven by excellence." className="text-[#C88A1A] inline-flex" delay={120} />
             </h1>
 
             {/* Signature Gold Accent Line */}
@@ -156,58 +159,64 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
             {/* Card 1 */}
-            <div className="bg-white p-8 sm:p-10 rounded-2xl border border-stone-200/80 shadow-xs hover:border-[#C88A1A]/40 transition-all duration-300 flex flex-col justify-between">
-              <div>
-                <span className="text-4xl font-mono font-bold text-[#C88A1A] mb-4 block">01</span>
-                <h3 className="text-xl font-bold text-[#07192F] mb-3 leading-snug">
-                  Strategy Without Execution is Just Theory
-                </h3>
-                <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
-                  Most consultancies deliver 80-page presentation decks that gather dust. Without
-                  operational playbooks and frontline training, high-level strategy never converts into revenue.
-                </p>
+            <SpotlightCard theme="light" spotlightColor="#C88A1A" intensity={0.22} className="h-full">
+              <div className="p-8 sm:p-10 flex flex-col justify-between h-full">
+                <div>
+                  <span className="text-4xl font-mono font-bold text-[#C88A1A] mb-4 block">01</span>
+                  <h3 className="text-xl font-bold text-[#07192F] mb-3 leading-snug">
+                    Strategy Without Execution is Just Theory
+                  </h3>
+                  <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
+                    Most consultancies deliver 80-page presentation decks that gather dust. Without
+                    operational playbooks and frontline training, high-level strategy never converts into revenue.
+                  </p>
+                </div>
+                <div className="mt-8 pt-4 border-t border-stone-100 flex items-center gap-2 text-xs font-mono font-bold text-[#07192F] uppercase">
+                  <CheckCircle2 className="w-4 h-4 text-[#C88A1A]" />
+                  <span>We engineer executable playbooks</span>
+                </div>
               </div>
-              <div className="mt-8 pt-4 border-t border-stone-100 flex items-center gap-2 text-xs font-mono font-bold text-[#07192F] uppercase">
-                <CheckCircle2 className="w-4 h-4 text-[#C88A1A]" />
-                <span>We engineer executable playbooks</span>
-              </div>
-            </div>
+            </SpotlightCard>
 
             {/* Card 2 */}
-            <div className="bg-white p-8 sm:p-10 rounded-2xl border border-stone-200/80 shadow-xs hover:border-[#C88A1A]/40 transition-all duration-300 flex flex-col justify-between">
-              <div>
-                <span className="text-4xl font-mono font-bold text-[#C88A1A] mb-4 block">02</span>
-                <h3 className="text-xl font-bold text-[#07192F] mb-3 leading-snug">
-                  Marketing Disconnected from Sales is Waste
-                </h3>
-                <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
-                  Generating leads means nothing if they are unqualified or poorly handed off. True scale
-                  emerges when marketing messaging precisely pre-sells prospects for rapid sales closing.
-                </p>
+            <SpotlightCard theme="light" spotlightColor="#C88A1A" intensity={0.22} className="h-full">
+              <div className="p-8 sm:p-10 flex flex-col justify-between h-full">
+                <div>
+                  <span className="text-4xl font-mono font-bold text-[#C88A1A] mb-4 block">02</span>
+                  <h3 className="text-xl font-bold text-[#07192F] mb-3 leading-snug">
+                    Marketing Disconnected from Sales is Waste
+                  </h3>
+                  <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
+                    Generating leads means nothing if they are unqualified or poorly handed off. True scale
+                    emerges when marketing messaging precisely pre-sells prospects for rapid sales closing.
+                  </p>
+                </div>
+                <div className="mt-8 pt-4 border-t border-stone-100 flex items-center gap-2 text-xs font-mono font-bold text-[#07192F] uppercase">
+                  <CheckCircle2 className="w-4 h-4 text-[#C88A1A]" />
+                  <span>Full funnel commercial synchronization</span>
+                </div>
               </div>
-              <div className="mt-8 pt-4 border-t border-stone-100 flex items-center gap-2 text-xs font-mono font-bold text-[#07192F] uppercase">
-                <CheckCircle2 className="w-4 h-4 text-[#C88A1A]" />
-                <span>Full funnel commercial synchronization</span>
-              </div>
-            </div>
+            </SpotlightCard>
 
             {/* Card 3 */}
-            <div className="bg-white p-8 sm:p-10 rounded-2xl border border-stone-200/80 shadow-xs hover:border-[#C88A1A]/40 transition-all duration-300 flex flex-col justify-between">
-              <div>
-                <span className="text-4xl font-mono font-bold text-[#C88A1A] mb-4 block">03</span>
-                <h3 className="text-xl font-bold text-[#07192F] mb-3 leading-snug">
-                  Growth Without Automation Caps Valuation
-                </h3>
-                <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
-                  Relying solely on headcount to increase revenue creates organizational drag. Installing
-                  automated CRM, AI pipelines, and self-serve workflows unlocks exponential operational leverage.
-                </p>
+            <SpotlightCard theme="light" spotlightColor="#C88A1A" intensity={0.22} className="h-full">
+              <div className="p-8 sm:p-10 flex flex-col justify-between h-full">
+                <div>
+                  <span className="text-4xl font-mono font-bold text-[#C88A1A] mb-4 block">03</span>
+                  <h3 className="text-xl font-bold text-[#07192F] mb-3 leading-snug">
+                    Growth Without Automation Caps Valuation
+                  </h3>
+                  <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
+                    Relying solely on headcount to increase revenue creates organizational drag. Installing
+                    automated CRM, AI pipelines, and self-serve workflows unlocks exponential operational leverage.
+                  </p>
+                </div>
+                <div className="mt-8 pt-4 border-t border-stone-100 flex items-center gap-2 text-xs font-mono font-bold text-[#07192F] uppercase">
+                  <CheckCircle2 className="w-4 h-4 text-[#C88A1A]" />
+                  <span>Scalable automated architectures</span>
+                </div>
               </div>
-              <div className="mt-8 pt-4 border-t border-stone-100 flex items-center gap-2 text-xs font-mono font-bold text-[#07192F] uppercase">
-                <CheckCircle2 className="w-4 h-4 text-[#C88A1A]" />
-                <span>Scalable automated architectures</span>
-              </div>
-            </div>
+            </SpotlightCard>
           </div>
         </Container>
       </section>
@@ -287,7 +296,7 @@ export default function AboutPage() {
               <div className="pt-8 border-t border-[#D7D3CB] grid grid-cols-3 gap-6">
                 <div>
                   <div className="text-3xl sm:text-4xl font-bold text-[#07192F] tracking-tight mb-1">
-                    4
+                    <CountUp to={4} duration={1.6} />
                   </div>
                   <div className="text-[11px] font-mono font-semibold tracking-[0.16em] text-slate-600 uppercase leading-snug">
                     CORE GROWTH
@@ -298,7 +307,7 @@ export default function AboutPage() {
 
                 <div className="border-l border-[#D7D3CB] pl-6">
                   <div className="text-3xl sm:text-4xl font-bold text-[#07192F] tracking-tight mb-1">
-                    360°
+                    <CountUp to={360} suffix="°" duration={2} />
                   </div>
                   <div className="text-[11px] font-mono font-semibold tracking-[0.16em] text-slate-600 uppercase leading-snug">
                     REVENUE
@@ -309,7 +318,7 @@ export default function AboutPage() {
 
                 <div className="border-l border-[#D7D3CB] pl-6">
                   <div className="text-3xl sm:text-4xl font-bold text-[#07192F] tracking-tight mb-1">
-                    100%
+                    <CountUp to={100} suffix="%" duration={1.8} />
                   </div>
                   <div className="text-[11px] font-mono font-semibold tracking-[0.16em] text-slate-600 uppercase leading-snug">
                     COMMERCIAL
@@ -352,29 +361,34 @@ export default function AboutPage() {
             {coreValues.map((val) => {
               const IconComp = val.icon;
               return (
-                <div
+                <SpotlightCard
                   key={val.number}
-                  className="bg-white p-8 rounded-2xl border border-stone-200/80 shadow-xs hover:border-[#C88A1A] transition-all duration-300 flex flex-col justify-between group"
+                  theme="gold"
+                  spotlightColor="#C88A1A"
+                  intensity={0.22}
+                  className="h-full"
                 >
-                  <div>
-                    <div className="flex items-center justify-between mb-6">
-                      <span className="font-mono text-sm font-bold text-[#C88A1A]">
-                        {val.number}
-                      </span>
-                      <div className="w-10 h-10 rounded-full border border-stone-200 flex items-center justify-center text-[#07192F] group-hover:border-[#C88A1A] group-hover:text-[#C88A1A] transition-colors">
-                        <IconComp className="w-4 h-4" />
+                  <div className="p-8 flex flex-col justify-between h-full group">
+                    <div>
+                      <div className="flex items-center justify-between mb-6">
+                        <span className="font-mono text-sm font-bold text-[#C88A1A]">
+                          {val.number}
+                        </span>
+                        <div className="w-10 h-10 rounded-full border border-stone-200 flex items-center justify-center text-[#07192F] group-hover:border-[#C88A1A] group-hover:text-[#C88A1A] transition-colors">
+                          <IconComp className="w-4 h-4" />
+                        </div>
                       </div>
+
+                      <h3 className="text-lg font-bold text-[#07192F] mb-3 group-hover:text-[#C88A1A] transition-colors">
+                        {val.title}
+                      </h3>
+
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                        {val.desc}
+                      </p>
                     </div>
-
-                    <h3 className="text-lg font-bold text-[#07192F] mb-3 group-hover:text-[#C88A1A] transition-colors">
-                      {val.title}
-                    </h3>
-
-                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-                      {val.desc}
-                    </p>
                   </div>
-                </div>
+                </SpotlightCard>
               );
             })}
           </div>

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { CheckCircle2, AlertCircle, Loader2, ArrowRight } from "lucide-react";
 import { validateContactForm } from "@/lib/validation";
 import { ContactFormData } from "@/types";
+import { Magnet } from "@/components/ui/Magnet";
 
 export const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState<ContactFormData>({
@@ -333,23 +334,25 @@ export const ContactForm: React.FC = () => {
       </div>
 
       {/* Submit Button */}
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="w-full inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-bold text-sm bg-[#07192F] text-white hover:bg-[#C88A1A] hover:text-[#07192F] shadow-sm hover:shadow-md active:scale-[0.98] transition-all duration-300 disabled:opacity-50 disabled:pointer-events-none select-none min-h-[50px] cursor-pointer uppercase tracking-wider"
-      >
-        {isSubmitting ? (
-          <>
-            <Loader2 className="w-4 h-4 animate-spin text-white" />
-            <span>SUBMITTING ENQUIRY...</span>
-          </>
-        ) : (
-          <>
-            <span>SUBMIT CONSULTATION REQUEST</span>
-            <ArrowRight className="w-4 h-4" />
-          </>
-        )}
-      </button>
+      <Magnet magnetStrength={2.2} padding={50} className="w-full">
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="w-full inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-bold text-sm bg-[#07192F] text-white hover:bg-[#C88A1A] hover:text-[#07192F] shadow-sm hover:shadow-md active:scale-[0.98] transition-all duration-300 disabled:opacity-50 disabled:pointer-events-none select-none min-h-[50px] cursor-pointer uppercase tracking-wider"
+        >
+          {isSubmitting ? (
+            <>
+              <Loader2 className="w-4 h-4 animate-spin text-white" />
+              <span>SUBMITTING ENQUIRY...</span>
+            </>
+          ) : (
+            <>
+              <span>SUBMIT CONSULTATION REQUEST</span>
+              <ArrowRight className="w-4 h-4" />
+            </>
+          )}
+        </button>
+      </Magnet>
 
       <p className="text-[11px] font-mono text-center text-slate-500 uppercase tracking-wider">
         CONFIDENTIALITY GUARANTEED • STRICT NDA COMMITMENT
