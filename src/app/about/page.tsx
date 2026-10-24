@@ -1,262 +1,466 @@
 import React from "react";
 import { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CTASection } from "@/components/sections/CTASection";
-import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { constructMetadata } from "@/lib/metadata";
 import {
-  Compass,
-  TrendingUp,
-  Target,
-  Layers,
-  Shield,
   Lightbulb,
   Zap,
+  Shield,
   Award,
-  Users2,
-  Info,
+  ArrowRight,
+  CheckCircle2,
+  TrendingUp,
+  Compass,
+  Target,
+  Layers,
+  ArrowDown
 } from "lucide-react";
 
 export const metadata: Metadata = constructMetadata({
   title: "About Levexa — Strategic Business Growth Advisory",
   description:
-    "Learn about Levexa's unified growth philosophy, our proposed methodology, core values, and mission to help businesses scale sustainably.",
+    "Learn about Levexa's unified growth philosophy, core commercial tenets, leadership methodology, and mission to help businesses scale sustainably.",
   path: "/about",
 });
 
 export default function AboutPage() {
   const coreValues = [
     {
+      number: "01",
       title: "Strategic Clarity",
-      desc: "We cut through superficial vanity metrics to isolate the core commercial unit economics that truly drive enterprise valuation.",
+      desc: "We cut through vanity metrics to isolate the core commercial unit economics that truly drive enterprise valuation and sustainable scaling.",
       icon: Lightbulb,
     },
     {
+      number: "02",
       title: "Measurable Impact",
-      desc: "Every initiative we recommend must have a defined line of sight to qualified pipeline, conversion velocity, or revenue retention.",
+      desc: "Every initiative we recommend must have a clear line of sight to qualified pipeline, conversion velocity, or compounding revenue retention.",
       icon: Zap,
     },
     {
+      number: "03",
       title: "Extreme Ownership",
-      desc: "We don't hand off theoretical slide decks. We partner alongside your team to ensure recommendations are executable in the field.",
+      desc: "We don't hand off theoretical decks. We partner alongside your leadership team to ensure playbooks are rigorously executable in the field.",
       icon: Shield,
     },
     {
+      number: "04",
       title: "Continuous Optimization",
-      desc: "Market environments are dynamic. We test, measure, and iterate ruthlessly to ensure compounding gains over time.",
+      desc: "Commercial environments evolve rapidly. We test, measure, and iterate ruthlessly to ensure compounding gains and resilient market positioning.",
       icon: Award,
     },
   ];
 
+  const pillarsSummary = [
+    {
+      number: "01",
+      title: "Growth & Strategy",
+      desc: "Market research, competitive positioning, GTM architecture, and executive KPI roadmaps.",
+      icon: Compass,
+      href: "/services#growth-strategy",
+    },
+    {
+      number: "02",
+      title: "Branding & Marketing",
+      desc: "Demand generation engines, authority branding, performance creative, and full-funnel acquisition.",
+      icon: TrendingUp,
+      href: "/services#branding-marketing",
+    },
+    {
+      number: "03",
+      title: "Sales & Conversion",
+      desc: "High-conversion playbooks, team coaching, objection handling, and CRM pipeline acceleration.",
+      icon: Target,
+      href: "/services#sales-conversion",
+    },
+    {
+      number: "04",
+      title: "Technology & Automation",
+      desc: "Custom digital platforms, AI integrations, WhatsApp/chatbot automation, and real-time dashboards.",
+      icon: Layers,
+      href: "/services#technology-automation",
+    },
+  ];
+
   return (
-    <div className="pt-28 pb-0 bg-white text-slate-900">
-      {/* 1. Hero Section */}
-      <section className="py-16 lg:py-24 bg-white relative border-b border-slate-200">
+    <div className="pt-24 sm:pt-28 bg-[#FAF8F5] text-[#07192F] select-none min-h-screen">
+      
+      {/* ========================================================= */}
+      {/* 1. HERO SECTION: Monumental Levexa Dual-Tone Hero         */}
+      {/* ========================================================= */}
+      <section className="pt-8 sm:pt-12 lg:pt-16 pb-16 sm:pb-20 border-b border-[#D7D3CB] relative overflow-hidden">
         <Container>
-          <div className="max-w-4xl space-y-6">
-            <AnimatedSection direction="up">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-50 border border-slate-200 text-[#059669] text-xs font-mono font-bold uppercase tracking-[0.2em] shadow-2xs">
-                <span className="w-2 h-[3px] bg-[#10B981] rounded-full" />
-                <span>About Levexa</span>
-              </div>
-            </AnimatedSection>
+          <div className="max-w-5xl">
+            {/* Eyebrow */}
+            <div className="flex items-center gap-3 mb-6 sm:mb-8">
+              <span className="w-8 h-[2px] bg-[#C88A1A]" />
+              <span className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.22em] text-[#07192F] uppercase">
+                OUR PHILOSOPHY &amp; MISSION
+              </span>
+            </div>
 
-            <AnimatedSection direction="up" delay={0.1}>
-              <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-medium text-[#07192F] tracking-[-0.03em] leading-[1.08]">
-                Engineered for strategic,{" "}
-                <span className="text-[#78716C]">sustainable business growth.</span>
-              </h1>
-            </AnimatedSection>
+            {/* Monumental Dual-Tone Headline */}
+            <h1 className="text-5xl sm:text-7xl lg:text-[5rem] xl:text-[5.75rem] font-bold tracking-[-0.035em] leading-[0.98] mb-8 sm:mb-10">
+              <span className="text-[#07192F]">Built for scale.</span> <br />
+              <span className="text-[#C88A1A]">Driven by excellence.</span>
+            </h1>
 
-            {/* Signature Horizontal Accent Line */}
+            {/* Signature Gold Accent Line */}
             <div
-              className="w-12 h-[3.5px] bg-[#10B981] rounded-full my-5"
+              className="w-12 h-[3px] bg-[#C88A1A] rounded-full mb-8 sm:mb-10"
               aria-hidden="true"
             />
 
-            <AnimatedSection direction="up" delay={0.2}>
-              <p className="text-xl sm:text-2xl text-slate-700 font-normal leading-[1.4] max-w-3xl tracking-tight">
-                Levexa is a strategic advisory founded on a simple premise: modern
-                business growth requires total synchronization between high-level
-                business strategy, demand generation marketing, and high-velocity
-                sales execution.
-              </p>
-            </AnimatedSection>
+            {/* Value Proposition Subheadline */}
+            <p className="text-xl sm:text-2xl lg:text-[1.75rem] text-slate-800 font-normal leading-[1.45] max-w-4xl tracking-tight mb-10">
+              Levexa is a premier strategic growth advisory founded on a single conviction: real business
+              scale requires total synchronization between high-level commercial strategy, demand-generation
+              marketing, and high-velocity sales execution.
+            </p>
+
+            {/* Quick in-page jump */}
+            <div className="flex items-center gap-6 pt-4">
+              <Link
+                href="#conviction"
+                className="group flex items-center gap-2.5 text-xs sm:text-[13px] font-bold tracking-[0.2em] text-[#07192F] hover:text-[#C88A1A] transition-colors uppercase font-mono"
+              >
+                <ArrowDown className="w-4 h-4 transition-transform group-hover:translate-y-1" />
+                <span>EXPLORE OUR APPROACH</span>
+              </Link>
+            </div>
           </div>
         </Container>
       </section>
 
-      {/* 2. Mission & Vision */}
-      <section className="py-20 bg-white relative border-b border-slate-200">
+      {/* ========================================================= */}
+      {/* 2. THE THREE FOUNDING CONVICTIONS                         */}
+      {/* ========================================================= */}
+      <section id="conviction" className="py-20 lg:py-28 border-b border-[#D7D3CB] scroll-mt-20">
         <Container>
-          {/* Client confirmation note */}
-          <div className="mb-10 p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-3 text-xs text-slate-600">
-            <Info className="w-4 h-4 text-[#10B981] shrink-0 mt-0.5" />
-            <p>
-              <strong className="text-slate-900 font-semibold">Notice for Client Review:</strong>{" "}
-              The following Mission & Vision statements reflect Levexa&apos;s proposed
-              brand positioning. Official corporate charter wording can be tailored
-              during the final asset integration.
+          {/* Eyebrow & Headline */}
+          <div className="max-w-3xl mb-14 sm:mb-18">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="w-8 h-[2px] bg-[#C88A1A]" />
+              <span className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.22em] text-[#07192F] uppercase">
+                THE REALITY OF COMMERCIAL SCALE
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-[-0.035em] leading-[1.05]">
+              Why traditional business <br />
+              <span className="text-[#C88A1A]">growth models break.</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
+            {/* Card 1 */}
+            <div className="bg-white p-8 sm:p-10 rounded-2xl border border-stone-200/80 shadow-xs hover:border-[#C88A1A]/40 transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <span className="text-4xl font-mono font-bold text-[#C88A1A] mb-4 block">01</span>
+                <h3 className="text-xl font-bold text-[#07192F] mb-3 leading-snug">
+                  Strategy Without Execution is Just Theory
+                </h3>
+                <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
+                  Most consultancies deliver 80-page presentation decks that gather dust. Without
+                  operational playbooks and frontline training, high-level strategy never converts into revenue.
+                </p>
+              </div>
+              <div className="mt-8 pt-4 border-t border-stone-100 flex items-center gap-2 text-xs font-mono font-bold text-[#07192F] uppercase">
+                <CheckCircle2 className="w-4 h-4 text-[#C88A1A]" />
+                <span>We engineer executable playbooks</span>
+              </div>
+            </div>
+
+            {/* Card 2 */}
+            <div className="bg-white p-8 sm:p-10 rounded-2xl border border-stone-200/80 shadow-xs hover:border-[#C88A1A]/40 transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <span className="text-4xl font-mono font-bold text-[#C88A1A] mb-4 block">02</span>
+                <h3 className="text-xl font-bold text-[#07192F] mb-3 leading-snug">
+                  Marketing Disconnected from Sales is Waste
+                </h3>
+                <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
+                  Generating leads means nothing if they are unqualified or poorly handed off. True scale
+                  emerges when marketing messaging precisely pre-sells prospects for rapid sales closing.
+                </p>
+              </div>
+              <div className="mt-8 pt-4 border-t border-stone-100 flex items-center gap-2 text-xs font-mono font-bold text-[#07192F] uppercase">
+                <CheckCircle2 className="w-4 h-4 text-[#C88A1A]" />
+                <span>Full funnel commercial synchronization</span>
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="bg-white p-8 sm:p-10 rounded-2xl border border-stone-200/80 shadow-xs hover:border-[#C88A1A]/40 transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <span className="text-4xl font-mono font-bold text-[#C88A1A] mb-4 block">03</span>
+                <h3 className="text-xl font-bold text-[#07192F] mb-3 leading-snug">
+                  Growth Without Automation Caps Valuation
+                </h3>
+                <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
+                  Relying solely on headcount to increase revenue creates organizational drag. Installing
+                  automated CRM, AI pipelines, and self-serve workflows unlocks exponential operational leverage.
+                </p>
+              </div>
+              <div className="mt-8 pt-4 border-t border-stone-100 flex items-center gap-2 text-xs font-mono font-bold text-[#07192F] uppercase">
+                <CheckCircle2 className="w-4 h-4 text-[#C88A1A]" />
+                <span>Scalable automated architectures</span>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* ========================================================= */}
+      {/* 3. EXECUTIVE ADVISORY & TEAM PERSPECTIVE                  */}
+      {/* ========================================================= */}
+      <section className="py-20 lg:py-28 border-b border-[#D7D3CB] relative">
+        <Container>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            
+            {/* Left Column: Visual with Signature Curved Frame */}
+            <div className="lg:col-span-6 relative">
+              {/* Arc Accent */}
+              <div className="absolute -top-8 -left-8 w-36 h-36 pointer-events-none hidden sm:block">
+                <svg viewBox="0 0 160 160" className="w-full h-full fill-none">
+                  <path
+                    d="M 10 150 C 10 70, 70 10, 150 10"
+                    stroke="#C88A1A"
+                    strokeWidth="1.5"
+                  />
+                  <circle cx="10" cy="150" r="4.5" fill="#FAF8F5" stroke="#C88A1A" strokeWidth="2" />
+                  <circle cx="150" cy="10" r="4.5" fill="#FAF8F5" stroke="#C88A1A" strokeWidth="2" />
+                </svg>
+              </div>
+
+              {/* Arched Photo Container */}
+              <div className="relative rounded-tl-[80px] sm:rounded-tl-[120px] rounded-br-3xl rounded-tr-3xl rounded-bl-3xl overflow-hidden shadow-card-elevated border border-stone-200/80 bg-stone-100 aspect-[16/11]">
+                <Image
+                  src="/images/about/who-we-are-team.jpg"
+                  alt="Levexa executive growth advisory session"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                  priority
+                />
+              </div>
+
+              {/* Handwritten Note Accent */}
+              <div className="mt-4 flex items-center justify-end gap-2 text-stone-700">
+                <span className="font-serif italic text-base sm:text-lg text-slate-800">
+                  Architecting predictable, scalable revenue engines
+                </span>
+                <span className="text-xl text-[#C88A1A] -rotate-12 inline-block">⤹</span>
+              </div>
+            </div>
+
+            {/* Right Column: Narrative & Metrics */}
+            <div className="lg:col-span-6 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="w-8 h-[2px] bg-[#C88A1A]" />
+                  <span className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.22em] text-[#07192F] uppercase">
+                    OUR ENGAGEMENT MODEL
+                  </span>
+                </div>
+
+                <h2 className="text-3xl sm:text-4xl lg:text-[2.85rem] font-bold tracking-[-0.03em] leading-[1.08] mb-6">
+                  Senior partners at the table, <br />
+                  <span className="text-[#C88A1A]">not junior handoffs.</span>
+                </h2>
+
+                <p className="text-base sm:text-lg text-slate-800 leading-relaxed mb-6 font-normal">
+                  When you engage Levexa, you partner directly with senior commercial operators who have
+                  built, scaled, and exited businesses. We conduct exhaustive audits of your customer acquisition
+                  cost, pipeline bottlenecks, and market positioning before prescribing custom growth infrastructure.
+                </p>
+
+                <p className="text-base sm:text-lg text-slate-700 leading-relaxed mb-10 font-normal">
+                  Our sprint-based methodology bridges the gap between boardroom ambition and operational
+                  reality, equipping your teams with battle-tested playbooks, custom tech workflows, and real-time
+                  executive visibility.
+                </p>
+              </div>
+
+              {/* Metrics Strip */}
+              <div className="pt-8 border-t border-[#D7D3CB] grid grid-cols-3 gap-6">
+                <div>
+                  <div className="text-3xl sm:text-4xl font-bold text-[#07192F] tracking-tight mb-1">
+                    4
+                  </div>
+                  <div className="text-[11px] font-mono font-semibold tracking-[0.16em] text-slate-600 uppercase leading-snug">
+                    CORE GROWTH
+                    <br />
+                    PILLARS
+                  </div>
+                </div>
+
+                <div className="border-l border-[#D7D3CB] pl-6">
+                  <div className="text-3xl sm:text-4xl font-bold text-[#07192F] tracking-tight mb-1">
+                    360°
+                  </div>
+                  <div className="text-[11px] font-mono font-semibold tracking-[0.16em] text-slate-600 uppercase leading-snug">
+                    REVENUE
+                    <br />
+                    ADVISORY
+                  </div>
+                </div>
+
+                <div className="border-l border-[#D7D3CB] pl-6">
+                  <div className="text-3xl sm:text-4xl font-bold text-[#07192F] tracking-tight mb-1">
+                    100%
+                  </div>
+                  <div className="text-[11px] font-mono font-semibold tracking-[0.16em] text-slate-600 uppercase leading-snug">
+                    COMMERCIAL
+                    <br />
+                    FOCUS
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </Container>
+      </section>
+
+      {/* ========================================================= */}
+      {/* 4. OUR OPERATING VALUES (The 4 Pillars of Excellence)     */}
+      {/* ========================================================= */}
+      <section className="py-20 lg:py-28 border-b border-[#D7D3CB]">
+        <Container>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14 sm:mb-18">
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <span className="w-8 h-[2px] bg-[#C88A1A]" />
+                <span className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.22em] text-[#07192F] uppercase">
+                  OUR CODE OF EXCELLENCE
+                </span>
+              </div>
+              <h2 className="text-3xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-[-0.035em] leading-[1.05]">
+                Core values that govern <br />
+                <span className="text-[#C88A1A]">every advisory sprint.</span>
+              </h2>
+            </div>
+
+            <p className="text-sm sm:text-base text-slate-600 font-normal max-w-md leading-relaxed">
+              We hold ourselves to the highest standards of commercial integrity, analytical rigor, and frontline accountability.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <AnimatedSection direction="up">
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-8 h-full space-y-4 shadow-2xs hover:shadow-sm transition-all">
-                <div className="w-10 h-10 rounded-xl bg-white text-[#F59E0B] flex items-center justify-center font-mono font-bold text-sm border border-slate-200 shadow-2xs">
-                  M
-                </div>
-                <h2 className="text-2xl font-medium text-[#07192F] tracking-tight">Our Mission</h2>
-                <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
-                  To empower founders, business owners, and executive teams with the
-                  strategic clarity, marketing frameworks, and sales acceleration
-                  tools required to systematically outpace market competitors and
-                  achieve compounding revenue growth.
-                </p>
-              </div>
-            </AnimatedSection>
-
-            <AnimatedSection direction="up" delay={0.1}>
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-8 h-full space-y-4 shadow-2xs hover:shadow-sm transition-all">
-                <div className="w-10 h-10 rounded-xl bg-white text-[#F59E0B] flex items-center justify-center font-mono font-bold text-sm border border-slate-200 shadow-2xs">
-                  V
-                </div>
-                <h2 className="text-2xl font-medium text-[#07192F] tracking-tight">Our Vision</h2>
-                <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
-                  To become the premier growth advisory partner recognized globally
-                  for transforming commercial ambiguity into predictable, scalable
-                  enterprises that level up their operational excellence.
-                </p>
-              </div>
-            </AnimatedSection>
-          </div>
-        </Container>
-      </section>
-
-      {/* 3. The Levexa Philosophy: Strategy, Marketing, Sales, Growth */}
-      <section className="py-20 lg:py-28 bg-white border-b border-slate-200">
-        <Container>
-          <AnimatedSection direction="up" className="mb-14">
-            <SectionHeading
-              eyebrow="Our Growth Philosophy"
-              title="Why isolated tactics"
-              highlight="fail to scale."
-              subtitle="Hiring a marketing agency without strategic positioning wastes ad budget. Training sales reps without qualified pipeline produces burnout. Real growth occurs only when all four commercial engines operate in harmony."
-              theme="light"
-            />
-          </AnimatedSection>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 shadow-2xs">
-              <Compass className="w-7 h-7 text-[#F59E0B] mb-2" />
-              <h3 className="text-lg font-bold text-[#07192F]">1. Strategy First</h3>
-              <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                Define the playground: identify underserved niches, construct unfair
-                pricing advantages, and cement defensible positioning.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 shadow-2xs">
-              <TrendingUp className="w-7 h-7 text-[#F59E0B] mb-2" />
-              <h3 className="text-lg font-bold text-[#07192F]">2. Targeted Demand</h3>
-              <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                Build demand engines that capture high-intent prospects who value
-                your solution rather than bargain hunters.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 shadow-2xs">
-              <Target className="w-7 h-7 text-[#F59E0B] mb-2" />
-              <h3 className="text-lg font-bold text-[#07192F]">3. Sales Enablement</h3>
-              <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                Standardize the commercial playbook so deals close predictably based
-                on value, urgency, and operational ROI.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 shadow-2xs">
-              <Layers className="w-7 h-7 text-[#F59E0B] mb-2" />
-              <h3 className="text-lg font-bold text-[#07192F]">4. Compound Scale</h3>
-              <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                Retain and expand existing revenue through superior client outcomes,
-                recurring renewals, and operational efficiency.
-              </p>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* 4. Core Values */}
-      <section className="py-20 lg:py-28 bg-white border-b border-slate-200">
-        <Container>
-          <AnimatedSection direction="up" className="mb-14">
-            <SectionHeading
-              align="center"
-              eyebrow="Our Guiding Principles"
-              title="The values that anchor every"
-              highlight="client engagement."
-              subtitle="We operate with transparency, rigor, and an uncompromising commitment to commercial excellence."
-              theme="light"
-            />
-          </AnimatedSection>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {coreValues.map((val, idx) => {
-              const Icon = val.icon;
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            {coreValues.map((val) => {
+              const IconComp = val.icon;
               return (
-                <AnimatedSection
-                  key={val.title}
-                  direction="up"
-                  delay={idx * 0.1}
-                  className="h-full"
+                <div
+                  key={val.number}
+                  className="bg-white p-8 rounded-2xl border border-stone-200/80 shadow-xs hover:border-[#C88A1A] transition-all duration-300 flex flex-col justify-between group"
                 >
-                  <div className="h-full p-6 sm:p-7 rounded-2xl border border-slate-200 bg-slate-50 hover:border-slate-300 hover:shadow-xs transition-all space-y-3 flex flex-col justify-between">
-                    <div>
-                      <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-[#F59E0B] border border-slate-200 shadow-2xs mb-4">
-                        <Icon className="w-5 h-5 text-[#F59E0B]" />
+                  <div>
+                    <div className="flex items-center justify-between mb-6">
+                      <span className="font-mono text-sm font-bold text-[#C88A1A]">
+                        {val.number}
+                      </span>
+                      <div className="w-10 h-10 rounded-full border border-stone-200 flex items-center justify-center text-[#07192F] group-hover:border-[#C88A1A] group-hover:text-[#C88A1A] transition-colors">
+                        <IconComp className="w-4 h-4" />
                       </div>
-                      <h3 className="text-lg font-bold text-[#07192F] mb-2">
-                        {val.title}
-                      </h3>
-                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-                        {val.desc}
-                      </p>
                     </div>
+
+                    <h3 className="text-lg font-bold text-[#07192F] mb-3 group-hover:text-[#C88A1A] transition-colors">
+                      {val.title}
+                    </h3>
+
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                      {val.desc}
+                    </p>
                   </div>
-                </AnimatedSection>
+                </div>
               );
             })}
           </div>
         </Container>
       </section>
 
-      {/* 5. Team & Governance Notice */}
-      <section className="py-16 bg-white border-b border-slate-200">
+      {/* ========================================================= */}
+      {/* 5. FOUR COMMERCIAL DISCIPLINES PREVIEW                    */}
+      {/* ========================================================= */}
+      <section className="py-20 lg:py-28 border-b border-[#D7D3CB]">
         <Container>
-          <div className="max-w-3xl mx-auto rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:p-8 text-center space-y-4 shadow-2xs">
-            <div className="w-12 h-12 rounded-xl bg-white text-[#F59E0B] flex items-center justify-center mx-auto border border-slate-200 shadow-2xs">
-              <Users2 className="w-6 h-6 text-[#F59E0B]" />
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14 sm:mb-18">
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <span className="w-8 h-[2px] bg-[#C88A1A]" />
+                <span className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.22em] text-[#07192F] uppercase">
+                  UNIFIED REVENUE FLYWHEEL
+                </span>
+              </div>
+              <h2 className="text-3xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-[-0.035em] leading-[1.05]">
+                Four interconnected engines <br />
+                <span className="text-[#C88A1A]">powering commercial scale.</span>
+              </h2>
             </div>
-            <h3 className="text-xl font-bold text-[#07192F]">
-              Advisory Leadership & Strategic Specialists
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-              Levexa operates a curated advisory network of senior commercial
-              strategists, growth operators, and enterprise sales leaders. Profiles
-              of assigned engagement leads are presented upon tailored project
-              scoping to ensure strict alignment with client industry nuances.
-            </p>
+
+            <Link
+              href="/services"
+              className="group inline-flex items-center gap-3 font-mono text-xs sm:text-sm font-bold text-[#07192F] hover:text-[#C88A1A] transition-colors tracking-wider uppercase"
+            >
+              <span>VIEW FULL SERVICE BLUEPRINT</span>
+              <div className="w-9 h-9 rounded-full border border-[#07192F]/30 flex items-center justify-center group-hover:bg-[#07192F] group-hover:text-white transition-all">
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+              </div>
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            {pillarsSummary.map((pillar) => {
+              const IconComp = pillar.icon;
+              return (
+                <Link
+                  key={pillar.number}
+                  href={pillar.href}
+                  className="group bg-white p-8 rounded-2xl border border-stone-200/80 shadow-xs hover:border-[#C88A1A] hover:shadow-card-elevated transition-all duration-300 flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-6">
+                      <span className="font-mono text-sm font-bold text-[#C88A1A]">
+                        {pillar.number}
+                      </span>
+                      <div className="w-10 h-10 rounded-full border border-stone-200 flex items-center justify-center text-[#07192F] group-hover:bg-[#07192F] group-hover:text-white transition-all">
+                        <IconComp className="w-4 h-4" />
+                      </div>
+                    </div>
+
+                    <h3 className="text-lg font-bold text-[#07192F] mb-3 group-hover:text-[#C88A1A] transition-colors">
+                      {pillar.title}
+                    </h3>
+
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal mb-6">
+                      {pillar.desc}
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#07192F] group-hover:text-[#C88A1A] transition-colors uppercase pt-4 border-t border-stone-100">
+                    <span>EXPLORE DISCIPLINE</span>
+                    <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </Container>
       </section>
 
-      {/* 6. Closing CTA */}
+      {/* ========================================================= */}
+      {/* 6. BESPOKE LEVEXA LUXURY CTA SECTION                      */}
+      {/* ========================================================= */}
       <CTASection
-        title="Ready to build your company's"
-        highlight="growth foundation?"
-        subtitle="Speak directly with a Levexa growth strategist to audit your current commercial operations and outline an executable roadmap."
+        title="Ready to engineer your company's"
+        highlight="next growth breakthrough?"
+        subtitle="Schedule a strategic consultation with Levexa's senior advisors. We'll audit your current commercial engines and identify immediate scaling opportunities."
+        primaryCtaText="Schedule Growth Consultation"
+        secondaryCtaText="Explore Case Studies"
       />
+
     </div>
   );
 }

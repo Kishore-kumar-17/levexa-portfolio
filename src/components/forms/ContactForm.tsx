@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { CheckCircle2, AlertCircle, Loader2, Send } from "lucide-react";
+import { CheckCircle2, AlertCircle, Loader2, ArrowRight } from "lucide-react";
 import { validateContactForm } from "@/lib/validation";
 import { ContactFormData } from "@/types";
 
@@ -59,26 +59,16 @@ export const ContactForm: React.FC = () => {
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
-      const result = await response.json();
+      const data = await response.json();
 
-      if (!response.ok || !result.success) {
-        if (result.errors) {
-          setErrors(result.errors);
-        }
-        setSubmitError(
-          result.message || "Failed to submit enquiry. Please verify details and try again."
-        );
-        setIsSubmitting(false);
-        return;
+      if (!response.ok) {
+        throw new Error(data.message || "Failed to submit enquiry. Please try again.");
       }
 
-      // Success
       setSubmitSuccess(true);
       setFormData({
         fullName: "",
@@ -90,11 +80,10 @@ export const ContactForm: React.FC = () => {
         consent: false,
         honeypot: "",
       });
-      setErrors({});
-    } catch {
-      setSubmitError(
-        "A network connection error occurred. Please check your connection or email enquiry@levexa.com directly."
-      );
+    } catch (err: unknown) {
+      const errorMessage =
+        err instanceof Error ? err.message : "An unexpected error occurred. Please try again.";
+      setSubmitError(errorMessage);
     } finally {
       setIsSubmitting(false);
     }
@@ -103,22 +92,24 @@ export const ContactForm: React.FC = () => {
   if (submitSuccess) {
     return (
       <div
-        className="p-8 sm:p-10 rounded-2xl bg-slate-50 border border-emerald-300 text-center space-y-5 shadow-sm"
-        role="alert"
+        className="p-8 sm:p-12 rounded-2xl bg-white border border-[#C88A1A] text-center space-y-5 shadow-card-elevated"
+        role="status"
         aria-live="polite"
       >
-        <div className="w-16 h-16 rounded-full bg-emerald-50 text-[#10B981] flex items-center justify-center mx-auto border border-emerald-200">
-          <CheckCircle2 className="w-8 h-8 text-[#10B981]" />
+        <div className="w-14 h-14 rounded-full bg-[#FAF8F5] border border-[#C88A1A] flex items-center justify-center mx-auto text-[#C88A1A]">
+          <CheckCircle2 className="w-7 h-7" />
         </div>
-        <h3 className="text-2xl font-bold text-[#07192F]">Enquiry Received</h3>
-        <p className="text-slate-600 text-sm max-w-md mx-auto leading-relaxed">
-          Thank you for reaching out to Levexa. Our strategic advisory team has
-          logged your growth objectives and will follow up within 24 business hours.
+        <h3 className="text-2xl font-bold text-[#07192F] tracking-tight">
+          Consultation Request Received
+        </h3>
+        <p className="text-sm text-slate-700 max-w-md mx-auto leading-relaxed">
+          Thank you for reaching out to Levexa. A senior commercial growth advisor will review
+          your company profile and follow up within 24 business hours to arrange your confidential discovery briefing.
         </p>
         <button
           type="button"
           onClick={() => setSubmitSuccess(false)}
-          className="text-xs font-bold text-[#F59E0B] uppercase tracking-wider hover:underline pt-2 cursor-pointer"
+          className="text-xs font-mono font-bold text-[#C88A1A] uppercase tracking-wider hover:underline pt-3 cursor-pointer block mx-auto"
         >
           Submit Another Enquiry
         </button>
@@ -129,10 +120,10 @@ export const ContactForm: React.FC = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="p-6 sm:p-8 rounded-2xl bg-slate-50 border border-slate-200 shadow-2xs space-y-6"
+      className="p-7 sm:p-10 rounded-2xl bg-white border border-stone-200/80 shadow-card-elevated space-y-6"
       noValidate
     >
-      {/* Honeypot field (hidden from genuine users) */}
+      {/* Honeypot field */}
       <div className="hidden" aria-hidden="true">
         <label htmlFor="hp_field">Do not fill this field</label>
         <input
@@ -163,7 +154,7 @@ export const ContactForm: React.FC = () => {
             htmlFor="fullName"
             className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-700 mb-2"
           >
-            Full Name <span className="text-[#F59E0B]">*</span>
+            Full Name <span className="text-[#C88A1A]">*</span>
           </label>
           <input
             id="fullName"
@@ -175,10 +166,10 @@ export const ContactForm: React.FC = () => {
             placeholder="e.g. Sarah Jenkins"
             aria-invalid={Boolean(errors.fullName)}
             aria-describedby={errors.fullName ? "fullName-error" : undefined}
-            className={`w-full px-4 py-3 rounded-xl bg-white border text-slate-900 placeholder-slate-400 text-sm focus:outline-none transition-colors ${
+            className={`w-full px-4 py-3.5 rounded-xl bg-[#FAF8F5] border text-[#07192F] placeholder-slate-400 text-sm focus:outline-none transition-colors ${
               errors.fullName
                 ? "border-red-500 focus:border-red-400"
-                : "border-slate-200 focus:border-[#F59E0B] focus:ring-1 focus:ring-[#F59E0B]"
+                : "border-stone-200 focus:border-[#C88A1A] focus:ring-1 focus:ring-[#C88A1A]"
             }`}
           />
           {errors.fullName && (
@@ -193,7 +184,7 @@ export const ContactForm: React.FC = () => {
             htmlFor="email"
             className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-700 mb-2"
           >
-            Business Email <span className="text-[#F59E0B]">*</span>
+            Business Email <span className="text-[#C88A1A]">*</span>
           </label>
           <input
             id="email"
@@ -202,13 +193,13 @@ export const ContactForm: React.FC = () => {
             required
             value={formData.email}
             onChange={handleChange}
-            placeholder="s.jenkins@company.com"
+            placeholder="sarah@yourcompany.com"
             aria-invalid={Boolean(errors.email)}
             aria-describedby={errors.email ? "email-error" : undefined}
-            className={`w-full px-4 py-3 rounded-xl bg-white border text-slate-900 placeholder-slate-400 text-sm focus:outline-none transition-colors ${
+            className={`w-full px-4 py-3.5 rounded-xl bg-[#FAF8F5] border text-[#07192F] placeholder-slate-400 text-sm focus:outline-none transition-colors ${
               errors.email
                 ? "border-red-500 focus:border-red-400"
-                : "border-slate-200 focus:border-[#F59E0B] focus:ring-1 focus:ring-[#F59E0B]"
+                : "border-stone-200 focus:border-[#C88A1A] focus:ring-1 focus:ring-[#C88A1A]"
             }`}
           />
           {errors.email && (
@@ -226,29 +217,17 @@ export const ContactForm: React.FC = () => {
             htmlFor="company"
             className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-700 mb-2"
           >
-            Company Name <span className="text-[#F59E0B]">*</span>
+            Company / Website
           </label>
           <input
             id="company"
             name="company"
             type="text"
-            required
             value={formData.company}
             onChange={handleChange}
-            placeholder="Acme Technologies Inc."
-            aria-invalid={Boolean(errors.company)}
-            aria-describedby={errors.company ? "company-error" : undefined}
-            className={`w-full px-4 py-3 rounded-xl bg-white border text-slate-900 placeholder-slate-400 text-sm focus:outline-none transition-colors ${
-              errors.company
-                ? "border-red-500 focus:border-red-400"
-                : "border-slate-200 focus:border-[#F59E0B] focus:ring-1 focus:ring-[#F59E0B]"
-            }`}
+            placeholder="e.g. Acme Corp (acme.com)"
+            className="w-full px-4 py-3.5 rounded-xl bg-[#FAF8F5] border border-stone-200 text-[#07192F] placeholder-slate-400 text-sm focus:outline-none focus:border-[#C88A1A] focus:ring-1 focus:ring-[#C88A1A] transition-colors"
           />
-          {errors.company && (
-            <p id="company-error" className="text-xs text-red-500 mt-1.5 font-medium">
-              {errors.company}
-            </p>
-          )}
         </div>
 
         <div>
@@ -256,74 +235,55 @@ export const ContactForm: React.FC = () => {
             htmlFor="service"
             className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-700 mb-2"
           >
-            Primary Service Focus <span className="text-[#F59E0B]">*</span>
+            Primary Growth Discipline
           </label>
           <select
             id="service"
             name="service"
-            required
             value={formData.service}
             onChange={handleChange}
-            aria-invalid={Boolean(errors.service)}
-            aria-describedby={errors.service ? "service-error" : undefined}
-            className={`w-full px-4 py-3 rounded-xl bg-white border text-slate-900 text-sm focus:outline-none transition-colors ${
-              errors.service
-                ? "border-red-500 focus:border-red-400"
-                : "border-slate-200 focus:border-[#F59E0B] focus:ring-1 focus:ring-[#F59E0B]"
-            }`}
+            className="w-full px-4 py-3.5 rounded-xl bg-[#FAF8F5] border border-stone-200 text-[#07192F] text-sm focus:outline-none focus:border-[#C88A1A] focus:ring-1 focus:ring-[#C88A1A] transition-colors cursor-pointer"
           >
-            <option value="" disabled>
-              Select an advisory focus...
-            </option>
-            <option value="Strategy">Business Strategy & Positioning</option>
-            <option value="Marketing">Marketing & Demand Generation</option>
-            <option value="Sales">Sales Enablement & Deal Velocity</option>
-            <option value="Business Growth">Business Growth & Scaling</option>
-            <option value="Full Growth Overhaul">Full Unified Growth Overhaul</option>
-            <option value="General Enquiry">General Growth Advisory Enquiry</option>
+            <option value="">Select primary focus...</option>
+            <option value="growth-strategy">01. Growth &amp; Strategy Advisory</option>
+            <option value="branding-marketing">02. Branding &amp; Demand Generation</option>
+            <option value="sales-conversion">03. Sales Velocity &amp; Pipeline Conversion</option>
+            <option value="technology-automation">04. Technology, AI &amp; Automation</option>
+            <option value="full-echelon">05. Full Echelon Commercial Overhaul</option>
           </select>
-          {errors.service && (
-            <p id="service-error" className="text-xs text-red-500 mt-1.5 font-medium">
-              {errors.service}
-            </p>
-          )}
         </div>
       </div>
 
-      {/* Row 3: Estimated Project Budget (Optional) */}
+      {/* Row 3: Revenue / Budget Stage */}
       <div>
         <label
           htmlFor="budget"
           className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-700 mb-2"
         >
-          Estimated Advisory Budget Range{" "}
-          <span className="text-slate-400 text-[11px] font-normal lowercase font-sans">
-            (optional)
-          </span>
+          Company Stage / Annual Revenue Run-Rate
         </label>
         <select
           id="budget"
           name="budget"
           value={formData.budget}
           onChange={handleChange}
-          className="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-[#F59E0B] focus:ring-1 focus:ring-[#F59E0B] transition-colors"
+          className="w-full px-4 py-3.5 rounded-xl bg-[#FAF8F5] border border-stone-200 text-[#07192F] text-sm focus:outline-none focus:border-[#C88A1A] focus:ring-1 focus:ring-[#C88A1A] transition-colors cursor-pointer"
         >
-          <option value="">Select an approximate range...</option>
-          <option value="$10k - $25k">$10,000 – $25,000 (Sprint Diagnostic)</option>
-          <option value="$25k - $50k">$25,000 – $50,000 (Quarterly Advisory)</option>
-          <option value="$50k - $100k">$50,000 – $100,000 (Full Implementation)</option>
-          <option value="$100k+">$100,000+ (Enterprise Transformation)</option>
-          <option value="Flexible">To Be Determined Based on Scope</option>
+          <option value="">Select current stage...</option>
+          <option value="under-1m">Early Scaling (&lt; $1M ARR / Annual Revenue)</option>
+          <option value="1m-5m">Growth Stage ($1M – $5M ARR)</option>
+          <option value="5m-20m">Expansion Stage ($5M – $20M ARR)</option>
+          <option value="20m-plus">Enterprise Tier ($20M+ ARR)</option>
         </select>
       </div>
 
-      {/* Row 4: Project Details */}
+      {/* Row 4: Message */}
       <div>
         <label
           htmlFor="message"
           className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-700 mb-2"
         >
-          Project Details &amp; Current Bottlenecks <span className="text-[#F59E0B]">*</span>
+          Commercial Friction Points &amp; Objectives <span className="text-[#C88A1A]">*</span>
         </label>
         <textarea
           id="message"
@@ -332,13 +292,13 @@ export const ContactForm: React.FC = () => {
           required
           value={formData.message}
           onChange={handleChange}
-          placeholder="Briefly describe your company's current stage, target audience, and the primary growth challenges you are seeking to solve..."
+          placeholder="Briefly describe your company's current stage, market challenges, and the primary commercial outcomes you are looking to unlock..."
           aria-invalid={Boolean(errors.message)}
           aria-describedby={errors.message ? "message-error" : undefined}
-          className={`w-full px-4 py-3 rounded-xl bg-white border text-slate-900 placeholder-slate-400 text-sm focus:outline-none transition-colors ${
+          className={`w-full px-4 py-3.5 rounded-xl bg-[#FAF8F5] border text-[#07192F] placeholder-slate-400 text-sm focus:outline-none transition-colors ${
             errors.message
               ? "border-red-500 focus:border-red-400"
-              : "border-slate-200 focus:border-[#F59E0B] focus:ring-1 focus:ring-[#F59E0B]"
+              : "border-stone-200 focus:border-[#C88A1A] focus:ring-1 focus:ring-[#C88A1A]"
           }`}
         />
         {errors.message && (
@@ -356,13 +316,12 @@ export const ContactForm: React.FC = () => {
             name="consent"
             checked={formData.consent}
             onChange={handleChange}
-            className="mt-1 w-4 h-4 rounded border-slate-300 text-[#F59E0B] focus:ring-[#F59E0B]"
+            className="mt-1 w-4 h-4 rounded border-stone-300 text-[#C88A1A] focus:ring-[#C88A1A]"
           />
           <span className="text-xs text-slate-600 leading-relaxed">
-            I consent to Levexa storing and processing my submitted information for
-            the sole purpose of responding to this business enquiry in accordance with
-            the{" "}
-            <a href="/privacy" className="text-[#F59E0B] hover:underline font-bold">
+            I consent to Levexa storing and processing this information for the sole purpose of
+            conducting an executive briefing in accordance with the{" "}
+            <a href="/privacy" className="text-[#C88A1A] hover:underline font-bold">
               Privacy Policy
             </a>
             .
@@ -377,23 +336,23 @@ export const ContactForm: React.FC = () => {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-xl font-bold text-sm bg-[#F5A900] text-[#07192F] hover:bg-[#E59B00] shadow-sm hover:shadow-md active:scale-[0.98] transition-all disabled:opacity-50 disabled:pointer-events-none select-none min-h-[50px] cursor-pointer"
+        className="w-full inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-bold text-sm bg-[#07192F] text-white hover:bg-[#C88A1A] hover:text-[#07192F] shadow-sm hover:shadow-md active:scale-[0.98] transition-all duration-300 disabled:opacity-50 disabled:pointer-events-none select-none min-h-[50px] cursor-pointer uppercase tracking-wider"
       >
         {isSubmitting ? (
           <>
-            <Loader2 className="w-4 h-4 animate-spin text-[#07192F]" />
-            <span>Submitting Enquiry...</span>
+            <Loader2 className="w-4 h-4 animate-spin text-white" />
+            <span>SUBMITTING ENQUIRY...</span>
           </>
         ) : (
           <>
-            <span>Let&apos;s Grow Your Business</span>
-            <Send className="w-4 h-4 text-[#07192F]" />
+            <span>SUBMIT CONSULTATION REQUEST</span>
+            <ArrowRight className="w-4 h-4" />
           </>
         )}
       </button>
 
-      <p className="text-[11px] text-center text-slate-500">
-        Confidentiality guaranteed. We never sell or share your business data.
+      <p className="text-[11px] font-mono text-center text-slate-500 uppercase tracking-wider">
+        CONFIDENTIALITY GUARANTEED • STRICT NDA COMMITMENT
       </p>
     </form>
   );

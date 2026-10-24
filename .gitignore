@@ -38,3 +38,5 @@ next-env.d.ts
 *.mp4
 Untitled-1.txt
 
+
+.vercel

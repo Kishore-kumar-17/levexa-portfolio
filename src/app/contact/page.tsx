@@ -2,171 +2,186 @@ import React from "react";
 import { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { ContactForm } from "@/components/forms/ContactForm";
-import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { companyConfig } from "@/data/company";
 import { constructMetadata } from "@/lib/metadata";
-import { Mail, Phone, MapPin, Clock, ShieldCheck, CheckCircle2 } from "lucide-react";
+import { Mail, Clock, MapPin, ShieldCheck } from "lucide-react";
 
 export const metadata: Metadata = constructMetadata({
   title: "Contact Levexa — Request Strategic Growth Consultation",
   description:
-    "Schedule an executive consultation with Levexa to discuss your business strategy, marketing demand, and sales velocity goals.",
+    "Schedule an executive consultation with Levexa to discuss your commercial growth strategy, demand generation, sales velocity, and digital automation goals.",
   path: "/contact",
 });
 
 export default function ContactPage() {
+  const steps = [
+    {
+      number: "01",
+      title: "Confidential Discovery Briefing",
+      desc: "A 30-minute strategic call with a senior partner to understand your commercial model, current plateau, and primary targets.",
+    },
+    {
+      number: "02",
+      title: "Commercial Friction Audit",
+      desc: "We analyze your customer acquisition economics, pipeline conversion bottlenecks, and tech stack redundancies.",
+    },
+    {
+      number: "03",
+      title: "Tailored Execution Roadmap",
+      desc: "You receive a clear, milestone-driven sprint blueprint outlining immediate quick wins and compounding growth architecture.",
+    },
+  ];
+
   return (
-    <div className="pt-28 pb-20 bg-white">
-      {/* Hero Header */}
-      <section className="py-16 lg:py-20 bg-white relative border-b border-slate-200">
+    <div className="pt-24 sm:pt-28 bg-[#FAF8F5] text-[#07192F] select-none min-h-screen">
+      
+      {/* ========================================================= */}
+      {/* 1. HERO SECTION: Monumental Levexa Dual-Tone Hero         */}
+      {/* ========================================================= */}
+      <section className="pt-8 sm:pt-12 lg:pt-16 pb-16 sm:pb-20 border-b border-[#D7D3CB] relative overflow-hidden">
         <Container>
-          <div className="max-w-3xl space-y-5">
-            <AnimatedSection direction="up">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-50 border border-slate-200 text-[#059669] text-xs font-mono font-bold uppercase tracking-[0.2em] shadow-2xs">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]" />
-                <span>Get In Touch</span>
-              </div>
-            </AnimatedSection>
+          <div className="max-w-5xl">
+            {/* Eyebrow */}
+            <div className="flex items-center gap-3 mb-6 sm:mb-8">
+              <span className="w-8 h-[2px] bg-[#C88A1A]" />
+              <span className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.22em] text-[#07192F] uppercase">
+                EXECUTIVE CONSULTATION &amp; INQUIRY
+              </span>
+            </div>
 
-            <AnimatedSection direction="up" delay={0.1}>
-              <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-medium text-[#07192F] tracking-[-0.03em] leading-[1.08]">
-                Let&apos;s accelerate your company&apos;s{" "}
-                <span className="text-[#78716C]">revenue growth.</span>
-              </h1>
-            </AnimatedSection>
+            {/* Monumental Dual-Tone Headline */}
+            <h1 className="text-5xl sm:text-7xl lg:text-[5rem] xl:text-[5.75rem] font-bold tracking-[-0.035em] leading-[0.98] mb-8 sm:mb-10">
+              <span className="text-[#07192F]">Let&apos;s talk</span> <br />
+              <span className="text-[#C88A1A]">growth.</span>
+            </h1>
 
-            {/* Signature Horizontal Accent Line */}
+            {/* Signature Gold Accent Line */}
             <div
-              className="w-12 h-[3.5px] bg-[#10B981] rounded-full my-5"
+              className="w-12 h-[3px] bg-[#C88A1A] rounded-full mb-8 sm:mb-10"
               aria-hidden="true"
             />
 
-            <AnimatedSection direction="up" delay={0.2}>
-              <p className="text-xl sm:text-2xl text-slate-700 font-normal leading-[1.4] tracking-tight">
-                Connect directly with our strategic growth advisors. Tell us about
-                your business stage, current friction points, and primary commercial
-                objectives.
-              </p>
-            </AnimatedSection>
+            {/* Value Proposition Subheadline */}
+            <p className="text-xl sm:text-2xl lg:text-[1.75rem] text-slate-800 font-normal leading-[1.45] max-w-4xl tracking-tight">
+              Connect directly with our senior growth partners. Tell us about your company&apos;s stage,
+              friction points, and commercial targets to arrange your confidential briefing.
+            </p>
           </div>
         </Container>
       </section>
 
-      {/* Main Form & Contact Info Section */}
-      <section className="py-16 lg:py-24 bg-white relative">
+      {/* ========================================================= */}
+      {/* 2. SPLIT SECTION: Contact Info & Form                     */}
+      {/* ========================================================= */}
+      <section className="py-20 lg:py-28 relative">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            
             {/* Left Column: Direct Info & Expectations */}
-            <div className="lg:col-span-5 space-y-8">
-              <AnimatedSection direction="up">
-                <div className="space-y-4">
-                  <h2 className="text-2xl sm:text-3xl font-medium text-[#07192F] tracking-tight">
-                    Direct Strategic Consultation
-                  </h2>
-                  <p className="text-sm text-slate-700 leading-relaxed font-normal">
-                    We review every submission carefully. Before our discovery call,
-                    we perform preliminary research on your market space to ensure
-                    our conversation is immediately valuable.
-                  </p>
-                </div>
-              </AnimatedSection>
+            <div className="lg:col-span-5 space-y-10">
+              
+              {/* Direct Inboxes Card */}
+              <div className="bg-white p-8 rounded-2xl border border-stone-200/80 shadow-xs space-y-6">
+                <h3 className="text-xl font-bold text-[#07192F] tracking-tight border-b border-stone-100 pb-4">
+                  Direct Advisory Channels
+                </h3>
 
-              {/* Contact Details Card */}
-              <AnimatedSection direction="up" delay={0.1}>
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:p-7 space-y-5 shadow-2xs">
-                  <h3 className="text-xs uppercase tracking-wider font-mono font-bold text-slate-700">
-                    Direct Channels
+                <div className="space-y-5">
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-[#FAF8F5] border border-stone-200 flex items-center justify-center text-[#C88A1A] shrink-0">
+                      <Mail className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">
+                        Official Inquiry Inbox
+                      </p>
+                      <a
+                        href={`mailto:${companyConfig.contact.email}`}
+                        className="text-base font-bold text-[#07192F] hover:text-[#C88A1A] transition-colors"
+                      >
+                        {companyConfig.contact.email}
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-[#FAF8F5] border border-stone-200 flex items-center justify-center text-[#C88A1A] shrink-0">
+                      <Clock className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">
+                        Advisory Sprint Hours
+                      </p>
+                      <p className="text-sm font-semibold text-[#07192F]">
+                        {companyConfig.contact.supportHours}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-[#FAF8F5] border border-stone-200 flex items-center justify-center text-[#C88A1A] shrink-0">
+                      <MapPin className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">
+                        Operational Footprint
+                      </p>
+                      <p className="text-sm font-semibold text-[#07192F]">
+                        Global Remote &amp; On-Site Executive Advisory
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* What Happens Next Card */}
+              <div className="bg-white p-8 rounded-2xl border border-stone-200/80 shadow-xs space-y-6">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-6 h-[2px] bg-[#C88A1A]" />
+                  <h3 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#07192F]">
+                    WHAT HAPPENS NEXT:
                   </h3>
-
-                  <div className="space-y-4 text-sm">
-                    <div className="flex items-start gap-3.5">
-                      <div className="w-9 h-9 rounded-lg bg-white flex items-center justify-center text-[#F59E0B] border border-slate-200 shrink-0 mt-0.5 shadow-2xs">
-                        <Mail className="w-4 h-4 text-[#F59E0B]" />
-                      </div>
-                      <div>
-                        <div className="text-xs text-slate-500">Client Inquiries</div>
-                        <a
-                          href={`mailto:${companyConfig.contact.email}`}
-                          className="font-bold text-[#07192F] hover:text-[#F59E0B] transition-colors"
-                        >
-                          {companyConfig.contact.email}
-                        </a>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3.5">
-                      <div className="w-9 h-9 rounded-lg bg-white flex items-center justify-center text-[#F59E0B] border border-slate-200 shrink-0 mt-0.5 shadow-2xs">
-                        <Phone className="w-4 h-4 text-[#F59E0B]" />
-                      </div>
-                      <div>
-                        <div className="text-xs text-slate-500">Advisory Desk</div>
-                        <div className="font-bold text-[#07192F]">
-                          {companyConfig.contact.phone}
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3.5">
-                      <div className="w-9 h-9 rounded-lg bg-white flex items-center justify-center text-[#F59E0B] border border-slate-200 shrink-0 mt-0.5 shadow-2xs">
-                        <MapPin className="w-4 h-4 text-[#F59E0B]" />
-                      </div>
-                      <div>
-                        <div className="text-xs text-slate-500">Headquarters</div>
-                        <div className="font-bold text-[#07192F]">
-                          {companyConfig.contact.address}
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3.5">
-                      <div className="w-9 h-9 rounded-lg bg-white flex items-center justify-center text-[#F59E0B] border border-slate-200 shrink-0 mt-0.5 shadow-2xs">
-                        <Clock className="w-4 h-4 text-[#F59E0B]" />
-                      </div>
-                      <div>
-                        <div className="text-xs text-slate-500">Response Window</div>
-                        <div className="font-bold text-[#07192F]">
-                          Within 24 business hours
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
-              </AnimatedSection>
 
-              {/* Consultation Standards */}
-              <AnimatedSection direction="up" delay={0.2}>
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 space-y-3.5 shadow-2xs">
-                  <div className="flex items-center gap-2 text-[#059669] text-xs font-mono font-bold uppercase tracking-[0.2em]">
-                    <ShieldCheck className="w-4 h-4 text-[#10B981]" />
-                    <span>What Happens Next</span>
-                  </div>
-                  <ul className="space-y-2 text-xs text-slate-600 leading-relaxed">
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#10B981] shrink-0 mt-0.5" />
-                      <span>Initial review of your commercial profile and website</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#10B981] shrink-0 mt-0.5" />
-                      <span>30-minute structured discovery &amp; bottleneck evaluation</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#10B981] shrink-0 mt-0.5" />
-                      <span>Actionable recommendations with zero high-pressure sales</span>
-                    </li>
-                  </ul>
+                <div className="space-y-6">
+                  {steps.map((st) => (
+                    <div key={st.number} className="flex items-start gap-4">
+                      <span className="font-mono text-xs font-bold text-[#C88A1A] pt-0.5 shrink-0">
+                        {st.number}
+                      </span>
+                      <div>
+                        <h4 className="text-sm font-bold text-[#07192F] mb-1">
+                          {st.title}
+                        </h4>
+                        <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                          {st.desc}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              </AnimatedSection>
+              </div>
+
+              {/* Strict NDA Assurance Banner */}
+              <div className="p-5 rounded-2xl bg-[#07192F] text-white flex items-center gap-4">
+                <ShieldCheck className="w-8 h-8 text-[#C88A1A] shrink-0" />
+                <p className="text-xs text-stone-300 leading-snug">
+                  <strong className="text-white block font-bold mb-0.5">Strict Confidentiality</strong>
+                  All shared financial benchmarks, commercial challenges, and proprietary data are treated with complete NDA security.
+                </p>
+              </div>
+
             </div>
 
-            {/* Right Column: Contact Form */}
+            {/* Right Column: High-End Contact Form */}
             <div className="lg:col-span-7">
-              <AnimatedSection direction="left" delay={0.2}>
-                <ContactForm />
-              </AnimatedSection>
+              <ContactForm />
             </div>
+
           </div>
         </Container>
       </section>
+
     </div>
   );
 }

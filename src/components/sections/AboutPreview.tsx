@@ -60,16 +60,16 @@ export const AboutPreview: React.FC = () => {
                       How strategic cohesion drives commercial performance
                     </p>
                   </div>
-                  <span className="w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-200 text-[#10B981] flex items-center justify-center font-mono text-xs font-bold">
+                  <span className="w-8 h-8 rounded-lg bg-[#C88A1A]/10 border border-[#C88A1A]/30 text-[#C88A1A] flex items-center justify-center font-mono text-xs font-bold">
                     3X
                   </span>
                 </div>
 
                 <div className="space-y-4">
                   {/* Pillar 1 */}
-                  <div className="flex items-start gap-3.5 p-3.5 rounded-xl bg-white border border-slate-200 shadow-2xs">
-                    <div className="w-8 h-8 rounded-lg bg-emerald-50 text-[#10B981] flex items-center justify-center shrink-0 border border-emerald-200 mt-0.5">
-                      <ShieldCheck className="w-4 h-4 text-[#10B981]" />
+                  <div className="flex items-start gap-3.5 p-3.5 rounded-xl bg-white border border-stone-200 shadow-2xs">
+                    <div className="w-8 h-8 rounded-lg bg-[#FAF8F5] text-[#C88A1A] flex items-center justify-center shrink-0 border border-[#C88A1A]/20 mt-0.5">
+                      <ShieldCheck className="w-4 h-4 text-[#C88A1A]" />
                     </div>
                     <div>
                       <h4 className="text-sm font-bold text-[#07192F]">
@@ -83,9 +83,9 @@ export const AboutPreview: React.FC = () => {
                   </div>
 
                   {/* Pillar 2 */}
-                  <div className="flex items-start gap-3.5 p-3.5 rounded-xl bg-white border border-slate-200 shadow-2xs">
-                    <div className="w-8 h-8 rounded-lg bg-emerald-50 text-[#10B981] flex items-center justify-center shrink-0 border border-emerald-200 mt-0.5">
-                      <Zap className="w-4 h-4 text-[#10B981]" />
+                  <div className="flex items-start gap-3.5 p-3.5 rounded-xl bg-white border border-stone-200 shadow-2xs">
+                    <div className="w-8 h-8 rounded-lg bg-[#FAF8F5] text-[#C88A1A] flex items-center justify-center shrink-0 border border-[#C88A1A]/20 mt-0.5">
+                      <Zap className="w-4 h-4 text-[#C88A1A]" />
                     </div>
                     <div>
                       <h4 className="text-sm font-bold text-[#07192F]">
@@ -99,9 +99,9 @@ export const AboutPreview: React.FC = () => {
                   </div>
 
                   {/* Pillar 3 */}
-                  <div className="flex items-start gap-3.5 p-3.5 rounded-xl bg-white border border-slate-200 shadow-2xs">
-                    <div className="w-8 h-8 rounded-lg bg-emerald-50 text-[#10B981] flex items-center justify-center shrink-0 border border-emerald-200 mt-0.5">
-                      <BarChart3 className="w-4 h-4 text-[#10B981]" />
+                  <div className="flex items-start gap-3.5 p-3.5 rounded-xl bg-white border border-stone-200 shadow-2xs">
+                    <div className="w-8 h-8 rounded-lg bg-[#FAF8F5] text-[#C88A1A] flex items-center justify-center shrink-0 border border-[#C88A1A]/20 mt-0.5">
+                      <BarChart3 className="w-4 h-4 text-[#C88A1A]" />
                     </div>
                     <div>
                       <h4 className="text-sm font-bold text-[#07192F]">
@@ -115,8 +115,10 @@ export const AboutPreview: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="p-3 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center gap-2.5 text-xs text-[#059669] font-medium">
-                  <Check className="w-4 h-4 shrink-0 text-[#10B981]" />
+                <div className="p-3.5 rounded-xl bg-[#07192F] border border-stone-800 flex items-center gap-2.5 text-xs text-stone-200 font-medium">
+                  <span className="w-5 h-5 rounded-full bg-[#C88A1A] text-white flex items-center justify-center shrink-0">
+                    <Check className="w-3 h-3 text-white" />
+                  </span>
                   <span>
                     Synchronized for maximum revenue velocity and compounding scale.
                   </span>

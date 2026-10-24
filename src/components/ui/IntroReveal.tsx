@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
@@ -293,8 +293,8 @@ export const IntroReveal: React.FC<IntroRevealProps> = ({ onComplete }) => {
                           COMMERCIAL ARCHITECTURE
                         </div>
 
-                        {/* Emerald Signature Accent Line */}
-                        <div className="w-10 h-[3px] bg-[#10B981] rounded-full my-3" />
+                        {/* Gold Signature Accent Line */}
+                        <div className="w-10 h-[3px] bg-[#C88A1A] rounded-full my-3" />
 
                         <p className="text-[11px] text-slate-500 font-medium tracking-wide max-w-[210px] leading-relaxed">
                           A Research-Driven Growth Agency for Ambitious Brands
@@ -302,11 +302,11 @@ export const IntroReveal: React.FC<IntroRevealProps> = ({ onComplete }) => {
 
                         <div className="mt-5 flex items-center gap-1.5 text-[9px] font-mono tracking-wider text-slate-400 uppercase">
                           <span>01</span>
-                          <span>â€¢</span>
+                          <span>•</span>
                           <span>02</span>
-                          <span>â€¢</span>
+                          <span>•</span>
                           <span>03</span>
-                          <span>â€¢</span>
+                          <span>•</span>
                           <span>04</span>
                         </div>
                       </div>
@@ -325,7 +325,7 @@ export const IntroReveal: React.FC<IntroRevealProps> = ({ onComplete }) => {
                         )}
                         {/* Gradient scrim for clean, crisp caption legibility */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex flex-col justify-end p-5 text-white">
-                          <div className="text-[10px] font-mono tracking-widest text-[#10B981] uppercase font-bold">
+                          <div className="text-[10px] font-mono tracking-widest text-[#C88A1A] uppercase font-bold">
                             {card.tag}
                           </div>
                           <div className="text-lg font-semibold tracking-tight mt-1 text-white leading-tight">

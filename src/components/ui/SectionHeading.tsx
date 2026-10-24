@@ -30,27 +30,27 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
     >
       {eyebrow && (
         <div
-          className={`inline-flex items-center gap-2 text-xs font-mono font-bold tracking-[0.2em] uppercase ${
-            isLight ? "text-[#059669]" : "text-gold"
+          className={`inline-flex items-center gap-3 text-xs sm:text-[13px] font-mono font-bold tracking-[0.22em] uppercase ${
+            isLight ? "text-[#07192F]" : "text-gold"
           }`}
         >
-          <span className="w-2 h-[3px] bg-[#10B981] rounded-full" />
+          <span className="w-8 h-[2px] bg-[#C88A1A]" />
           <span>{eyebrow}</span>
         </div>
       )}
 
-      <h2 className="text-3xl sm:text-4xl lg:text-[2.65rem] font-medium tracking-[-0.03em] leading-[1.12]">
+      <h2 className="text-3xl sm:text-4xl lg:text-[2.85rem] font-bold tracking-[-0.035em] leading-[1.05]">
         <span className="text-[#07192F]">{title}</span>{" "}
         {highlight && (
-          <span className="text-[#78716C]">
+          <span className="text-[#C88A1A]">
             {highlight}
           </span>
         )}
       </h2>
 
-      {/* Signature Horizontal Accent Line */}
+      {/* Signature Gold Horizontal Accent Line */}
       <div
-        className={`w-12 h-[3.5px] bg-[#10B981] rounded-full ${
+        className={`w-12 h-[3px] bg-[#C88A1A] rounded-full ${
           isCenter ? "mx-auto" : ""
         }`}
         aria-hidden="true"

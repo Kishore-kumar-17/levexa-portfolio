@@ -35,10 +35,10 @@ export const PositioningStrip: React.FC = () => {
             return (
               <div
                 key={pillar.title}
-                className="flex items-center gap-3.5 p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-slate-300 hover:shadow-xs transition-all"
+                className="flex items-center gap-3.5 p-3.5 rounded-xl bg-[#FAF8F5] border border-stone-200 hover:border-[#C88A1A]/40 hover:shadow-xs transition-all"
               >
-                <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center shrink-0 text-[#10B981] border border-slate-200 shadow-2xs">
-                  <Icon className="w-5 h-5 text-[#10B981]" aria-hidden="true" />
+                <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center shrink-0 text-[#C88A1A] border border-stone-200 shadow-2xs">
+                  <Icon className="w-5 h-5 text-[#C88A1A]" aria-hidden="true" />
                 </div>
                 <div>
                   <div className="text-sm font-bold text-slate-900 tracking-tight">

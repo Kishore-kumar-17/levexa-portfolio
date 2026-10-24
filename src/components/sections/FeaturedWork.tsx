@@ -34,10 +34,10 @@ export const FeaturedWork: React.FC = () => {
 
         {/* Transparency note badge */}
         <AnimatedSection direction="up" delay={0.15}>
-          <div className="mb-8 p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-start sm:items-center gap-3 text-xs text-slate-600">
-            <Info className="w-4 h-4 text-[#10B981] shrink-0 mt-0.5 sm:mt-0" />
+          <div className="mb-8 p-3.5 rounded-xl bg-[#FAF8F5] border border-stone-200 flex items-start sm:items-center gap-3 text-xs text-stone-600">
+            <Info className="w-4 h-4 text-[#C88A1A] shrink-0 mt-0.5 sm:mt-0" />
             <p>
-              <strong className="text-slate-900 font-semibold">Demonstration Notice:</strong>{" "}
+              <strong className="text-[#07192F] font-semibold">Demonstration Notice:</strong>{" "}
               The projects presented below illustrate Levexa&apos;s proposed diagnostic,
               enablement, and advisory methodologies. Official client metrics and logos
               will be updated upon completed verified case study release.

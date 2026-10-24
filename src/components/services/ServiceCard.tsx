@@ -35,19 +35,19 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
       {/* Top accent badge */}
       <div>
         <div className="flex items-center justify-between mb-6">
-          <div className="w-12 h-12 rounded-xl bg-slate-50 border border-slate-200 group-hover:border-emerald-300 flex items-center justify-center text-[#10B981] transition-colors">
-            <IconComponent className="w-6 h-6 text-[#10B981]" aria-hidden="true" />
+          <div className="w-12 h-12 rounded-xl bg-slate-50 border border-slate-200 group-hover:border-[#C88A1A] flex items-center justify-center text-[#C88A1A] transition-colors">
+            <IconComponent className="w-6 h-6 text-[#C88A1A]" aria-hidden="true" />
           </div>
           <span className="text-xs font-mono font-bold text-slate-400 group-hover:text-slate-900 transition-colors">
             0{index + 1}
           </span>
         </div>
 
-        <h3 className="text-xl sm:text-2xl font-bold text-[#07192F] tracking-tight mb-2 group-hover:text-black transition-colors">
+        <h3 className="text-xl sm:text-2xl font-bold text-[#07192F] tracking-tight mb-2 group-hover:text-[#C88A1A] transition-colors">
           {service.title}
         </h3>
 
-        <p className="text-sm font-semibold text-[#059669] mb-3">
+        <p className="text-sm font-semibold text-[#C88A1A] mb-3">
           {service.tagline}
         </p>
 
@@ -68,7 +68,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
                     key={cIdx}
                     className="flex items-start gap-2.5 text-xs text-slate-600 leading-relaxed"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] mt-1.5 shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#C88A1A] mt-1.5 shrink-0" />
                     <span>{challenge}</span>
                   </li>
                 ))}
@@ -77,7 +77,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
 
             {/* Potential Deliverables */}
             <div>
-              <h4 className="text-xs uppercase tracking-wider font-semibold text-[#059669] mb-3">
+              <h4 className="text-xs uppercase tracking-wider font-semibold text-[#07192F] mb-3">
                 Strategic Deliverables:
               </h4>
               <ul className="space-y-2">
@@ -86,7 +86,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
                     key={dIdx}
                     className="flex items-start gap-2.5 text-xs text-slate-700"
                   >
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#10B981] shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#C88A1A] shrink-0 mt-0.5" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -101,7 +101,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
         {isPreview ? (
           <Link
             href={`/services#${service.id}`}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-900 group-hover:text-[#10B981] uppercase tracking-wider transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-900 group-hover:text-[#C88A1A] uppercase tracking-wider transition-colors"
           >
             <span>Explore Service Details</span>
             <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -109,7 +109,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
         ) : (
           <Link
             href="/contact"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-900 group-hover:text-[#10B981] uppercase tracking-wider transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-900 group-hover:text-[#C88A1A] uppercase tracking-wider transition-colors"
           >
             <span>Enquire About {service.title}</span>
             <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
