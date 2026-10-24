@@ -12,6 +12,7 @@ import {
   ArrowUpRight,
   ArrowRight,
 } from "lucide-react";
+import FadeContent from "@/components/ui/FadeContent";
 
 interface ProcessStep {
   number: string;
@@ -22,7 +23,7 @@ interface ProcessStep {
   icon: React.ComponentType<{ className?: string }>;
 }
 
-const STEPS_ROW_1: ProcessStep[] = [
+const PROCESS_STEPS: ProcessStep[] = [
   {
     number: "01",
     titleLine1: "DISCOVERY &",
@@ -47,9 +48,6 @@ const STEPS_ROW_1: ProcessStep[] = [
     image: "/images/process/03-design.jpg",
     icon: PenTool,
   },
-];
-
-const STEPS_ROW_2: ProcessStep[] = [
   {
     number: "04",
     titleLine1: "IMPLEMENTATION",
@@ -85,54 +83,39 @@ export const GrowthProcess: React.FC = () => {
       <div className="w-full max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 relative">
 
         {/* ======================================================== */}
-        {/* HEADER: MATCHING "FROM IDEAS TO IMPACT" EXACT REFERENCE   */}
+        {/* HEADER: "FROM IDEAS TO IMPACT"                           */}
         {/* ======================================================== */}
-        <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-8 mb-16 sm:mb-20 lg:mb-28">
-          <div>
-            {/* Eyebrow */}
-            <div className="flex items-center gap-3 mb-4 sm:mb-5">
-              <span className="w-9 h-[2px] bg-[#C88A1A]" />
-              <span className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.24em] text-[#07192F] uppercase">
-                OUR PROCESS
-              </span>
-            </div>
-
-            {/* Giant Title: FROM IDEAS / TO IMPACT */}
-            <h2 className="text-5xl sm:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] font-black tracking-[-0.035em] leading-[0.92]">
-              <span className="text-[#07192F] block">FROM IDEAS</span>
-              <span className="text-[#07192F]">TO </span>
-              <span className="text-[#C88A1A]">IMPACT</span>
-            </h2>
+        <div className="mb-14 sm:mb-18 lg:mb-20">
+          {/* Eyebrow */}
+          <div className="flex items-center gap-3 mb-4 sm:mb-5">
+            <span className="w-9 h-[2px] bg-[#C88A1A]" />
+            <span className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.24em] text-[#07192F] uppercase">
+              OUR PROCESS
+            </span>
           </div>
 
-          {/* Top-Right Mission Block + Approach Button */}
-          <div className="flex items-center gap-6 sm:gap-8 self-start lg:self-start lg:pt-4">
-            <p className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.14em] text-slate-700 uppercase leading-[1.65] max-w-[240px] pl-5 border-l border-[#D7D2C7]">
-              A STRUCTURED JOURNEY THAT TURNS YOUR GOALS INTO REAL BUSINESS GROWTH.
-            </p>
-
-            <Link
-              href="/services"
-              className="group flex items-center gap-3 transition-transform duration-300 hover:translate-x-1"
-            >
-              <div className="w-12 h-12 rounded-full border border-[#07192F]/50 flex items-center justify-center text-[#07192F] transition-all duration-300 group-hover:bg-[#07192F] group-hover:text-white group-hover:border-[#07192F] shadow-xs">
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-              </div>
-              <span className="text-[11px] font-mono font-bold tracking-[0.2em] text-[#07192F] uppercase leading-tight">
-                OUR<br />APPROACH
-              </span>
-            </Link>
-          </div>
+          {/* Giant Title: FROM IDEAS / TO IMPACT */}
+          <h2 className="text-5xl sm:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] font-black tracking-[-0.035em] leading-[0.92]">
+            <span className="text-[#07192F] block">FROM IDEAS</span>
+            <span className="text-[#07192F]">TO </span>
+            <span className="text-[#C88A1A]">IMPACT</span>
+          </h2>
         </div>
 
         {/* ======================================================== */}
-        {/* THE 6-STEP PROCESS: CLEAN "UP 3 & DOWN 3" ARCHED LAYOUT   */}
+        {/* THE 6-STEP PROCESS: FADECONTENT STAGGERED REVEAL         */}
         {/* ======================================================== */}
         <div className="relative">
-
-          {/* TOP ROW: UP 3 (Step 01, Step 02, Step 03) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12 xl:gap-8 mb-16 xl:mb-20 relative z-20">
-            {STEPS_ROW_1.map((step) => {
+          <FadeContent
+            effect="fade"
+            duration={1}
+            ease="power2.out"
+            stagger={0.16}
+            threshold={0.1}
+            trigger="scroll"
+            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12 xl:gap-x-8 xl:gap-y-16 relative z-20"
+          >
+            {PROCESS_STEPS.map((step) => {
               const IconComponent = step.icon;
               return (
                 <div
@@ -197,77 +180,7 @@ export const GrowthProcess: React.FC = () => {
                 </div>
               );
             })}
-          </div>
-
-          {/* BOTTOM ROW: DOWN 3 (Step 04, Step 05, Step 06) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12 xl:gap-8 relative z-20">
-            {STEPS_ROW_2.map((step) => {
-              const IconComponent = step.icon;
-              return (
-                <div
-                  key={step.number}
-                  className="group relative flex items-start gap-5 sm:gap-6"
-                >
-                  {/* Left Column: Fully Visible Number + Arched Photo */}
-                  <div className="flex flex-col flex-shrink-0">
-                    {/* Big Clear Visible Numeral */}
-                    <span 
-                      className="text-6xl sm:text-7xl xl:text-[5.25rem] font-black text-[#C4BBAE] select-none leading-none tracking-tight mb-2.5 transition-colors duration-300 group-hover:text-[#C88A1A]/60"
-                      aria-hidden="true"
-                    >
-                      {step.number}
-                    </span>
-
-                    {/* Arched Photo Frame (Rounded-t-full arch) */}
-                    <div className="relative w-[150px] sm:w-[170px] xl:w-[185px] aspect-[3/4] rounded-t-full overflow-hidden bg-stone-200 shadow-sm">
-                      <Image
-                        src={step.image}
-                        alt={`${step.titleLine1} ${step.titleLine2}`}
-                        fill
-                        sizes="(max-width: 640px) 150px, 185px"
-                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300 pointer-events-none" />
-                    </div>
-                  </div>
-
-                  {/* Content Block */}
-                  <div className="flex flex-col justify-start pt-14 sm:pt-16">
-                    {/* Circular Icon Badge */}
-                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#D7D2C7] bg-[#FAF8F5] flex items-center justify-center text-[#07192F] mb-3 shadow-2xs group-hover:border-[#C88A1A] group-hover:text-[#C88A1A] transition-colors">
-                      <IconComponent className="w-4 h-4" />
-                    </div>
-
-                    {/* Step Title */}
-                    <h3 className="text-sm sm:text-[15px] font-extrabold text-[#07192F] tracking-[0.05em] uppercase leading-[1.25] mb-2 group-hover:text-[#C88A1A] transition-colors">
-                      {step.titleLine1}
-                      {step.titleLine2 && (
-                        <>
-                          <br />
-                          {step.titleLine2}
-                        </>
-                      )}
-                    </h3>
-
-                    {/* Step Description */}
-                    <p className="text-xs sm:text-[12.5px] text-slate-600 leading-[1.6] max-w-[195px] xl:max-w-[210px] mb-4 font-normal">
-                      {step.description}
-                    </p>
-
-                    {/* Circular Action Button */}
-                    <Link
-                      href="/services"
-                      className="w-8 h-8 rounded-full border border-[#C5BFB3] bg-transparent flex items-center justify-center text-[#07192F] transition-all duration-300 hover:bg-[#07192F] hover:text-white hover:border-[#07192F]"
-                      aria-label={`Learn more about ${step.titleLine1}`}
-                    >
-                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
-                    </Link>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
+          </FadeContent>
         </div>
 
       </div>

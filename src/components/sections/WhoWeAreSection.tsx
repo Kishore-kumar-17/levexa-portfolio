@@ -134,35 +134,16 @@ export const WhoWeAreSection: React.FC = () => {
                   </div>
                 }
                 secondContent={
-                  <div className="relative w-full h-full bg-[#07192F] flex flex-col justify-between p-6 sm:p-8 text-white">
-                    {/* Ambient Gold Glow & Mesh */}
-                    <div className="absolute -top-16 -right-16 w-52 h-52 bg-[#C88A1A]/20 rounded-full blur-3xl pointer-events-none" />
-                    <div className="absolute -bottom-16 -left-16 w-52 h-52 bg-[#C88A1A]/15 rounded-full blur-3xl pointer-events-none" />
-
-                    <div className="relative z-10 flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-[#C88A1A] animate-pulse" />
-                        <span className="font-mono text-[10.5px] uppercase tracking-[0.2em] text-[#C88A1A] font-bold">
-                          EXECUTIVE ADVISORY
-                        </span>
-                      </div>
-                      <span className="font-mono text-[11px] text-stone-400 font-semibold tracking-wider">
-                        LEVEXA // 360°
-                      </span>
-                    </div>
-
-                    <div className="relative z-10 space-y-2">
-                      <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-tight">
-                        Commercial Architecture for Ambitious Founders
-                      </h3>
-                      <p className="text-xs sm:text-[13px] text-stone-300 leading-relaxed max-w-md">
-                        Where strategic rigor, high-intent demand generation, and sales pipeline conversion unite into compounding revenue scale.
-                      </p>
-                    </div>
-
-                    <div className="relative z-10 pt-3 border-t border-stone-800 flex items-center justify-between text-[11px] font-mono text-stone-400">
-                      <span className="text-[#C88A1A] font-semibold">4 CORE DISCIPLINES</span>
-                      <span>LONDON // GLOBAL SCALE</span>
+                  <div className="relative w-full h-full">
+                    <Image
+                      src="/images/pillars/01-growth-strategy.jpg"
+                      alt="Levexa executive strategy and growth advisory"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover"
+                    />
+                    <div className="absolute bottom-3 left-4 px-3 py-1 bg-[#07192F]/80 backdrop-blur-md rounded-full border border-white/10 text-[10.5px] font-mono text-[#C88A1A] uppercase tracking-wider font-semibold">
+                      EXECUTIVE STRATEGY // LONDON
                     </div>
                   </div>
                 }
@@ -182,7 +163,7 @@ export const WhoWeAreSection: React.FC = () => {
             {/* Handwritten note annotation below the photo with interactive hover cue */}
             <div className="mt-2.5 flex items-center justify-end gap-2 text-stone-700">
               <span className="font-serif italic text-xs sm:text-[13px] text-slate-800">
-                Architecting predictable, scalable revenue engines
+                Hover image to reveal executive strategy in action
               </span>
               <span className="text-lg text-[#C88A1A] -rotate-12 inline-block">
                 ⤹
