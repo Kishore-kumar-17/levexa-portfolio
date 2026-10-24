@@ -20,6 +20,7 @@ import { CountUp } from "@/components/ui/CountUp";
 import { ShinyText } from "@/components/ui/ShinyText";
 import { DecryptedText } from "@/components/ui/DecryptedText";
 import { RotatingText } from "@/components/ui/RotatingText";
+import { Particles } from "@/components/ui/Particles";
 
 export const metadata: Metadata = constructMetadata({
   title: "Growth Advisory Services — Strategy, Marketing, Sales & Automation",
@@ -71,7 +72,15 @@ export default function ServicesPage() {
       {/* 1. HERO SECTION: Monumental Levexa Dual-Tone Hero         */}
       {/* ========================================================= */}
       <section className="pt-8 sm:pt-12 lg:pt-16 pb-16 sm:pb-20 border-b border-[#D7D3CB] relative overflow-hidden">
-        <Container>
+        {/* Ambient Particles from React Bits */}
+        <Particles
+          particleColors={["#C88A1A", "#07192F", "#D7D3CB"]}
+          particleCount={25}
+          speed={0.25}
+          particleBaseSize={2.2}
+          className="opacity-40"
+        />
+        <Container className="relative z-10">
           <div className="max-w-5xl">
             {/* Eyebrow */}
             <div className="flex items-center gap-3 mb-6 sm:mb-8">

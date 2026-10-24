@@ -25,6 +25,8 @@ import { DecryptedText } from "@/components/ui/DecryptedText";
 import { SplitText } from "@/components/ui/SplitText";
 import { ClickSpark } from "@/components/ui/ClickSpark";
 import { Dock } from "@/components/ui/Dock";
+import { Stepper } from "@/components/ui/Stepper";
+import { Aurora } from "@/components/ui/Aurora";
 
 type ParsedMetric =
   | { isNumeric: true; num: number; prefix: string; suffix: string; decimals: number }
@@ -441,11 +443,41 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
               </span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-bold text-[#07192F] tracking-[-0.03em] leading-tight mb-4">
-              The 4-Stage Advisory Sprint
+              <SplitText text="The 4-Stage Advisory Sprint" delay={30} />
             </h2>
             <p className="text-base sm:text-lg text-slate-700 leading-relaxed">
               A structured execution timeline that moves seamlessly from diagnostic audit to operational deployment.
             </p>
+          </div>
+
+          {/* Interactive Sprint Stepper from React Bits */}
+          <div className="mb-14">
+            <Stepper
+              steps={roadmap.map((step, idx) => ({
+                number: `0${idx + 1}`,
+                title: step.phase,
+                subtitle: step.week,
+                content: (
+                  <div className="space-y-4">
+                    <div className="flex flex-wrap items-center gap-3">
+                      <span className="text-xs font-mono font-bold text-[#C88A1A] px-3 py-1 rounded-full bg-[#FAF8F5] border border-stone-200">
+                        {step.week}
+                      </span>
+                      <h4 className="text-xl sm:text-2xl font-bold text-[#07192F]">{step.title}</h4>
+                    </div>
+                    <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
+                      Structured milestone sprint designed to ensure frontline sales alignment and complete executive visibility.
+                    </p>
+                    <div className="p-4 sm:p-5 rounded-xl bg-[#FAF8F5] border border-stone-200/80">
+                      <span className="text-[11px] font-mono font-bold uppercase text-[#C88A1A] block mb-1">
+                        Tangible Sprint Deliverable:
+                      </span>
+                      <p className="text-sm font-semibold text-[#07192F]">{step.deliverable}</p>
+                    </div>
+                  </div>
+                ),
+              }))}
+            />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -485,34 +517,36 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
         </Container>
       </section>
 
-      {/* 6. Featured Discipline Case Study */}
-      <section className="py-20 lg:py-28 border-b border-[#D7D3CB] bg-white">
-        <Container>
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-            <div>
-              <div className="flex items-center gap-3 mb-4">
-                <span className="w-8 h-[2px] bg-[#C88A1A]" />
-                <span className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.22em] text-[#07192F] uppercase">
-                  PROVEN METHODOLOGY
-                </span>
+      {/* 6. Featured Discipline Case Study with Aurora Ambient Glow */}
+      <section className="py-20 lg:py-28 border-b border-[#D7D3CB] bg-white relative overflow-hidden">
+        <Aurora colorStops={['#C88A1A', '#FAF8F5', '#DFB15B']} amplitude={1.1}>
+          <Container>
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="w-8 h-[2px] bg-[#C88A1A]" />
+                  <span className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.22em] text-[#07192F] uppercase">
+                    PROVEN METHODOLOGY
+                  </span>
+                </div>
+                <h2 className="text-3xl sm:text-5xl font-bold text-[#07192F] tracking-[-0.03em] leading-tight">
+                  Case Study In Practice
+                </h2>
               </div>
-              <h2 className="text-3xl sm:text-5xl font-bold text-[#07192F] tracking-[-0.03em] leading-tight">
-                Case Study In Practice
-              </h2>
+              <Link
+                href="/work"
+                className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[#07192F] hover:text-[#C88A1A] transition-colors"
+              >
+                <span>View All 4 Case Studies</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
-            <Link
-              href="/work"
-              className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[#07192F] hover:text-[#C88A1A] transition-colors"
-            >
-              <span>View All 4 Case Studies</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
 
-          <div className="max-w-4xl mx-auto">
-            <CaseStudyCard caseStudy={featuredCaseStudy} />
-          </div>
-        </Container>
+            <div className="max-w-4xl mx-auto">
+              <CaseStudyCard caseStudy={featuredCaseStudy} />
+            </div>
+          </Container>
+        </Aurora>
       </section>
 
       {/* 7. Executive FAQs */}

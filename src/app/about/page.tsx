@@ -24,6 +24,8 @@ import { CountUp } from "@/components/ui/CountUp";
 import { ShinyText } from "@/components/ui/ShinyText";
 import { DecryptedText } from "@/components/ui/DecryptedText";
 import { SplitText } from "@/components/ui/SplitText";
+import { Particles } from "@/components/ui/Particles";
+import { TrueFocus } from "@/components/ui/TrueFocus";
 
 export const metadata: Metadata = constructMetadata({
   title: "About Levexa — Strategic Business Growth Advisory",
@@ -98,7 +100,15 @@ export default function AboutPage() {
       {/* 1. HERO SECTION: Monumental Levexa Dual-Tone Hero         */}
       {/* ========================================================= */}
       <section className="pt-8 sm:pt-12 lg:pt-16 pb-16 sm:pb-20 border-b border-[#D7D3CB] relative overflow-hidden">
-        <Container>
+        {/* Ambient Particles from React Bits */}
+        <Particles
+          particleColors={["#C88A1A", "#07192F", "#D7D3CB"]}
+          particleCount={25}
+          speed={0.25}
+          particleBaseSize={2.2}
+          className="opacity-40"
+        />
+        <Container className="relative z-10">
           <div className="max-w-5xl">
             {/* Eyebrow */}
             <div className="flex items-center gap-3 mb-6 sm:mb-8">
@@ -264,11 +274,16 @@ export default function AboutPage() {
                 />
               </div>
 
-              {/* Handwritten Note Accent */}
-              <div className="mt-4 flex items-center justify-end gap-2 text-stone-700">
-                <span className="font-serif italic text-base sm:text-lg text-slate-800">
-                  Architecting predictable, scalable revenue engines
-                </span>
+              {/* Thesis Focus Accent from React Bits */}
+              <div className="mt-4 flex items-center justify-end gap-3 text-stone-700">
+                <TrueFocus
+                  sentence="Architecting predictable scalable revenue engines"
+                  manualMode={true}
+                  blurAmount={3}
+                  borderColor="#C88A1A"
+                  glowColor="rgba(200, 138, 26, 0.35)"
+                  className="text-xs sm:text-sm font-mono uppercase tracking-wider text-[#07192F]"
+                />
                 <span className="text-xl text-[#C88A1A] -rotate-12 inline-block">⤹</span>
               </div>
             </div>
