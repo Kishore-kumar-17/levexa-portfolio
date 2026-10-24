@@ -22,7 +22,7 @@ const PILLARS: PillarItem[] = [
     tag: "COMMERCIAL ARCHITECTURE",
     titleLine1: "Growth &",
     titleLine2: "Strategy",
-    href: "/services#growth-strategy",
+    href: "/services/strategy",
     image: "/images/pillars/01-growth-strategy.jpg",
   },
   {
@@ -31,7 +31,7 @@ const PILLARS: PillarItem[] = [
     tag: "DEMAND GENERATION",
     titleLine1: "Branding &",
     titleLine2: "Marketing",
-    href: "/services#branding-marketing",
+    href: "/services/marketing",
     image: "/images/pillars/02-branding-marketing.jpg",
   },
   {
@@ -40,7 +40,7 @@ const PILLARS: PillarItem[] = [
     tag: "REVENUE ENGINE",
     titleLine1: "Sales &",
     titleLine2: "Conversion",
-    href: "/services#sales-conversion",
+    href: "/services/sales",
     image: "/images/pillars/03-sales-conversion.jpg",
   },
   {
@@ -49,7 +49,7 @@ const PILLARS: PillarItem[] = [
     tag: "DIGITAL SYSTEMS",
     titleLine1: "Technology &",
     titleLine2: "Automation",
-    href: "/services#technology-automation",
+    href: "/services/technology",
     image: "/images/pillars/04-technology-automation.jpg",
   },
 ];

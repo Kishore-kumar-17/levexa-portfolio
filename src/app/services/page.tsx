@@ -44,6 +44,20 @@ const PILLAR_TAGS: Record<string, string> = {
   "technology-automation": "DIGITAL SYSTEMS",
 };
 
+const DISCIPLINE_LINKS: Record<string, string> = {
+  "growth-strategy": "/services/strategy",
+  "branding-marketing": "/services/marketing",
+  "sales-conversion": "/services/sales",
+  "technology-automation": "/services/technology",
+};
+
+const DISCIPLINE_SHORT_ALIASES: Record<string, string> = {
+  "growth-strategy": "strategy",
+  "branding-marketing": "marketing",
+  "sales-conversion": "sales",
+  "technology-automation": "technology",
+};
+
 export default function ServicesPage() {
   return (
     <div className="pt-24 sm:pt-28 bg-[#FAF8F5] text-[#07192F] select-none min-h-screen">
@@ -112,6 +126,12 @@ export default function ServicesPage() {
               id={service.id}
               className="py-20 lg:py-28 scroll-mt-24 relative overflow-hidden"
             >
+              {/* Short alias anchor so #strategy, #marketing, #sales, #technology work seamlessly */}
+              <div
+                id={DISCIPLINE_SHORT_ALIASES[service.id]}
+                className="absolute -top-24 pointer-events-none"
+                aria-hidden="true"
+              />
               <Container>
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
                   
@@ -248,14 +268,21 @@ export default function ServicesPage() {
 
                       </div>
 
-                      {/* Action Button */}
-                      <div className="mt-10 flex items-center gap-6">
+                      {/* Action Buttons: Dedicated Blueprint & Consultation */}
+                      <div className="mt-10 flex flex-wrap items-center gap-4 sm:gap-6">
+                        <Link
+                          href={DISCIPLINE_LINKS[service.id] || "/contact"}
+                          className="group inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-[#07192F] text-white font-bold text-xs sm:text-sm tracking-wider uppercase hover:bg-[#C88A1A] hover:text-[#07192F] transition-all duration-300 shadow-sm"
+                        >
+                          <span>EXPLORE FULL {service.title.toUpperCase()} BLUEPRINT</span>
+                          <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                        </Link>
                         <Link
                           href="/contact"
-                          className="group inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-[#07192F] text-white font-bold text-xs sm:text-sm tracking-wider uppercase hover:bg-[#C88A1A] hover:text-[#07192F] transition-all duration-300"
+                          className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-700 hover:text-[#C88A1A] transition-colors"
                         >
-                          <span>DISCUSS {service.title.toUpperCase()} ADVISORY</span>
-                          <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                          <span>Book Consultation</span>
+                          <ArrowRight className="w-3.5 h-3.5" />
                         </Link>
                       </div>
 

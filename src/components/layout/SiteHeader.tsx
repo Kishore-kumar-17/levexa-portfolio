@@ -23,11 +23,12 @@ export const SiteHeader: React.FC = () => {
   }, []);
 
   const navLinks = [
-    { label: "RESEARCH", href: "/about" },
-    { label: "STRATEGY", href: "/services#strategy" },
-    { label: "MARKETING", href: "/services#marketing" },
-    { label: "SALES", href: "/services#sales" },
-    { label: "CASE STUDIES", href: "/work" },
+    { label: "ABOUT", href: "/about" },
+    { label: "STRATEGY", href: "/services/strategy" },
+    { label: "MARKETING", href: "/services/marketing" },
+    { label: "SALES", href: "/services/sales" },
+    { label: "TECHNOLOGY", href: "/services/technology" },
+    { label: "WORK", href: "/work" },
   ];
 
   return (
@@ -58,7 +59,7 @@ export const SiteHeader: React.FC = () => {
 
             {/* Desktop Navigation: Centered Minimalist Spaced Links (Graphite Style on White) */}
             <nav
-              className="hidden lg:flex items-center gap-8 xl:gap-10"
+              className="hidden lg:flex items-center gap-6 xl:gap-8"
               aria-label="Primary Navigation"
             >
               {navLinks.map((item) => {
