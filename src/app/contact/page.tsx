@@ -7,6 +7,8 @@ import { constructMetadata } from "@/lib/metadata";
 import { Mail, Clock, MapPin, ShieldCheck } from "lucide-react";
 import { BlurText } from "@/components/ui/BlurText";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
+import { ShinyText } from "@/components/ui/ShinyText";
+import { DecryptedText } from "@/components/ui/DecryptedText";
 
 export const metadata: Metadata = constructMetadata({
   title: "Contact Levexa — Request Strategic Growth Consultation",
@@ -47,7 +49,13 @@ export default function ContactPage() {
             <div className="flex items-center gap-3 mb-6 sm:mb-8">
               <span className="w-8 h-[2px] bg-[#C88A1A]" />
               <span className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.22em] text-[#07192F] uppercase">
-                EXECUTIVE CONSULTATION &amp; INQUIRY
+                <DecryptedText
+                  text="EXECUTIVE CONSULTATION & INQUIRY"
+                  speed={35}
+                  maxIterations={8}
+                  animateOn="view"
+                  className="text-[#07192F]"
+                />
               </span>
             </div>
 
@@ -172,7 +180,9 @@ export default function ContactPage() {
               <div className="p-5 rounded-2xl bg-[#07192F] text-white flex items-center gap-4">
                 <ShieldCheck className="w-8 h-8 text-[#C88A1A] shrink-0" />
                 <p className="text-xs text-stone-300 leading-snug">
-                  <strong className="text-white block font-bold mb-0.5">Strict Confidentiality</strong>
+                  <strong className="text-white block font-bold mb-0.5">
+                    <ShinyText text="Strict Confidentiality" variant="gold" speed={3.5} />
+                  </strong>
                   All shared financial benchmarks, commercial challenges, and proprietary data are treated with complete NDA security.
                 </p>
               </div>

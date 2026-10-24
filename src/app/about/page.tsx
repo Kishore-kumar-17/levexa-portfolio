@@ -21,6 +21,9 @@ import {
 import { BlurText } from "@/components/ui/BlurText";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { CountUp } from "@/components/ui/CountUp";
+import { ShinyText } from "@/components/ui/ShinyText";
+import { DecryptedText } from "@/components/ui/DecryptedText";
+import { SplitText } from "@/components/ui/SplitText";
 
 export const metadata: Metadata = constructMetadata({
   title: "About Levexa — Strategic Business Growth Advisory",
@@ -101,7 +104,13 @@ export default function AboutPage() {
             <div className="flex items-center gap-3 mb-6 sm:mb-8">
               <span className="w-8 h-[2px] bg-[#C88A1A]" />
               <span className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.22em] text-[#07192F] uppercase">
-                OUR PHILOSOPHY &amp; MISSION
+                <DecryptedText
+                  text="OUR PHILOSOPHY & MISSION"
+                  speed={35}
+                  maxIterations={8}
+                  animateOn="view"
+                  className="text-[#07192F]"
+                />
               </span>
             </div>
 
@@ -152,8 +161,8 @@ export default function AboutPage() {
               </span>
             </div>
             <h2 className="text-3xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-[-0.035em] leading-[1.05]">
-              Why traditional business <br />
-              <span className="text-[#C88A1A]">growth models break.</span>
+              <SplitText text="Why traditional business" delay={30} /> <br />
+              <ShinyText text="growth models break." variant="gold" speed={4} />
             </h2>
           </div>
 
@@ -347,8 +356,8 @@ export default function AboutPage() {
                 </span>
               </div>
               <h2 className="text-3xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-[-0.035em] leading-[1.05]">
-                Core values that govern <br />
-                <span className="text-[#C88A1A]">every advisory sprint.</span>
+                <SplitText text="Core values that govern" delay={30} /> <br />
+                <ShinyText text="every advisory sprint." variant="gold" speed={4} />
               </h2>
             </div>
 

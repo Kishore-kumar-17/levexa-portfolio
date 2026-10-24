@@ -7,6 +7,8 @@ import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { MobileNavigation } from "./MobileNavigation";
+import { ShinyText } from "@/components/ui/ShinyText";
+import { ClickSpark } from "@/components/ui/ClickSpark";
 
 export const SiteHeader: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -83,12 +85,14 @@ export const SiteHeader: React.FC = () => {
 
             {/* CTA: Rectangular Sharp Button (Graphite "TALK TO US" Style in Black on White) */}
             <div className="flex items-center gap-3">
-              <Link
-                href="/contact"
-                className="hidden sm:inline-flex items-center justify-center bg-black hover:bg-slate-800 text-white text-[12px] uppercase tracking-[0.16em] font-semibold px-6 py-2.5 rounded-none transition-all active:scale-98 shadow-xs"
-              >
-                TALK TO US
-              </Link>
+              <ClickSpark sparkColor="#C88A1A" sparkRadius={25} sparkCount={6}>
+                <Link
+                  href="/contact"
+                  className="hidden sm:inline-flex items-center justify-center bg-black hover:bg-slate-800 text-white text-[12px] uppercase tracking-[0.16em] font-semibold px-6 py-2.5 rounded-none transition-all active:scale-98 shadow-xs"
+                >
+                  <ShinyText text="TALK TO US" variant="gold" speed={4} />
+                </Link>
+              </ClickSpark>
 
               {/* Mobile hamburger */}
               <button

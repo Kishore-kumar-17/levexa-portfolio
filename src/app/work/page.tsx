@@ -6,6 +6,9 @@ import { WorkClient } from "./WorkClient";
 import { constructMetadata } from "@/lib/metadata";
 
 import { CountUp } from "@/components/ui/CountUp";
+import { ShinyText } from "@/components/ui/ShinyText";
+import { DecryptedText } from "@/components/ui/DecryptedText";
+import { InfiniteScroll } from "@/components/ui/InfiniteScroll";
 
 export const metadata: Metadata = constructMetadata({
   title: "Case Studies & Proven Impact — Levexa Strategic Growth",
@@ -28,14 +31,20 @@ export default function WorkPage() {
             <div className="flex items-center gap-3 mb-6 sm:mb-8">
               <span className="w-8 h-[2px] bg-[#C88A1A]" />
               <span className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.22em] text-[#07192F] uppercase">
-                PROVEN RESULTS &amp; FRAMEWORKS
+                <DecryptedText
+                  text="PROVEN RESULTS & FRAMEWORKS"
+                  speed={35}
+                  maxIterations={8}
+                  animateOn="view"
+                  className="text-[#07192F]"
+                />
               </span>
             </div>
 
             {/* Monumental Dual-Tone Headline */}
             <h1 className="text-5xl sm:text-7xl lg:text-[5rem] xl:text-[5.75rem] font-bold tracking-[-0.035em] leading-[0.98] mb-8 sm:mb-10">
               <span className="text-[#07192F]">Case Studies &amp;</span> <br />
-              <span className="text-[#C88A1A]">Proven Impact.</span>
+              <ShinyText text="Proven Impact." variant="gold" speed={4} />
             </h1>
 
             {/* Signature Gold Accent Line */}
@@ -86,6 +95,35 @@ export default function WorkPage() {
                 </div>
               </div>
             </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* ========================================================= */}
+      {/* 1.5. SECTOR MARQUEE TICKER (React Bits InfiniteScroll)   */}
+      {/* ========================================================= */}
+      <section className="py-4 sm:py-5 border-b border-[#D7D3CB] bg-white overflow-hidden">
+        <Container>
+          <div className="flex items-center gap-4 sm:gap-6">
+            <span className="text-[11px] font-mono font-bold tracking-[0.2em] text-[#C88A1A] uppercase shrink-0">
+              ADVISORY SECTORS:
+            </span>
+            <InfiniteScroll
+              speed={42}
+              direction="left"
+              items={[
+                { content: <span className="font-mono text-xs font-bold text-[#07192F] tracking-wider uppercase px-4 sm:px-6">ENTERPRISE SAAS</span> },
+                { content: <span className="font-mono text-xs text-[#C88A1A]">✦</span> },
+                { content: <span className="font-mono text-xs font-bold text-[#07192F] tracking-wider uppercase px-4 sm:px-6">PRIVATE EQUITY PORTFOLIOS</span> },
+                { content: <span className="font-mono text-xs text-[#C88A1A]">✦</span> },
+                { content: <span className="font-mono text-xs font-bold text-[#07192F] tracking-wider uppercase px-4 sm:px-6">FINTECH INFRASTRUCTURE</span> },
+                { content: <span className="font-mono text-xs text-[#C88A1A]">✦</span> },
+                { content: <span className="font-mono text-xs font-bold text-[#07192F] tracking-wider uppercase px-4 sm:px-6">AI & AUTOMATION ENGINES</span> },
+                { content: <span className="font-mono text-xs text-[#C88A1A]">✦</span> },
+                { content: <span className="font-mono text-xs font-bold text-[#07192F] tracking-wider uppercase px-4 sm:px-6">HEALTHCARE TECHNOLOGY</span> },
+                { content: <span className="font-mono text-xs text-[#C88A1A]">✦</span> },
+              ]}
+            />
           </div>
         </Container>
       </section>

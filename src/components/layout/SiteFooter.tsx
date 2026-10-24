@@ -3,6 +3,7 @@
 import React, { useRef, useEffect } from "react";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
+import { CircularText } from "@/components/ui/CircularText";
 
 export const SiteFooter: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -48,8 +49,8 @@ export const SiteFooter: React.FC = () => {
       <Container className="relative z-10">
         {/* Top utility row: Copyright + Navigation Links */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-6 text-xs sm:text-sm">
-          {/* Left: Monogram Badge + Copyright */}
-          <div className="flex items-center gap-3">
+          {/* Left: Monogram Badge + Copyright + CircularText Stamp */}
+          <div className="flex items-center gap-4">
             <span
               className="w-5 h-5 rounded-[4px] border border-white/30 flex items-center justify-center text-[10px] font-bold text-stone-200 select-none"
               aria-hidden="true"
@@ -59,6 +60,14 @@ export const SiteFooter: React.FC = () => {
             <span className="text-stone-400 font-normal">
               © {currentYear} Levexa Growth
             </span>
+            <div className="hidden sm:block pl-2">
+              <CircularText
+                text="• LEVEXA • STRATEGIC ADVISORY • LONDON •"
+                radius={36}
+                spinDuration={24}
+                className="text-[#C88A1A] opacity-80"
+              />
+            </div>
           </div>
 
           {/* Right: Clean horizontal navigation links */}

@@ -17,6 +17,9 @@ import {
 } from "lucide-react";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { CountUp } from "@/components/ui/CountUp";
+import { ShinyText } from "@/components/ui/ShinyText";
+import { DecryptedText } from "@/components/ui/DecryptedText";
+import { RotatingText } from "@/components/ui/RotatingText";
 
 export const metadata: Metadata = constructMetadata({
   title: "Growth Advisory Services — Strategy, Marketing, Sales & Automation",
@@ -74,14 +77,20 @@ export default function ServicesPage() {
             <div className="flex items-center gap-3 mb-6 sm:mb-8">
               <span className="w-8 h-[2px] bg-[#C88A1A]" />
               <span className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.22em] text-[#07192F] uppercase">
-                COMMERCIAL DISCIPLINES &amp; METHODOLOGY
+                <DecryptedText
+                  text="COMMERCIAL DISCIPLINES & METHODOLOGY"
+                  speed={35}
+                  maxIterations={8}
+                  animateOn="view"
+                  className="text-[#07192F]"
+                />
               </span>
             </div>
 
             {/* Monumental Dual-Tone Headline */}
             <h1 className="text-5xl sm:text-7xl lg:text-[5rem] xl:text-[5.75rem] font-bold tracking-[-0.035em] leading-[0.98] mb-8 sm:mb-10">
               <span className="text-[#07192F]">Services &amp;</span> <br />
-              <span className="text-[#C88A1A]">Methodology.</span>
+              <ShinyText text="Methodology." variant="gold" speed={4} />
             </h1>
 
             {/* Signature Gold Accent Line */}
@@ -90,10 +99,19 @@ export default function ServicesPage() {
               aria-hidden="true"
             />
 
-            {/* Value Proposition Subheadline */}
-            <p className="text-xl sm:text-2xl lg:text-[1.75rem] text-slate-800 font-normal leading-[1.45] max-w-4xl tracking-tight mb-10">
-              Four interconnected commercial disciplines engineered to diagnose revenue friction,
-              accelerate pipeline conversion, build automated digital leverage, and unlock sustainable, compounding scale.
+            {/* Value Proposition Subheadline with RotatingText */}
+            <p className="text-xl sm:text-2xl lg:text-[1.75rem] text-slate-800 font-normal leading-[1.45] max-w-4xl tracking-tight mb-8">
+              Four interconnected commercial disciplines engineered to deploy{" "}
+              <RotatingText
+                texts={[
+                  "predictable revenue engines.",
+                  "high-velocity sales execution.",
+                  "automated AI pipelines.",
+                  "sustainable enterprise valuation.",
+                ]}
+                rotationInterval={2800}
+                className="text-[#C88A1A] font-semibold border-b-2 border-[#C88A1A]/40 pb-0.5"
+              />
             </p>
 
             {/* Navigation Jump Bar */}
@@ -185,7 +203,13 @@ export default function ServicesPage() {
                         <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-stone-200 shadow-2xs">
                           <IconComp className="w-3.5 h-3.5 text-[#C88A1A]" />
                           <span className="font-mono text-[10.5px] font-bold tracking-[0.16em] text-[#07192F] uppercase">
-                            {tag}
+                            <DecryptedText
+                              text={tag}
+                              speed={30}
+                              maxIterations={6}
+                              animateOn="view"
+                              className="text-[#07192F]"
+                            />
                           </span>
                         </div>
                       </div>

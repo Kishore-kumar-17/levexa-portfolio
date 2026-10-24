@@ -13,9 +13,18 @@ import {
   AlertCircle,
   ChevronDown,
   ShieldCheck,
+  Compass,
+  TrendingUp,
+  Target,
+  Layers,
 } from "lucide-react";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { CountUp } from "@/components/ui/CountUp";
+import { ShinyText } from "@/components/ui/ShinyText";
+import { DecryptedText } from "@/components/ui/DecryptedText";
+import { SplitText } from "@/components/ui/SplitText";
+import { ClickSpark } from "@/components/ui/ClickSpark";
+import { Dock } from "@/components/ui/Dock";
 
 type ParsedMetric =
   | { isNumeric: true; num: number; prefix: string; suffix: string; decimals: number }
@@ -178,14 +187,20 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
               <div className="flex items-center gap-3 mb-6">
                 <span className="w-8 h-[2px] bg-[#C88A1A]" />
                 <span className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.22em] text-[#07192F] uppercase">
-                  {`${pillarNumber} // ${categoryTag}`}
+                  <DecryptedText
+                    text={`${pillarNumber} // ${categoryTag}`}
+                    speed={35}
+                    maxIterations={8}
+                    animateOn="view"
+                    className="text-[#07192F]"
+                  />
                 </span>
               </div>
 
               <h1 className="text-4xl sm:text-6xl lg:text-[4.25rem] font-bold tracking-[-0.035em] leading-[1.02] mb-6">
                 <span className="text-[#07192F]">{titleLine1}</span>{" "}
                 <br />
-                <span className="text-[#C88A1A]">{titleHighlight}</span>
+                <ShinyText text={titleHighlight} variant="gold" speed={3.5} />
               </h1>
 
               <div
@@ -198,12 +213,14 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
               </p>
 
               <div className="flex flex-wrap items-center gap-4 pt-2">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center bg-[#07192F] hover:bg-[#C88A1A] hover:text-[#07192F] text-white text-xs sm:text-sm uppercase tracking-[0.16em] font-bold px-8 py-4 transition-all duration-300 shadow-sm active:scale-98"
-                >
-                  Request Consultation
-                </Link>
+                <ClickSpark sparkColor="#C88A1A" sparkRadius={25} sparkCount={6}>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center bg-[#07192F] hover:bg-[#C88A1A] hover:text-[#07192F] text-white text-xs sm:text-sm uppercase tracking-[0.16em] font-bold px-8 py-4 transition-all duration-300 shadow-sm active:scale-98"
+                  >
+                    Request Consultation
+                  </Link>
+                </ClickSpark>
                 <Link
                   href="#deliverables"
                   className="inline-flex items-center justify-center bg-white hover:bg-stone-50 text-[#07192F] border border-stone-300 text-xs sm:text-sm uppercase tracking-[0.16em] font-semibold px-7 py-4 transition-all"
@@ -297,7 +314,7 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
               </span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-bold text-[#07192F] tracking-[-0.03em] leading-tight mb-4">
-              Tangible Commercial Deliverables
+              <SplitText text="Tangible Commercial Deliverables" delay={30} />
             </h2>
             <p className="text-base sm:text-lg text-slate-700 leading-relaxed">
               Every engagement produces codified, permanent infrastructure rather than disposable consulting decks.
@@ -316,7 +333,13 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
                 <div>
                   <div className="flex items-center justify-between gap-4 mb-4">
                     <span className="text-xs font-mono font-bold px-3 py-1 rounded-full bg-[#FAF8F5] border border-stone-200 text-[#C88A1A]">
-                      PHASE 0{index + 1}
+                      <DecryptedText
+                        text={`PHASE 0${index + 1}`}
+                        speed={35}
+                        maxIterations={6}
+                        animateOn="view"
+                        className="text-[#C88A1A]"
+                      />
                     </span>
                     <span className="text-xs font-mono text-slate-500 font-medium">
                       Est. {deliv.timeline}
@@ -544,13 +567,25 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
         </Container>
       </section>
 
-      {/* 8. Interconnected Disciplines Navigation */}
+      {/* 8. Interconnected Disciplines Navigation with React Bits Dock */}
       <section className="py-16 border-b border-[#D7D3CB] bg-white">
         <Container>
-          <div className="text-center mb-10">
-            <span className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-slate-400">
-              EXPLORE ADJACENT DISCIPLINES
+          <div className="text-center mb-8">
+            <span className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-slate-400 block mb-6">
+              EXPLORE COMMERCIAL DISCIPLINES
             </span>
+            <div className="flex justify-center">
+              <Dock
+                items={[
+                  { icon: <Compass className="w-5 h-5" />, label: "01 Strategy", href: "/services/strategy" },
+                  { icon: <TrendingUp className="w-5 h-5" />, label: "02 Marketing", href: "/services/marketing" },
+                  { icon: <Target className="w-5 h-5" />, label: "03 Sales", href: "/services/sales" },
+                  { icon: <Layers className="w-5 h-5" />, label: "04 Technology", href: "/services/technology" },
+                ]}
+                baseItemSize={46}
+                magnification={62}
+              />
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
