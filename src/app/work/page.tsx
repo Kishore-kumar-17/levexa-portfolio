@@ -114,7 +114,11 @@ export default function WorkPage() {
               items={[
                 { content: <span className="font-mono text-xs font-bold text-[#07192F] tracking-wider uppercase px-4 sm:px-6">ENTERPRISE SAAS</span> },
                 { content: <span className="font-mono text-xs text-[#C88A1A]">✦</span> },
+                { content: <span className="font-mono text-xs font-bold text-[#07192F] tracking-wider uppercase px-4 sm:px-6">FOUNDER REEL SCRIPTS</span> },
+                { content: <span className="font-mono text-xs text-[#C88A1A]">✦</span> },
                 { content: <span className="font-mono text-xs font-bold text-[#07192F] tracking-wider uppercase px-4 sm:px-6">PRIVATE EQUITY PORTFOLIOS</span> },
+                { content: <span className="font-mono text-xs text-[#C88A1A]">✦</span> },
+                { content: <span className="font-mono text-xs font-bold text-[#07192F] tracking-wider uppercase px-4 sm:px-6">VIRAL HOOK ARCHITECTURE</span> },
                 { content: <span className="font-mono text-xs text-[#C88A1A]">✦</span> },
                 { content: <span className="font-mono text-xs font-bold text-[#07192F] tracking-wider uppercase px-4 sm:px-6">FINTECH INFRASTRUCTURE</span> },
                 { content: <span className="font-mono text-xs text-[#C88A1A]">✦</span> },
