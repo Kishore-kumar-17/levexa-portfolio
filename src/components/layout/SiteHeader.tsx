@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -14,6 +14,14 @@ export const SiteHeader: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+
+  const handleOpenMobileMenu = useCallback(() => {
+    setIsMobileMenuOpen(true);
+  }, []);
+
+  const handleCloseMobileMenu = useCallback(() => {
+    setIsMobileMenuOpen(false);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -97,8 +105,8 @@ export const SiteHeader: React.FC = () => {
               {/* Mobile hamburger */}
               <button
                 type="button"
-                onClick={() => setIsMobileMenuOpen(true)}
-                className="lg:hidden p-2 rounded-xs bg-slate-100 border border-slate-200 text-slate-800 hover:text-black transition-colors focus-visible:outline-none"
+                onClick={handleOpenMobileMenu}
+                className="lg:hidden p-2 rounded-xs bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 hover:text-black transition-colors focus-visible:outline-none cursor-pointer"
                 aria-label="Open mobile navigation menu"
                 aria-expanded={isMobileMenuOpen}
               >
@@ -112,7 +120,7 @@ export const SiteHeader: React.FC = () => {
       {/* Mobile Drawer */}
       <MobileNavigation
         isOpen={isMobileMenuOpen}
-        onClose={() => setIsMobileMenuOpen(false)}
+        onClose={handleCloseMobileMenu}
       />
     </>
   );

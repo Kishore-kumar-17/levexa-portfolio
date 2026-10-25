@@ -6,7 +6,8 @@ export interface ScriptClientWork {
   instagramUrl: string;
   thumbnail: string;
   views: string;
-  likes?: string;
+  likes: string;
+  comments: string;
   shares?: string;
   scriptHook: string;
   scriptConcept: string;
@@ -32,13 +33,15 @@ export const instagramProfileData = {
   profileUrl: "https://www.instagram.com/levelupwith_lavanya/",
   bio: [
     "✍️ High-retention scriptwriting & content architecture for founders and brands",
-    "🎯 Viral hooks • Relational pacing • ManyChat lead-generation systems",
-    "📈 6.8M+ Organic views & 25,000+ comment leads across client campaigns",
+    "🎯 Viral hooks • Relational pacing • Automated ManyChat lead-generation systems",
+    "📈 7.1M+ Organic views & 21,400+ comment leads across client campaigns",
     "📍 Strategic Advisory & Global Creative Direction",
   ],
   stats: {
     reelsScripted: "140+",
-    totalViews: "6.8M+",
+    totalViews: "7.1M+",
+    verifiedLikes: "53.3K+",
+    commentLeads: "21.4K+",
     avgRetention: "84.2%",
     clientsScaled: "38",
   },
@@ -46,7 +49,7 @@ export const instagramProfileData = {
     { title: "Viral Hooks", icon: "🔥", count: "18" },
     { title: "Client Wins", icon: "🏆", count: "35" },
     { title: "Frameworks", icon: "📐", count: "12" },
-    { title: "ManyChat Leads", icon: "💬", count: "24" },
+    { title: "Lead Systems", icon: "💬", count: "24" },
     { title: "Case Studies", icon: "💡", count: "40" },
   ],
 };
@@ -61,6 +64,7 @@ export const clientScriptWorks: ScriptClientWork[] = [
     thumbnail: "/images/pillars/01-growth-strategy.jpg",
     views: "485K",
     likes: "2,758",
+    comments: "28",
     shares: "890",
     scriptHook: "“The biggest lie about entrepreneurship they sell you on social media.”",
     scriptConcept: "Negative-bias contrarian mythbuster exposing 24/7 hustle burnout vs. building scalable operating SOPs.",
@@ -75,7 +79,7 @@ export const clientScriptWorks: ScriptClientWork[] = [
       ctaContent: "“Save this reel and share it with a founder friend who needs to stop glorifying burnout.”",
       ctaTechnique: "Peer-to-peer distribution prompt driving high bookmark-to-share ratios.",
     },
-    keyResult: "2,750+ likes, 485K views & massive founder reposts",
+    keyResult: "2,758 likes & 485K views (Top 1% founder engagement ratio)",
   },
   {
     id: "reel-02",
@@ -86,7 +90,8 @@ export const clientScriptWorks: ScriptClientWork[] = [
     thumbnail: "/images/process/02-strategy.jpg",
     views: "920K",
     likes: "7,169",
-    shares: "3,400",
+    comments: "7",
+    shares: "3.4K",
     scriptHook: "“Share and ask these 4 deep questions to your partner right now.”",
     scriptConcept: "High-retention emotional connection framework structured as a sequential 4-part relational challenge.",
     scriptBreakdown: {
@@ -100,7 +105,7 @@ export const clientScriptWorks: ScriptClientWork[] = [
       ctaContent: "“Send this to your partner and see which question catches them off guard.”",
       ctaTechnique: "Direct viral loop (every share guarantees a second viewer who watches the full reel).",
     },
-    keyResult: "7,100+ likes & 3,400+ direct DM partner shares",
+    keyResult: "7,169 likes & 3,400+ direct DM partner shares",
   },
   {
     id: "reel-03",
@@ -111,7 +116,8 @@ export const clientScriptWorks: ScriptClientWork[] = [
     thumbnail: "/images/process/03-design.jpg",
     views: "2.8M",
     likes: "22K",
-    shares: "17K",
+    comments: "17K",
+    shares: "8.2K",
     scriptHook: "“The ancient beauty secret behind Kerala girls that nobody talks about.”",
     scriptConcept: "Heritage curiosity gap paired with clean organic botanical formulation proof that sparked viral commenting.",
     scriptBreakdown: {
@@ -125,7 +131,7 @@ export const clientScriptWorks: ScriptClientWork[] = [
       ctaContent: "“Comment 'HERBAL' and I will send you our complete botanical recipe & sourcing guide.”",
       ctaTechnique: "Automated keyword DM funnel yielding 17,000+ comment interactions.",
     },
-    keyResult: "2.8M views, 22K likes & 17,000+ comment interactions",
+    keyResult: "2.8M views, 22,000+ likes & 17,000+ inbound comment leads",
   },
   {
     id: "reel-04",
@@ -136,7 +142,8 @@ export const clientScriptWorks: ScriptClientWork[] = [
     thumbnail: "/images/process/04-development.jpg",
     views: "1.9M",
     likes: "16K",
-    shares: "1.1K",
+    comments: "1,141",
+    shares: "2.9K",
     scriptHook: "“Black makes you unstoppable: Why power dressing completely alters executive perception.”",
     scriptConcept: "Prestige psychology and high-status aesthetic framing featuring sustainable fine diamond jewelry.",
     scriptBreakdown: {
@@ -150,7 +157,7 @@ export const clientScriptWorks: ScriptClientWork[] = [
       ctaContent: "“Drop a 🔥 in the comments if black is your power color.”",
       ctaTechnique: "Instant-reaction micro-commitment trigger driving 1,140+ active comments.",
     },
-    keyResult: "16,000+ likes, 1.9M views & surge in diamond catalog inquiries",
+    keyResult: "1.9M views, 16,000+ likes & 1,141 high-intent diamond inquiries",
   },
   {
     id: "reel-05",
@@ -161,7 +168,8 @@ export const clientScriptWorks: ScriptClientWork[] = [
     thumbnail: "/images/process/05-optimization.jpg",
     views: "740K",
     likes: "4,541",
-    shares: "3.2K",
+    comments: "3,291",
+    shares: "1.8K",
     scriptHook: "“Confused between college courses? Stop guessing your future career.”",
     scriptConcept: "Pain-point relief framework transforming student decision paralysis into qualified admissions inquiries.",
     scriptBreakdown: {
@@ -175,7 +183,7 @@ export const clientScriptWorks: ScriptClientWork[] = [
       ctaContent: "“Comment 'GUIDE' and our certified senior education advisors will reach out to you.”",
       ctaTechnique: "Direct ManyChat lead qualification automation driving 3,290+ organic lead comments.",
     },
-    keyResult: "3,291 qualified admissions leads via automated comment trigger",
+    keyResult: "3,291 qualified student admissions leads via automated keyword",
   },
   {
     id: "reel-06",
@@ -186,6 +194,7 @@ export const clientScriptWorks: ScriptClientWork[] = [
     thumbnail: "/images/process/06-growth.jpg",
     views: "320K",
     likes: "878",
+    comments: "8",
     shares: "410",
     scriptHook: "“Girls, you need to listen to this: Why financial self-reliance is your ultimate superpower.”",
     scriptConcept: "Empowering personal sovereignty script breaking down financial independence, resilience, and wealth mindset.",
@@ -200,6 +209,6 @@ export const clientScriptWorks: ScriptClientWork[] = [
       ctaContent: "“Save this for the next time you need a reminder to bet on yourself first.”",
       ctaTechnique: "High-retention personal affirmation bookmark trigger creating top 2% save rate.",
     },
-    keyResult: "Top 2% algorithm save rate & authoritative personal brand affinity",
+    keyResult: "Top 2% save rate & authoritative personal brand affinity",
   },
 ];

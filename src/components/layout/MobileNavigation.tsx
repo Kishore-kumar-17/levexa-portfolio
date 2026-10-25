@@ -22,12 +22,17 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
   const drawerRef = useRef<HTMLDivElement>(null);
   const closeBtnRef = useRef<HTMLButtonElement>(null);
 
-  // Close on route change
+  const prevPathnameRef = useRef(pathname);
+
+  // Close ONLY on actual route navigation change, NOT on mount
   useEffect(() => {
-    onClose();
+    if (prevPathnameRef.current !== pathname) {
+      prevPathnameRef.current = pathname;
+      onClose();
+    }
   }, [pathname, onClose]);
 
-  // Handle escape key and focus trap
+  // Handle escape key and body scroll lock
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape" && isOpen) {

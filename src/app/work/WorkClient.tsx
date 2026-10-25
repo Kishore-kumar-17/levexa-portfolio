@@ -9,7 +9,7 @@ import { InstagramProfileShowcase } from "@/components/portfolio/InstagramProfil
 import { Briefcase, Instagram, Sparkles } from "lucide-react";
 
 export const WorkClient: React.FC = () => {
-  const [viewMode, setViewMode] = useState<"case-studies" | "instagram-scripts">("case-studies");
+  const [viewMode, setViewMode] = useState<"case-studies" | "instagram-scripts">("instagram-scripts");
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
   const categories = ["All", "Strategy", "Marketing", "Sales", "Growth"];
@@ -54,7 +54,7 @@ export const WorkClient: React.FC = () => {
             <span>Instagram Scripts &amp; Reels</span>
             <span className="hidden sm:inline-flex items-center gap-1 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-[#C88A1A] text-white uppercase ml-1">
               <Sparkles className="w-2.5 h-2.5" />
-              18.4M+
+              7.1M+
             </span>
           </button>
         </div>

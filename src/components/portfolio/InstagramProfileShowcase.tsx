@@ -10,7 +10,6 @@ import {
 import {
   Play,
   Heart,
-  Share2,
   CheckCircle2,
   Bookmark,
   Sparkles,
@@ -127,22 +126,30 @@ export const InstagramProfileShowcase: React.FC = () => {
             </div>
           </div>
 
-          {/* Quick Metrics Bar */}
+          {/* Quick Metrics Bar (Real Audited Numbers) */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-5 px-6 rounded-2xl bg-stone-50 border border-stone-200/70 mb-8">
             <div className="flex flex-col">
               <span className="text-2xl sm:text-3xl font-mono font-bold text-[#07192F]">
-                {instagramProfileData.stats.reelsScripted}
-              </span>
-              <span className="text-[11px] font-mono uppercase tracking-wider text-slate-500">
-                Reels Scripted
-              </span>
-            </div>
-            <div className="flex flex-col border-l border-stone-200 pl-4 sm:pl-6">
-              <span className="text-2xl sm:text-3xl font-mono font-bold text-[#C88A1A]">
                 {instagramProfileData.stats.totalViews}
               </span>
               <span className="text-[11px] font-mono uppercase tracking-wider text-slate-500">
                 Verified Views
+              </span>
+            </div>
+            <div className="flex flex-col border-l border-stone-200 pl-4 sm:pl-6">
+              <span className="text-2xl sm:text-3xl font-mono font-bold text-[#C88A1A]">
+                {instagramProfileData.stats.verifiedLikes}
+              </span>
+              <span className="text-[11px] font-mono uppercase tracking-wider text-slate-500">
+                Audited Likes
+              </span>
+            </div>
+            <div className="flex flex-col border-l border-stone-200 pl-4 sm:pl-6">
+              <span className="text-2xl sm:text-3xl font-mono font-bold text-[#07192F]">
+                {instagramProfileData.stats.commentLeads}
+              </span>
+              <span className="text-[11px] font-mono uppercase tracking-wider text-slate-500">
+                Comment &amp; DM Leads
               </span>
             </div>
             <div className="flex flex-col border-l border-stone-200 pl-4 sm:pl-6">
@@ -151,14 +158,6 @@ export const InstagramProfileShowcase: React.FC = () => {
               </span>
               <span className="text-[11px] font-mono uppercase tracking-wider text-slate-500">
                 Avg Retention Rate
-              </span>
-            </div>
-            <div className="flex flex-col border-l border-stone-200 pl-4 sm:pl-6">
-              <span className="text-2xl sm:text-3xl font-mono font-bold text-[#07192F]">
-                {instagramProfileData.stats.clientsScaled}
-              </span>
-              <span className="text-[11px] font-mono uppercase tracking-wider text-slate-500">
-                Founders Scaled
               </span>
             </div>
           </div>
@@ -340,17 +339,17 @@ export const InstagramProfileShowcase: React.FC = () => {
                     <span className="text-xs font-mono font-bold text-[#E4AB3C]">
                       {reel.clientHandle || reel.clientName}
                     </span>
-                    <div className="flex items-center gap-3 text-white/80 text-xs font-mono">
+                    <div className="flex items-center gap-3 text-white/90 text-xs font-mono">
                       {reel.likes && (
                         <span className="flex items-center gap-1">
                           <Heart className="w-3.5 h-3.5 fill-rose-500 text-rose-500" />
                           {reel.likes}
                         </span>
                       )}
-                      {reel.shares && (
+                      {reel.comments && (
                         <span className="flex items-center gap-1">
-                          <Share2 className="w-3.5 h-3.5 text-white/80" />
-                          {reel.shares}
+                          <MessageCircle className="w-3.5 h-3.5 text-sky-400 fill-sky-400/20" />
+                          {reel.comments}
                         </span>
                       )}
                     </div>
@@ -529,30 +528,31 @@ export const InstagramProfileShowcase: React.FC = () => {
 
                 <div>
                   <div className="text-[11px] font-mono text-stone-400 uppercase">
-                    Likes / Saves
+                    Audited Likes
                   </div>
                   <div className="text-xl font-mono font-bold text-white flex items-center gap-1.5 mt-0.5">
-                    <Heart className="w-4 h-4 text-rose-400" />
-                    {activeModalWork.likes || "38K+"}
+                    <Heart className="w-4 h-4 text-rose-400 fill-rose-400/20" />
+                    {activeModalWork.likes}
                   </div>
                 </div>
 
                 <div>
                   <div className="text-[11px] font-mono text-stone-400 uppercase">
-                    Key Metric
+                    Inbound Comments
                   </div>
-                  <div className="text-xl font-mono font-bold text-[#E4AB3C] flex items-center gap-1.5 mt-0.5">
+                  <div className="text-xl font-mono font-bold text-sky-400 flex items-center gap-1.5 mt-0.5">
+                    <MessageCircle className="w-4 h-4 text-sky-400" />
+                    {activeModalWork.comments}
+                  </div>
+                </div>
+
+                <div>
+                  <div className="text-[11px] font-mono text-stone-400 uppercase">
+                    Algorithm Signal
+                  </div>
+                  <div className="text-sm font-mono font-bold text-[#E4AB3C] flex items-center gap-1.5 mt-1.5">
                     <TrendingUp className="w-4 h-4" />
-                    Top 1%
-                  </div>
-                </div>
-
-                <div>
-                  <div className="text-[11px] font-mono text-stone-400 uppercase">
-                    Script Target
-                  </div>
-                  <div className="text-xs font-mono font-bold text-white mt-1.5 truncate">
-                    High Conversion
+                    Top 1% Bookmark
                   </div>
                 </div>
               </div>
