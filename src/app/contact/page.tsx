@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { companyConfig } from "@/data/company";
 import { constructMetadata } from "@/lib/metadata";
-import { Mail, Clock, MapPin, ShieldCheck } from "lucide-react";
+import { Mail, Phone, Clock, MapPin, ShieldCheck } from "lucide-react";
 import { BlurText } from "@/components/ui/BlurText";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { ShinyText } from "@/components/ui/ShinyText";
@@ -111,6 +111,23 @@ export default function ContactPage() {
                           className="text-base font-bold text-[#07192F] hover:text-[#C88A1A] transition-colors"
                         >
                           {companyConfig.contact.email}
+                        </a>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-full bg-[#FAF8F5] border border-stone-200 flex items-center justify-center text-[#C88A1A] shrink-0">
+                        <Phone className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <p className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">
+                          Direct Executive Line
+                        </p>
+                        <a
+                          href={`tel:${companyConfig.contact.phone.replace(/\s+/g, "")}`}
+                          className="text-base font-bold text-[#07192F] hover:text-[#C88A1A] transition-colors"
+                        >
+                          {companyConfig.contact.phone}
                         </a>
                       </div>
                     </div>

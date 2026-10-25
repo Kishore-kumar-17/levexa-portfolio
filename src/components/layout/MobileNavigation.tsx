@@ -133,14 +133,20 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
           </PrimaryButton>
 
           <div className="space-y-2 text-xs text-slate-500 pt-2">
-            <div className="flex items-center gap-2">
-              <Mail className="w-3.5 h-3.5 text-gold-600" />
-              <span>{companyConfig.contact.email}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Phone className="w-3.5 h-3.5 text-gold-600" />
-              <span>{companyConfig.contact.phone}</span>
-            </div>
+            <a
+              href={`mailto:${companyConfig.contact.email}`}
+              className="flex items-center gap-2.5 text-slate-600 hover:text-[#07192F] transition-colors py-0.5"
+            >
+              <Mail className="w-3.5 h-3.5 text-[#C88A1A]" />
+              <span className="font-medium">{companyConfig.contact.email}</span>
+            </a>
+            <a
+              href={`tel:${companyConfig.contact.phone.replace(/\s+/g, "")}`}
+              className="flex items-center gap-2.5 text-slate-600 hover:text-[#07192F] transition-colors py-0.5"
+            >
+              <Phone className="w-3.5 h-3.5 text-[#C88A1A]" />
+              <span className="font-medium">{companyConfig.contact.phone}</span>
+            </a>
           </div>
         </div>
       </div>

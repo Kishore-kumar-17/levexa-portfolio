@@ -6,12 +6,12 @@ export const companyConfig = {
     "Levexa is a premier strategic growth advisory helping founders, executives, and scaling businesses engineer high-performance marketing, sales pipelines, and sustainable revenue models.",
   eyebrow: "STRATEGY · MARKETING · SALES · GROWTH",
   
-  // Official placeholders clearly identifiable for client confirmation
+  // Official verified contact channels
   contact: {
-    email: "enquiry@levexa.com", // Client to confirm official inbox
-    phone: "+1 (800) LEVEXA-GROW", // Placeholder awaiting official phone number
-    address: "Global / Remote Strategic Advisory", // Placeholder awaiting official registration address
-    supportHours: "Monday – Friday, 9:00 AM – 6:00 PM EST",
+    email: "ceo.levexa@gmail.com",
+    phone: "+91 82209 76712",
+    address: "Global / Remote Strategic Advisory",
+    supportHours: "Monday – Saturday, 9:00 AM – 7:00 PM IST",
   },
 
   socials: [

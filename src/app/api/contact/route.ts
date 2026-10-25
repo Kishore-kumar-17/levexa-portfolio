@@ -71,7 +71,7 @@ export async function POST(request: NextRequest) {
 
     // 5. Provider integration check (e.g. Resend / Webhook)
     const resendApiKey = process.env.RESEND_API_KEY;
-    const recipientEmail = process.env.CONTACT_EMAIL_RECIPIENT || "enquiry@levexa.com";
+    const recipientEmail = process.env.CONTACT_EMAIL_RECIPIENT || "ceo.levexa@gmail.com";
 
     if (resendApiKey) {
       // Dispatches via Resend API if configured
@@ -116,7 +116,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            message: "Network error delivering message. Please reach out directly to enquiry@levexa.com.",
+            message: "Network error delivering message. Please reach out directly to ceo.levexa@gmail.com.",
           },
           { status: 500 }
         );
