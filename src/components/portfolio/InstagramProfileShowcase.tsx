@@ -59,7 +59,7 @@ export const InstagramProfileShowcase: React.FC = () => {
             </span>
           </div>
           <a
-            href="https://www.instagram.com"
+            href={`https://www.instagram.com/${instagramProfileData.handle}/`}
             target="_blank"
             rel="noopener noreferrer"
             className="hidden sm:inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-white/80 hover:text-white bg-white/10 hover:bg-white/20 backdrop-blur-xs px-3 py-1.5 rounded-full transition-colors"
@@ -108,7 +108,7 @@ export const InstagramProfileShowcase: React.FC = () => {
             {/* Profile CTA Buttons */}
             <div className="flex flex-wrap items-center gap-3 pt-2 md:pt-14">
               <a
-                href="https://www.instagram.com"
+                href={`https://www.instagram.com/${instagramProfileData.handle}/`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#07192F] text-white text-xs font-mono font-bold tracking-wider uppercase hover:bg-[#0E2849] transition-all shadow-xs"
