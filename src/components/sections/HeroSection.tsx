@@ -120,7 +120,7 @@ export const HeroSection: React.FC = () => {
             {/* Left: Scroll to Who We Are */}
             <Link
               href="#who-we-are"
-              className="group flex items-center gap-2.5 text-xs sm:text-[13px] font-bold tracking-[0.2em] text-[#07192F] hover:text-[#C88A1A] transition-colors whitespace-nowrap"
+              className="group flex items-center gap-2.5 py-1.5 -my-1.5 text-xs sm:text-[13px] font-bold tracking-[0.2em] text-[#07192F] hover:text-[#C88A1A] transition-colors whitespace-nowrap"
             >
               <ArrowDown className="w-4 h-4 transition-transform duration-200 group-hover:translate-y-1" />
               <span>WHO WE ARE</span>
@@ -132,7 +132,7 @@ export const HeroSection: React.FC = () => {
             {/* Right: Link to About */}
             <Link
               href="/about"
-              className="group flex items-center gap-2.5 text-xs sm:text-[13px] font-bold tracking-[0.2em] text-[#07192F] hover:text-[#C88A1A] transition-colors whitespace-nowrap"
+              className="group flex items-center gap-2.5 py-1.5 -my-1.5 text-xs sm:text-[13px] font-bold tracking-[0.2em] text-[#07192F] hover:text-[#C88A1A] transition-colors whitespace-nowrap"
             >
               <span>OUR PHILOSOPHY</span>
               <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />

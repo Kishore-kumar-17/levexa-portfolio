@@ -93,9 +93,9 @@ export default function ContactPage() {
               {/* Direct Inboxes Card */}
               <SpotlightCard theme="light" spotlightColor="#C88A1A" intensity={0.22}>
                 <div className="p-8 space-y-6">
-                  <h3 className="text-xl font-bold text-[#07192F] tracking-tight border-b border-stone-100 pb-4">
+                  <h2 className="text-xl font-bold text-[#07192F] tracking-tight border-b border-stone-100 pb-4">
                     Direct Advisory Channels
-                  </h3>
+                  </h2>
 
                   <div className="space-y-5">
                     <div className="flex items-start gap-4">
@@ -103,7 +103,7 @@ export default function ContactPage() {
                         <Mail className="w-4 h-4" />
                       </div>
                       <div>
-                        <p className="text-xs font-mono font-bold uppercase tracking-wider text-slate-500">
+                        <p className="text-xs font-mono font-bold uppercase tracking-wider text-slate-600">
                           Official Inquiry Inbox
                         </p>
                         <a
@@ -120,7 +120,7 @@ export default function ContactPage() {
                         <Phone className="w-4 h-4" />
                       </div>
                       <div>
-                        <p className="text-xs font-mono font-bold uppercase tracking-wider text-slate-500">
+                        <p className="text-xs font-mono font-bold uppercase tracking-wider text-slate-600">
                           Direct Executive Line
                         </p>
                         <a
@@ -137,7 +137,7 @@ export default function ContactPage() {
                         <Clock className="w-4 h-4" />
                       </div>
                       <div>
-                        <p className="text-xs font-mono font-bold uppercase tracking-wider text-slate-500">
+                        <p className="text-xs font-mono font-bold uppercase tracking-wider text-slate-600">
                           Advisory Sprint Hours
                         </p>
                         <p className="text-sm font-semibold text-[#07192F]">
@@ -151,7 +151,7 @@ export default function ContactPage() {
                         <MapPin className="w-4 h-4" />
                       </div>
                       <div>
-                        <p className="text-xs font-mono font-bold uppercase tracking-wider text-slate-500">
+                        <p className="text-xs font-mono font-bold uppercase tracking-wider text-slate-600">
                           Operational Footprint
                         </p>
                         <p className="text-sm font-semibold text-[#07192F]">
@@ -168,9 +168,9 @@ export default function ContactPage() {
                 <div className="p-8 space-y-6">
                   <div className="flex items-center gap-2.5">
                     <span className="w-6 h-[2px] bg-[#C88A1A]" />
-                    <h3 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#07192F]">
+                    <h2 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#07192F]">
                       WHAT HAPPENS NEXT:
-                    </h3>
+                    </h2>
                   </div>
 
                   <div className="space-y-6">
@@ -180,9 +180,9 @@ export default function ContactPage() {
                           {st.number}
                         </span>
                         <div>
-                          <h4 className="text-sm font-bold text-[#07192F] mb-1">
+                          <h3 className="text-sm font-bold text-[#07192F] mb-1">
                             {st.title}
-                          </h4>
+                          </h3>
                           <p className="text-xs text-slate-600 leading-relaxed font-normal">
                             {st.desc}
                           </p>
