@@ -58,7 +58,7 @@ const spiralImages: SpiralItem[] = [
 
 export const HeroSection: React.FC = () => {
   return (
-    <section className="relative min-h-[80vh] flex flex-col justify-between pt-20 sm:pt-20 lg:pt-22 pb-8 sm:pb-12 overflow-hidden bg-[#FAF8F5] text-[#07192F] select-none">
+    <section className="relative min-h-[80vh] flex flex-col justify-between pt-20 sm:pt-20 lg:pt-22 pb-8 sm:pb-12 overflow-hidden bg-[#FAF8F5] text-[#07192F]">
       <div className="w-full max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 flex-1 flex flex-col justify-between">
         
         {/* Main Hero Header & Interactive 3D Spiral Split Grid */}

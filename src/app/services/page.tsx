@@ -66,7 +66,7 @@ const DISCIPLINE_SHORT_ALIASES: Record<string, string> = {
 
 export default function ServicesPage() {
   return (
-    <div className="pt-24 sm:pt-28 bg-[#FAF8F5] text-[#07192F] select-none min-h-screen">
+    <div className="pt-24 sm:pt-28 bg-[#FAF8F5] text-[#07192F] min-h-screen">
       
       {/* ========================================================= */}
       {/* 1. HERO SECTION: Monumental Levexa Dual-Tone Hero         */}

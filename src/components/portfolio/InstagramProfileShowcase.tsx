@@ -302,13 +302,34 @@ export const InstagramProfileShowcase: React.FC = () => {
             >
               {/* 9:16 Aspect Ratio Visual Container */}
               <div className="relative aspect-[9/16] w-full overflow-hidden bg-slate-900">
-                <Image
-                  src={reel.thumbnail}
-                  alt={reel.scriptHook}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
+                {reel.thumbnail ? (
+                  <Image
+                    src={reel.thumbnail}
+                    alt={reel.scriptHook}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                ) : (
+                  // Branded script-page card until a real reel cover is supplied
+                  <div
+                    className="absolute inset-0 bg-[#0B2240] transition-transform duration-700 group-hover:scale-105"
+                    aria-hidden="true"
+                  >
+                    <div className="absolute inset-0 opacity-[0.07] bg-[repeating-linear-gradient(to_bottom,transparent_0,transparent_27px,#ffffff_27px,#ffffff_28px)]" />
+                    <div className="absolute top-16 left-6 right-6">
+                      <span className="block font-serif text-[7rem] leading-none text-[#C88A1A]/70 select-none">
+                        &ldquo;
+                      </span>
+                      <span className="block -mt-6 text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-stone-300/80">
+                        Script concept
+                      </span>
+                      <p className="mt-3 font-serif italic text-lg sm:text-xl leading-snug text-stone-200/90 line-clamp-5">
+                        {reel.scriptConcept}
+                      </p>
+                    </div>
+                  </div>
+                )}
 
                 {/* Dark Gradient Overlay for High Contrast */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#07192F] via-[#07192F]/40 to-black/30 group-hover:via-[#07192F]/60 transition-colors" />

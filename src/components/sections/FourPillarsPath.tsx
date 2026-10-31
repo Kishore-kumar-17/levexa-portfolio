@@ -61,7 +61,7 @@ export const FourPillarsPath: React.FC = () => {
   return (
     <section
       id="services"
-      className="relative w-full bg-[#FAF8F5] text-[#07192F] py-8 sm:py-10 lg:py-12 overflow-hidden select-none"
+      className="relative w-full bg-[#FAF8F5] text-[#07192F] py-8 sm:py-10 lg:py-12 overflow-hidden"
     >
       <div className="w-full">
         {/* Eyebrow */}

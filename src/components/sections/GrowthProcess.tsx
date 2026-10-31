@@ -78,7 +78,7 @@ export const GrowthProcess: React.FC = () => {
   return (
     <section
       id="process"
-      className="relative w-full bg-[#FAF8F5] text-[#07192F] pt-20 sm:pt-24 lg:pt-28 pb-20 sm:pb-28 lg:pb-32 overflow-hidden select-none"
+      className="relative w-full bg-[#FAF8F5] text-[#07192F] pt-20 sm:pt-24 lg:pt-28 pb-20 sm:pb-28 lg:pb-32 overflow-hidden"
     >
       <div className="w-full max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 relative">
 

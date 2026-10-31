@@ -10,7 +10,7 @@ export const WhoWeAreSection: React.FC = () => {
   return (
     <section
       id="who-we-are"
-      className="relative w-full bg-[#FAF8F5] text-[#07192F] min-h-screen lg:h-screen flex flex-col justify-between py-6 sm:py-8 lg:py-10 overflow-hidden border-t border-stone-200/60 select-none scroll-mt-0"
+      className="relative w-full bg-[#FAF8F5] text-[#07192F] min-h-screen lg:h-screen flex flex-col justify-between py-6 sm:py-8 lg:py-10 overflow-hidden border-t border-stone-200/60 scroll-mt-0"
     >
       <div className="w-full max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 h-full flex flex-col justify-between flex-1">
         
@@ -124,11 +124,11 @@ export const WhoWeAreSection: React.FC = () => {
                 firstContent={
                   <div className="relative w-full h-full">
                     <Image
-                      src="/images/about/who-we-are-team.jpg"
-                      alt="Levexa strategic growth advisors"
+                      src="/images/about/founder-lavanya.jpg"
+                      alt="Lavanya, Founder & CEO of Levexa"
                       fill
                       sizes="(max-width: 1024px) 100vw, 50vw"
-                      className="object-cover"
+                      className="object-cover object-[50%_30%]"
                       priority
                     />
                   </div>

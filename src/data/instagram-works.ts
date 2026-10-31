@@ -4,7 +4,7 @@ export interface ScriptClientWork {
   clientHandle?: string;
   category: "Founders & Tech" | "Finance & Wealth" | "E-Commerce" | "Health & Lifestyle" | "B2B SaaS";
   instagramUrl: string;
-  thumbnail: string;
+  thumbnail?: string; // real reel cover; omit to show the branded script card
   views: string;
   likes: string;
   comments: string;
@@ -29,7 +29,7 @@ export const instagramProfileData = {
   handle: "levelupwith_lavanya",
   displayName: "Lavanya • Business Growth Strategist & Script Architect",
   verified: true,
-  avatarUrl: "/images/about/who-we-are-team.jpg",
+  avatarUrl: "/images/about/founder-lavanya-avatar.jpg",
   profileUrl: "https://www.instagram.com/levelupwith_lavanya/",
   bio: [
     "✍️ High-retention scriptwriting & content architecture for founders and brands",
@@ -61,7 +61,6 @@ export const clientScriptWorks: ScriptClientWork[] = [
     clientHandle: "@arunbrandmonk",
     category: "Founders & Tech",
     instagramUrl: "https://www.instagram.com/reel/DSFP44xk3Bi/?exln=aHN0Z3k5b2ZjZWdj",
-    thumbnail: "/images/pillars/01-growth-strategy.jpg",
     views: "485K",
     likes: "2,758",
     comments: "28",
@@ -87,7 +86,6 @@ export const clientScriptWorks: ScriptClientWork[] = [
     clientHandle: "@buildwithvarshan_",
     category: "Health & Lifestyle",
     instagramUrl: "https://www.instagram.com/reel/DcYffSXzwqY/?mdxt=MTdodmhwcmY5MXJvYw==",
-    thumbnail: "/images/process/02-strategy.jpg",
     views: "920K",
     likes: "7,169",
     comments: "7",
@@ -113,7 +111,6 @@ export const clientScriptWorks: ScriptClientWork[] = [
     clientHandle: "@sriranganayagiofficial_",
     category: "E-Commerce",
     instagramUrl: "https://www.instagram.com/reel/DZujkB1zdQM/?xtok=MWRvYzVlZWszZGZrdw==",
-    thumbnail: "/images/process/03-design.jpg",
     views: "2.8M",
     likes: "22K",
     comments: "17K",
@@ -139,7 +136,6 @@ export const clientScriptWorks: ScriptClientWork[] = [
     clientHandle: "@balance_with_us",
     category: "E-Commerce",
     instagramUrl: "https://www.instagram.com/reel/DPgiv1LD2Ep/?dlrf=MjN4ZzFkeG1zc3N2",
-    thumbnail: "/images/process/04-development.jpg",
     views: "1.9M",
     likes: "16K",
     comments: "1,141",
@@ -165,7 +161,6 @@ export const clientScriptWorks: ScriptClientWork[] = [
     clientHandle: "@gradeze.india",
     category: "B2B SaaS",
     instagramUrl: "https://www.instagram.com/reel/DUAIwfCEfnW/?exln=NHlvZjJ1dHRkMW9v",
-    thumbnail: "/images/process/05-optimization.jpg",
     views: "740K",
     likes: "4,541",
     comments: "3,291",
@@ -191,7 +186,6 @@ export const clientScriptWorks: ScriptClientWork[] = [
     clientHandle: "@levelupwith_lavanya",
     category: "Finance & Wealth",
     instagramUrl: "https://www.instagram.com/reel/DdrEWUmR1Yw/?obrf=NXVrc2Z3MmwxYXVj",
-    thumbnail: "/images/process/06-growth.jpg",
     views: "320K",
     likes: "878",
     comments: "8",

@@ -14,12 +14,12 @@ export const companyConfig = {
     supportHours: "Monday – Saturday, 9:00 AM – 7:00 PM IST",
   },
 
-  socials: [
-    // Social links left unpopulated until officially supplied
-    { name: "LinkedIn", url: "#", placeholder: true },
-    { name: "X (Twitter)", url: "#", placeholder: true },
-    { name: "YouTube", url: "#", placeholder: true },
-  ],
+  socials: {
+    whatsapp: "https://wa.me/918220976712",
+    instagram: "https://www.instagram.com/levelupwith_lavanya/",
+    // TODO: replace with the official LinkedIn profile URL once supplied
+    linkedin: "https://www.linkedin.com/",
+  },
 
   brandColors: {
     navy: "#07192F",

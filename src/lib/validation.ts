@@ -6,6 +6,29 @@ export interface ValidationResult {
   sanitizedData?: ContactFormData;
 }
 
+// Shared by the contact form (rendered options) and the API (allowed values)
+export const SERVICE_OPTIONS = [
+  { value: "growth-strategy", label: "01. Growth & Strategy Advisory" },
+  { value: "branding-marketing", label: "02. Branding & Demand Generation" },
+  { value: "sales-conversion", label: "03. Sales Velocity & Pipeline Conversion" },
+  { value: "technology-automation", label: "04. Technology, AI & Automation" },
+  { value: "full-echelon", label: "05. Full Echelon Commercial Overhaul" },
+] as const;
+
+export const BUDGET_OPTIONS = [
+  { value: "under-1m", label: "Early Scaling (< $1M ARR / Annual Revenue)" },
+  { value: "1m-5m", label: "Growth Stage ($1M – $5M ARR)" },
+  { value: "5m-20m", label: "Expansion Stage ($5M – $20M ARR)" },
+  { value: "20m-plus", label: "Enterprise Tier ($20M+ ARR)" },
+] as const;
+
+export function getOptionLabel(
+  options: ReadonlyArray<{ value: string; label: string }>,
+  value: string
+): string {
+  return options.find((opt) => opt.value === value)?.label ?? value;
+}
+
 export function validateContactForm(data: Partial<ContactFormData>): ValidationResult {
   const errors: Record<string, string> = {};
 
@@ -38,34 +61,24 @@ export function validateContactForm(data: Partial<ContactFormData>): ValidationR
     errors.email = "Email cannot exceed 120 characters.";
   }
 
-  // Company Name validation
+  // Company Name validation (optional)
   const company = data.company?.trim() || "";
-  if (!company) {
-    errors.company = "Company name is required.";
-  } else if (company.length > 120) {
+  if (company.length > 120) {
     errors.company = "Company name cannot exceed 120 characters.";
   }
 
   // Service of Interest validation
-  const validServices = [
-    "Strategy",
-    "Marketing",
-    "Sales",
-    "Business Growth",
-    "Full Growth Overhaul",
-    "General Enquiry",
-  ];
   const service = data.service?.trim() || "";
   if (!service) {
     errors.service = "Please select a service of interest.";
-  } else if (!validServices.includes(service)) {
+  } else if (!SERVICE_OPTIONS.some((opt) => opt.value === service)) {
     errors.service = "Please select a valid service option.";
   }
 
-  // Budget (optional, but validate length)
+  // Budget (optional, but must be a known option)
   const budget = data.budget?.trim() || "";
-  if (budget.length > 50) {
-    errors.budget = "Budget selection exceeds valid character limit.";
+  if (budget && !BUDGET_OPTIONS.some((opt) => opt.value === budget)) {
+    errors.budget = "Please select a valid company stage.";
   }
 
   // Message validation

@@ -94,7 +94,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="pt-24 sm:pt-28 bg-[#FAF8F5] text-[#07192F] select-none min-h-screen">
+    <div className="pt-24 sm:pt-28 bg-[#FAF8F5] text-[#07192F] min-h-screen">
       
       {/* ========================================================= */}
       {/* 1. HERO SECTION: Monumental Levexa Dual-Tone Hero         */}
@@ -262,16 +262,24 @@ export default function AboutPage() {
                 </svg>
               </div>
 
-              {/* Arched Photo Container */}
-              <div className="relative rounded-tl-[80px] sm:rounded-tl-[120px] rounded-br-3xl rounded-tr-3xl rounded-bl-3xl overflow-hidden shadow-card-elevated border border-stone-200/80 bg-stone-100 aspect-[16/11]">
+              {/* Arched Founder Portrait */}
+              <div className="relative max-w-md mx-auto lg:mx-0 rounded-tl-[80px] sm:rounded-tl-[120px] rounded-br-3xl rounded-tr-3xl rounded-bl-3xl overflow-hidden shadow-card-elevated border border-stone-200/80 bg-stone-100 aspect-[4/5]">
                 <Image
-                  src="/images/about/who-we-are-team.jpg"
-                  alt="Levexa executive growth advisory session"
+                  src="/images/about/founder-lavanya.jpg"
+                  alt="Lavanya, Founder & CEO of Levexa"
                   fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes="(max-width: 1024px) 100vw, 448px"
                   className="object-cover"
                   priority
                 />
+
+                {/* Founder Name Caption */}
+                <div className="absolute bottom-4 left-4 right-4 px-4 py-3 rounded-xl bg-[#07192F]/85 backdrop-blur-md border border-white/10">
+                  <p className="text-base font-bold text-white tracking-tight">Lavanya</p>
+                  <p className="text-[11px] font-mono font-semibold text-[#E4AB3C] uppercase tracking-wider">
+                    Founder &amp; CEO, Levexa
+                  </p>
+                </div>
               </div>
 
               {/* Thesis Focus Accent from React Bits */}

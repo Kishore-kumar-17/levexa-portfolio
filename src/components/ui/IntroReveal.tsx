@@ -21,14 +21,14 @@ const REVEAL_CARDS: RevealCard[] = [
     tag: "01 // STRATEGY",
     title: "Growth & Strategy",
     image:
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop", // Architectural high-rise
+      "/images/pillars/01-growth-strategy.jpg",
   },
   {
     id: "branding-marketing",
     tag: "02 // BRANDING",
     title: "Branding & Marketing",
     image:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop", // Editorial portrait
+      "/images/pillars/02-branding-marketing.jpg",
   },
   {
     id: "levexa-core",
@@ -41,14 +41,14 @@ const REVEAL_CARDS: RevealCard[] = [
     tag: "03 // SALES",
     title: "Sales & Conversion",
     image:
-      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop", // Cobalt art
+      "/images/pillars/03-sales-conversion.jpg",
   },
   {
     id: "technology-automation",
     tag: "04 // AUTOMATION",
     title: "Technology & Automation",
     image:
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop", // Tech architecture
+      "/images/pillars/04-technology-automation.jpg",
   },
 ];
 
@@ -109,49 +109,36 @@ export const IntroReveal: React.FC<IntroRevealProps> = ({ onComplete }) => {
   };
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const params = new URLSearchParams(window.location.search);
-      const step = params.get("step");
-
-      if (step === "arc") {
-        setPhase("fanning");
-        setFanProgress(1.0);
-        setFlyProgress(0);
-        return;
-      }
-      if (step === "fly") {
-        setPhase("flying");
-        setFanProgress(1.0);
-        setFlyProgress(0.5);
-        return;
-      }
-      if (step === "flyend") {
-        setPhase("flying");
-        setFanProgress(1.0);
-        setFlyProgress(0.85);
-        return;
-      }
+    // Skip the intro entirely for users who prefer reduced motion
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setPhase("done");
+      if (onComplete) onComplete();
+      return;
     }
 
     startAnimation();
+
+    return () => {
+      if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Escape skips the intro; the listener only exists while the intro is playing
+  useEffect(() => {
+    if (phase === "done") return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
         setPhase("done");
         if (onComplete) onComplete();
-      } else if (e.key === "r" || e.key === "R" || e.code === "Space") {
-        startAnimation();
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-      if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [phase, onComplete]);
 
   // 3D Geometry:
   // Starts rotated at -160deg, finishes at 0deg facing camera directly

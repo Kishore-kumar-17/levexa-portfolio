@@ -14,7 +14,7 @@ export const metadata: Metadata = constructMetadata({
 
 export default function PrivacyPage() {
   return (
-    <div className="pt-24 sm:pt-28 bg-[#FAF8F5] text-[#07192F] select-none min-h-screen">
+    <div className="pt-24 sm:pt-28 bg-[#FAF8F5] text-[#07192F] min-h-screen">
       
       {/* Hero Header */}
       <section className="pt-8 sm:pt-12 lg:pt-16 pb-14 sm:pb-16 border-b border-[#D7D3CB] relative">

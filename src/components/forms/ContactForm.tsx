@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { CheckCircle2, AlertCircle, Loader2, ArrowRight } from "lucide-react";
-import { validateContactForm } from "@/lib/validation";
+import { validateContactForm, SERVICE_OPTIONS, BUDGET_OPTIONS } from "@/lib/validation";
 import { ContactFormData } from "@/types";
 import { Magnet } from "@/components/ui/Magnet";
 
@@ -227,8 +227,19 @@ export const ContactForm: React.FC = () => {
             value={formData.company}
             onChange={handleChange}
             placeholder="e.g. Acme Corp (acme.com)"
-            className="w-full px-4 py-3.5 rounded-xl bg-[#FAF8F5] border border-stone-200 text-[#07192F] placeholder-slate-400 text-sm focus:outline-none focus:border-[#C88A1A] focus:ring-1 focus:ring-[#C88A1A] transition-colors"
+            aria-invalid={Boolean(errors.company)}
+            aria-describedby={errors.company ? "company-error" : undefined}
+            className={`w-full px-4 py-3.5 rounded-xl bg-[#FAF8F5] border text-[#07192F] placeholder-slate-400 text-sm focus:outline-none transition-colors ${
+              errors.company
+                ? "border-red-500 focus:border-red-400"
+                : "border-stone-200 focus:border-[#C88A1A] focus:ring-1 focus:ring-[#C88A1A]"
+            }`}
           />
+          {errors.company && (
+            <p id="company-error" className="text-xs text-red-500 mt-1.5 font-medium">
+              {errors.company}
+            </p>
+          )}
         </div>
 
         <div>
@@ -236,22 +247,34 @@ export const ContactForm: React.FC = () => {
             htmlFor="service"
             className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-700 mb-2"
           >
-            Primary Growth Discipline
+            Primary Growth Discipline <span className="text-[#C88A1A]">*</span>
           </label>
           <select
             id="service"
             name="service"
+            required
             value={formData.service}
             onChange={handleChange}
-            className="w-full px-4 py-3.5 rounded-xl bg-[#FAF8F5] border border-stone-200 text-[#07192F] text-sm focus:outline-none focus:border-[#C88A1A] focus:ring-1 focus:ring-[#C88A1A] transition-colors cursor-pointer"
+            aria-invalid={Boolean(errors.service)}
+            aria-describedby={errors.service ? "service-error" : undefined}
+            className={`w-full px-4 py-3.5 rounded-xl bg-[#FAF8F5] border text-[#07192F] text-sm focus:outline-none transition-colors cursor-pointer ${
+              errors.service
+                ? "border-red-500 focus:border-red-400"
+                : "border-stone-200 focus:border-[#C88A1A] focus:ring-1 focus:ring-[#C88A1A]"
+            }`}
           >
             <option value="">Select primary focus...</option>
-            <option value="growth-strategy">01. Growth &amp; Strategy Advisory</option>
-            <option value="branding-marketing">02. Branding &amp; Demand Generation</option>
-            <option value="sales-conversion">03. Sales Velocity &amp; Pipeline Conversion</option>
-            <option value="technology-automation">04. Technology, AI &amp; Automation</option>
-            <option value="full-echelon">05. Full Echelon Commercial Overhaul</option>
+            {SERVICE_OPTIONS.map((opt) => (
+              <option key={opt.value} value={opt.value}>
+                {opt.label}
+              </option>
+            ))}
           </select>
+          {errors.service && (
+            <p id="service-error" className="text-xs text-red-500 mt-1.5 font-medium">
+              {errors.service}
+            </p>
+          )}
         </div>
       </div>
 
@@ -271,11 +294,15 @@ export const ContactForm: React.FC = () => {
           className="w-full px-4 py-3.5 rounded-xl bg-[#FAF8F5] border border-stone-200 text-[#07192F] text-sm focus:outline-none focus:border-[#C88A1A] focus:ring-1 focus:ring-[#C88A1A] transition-colors cursor-pointer"
         >
           <option value="">Select current stage...</option>
-          <option value="under-1m">Early Scaling (&lt; $1M ARR / Annual Revenue)</option>
-          <option value="1m-5m">Growth Stage ($1M – $5M ARR)</option>
-          <option value="5m-20m">Expansion Stage ($5M – $20M ARR)</option>
-          <option value="20m-plus">Enterprise Tier ($20M+ ARR)</option>
+          {BUDGET_OPTIONS.map((opt) => (
+            <option key={opt.value} value={opt.value}>
+              {opt.label}
+            </option>
+          ))}
         </select>
+        {errors.budget && (
+          <p className="text-xs text-red-500 mt-1.5 font-medium">{errors.budget}</p>
+        )}
       </div>
 
       {/* Row 4: Message */}

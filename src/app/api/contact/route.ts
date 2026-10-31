@@ -1,5 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { validateContactForm } from "@/lib/validation";
+import {
+  validateContactForm,
+  getOptionLabel,
+  SERVICE_OPTIONS,
+  BUDGET_OPTIONS,
+} from "@/lib/validation";
 
 // Simple in-memory rate limiting store (IP -> array of timestamps)
 const rateLimitMap = new Map<string, number[]>();
@@ -65,6 +70,8 @@ export async function POST(request: NextRequest) {
     }
 
     const { fullName, email, company, service, budget, message } = validation.sanitizedData;
+    const serviceLabel = getOptionLabel(SERVICE_OPTIONS, service);
+    const budgetLabel = budget ? getOptionLabel(BUDGET_OPTIONS, budget) : "Not specified";
 
     // 4. Safe server logging (safe fields only)
     console.log(`[Contact Submission] from ${email} | Company: ${company} | Service: ${service}`);
@@ -72,6 +79,20 @@ export async function POST(request: NextRequest) {
     // 5. Provider integration check (e.g. Resend / Webhook)
     const resendApiKey = process.env.RESEND_API_KEY;
     const recipientEmail = process.env.CONTACT_EMAIL_RECIPIENT || "ceo.levexa@gmail.com";
+    const senderEmail =
+      process.env.CONTACT_EMAIL_FROM || "Levexa Inquiries <onboarding@resend.dev>";
+
+    if (!resendApiKey && process.env.NODE_ENV === "production") {
+      // Never report success for an enquiry that cannot be delivered
+      console.error("[Contact API] RESEND_API_KEY is not configured; enquiry was not delivered.");
+      return NextResponse.json(
+        {
+          success: false,
+          message: `Our enquiry form is temporarily unavailable. Please email us directly at ${recipientEmail}.`,
+        },
+        { status: 503 }
+      );
+    }
 
     if (resendApiKey) {
       // Dispatches via Resend API if configured
@@ -83,17 +104,17 @@ export async function POST(request: NextRequest) {
             Authorization: `Bearer ${resendApiKey}`,
           },
           body: JSON.stringify({
-            from: "Levexa Inquiries <onboarding@resend.dev>",
+            from: senderEmail,
             to: [recipientEmail],
             reply_to: email,
-            subject: `New Levexa Enquiry: ${company} (${service})`,
+            subject: `New Levexa Enquiry: ${company || fullName} (${serviceLabel})`,
             html: `
               <h2>New Growth Enquiry for Levexa</h2>
               <p><strong>Name:</strong> ${escapeHtml(fullName)}</p>
               <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-              <p><strong>Company:</strong> ${escapeHtml(company)}</p>
-              <p><strong>Service of Interest:</strong> ${escapeHtml(service)}</p>
-              <p><strong>Estimated Budget:</strong> ${escapeHtml(budget || "Not specified")}</p>
+              <p><strong>Company:</strong> ${escapeHtml(company || "Not specified")}</p>
+              <p><strong>Service of Interest:</strong> ${escapeHtml(serviceLabel)}</p>
+              <p><strong>Company Stage:</strong> ${escapeHtml(budgetLabel)}</p>
               <h3>Project Details:</h3>
               <p style="white-space: pre-wrap;">${escapeHtml(message)}</p>
             `,
@@ -116,15 +137,15 @@ export async function POST(request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            message: "Network error delivering message. Please reach out directly to ceo.levexa@gmail.com.",
+            message: `Network error delivering message. Please reach out directly to ${recipientEmail}.`,
           },
           { status: 500 }
         );
       }
     } else {
-      // Documented development fallback: email provider awaiting client API key
+      // Development-only fallback: enquiry is logged instead of emailed
       console.log(
-        "[Notice] RESEND_API_KEY is not defined. Enquiry logged locally. Awaiting client email provider configuration."
+        "[Notice] RESEND_API_KEY is not defined. Enquiry logged locally (development only)."
       );
     }
 

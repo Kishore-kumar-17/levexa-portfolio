@@ -19,8 +19,11 @@ export function constructMetadata({
   path?: string;
   noIndex?: boolean;
 } = {}): Metadata {
+  // Only append the brand when the page title doesn't already mention it
   const pageTitle = title
-    ? `${title} | ${siteConfig.name}`
+    ? title.includes(siteConfig.name)
+      ? title
+      : `${title} | ${siteConfig.name}`
     : `${siteConfig.name} — Business Strategy, Marketing, Sales & Growth`;
 
   const canonicalUrl = `${siteConfig.siteUrl}${path}`;

@@ -2,6 +2,7 @@
 'use client';
 
 import React, { useEffect, useMemo, useRef } from 'react';
+import { getImageProps } from 'next/image';
 
 export interface SpiralItem {
   src: string;
@@ -264,6 +265,14 @@ export const InfiniteSpiral: React.FC<InfiniteSpiralProps> = ({
       <div className="infinite-spiral__stage" role="list" aria-label="Infinite spiral gallery">
         {normalizedItems.map((item, index) => {
           const Tag = item.href ? 'a' : 'div';
+          // Serve card-sized optimized images (1x/2x) instead of the full-resolution source,
+          // sized for the scaled-up center card so it stays sharp
+          const { props: imageProps } = getImageProps({
+            src: item.src,
+            alt: item.alt || '',
+            width: Math.ceil(cardWidth * centerScale),
+            height: Math.ceil(cardHeight * centerScale)
+          });
           return React.createElement(
             Tag,
             {
@@ -284,9 +293,9 @@ export const InfiniteSpiral: React.FC<InfiniteSpiralProps> = ({
               'aria-label': item.label ?? item.alt
             },
             <img
-              className="infinite-spiral__image"
-              src={item.src}
+              {...imageProps}
               alt={item.alt || ''}
+              className="infinite-spiral__image"
               loading={index < 6 ? 'eager' : 'lazy'}
               draggable={false}
               style={{

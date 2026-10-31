@@ -27,7 +27,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
   secondaryCtaText = "Explore Our Services",
 }) => {
   return (
-    <section className="py-20 lg:py-28 bg-[#FAF8F5] text-[#07192F] border-t border-[#D7D3CB] relative overflow-hidden select-none">
+    <section className="py-20 lg:py-28 bg-[#FAF8F5] text-[#07192F] border-t border-[#D7D3CB] relative overflow-hidden">
       <Container className="relative z-10">
         <div className="max-w-5xl mx-auto rounded-3xl bg-[#07192F] text-white p-10 sm:p-14 lg:p-16 text-center shadow-card-elevated relative overflow-hidden">
           {/* Subtle gold accent top line */}
