@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { MotionProvider } from "@/components/layout/MotionProvider";
 import { StructuredData } from "@/components/layout/StructuredData";
+import { WhatsAppFloatingButton } from "@/components/layout/WhatsAppFloatingButton";
 import { constructMetadata } from "@/lib/metadata";
 
 const inter = Inter({
@@ -54,6 +55,7 @@ export default function RootLayout({
           </main>
           <SiteFooter />
         </MotionProvider>
+        <WhatsAppFloatingButton />
       </body>
     </html>
   );

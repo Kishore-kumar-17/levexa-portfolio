@@ -49,7 +49,7 @@ export const InstagramProfileShowcase: React.FC = () => {
       {/* ========================================================================= */}
       {/* 1. INSTAGRAM PROFILE HEADER (mirrors the live profile)                    */}
       {/* ========================================================================= */}
-      <div className="bg-[#0C1014] text-[#F5F5F5] rounded-3xl border border-[#262A2E] shadow-sm overflow-hidden mb-12">
+      <div className="bg-[#07192F] text-[#FAF8F5] rounded-3xl border border-[#0E2849] shadow-sm overflow-hidden mb-12">
         <div className="px-5 sm:px-10 pt-7 sm:pt-10 pb-6 sm:pb-8">
           <div className="flex items-center sm:items-start gap-5 sm:gap-10">
             {/* Avatar */}
@@ -58,7 +58,7 @@ export const InstagramProfileShowcase: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`@${instagramProfileData.handle} on Instagram`}
-              className="relative shrink-0 w-[84px] h-[84px] sm:w-[150px] sm:h-[150px] rounded-full overflow-hidden bg-[#262A2E]"
+              className="relative shrink-0 w-[84px] h-[84px] sm:w-[150px] sm:h-[150px] rounded-full overflow-hidden bg-[#0E2849] ring-2 ring-[#C88A1A] ring-offset-[3px] sm:ring-offset-4 ring-offset-[#07192F]"
             >
               <Image
                 src={instagramProfileData.avatarUrl}
@@ -75,9 +75,9 @@ export const InstagramProfileShowcase: React.FC = () => {
                 <h2 className="text-lg sm:text-xl font-semibold truncate">
                   {instagramProfileData.handle}
                 </h2>
-                <MoreHorizontal className="w-5 h-5 text-[#F5F5F5] shrink-0" aria-hidden="true" />
+                <MoreHorizontal className="w-5 h-5 text-[#FAF8F5]/80 shrink-0" aria-hidden="true" />
               </div>
-              <p className="text-sm sm:text-[15px] text-[#F5F5F5]/90 mt-1">
+              <p className="text-sm sm:text-[15px] text-stone-300 mt-1">
                 {instagramProfileData.displayName}
               </p>
 
@@ -97,7 +97,7 @@ export const InstagramProfileShowcase: React.FC = () => {
                   href={instagramProfileData.link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 pt-1 font-semibold text-[#8EA7FF] hover:underline break-all"
+                  className="inline-flex items-center gap-1.5 pt-1 font-semibold text-[#E4AB3C] hover:underline break-all"
                 >
                   <Link2 className="w-4 h-4 shrink-0 -rotate-45" aria-hidden="true" />
                   {instagramProfileData.link.label}
@@ -121,7 +121,7 @@ export const InstagramProfileShowcase: React.FC = () => {
                 href={instagramProfileData.link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 pt-1 font-semibold text-[#8EA7FF] hover:underline break-all"
+                className="inline-flex items-center gap-1.5 pt-1 font-semibold text-[#E4AB3C] hover:underline break-all"
               >
                 <Link2 className="w-4 h-4 shrink-0 -rotate-45" aria-hidden="true" />
                 {instagramProfileData.link.label}
@@ -135,7 +135,7 @@ export const InstagramProfileShowcase: React.FC = () => {
               href={instagramProfileData.profileUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 inline-flex items-center justify-center h-10 sm:h-11 rounded-xl bg-[#4A5DF9] hover:bg-[#3B4FE6] text-white text-sm font-semibold transition-colors"
+              className="flex-1 inline-flex items-center justify-center h-10 sm:h-11 rounded-xl bg-[#C88A1A] hover:bg-[#F5A900] text-[#07192F] font-bold text-sm font-semibold transition-colors"
             >
               Follow
             </a>
@@ -143,7 +143,7 @@ export const InstagramProfileShowcase: React.FC = () => {
               href={instagramProfileData.messageUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 inline-flex items-center justify-center h-10 sm:h-11 rounded-xl bg-[#262A2E] hover:bg-[#33383D] text-white text-sm font-semibold transition-colors"
+              className="flex-1 inline-flex items-center justify-center h-10 sm:h-11 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-[#FAF8F5] text-sm font-semibold transition-colors"
             >
               Message
             </a>
@@ -152,7 +152,7 @@ export const InstagramProfileShowcase: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Follow on Instagram"
-              className="inline-flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#262A2E] hover:bg-[#33383D] text-white transition-colors"
+              className="inline-flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-[#FAF8F5] transition-colors"
             >
               <UserPlus className="w-4 h-4" />
             </a>
@@ -160,14 +160,14 @@ export const InstagramProfileShowcase: React.FC = () => {
         </div>
 
         {/* Tab Switcher: Reels Grid vs. Script Anatomy */}
-        <div className="border-t border-[#262A2E] flex items-center justify-around">
+        <div className="border-t border-white/10 flex items-center justify-around">
           <button
             type="button"
             onClick={() => setActiveTab("reels")}
             className={`flex-1 py-4 flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-wider transition-colors border-t-2 -mt-px ${
               activeTab === "reels"
-                ? "border-[#F5F5F5] text-[#F5F5F5]"
-                : "border-transparent text-[#A8A8A8] hover:text-[#F5F5F5]"
+                ? "border-[#C88A1A] text-[#FAF8F5]"
+                : "border-transparent text-stone-400 hover:text-[#FAF8F5]"
             }`}
           >
             <Film className="w-4 h-4" />
@@ -179,8 +179,8 @@ export const InstagramProfileShowcase: React.FC = () => {
             onClick={() => setActiveTab("breakdowns")}
             className={`flex-1 py-4 flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-wider transition-colors border-t-2 -mt-px ${
               activeTab === "breakdowns"
-                ? "border-[#F5F5F5] text-[#F5F5F5]"
-                : "border-transparent text-[#A8A8A8] hover:text-[#F5F5F5]"
+                ? "border-[#C88A1A] text-[#FAF8F5]"
+                : "border-transparent text-stone-400 hover:text-[#FAF8F5]"
             }`}
           >
             <FileText className="w-4 h-4" />
