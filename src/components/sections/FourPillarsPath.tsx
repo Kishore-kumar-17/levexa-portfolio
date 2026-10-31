@@ -96,7 +96,7 @@ export const FourPillarsPath: React.FC = () => {
                   <div className="relative w-full h-[260px] sm:h-[280px] lg:h-[310px] xl:h-[330px] overflow-hidden bg-stone-200">
                     <Image
                       src={pillar.image}
-                      alt={`${pillar.titleLine1} ${pillar.titleLine2}`}
+                      alt=""
                       fill
                       sizes="(max-width: 640px) 260px, 330px"
                       className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"

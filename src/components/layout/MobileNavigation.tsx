@@ -83,6 +83,7 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
                 src="/levexa-logo-light-trans.png"
                 alt="Levexa"
                 fill
+                sizes="144px"
                 priority
                 className="object-contain object-left"
               />

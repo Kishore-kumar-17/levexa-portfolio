@@ -262,7 +262,7 @@ export const InfiniteSpiral: React.FC<InfiniteSpiralProps> = ({
         dragMovedRef.current = false;
       }}
     >
-      <div className="infinite-spiral__stage" role="list" aria-label="Infinite spiral gallery">
+      <div className="infinite-spiral__stage" role="group" aria-label="Infinite spiral gallery">
         {normalizedItems.map((item, index) => {
           const Tag = item.href ? 'a' : 'div';
           // Serve card-sized optimized images (1x/2x) instead of the full-resolution source,
@@ -289,7 +289,6 @@ export const InfiniteSpiral: React.FC<InfiniteSpiralProps> = ({
                     rel: item.target === '_blank' ? 'noreferrer' : undefined
                   }
                 : {}),
-              role: 'listitem',
               'aria-label': item.label ?? item.alt
             },
             <img

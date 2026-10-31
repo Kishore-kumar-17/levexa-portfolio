@@ -62,6 +62,7 @@ export const SiteHeader: React.FC = () => {
                 src="/levexa-logo-light-trans.png"
                 alt="Levexa Growth"
                 fill
+                sizes="176px"
                 priority
                 className="object-contain object-left"
               />
