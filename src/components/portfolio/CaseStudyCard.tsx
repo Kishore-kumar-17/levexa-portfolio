@@ -115,7 +115,7 @@ export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ caseStudy }) => {
 
       {/* Card Footer Link */}
       <div className="pt-4 border-t border-stone-100 flex items-center justify-between">
-        <span className="text-[11px] font-mono font-semibold tracking-wider text-slate-400 uppercase">
+        <span className="text-[11px] font-mono font-semibold tracking-wider text-slate-500 uppercase">
           COMMERCIAL AUDIT SPRINT
         </span>
 

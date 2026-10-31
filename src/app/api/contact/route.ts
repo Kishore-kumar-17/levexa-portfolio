@@ -73,8 +73,10 @@ export async function POST(request: NextRequest) {
     const serviceLabel = getOptionLabel(SERVICE_OPTIONS, service);
     const budgetLabel = budget ? getOptionLabel(BUDGET_OPTIONS, budget) : "Not specified";
 
-    // 4. Safe server logging (safe fields only)
-    console.log(`[Contact Submission] from ${email} | Company: ${company} | Service: ${service}`);
+    // 4. Safe server logging: no personal data (email domain only)
+    console.log(
+      `[Contact Submission] from @${email.split("@")[1]} | Company: ${company || "n/a"} | Service: ${service}`
+    );
 
     // 5. Provider integration check (e.g. Resend / Webhook)
     const resendApiKey = process.env.RESEND_API_KEY;

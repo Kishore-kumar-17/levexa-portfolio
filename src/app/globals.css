@@ -50,9 +50,13 @@
   }
 }
 
-/* Reduced motion support (respecting user preference without breaking essential tickers) */
+/* Reduced motion support: stop CSS transitions and keyframe loops (JS loops check the same preference) */
 @media (prefers-reduced-motion: reduce) {
-  *:not(.footer-marquee-track):not(.footer-marquee-track *) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }

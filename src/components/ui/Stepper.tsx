@@ -62,7 +62,7 @@ export const Stepper: React.FC<StepperProps> = ({
                         ? 'text-[#C88A1A]'
                         : isCompleted
                         ? 'text-[#07192F]'
-                        : 'text-slate-400'
+                        : 'text-slate-500'
                     }`}
                   >
                     {step.title}
@@ -101,12 +101,12 @@ export const Stepper: React.FC<StepperProps> = ({
             type="button"
             disabled={activeStep === 0}
             onClick={() => setActiveStep((prev) => Math.max(0, prev - 1))}
-            className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400 hover:text-[#07192F] disabled:opacity-30 disabled:pointer-events-none transition-colors cursor-pointer"
+            className="text-xs font-mono font-bold uppercase tracking-wider text-slate-500 hover:text-[#07192F] disabled:opacity-30 disabled:pointer-events-none transition-colors cursor-pointer"
           >
             ← PREVIOUS MILESTONE
           </button>
 
-          <span className="text-xs font-mono font-semibold text-slate-400">
+          <span className="text-xs font-mono font-semibold text-slate-500">
             {activeStep + 1} OF {steps.length}
           </span>
 

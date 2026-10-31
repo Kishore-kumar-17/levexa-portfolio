@@ -1,4 +1,4 @@
-import { ContactFormData } from "@/types";
+import type { ContactFormData } from "@/types";
 
 export interface ValidationResult {
   isValid: boolean;

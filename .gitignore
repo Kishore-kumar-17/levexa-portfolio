@@ -40,3 +40,5 @@ Untitled-1.txt
 
 
 .vercel
+.env*
+!.env.example

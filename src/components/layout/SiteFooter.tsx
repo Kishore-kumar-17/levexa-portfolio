@@ -8,6 +8,7 @@ import { Container } from "@/components/ui/Container";
 import { CircularText } from "@/components/ui/CircularText";
 import { companyConfig } from "@/data/company";
 import { footerServicesNavigation, footerCompanyNavigation } from "@/data/navigation";
+import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
 
 // Lucide has no WhatsApp glyph; drawn to match Lucide's stroke style
 const WhatsAppIcon: React.FC<{ className?: string }> = ({ className }) => (
@@ -36,13 +37,14 @@ const socialLinks = [
 export const SiteFooter: React.FC = () => {
   const currentYear = new Date().getFullYear();
   const trackRef = useRef<HTMLDivElement>(null);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   // Repeated wordmark instances for seamless infinite marquee loop
   const words = ["LEVEXA", "LEVEXA", "LEVEXA", "LEVEXA"];
 
   useEffect(() => {
     const track = trackRef.current;
-    if (!track) return;
+    if (!track || prefersReducedMotion) return;
 
     let animationFrameId: number;
     let offset = 0;
@@ -64,7 +66,7 @@ export const SiteFooter: React.FC = () => {
     return () => {
       cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [prefersReducedMotion]);
 
   return (
     <footer className="relative bg-[#0C0D0E] text-stone-400 overflow-hidden pt-12 sm:pt-16 md:pt-20 pb-0 border-t border-white/5">

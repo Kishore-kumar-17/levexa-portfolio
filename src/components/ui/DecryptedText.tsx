@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState, useRef, useMemo, useCallback } from 'react';
+import { usePrefersReducedMotion } from '@/lib/usePrefersReducedMotion';
 
 export interface DecryptedTextProps {
   text: string;
@@ -34,6 +35,7 @@ export const DecryptedText: React.FC<DecryptedTextProps> = ({
   const [revealedIndices, setRevealedIndices] = useState<Set<number>>(new Set());
   const [hasAnimated, setHasAnimated] = useState<boolean>(false);
   const containerRef = useRef<HTMLSpanElement>(null);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   const availableChars = useMemo(() => {
     if (useOriginalCharsOnly) {
@@ -61,6 +63,8 @@ export const DecryptedText: React.FC<DecryptedTextProps> = ({
   );
 
   const triggerAnimation = useCallback(() => {
+    // Plain text stays as-is for reduced-motion users
+    if (prefersReducedMotion) return;
     setIsScrambling(true);
     let iteration = 0;
     const currentRevealed = new Set<number>();
@@ -129,7 +133,7 @@ export const DecryptedText: React.FC<DecryptedTextProps> = ({
     }, speed);
 
     return () => clearInterval(interval);
-  }, [text, speed, maxIterations, sequential, revealDirection, shuffleText]);
+  }, [text, speed, maxIterations, sequential, revealDirection, shuffleText, prefersReducedMotion]);
 
   useEffect(() => {
     if (animateOn === 'view' && !hasAnimated) {

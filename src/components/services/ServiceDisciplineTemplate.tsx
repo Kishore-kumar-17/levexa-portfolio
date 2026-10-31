@@ -498,7 +498,7 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
                       0{idx + 1}
                     </span>
                   </div>
-                  <div className="text-xs font-mono font-bold uppercase text-slate-400 mb-1">
+                  <div className="text-xs font-mono font-bold uppercase text-slate-500 mb-1">
                     {step.phase}
                   </div>
                   <h3 className="text-lg font-bold text-[#07192F] mb-3">
@@ -506,7 +506,7 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
                   </h3>
                 </div>
                 <div className="mt-4 pt-3 border-t border-stone-100 text-xs text-slate-600 font-medium">
-                  <span className="text-[10px] font-mono uppercase text-slate-400 block mb-1">
+                  <span className="text-[10px] font-mono uppercase text-slate-500 block mb-1">
                     Milestone Deliverable:
                   </span>
                   {step.deliverable}
@@ -605,7 +605,7 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
       <section className="py-16 border-b border-[#D7D3CB] bg-white">
         <Container>
           <div className="text-center mb-8">
-            <span className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-slate-400 block mb-6">
+            <span className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-slate-500 block mb-6">
               EXPLORE COMMERCIAL DISCIPLINES
             </span>
             <div className="flex justify-center">

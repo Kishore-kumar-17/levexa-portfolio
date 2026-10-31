@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useRef, useState, useEffect } from 'react';
+import { usePrefersReducedMotion } from '@/lib/usePrefersReducedMotion';
 
 export interface InfiniteScrollItem {
   id?: string | number;
@@ -27,10 +28,11 @@ export const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
     const track = trackRef.current;
-    if (!track) return;
+    if (!track || prefersReducedMotion) return;
 
     let offset = 0;
     let animationId: number;
@@ -64,7 +66,7 @@ export const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
     animationId = requestAnimationFrame(animate);
 
     return () => cancelAnimationFrame(animationId);
-  }, [speed, direction, isPaused]);
+  }, [speed, direction, isPaused, prefersReducedMotion]);
 
   return (
     <div

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useRef, useEffect } from 'react';
+import { usePrefersReducedMotion } from '@/lib/usePrefersReducedMotion';
 
 export interface SquaresProps {
   direction?: 'diagonal' | 'up' | 'right' | 'down' | 'left';
@@ -22,6 +23,7 @@ export const Squares: React.FC<SquaresProps> = ({
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const gridOffset = useRef({ x: 0, y: 0 });
   const hoveredSquare = useRef<{ x: number; y: number } | null>(null);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -87,7 +89,8 @@ export const Squares: React.FC<SquaresProps> = ({
           break;
       }
 
-      animationId = requestAnimationFrame(draw);
+      // With reduced motion, draw a single static frame
+      if (!prefersReducedMotion) animationId = requestAnimationFrame(draw);
     };
 
     animationId = requestAnimationFrame(draw);
@@ -113,7 +116,7 @@ export const Squares: React.FC<SquaresProps> = ({
       canvas.removeEventListener('mousemove', handleMouseMove);
       canvas.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, [direction, speed, borderColor, hoverFillColor, squareSize]);
+  }, [direction, speed, borderColor, hoverFillColor, squareSize, prefersReducedMotion]);
 
   return (
     <canvas

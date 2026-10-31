@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useRef, useEffect } from 'react';
+import { usePrefersReducedMotion } from '@/lib/usePrefersReducedMotion';
 
 export interface ParticlesProps {
   particleColors?: string[];
@@ -33,6 +34,7 @@ export const Particles: React.FC<ParticlesProps> = ({
   className = '',
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -117,7 +119,8 @@ export const Particles: React.FC<ParticlesProps> = ({
         ctx.restore();
       }
 
-      animationId = requestAnimationFrame(animate);
+      // With reduced motion, draw a single static frame
+      if (!prefersReducedMotion) animationId = requestAnimationFrame(animate);
     };
 
     animationId = requestAnimationFrame(animate);
@@ -130,7 +133,7 @@ export const Particles: React.FC<ParticlesProps> = ({
         canvas.parentElement?.removeEventListener('mouseleave', onMouseLeave);
       }
     };
-  }, [particleColors, particleCount, speed, particleBaseSize, moveParticlesOnHover]);
+  }, [particleColors, particleCount, speed, particleBaseSize, moveParticlesOnHover, prefersReducedMotion]);
 
   return (
     <canvas

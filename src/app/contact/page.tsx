@@ -103,7 +103,7 @@ export default function ContactPage() {
                         <Mail className="w-4 h-4" />
                       </div>
                       <div>
-                        <p className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">
+                        <p className="text-xs font-mono font-bold uppercase tracking-wider text-slate-500">
                           Official Inquiry Inbox
                         </p>
                         <a
@@ -120,7 +120,7 @@ export default function ContactPage() {
                         <Phone className="w-4 h-4" />
                       </div>
                       <div>
-                        <p className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">
+                        <p className="text-xs font-mono font-bold uppercase tracking-wider text-slate-500">
                           Direct Executive Line
                         </p>
                         <a
@@ -137,7 +137,7 @@ export default function ContactPage() {
                         <Clock className="w-4 h-4" />
                       </div>
                       <div>
-                        <p className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">
+                        <p className="text-xs font-mono font-bold uppercase tracking-wider text-slate-500">
                           Advisory Sprint Hours
                         </p>
                         <p className="text-sm font-semibold text-[#07192F]">
@@ -151,7 +151,7 @@ export default function ContactPage() {
                         <MapPin className="w-4 h-4" />
                       </div>
                       <div>
-                        <p className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">
+                        <p className="text-xs font-mono font-bold uppercase tracking-wider text-slate-500">
                           Operational Footprint
                         </p>
                         <p className="text-sm font-semibold text-[#07192F]">

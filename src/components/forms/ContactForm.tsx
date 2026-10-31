@@ -174,7 +174,7 @@ export const ContactForm: React.FC = () => {
             }`}
           />
           {errors.fullName && (
-            <p id="fullName-error" className="text-xs text-red-500 mt-1.5 font-medium">
+            <p id="fullName-error" className="text-xs text-red-600 mt-1.5 font-medium">
               {errors.fullName}
             </p>
           )}
@@ -204,7 +204,7 @@ export const ContactForm: React.FC = () => {
             }`}
           />
           {errors.email && (
-            <p id="email-error" className="text-xs text-red-500 mt-1.5 font-medium">
+            <p id="email-error" className="text-xs text-red-600 mt-1.5 font-medium">
               {errors.email}
             </p>
           )}
@@ -236,7 +236,7 @@ export const ContactForm: React.FC = () => {
             }`}
           />
           {errors.company && (
-            <p id="company-error" className="text-xs text-red-500 mt-1.5 font-medium">
+            <p id="company-error" className="text-xs text-red-600 mt-1.5 font-medium">
               {errors.company}
             </p>
           )}
@@ -271,7 +271,7 @@ export const ContactForm: React.FC = () => {
             ))}
           </select>
           {errors.service && (
-            <p id="service-error" className="text-xs text-red-500 mt-1.5 font-medium">
+            <p id="service-error" className="text-xs text-red-600 mt-1.5 font-medium">
               {errors.service}
             </p>
           )}
@@ -301,7 +301,7 @@ export const ContactForm: React.FC = () => {
           ))}
         </select>
         {errors.budget && (
-          <p className="text-xs text-red-500 mt-1.5 font-medium">{errors.budget}</p>
+          <p className="text-xs text-red-600 mt-1.5 font-medium">{errors.budget}</p>
         )}
       </div>
 
@@ -330,7 +330,7 @@ export const ContactForm: React.FC = () => {
           }`}
         />
         {errors.message && (
-          <p id="message-error" className="text-xs text-red-500 mt-1.5 font-medium">
+          <p id="message-error" className="text-xs text-red-600 mt-1.5 font-medium">
             {errors.message}
           </p>
         )}
@@ -344,6 +344,8 @@ export const ContactForm: React.FC = () => {
             name="consent"
             checked={formData.consent}
             onChange={handleChange}
+            aria-invalid={Boolean(errors.consent)}
+            aria-describedby={errors.consent ? "consent-error" : undefined}
             className="mt-1 w-4 h-4 rounded border-stone-300 text-[#C88A1A] focus:ring-[#C88A1A]"
           />
           <span className="text-xs text-slate-600 leading-relaxed">
@@ -356,7 +358,9 @@ export const ContactForm: React.FC = () => {
           </span>
         </label>
         {errors.consent && (
-          <p className="text-xs text-red-500 mt-1.5 font-medium">{errors.consent}</p>
+          <p id="consent-error" className="text-xs text-red-600 mt-1.5 font-medium">
+            {errors.consent}
+          </p>
         )}
       </div>
 

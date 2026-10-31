@@ -3,6 +3,8 @@ import { Inter, Newsreader, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
+import { MotionProvider } from "@/components/layout/MotionProvider";
+import { StructuredData } from "@/components/layout/StructuredData";
 import { constructMetadata } from "@/lib/metadata";
 
 const inter = Inter({
@@ -44,11 +46,14 @@ export default function RootLayout({
       className={`${inter.variable} ${newsreader.variable} ${ibmPlexMono.variable}`}
     >
       <body className="bg-[#FAF8F5] text-navy-900 min-h-screen flex flex-col font-sans antialiased selection:bg-gold selection:text-navy-900">
-        <SiteHeader />
-        <main id="main-content" className="flex-1 flex flex-col">
-          {children}
-        </main>
-        <SiteFooter />
+        <StructuredData />
+        <MotionProvider>
+          <SiteHeader />
+          <main id="main-content" className="flex-1 flex flex-col">
+            {children}
+          </main>
+          <SiteFooter />
+        </MotionProvider>
       </body>
     </html>
   );

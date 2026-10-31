@@ -287,7 +287,7 @@ export const IntroReveal: React.FC<IntroRevealProps> = ({ onComplete }) => {
                           A Research-Driven Growth Agency for Ambitious Brands
                         </p>
 
-                        <div className="mt-5 flex items-center gap-1.5 text-[9px] font-mono tracking-wider text-slate-400 uppercase">
+                        <div className="mt-5 flex items-center gap-1.5 text-[9px] font-mono tracking-wider text-slate-500 uppercase">
                           <span>01</span>
                           <span>•</span>
                           <span>02</span>

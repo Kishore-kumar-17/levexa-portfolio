@@ -174,7 +174,7 @@ export const InstagramProfileShowcase: React.FC = () => {
           {/* Story Highlights Bar */}
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <span className="text-[11px] font-mono font-bold tracking-wider text-slate-400 uppercase">
+              <span className="text-[11px] font-mono font-bold tracking-wider text-slate-500 uppercase">
                 STORY ARCHIVES &amp; FRAMEWORKS
               </span>
             </div>

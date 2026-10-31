@@ -44,10 +44,10 @@ export function constructMetadata({
       type: "website",
       images: [
         {
-          url: `${siteConfig.siteUrl}/levexa-logo-dark.png`,
-          width: 1410,
-          height: 255,
-          alt: "Levexa — Level Up With Excellence",
+          url: `${siteConfig.siteUrl}/og-image.jpg`,
+          width: 1200,
+          height: 630,
+          alt: "Levexa — Level up your excellence. Lavanya, Founder & CEO",
         },
       ],
     },
@@ -55,7 +55,7 @@ export function constructMetadata({
       card: "summary_large_image",
       title: pageTitle,
       description,
-      images: [`${siteConfig.siteUrl}/levexa-logo-dark.png`],
+      images: [`${siteConfig.siteUrl}/og-image.jpg`],
     },
     robots: {
       index: !noIndex,
