@@ -238,7 +238,7 @@ export const IntroReveal: React.FC<IntroRevealProps> = ({ onComplete }) => {
                 SALES
               </span>
               <span className="text-[12px] uppercase font-medium tracking-[0.18em] text-slate-500 hover:text-black transition-colors">
-                CASE STUDIES
+                WORK
               </span>
             </nav>
 

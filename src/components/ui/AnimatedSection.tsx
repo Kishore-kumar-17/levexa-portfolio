@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface AnimatedSectionProps {
   children: React.ReactNode;
@@ -16,12 +16,9 @@ export const AnimatedSection: React.FC<AnimatedSectionProps> = ({
   delay = 0,
   direction = "up",
 }) => {
-  const shouldReduceMotion = useReducedMotion();
-
-  if (shouldReduceMotion) {
-    return <div className={className}>{children}</div>;
-  }
-
+  // Always render the same element on server and client (a reduced-motion branch here
+  // caused a hydration mismatch that left the content stuck at opacity 0). The app-wide
+  // MotionConfig reducedMotion="user" drops the slide for those users; the fade remains.
   const getOffset = () => {
     switch (direction) {
       case "up":

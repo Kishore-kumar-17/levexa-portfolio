@@ -8,7 +8,7 @@ export const mainNavigation: NavItem[] = [
   { label: "Marketing", href: "/services/marketing" },
   { label: "Sales", href: "/services/sales" },
   { label: "Technology", href: "/services/technology" },
-  { label: "Case Studies", href: "/work" },
+  { label: "Work", href: "/work" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -21,7 +21,7 @@ export const footerServicesNavigation: NavItem[] = [
 
 export const footerCompanyNavigation: NavItem[] = [
   { label: "About Levexa", href: "/about" },
-  { label: "Case Studies & Work", href: "/work" },
+  { label: "Our Work", href: "/work" },
   { label: "All Services Overview", href: "/services" },
   { label: "Get in Touch", href: "/contact" },
   { label: "Privacy Policy", href: "/privacy" },

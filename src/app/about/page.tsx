@@ -282,8 +282,8 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              {/* Thesis Focus Accent from React Bits */}
-              <div className="mt-4 flex items-center justify-end gap-3 text-stone-700">
+              {/* Thesis Focus Accent from React Bits (hover effect: desktop only, it wraps and overlaps on phones) */}
+              <div className="mt-4 hidden lg:flex items-center justify-end gap-3 text-stone-700">
                 <TrueFocus
                   sentence="Architecting predictable scalable revenue engines"
                   manualMode={true}
@@ -504,7 +504,8 @@ export default function AboutPage() {
         highlight="next growth breakthrough?"
         subtitle="Schedule a strategic consultation with Levexa's senior advisors. We'll audit your current commercial engines and identify immediate scaling opportunities."
         primaryCtaText="Schedule Growth Consultation"
-        secondaryCtaText="Explore Case Studies"
+        secondaryCtaText="See Our Work"
+        secondaryCtaHref="/work"
       />
 
     </div>

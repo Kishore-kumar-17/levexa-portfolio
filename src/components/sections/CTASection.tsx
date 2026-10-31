@@ -17,6 +17,7 @@ interface CTASectionProps {
   subtitle?: string;
   primaryCtaText?: string;
   secondaryCtaText?: string;
+  secondaryCtaHref?: string;
 }
 
 export const CTASection: React.FC<CTASectionProps> = ({
@@ -25,6 +26,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
   subtitle = "Partner directly with Levexa to transform commercial strategy, marketing demand, and sales execution into an interconnected revenue engine.",
   primaryCtaText = "Start Your Growth Consultation",
   secondaryCtaText = "Explore Our Services",
+  secondaryCtaHref = "/services",
 }) => {
   return (
     <section className="py-20 lg:py-28 bg-[#FAF8F5] text-[#07192F] border-t border-[#D7D3CB] relative overflow-hidden">
@@ -96,7 +98,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
 
               <ClickSpark sparkColor="#C88A1A" sparkRadius={25} sparkCount={6}>
                 <Link
-                  href="/services"
+                  href={secondaryCtaHref}
                   className="group inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-full border border-white/20 text-white font-semibold text-sm sm:text-base tracking-wide hover:bg-white/10 hover:border-white/40 transition-all duration-300"
                 >
                   <span>{secondaryCtaText}</span>

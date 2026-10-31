@@ -3,14 +3,11 @@ import { Metadata } from "next";
 import { constructMetadata } from "@/lib/metadata";
 import {
   ServiceDisciplineTemplate,
-  MetricItem,
   DeliverableDetailed,
-  FrictionVsSolution,
   DisciplineProcessStep,
   DisciplineFAQ,
   AdjacentDiscipline,
 } from "@/components/services/ServiceDisciplineTemplate";
-import { caseStudiesData } from "@/data/case-studies";
 
 export const metadata: Metadata = constructMetadata({
   title: "Technology & Automation Advisory — Levexa",
@@ -20,102 +17,26 @@ export const metadata: Metadata = constructMetadata({
 });
 
 export default function TechnologyServicePage() {
-  const metrics: MetricItem[] = [
-    {
-      label: "Operational Time Savings",
-      value: "40+ Hrs/Wk",
-      detail:
-        "Commercial team hours reclaimed through automated lead routing, meeting follow-ups, and AI-driven document drafting.",
-    },
-    {
-      label: "Visitor-to-Lead Lift",
-      value: "3.8x",
-      detail:
-        "Increase in conversion rate achieved by transitioning from outdated template sites to high-speed, luxury digital experiences.",
-    },
-    {
-      label: "Pipeline Data Accuracy",
-      value: "99.9%",
-      detail:
-        "Zero dropped lead records through robust, two-way API synchronization between ad platforms, CRM, and billing systems.",
-    },
-  ];
-
   const deliverablesDetailed: DeliverableDetailed[] = [
     {
       title: "High-Converting Web Platforms & Web Applications",
       description:
         "Bespoke, blazingly fast digital architectures built with modern engineering standards to maximize brand prestige and conversion.",
-      timeline: "Weeks 1–4",
-      items: [
-        "Modern Full-Stack Web Development (Next.js, TypeScript)",
-        "Luxury Responsive UI/UX with Micro-Interactions",
-        "Conversion Funnel Architecture & Speed-Optimized Landing Pages",
-        "Enterprise SEO Infrastructure, Structured Data & Security Headers",
-      ],
     },
     {
       title: "CRM Integration & Speed-to-Lead Workflows",
       description:
         "Instant automated routing connecting every inbound marketing touchpoint directly into your sales team's hands.",
-      timeline: "Weeks 5–7",
-      items: [
-        "Two-Way Native CRM Sync (HubSpot, Salesforce, Pipedrive)",
-        "Sub-2-Minute Automated Lead Notification Protocols",
-        "Calendar Scheduling & Round-Robin Meeting Assignment",
-        "Dynamic Form Gating & Enrichment Telemetry",
-      ],
     },
     {
       title: "WhatsApp Bots, AI Agents & Workflow Automation",
       description:
         "Intelligent conversational bots and AI agents that engage prospects 24/7, answer technical questions, and pre-qualify leads.",
-      timeline: "Weeks 8–10",
-      items: [
-        "Official WhatsApp Business API Setup & Verified Sender",
-        "AI Chatbots Trained on Your Company SOPs & Pricing",
-        "Automated Meeting Reminders & No-Show Rescheduling Flows",
-        "AI Lead Summarization & CRM Deal Update Workflows",
-      ],
     },
     {
       title: "Executive Business Intelligence Dashboards",
       description:
         "Real-time operational visibility that consolidates traffic, ad spend, pipeline velocity, and client retention into one pane.",
-      timeline: "Weeks 11–12",
-      items: [
-        "Executive KPI Cockpit (Looker Studio, Metabase, Custom)",
-        "Multi-Platform Ad Spend & Revenue Reconciliation",
-        "Automated Weekly Executive Summary Reports via Email/Slack",
-        "Data Backup, Security Compliance & API Governance",
-      ],
-    },
-  ];
-
-  const frictionVsSolution: FrictionVsSolution[] = [
-    {
-      friction:
-        "Slow, generic WordPress or builder sites that look identical to budget competitors and suffer 60%+ bounce rates.",
-      solution:
-        "Bespoke, ultra-responsive digital architecture with instant load times and luxury aesthetics that build immediate authority.",
-    },
-    {
-      friction:
-        "Inbound leads sit untouched for hours, allowing hot prospects to cool off or book consultations with competitors.",
-      solution:
-        "Automated sub-120-second speed-to-lead routing with instant WhatsApp and calendar triggers that secure commitments.",
-    },
-    {
-      friction:
-        "Customer records fragmented across disparate spreadsheets, outdated forms, and disconnected marketing software.",
-      solution:
-        "Unified automated data pipeline synchronizing advertising platforms, CRM deal stages, and billing systems seamlessly.",
-    },
-    {
-      friction:
-        "Skilled commercial staff wasting half their week performing repetitive administrative tasks and manual data entry.",
-      solution:
-        "Intelligent AI agents and webhook automations that handle meeting notes, CRM field updates, and follow-up emails.",
     },
   ];
 
@@ -193,8 +114,6 @@ export default function TechnologyServicePage() {
     },
   ];
 
-  const featuredCaseStudy = caseStudiesData[3]; // Healthcare Expansion Model
-
   return (
     <ServiceDisciplineTemplate
       pillarNumber="04"
@@ -205,11 +124,8 @@ export default function TechnologyServicePage() {
       image="/images/pillars/04-technology-automation.jpg"
       imageAlt="Levexa Technology & Automation Architecture"
       overviewSummary="Custom web development, mobile apps, CRM, AI, and workflow automation."
-      metrics={metrics}
       deliverablesDetailed={deliverablesDetailed}
-      frictionVsSolution={frictionVsSolution}
       roadmap={roadmap}
-      featuredCaseStudy={featuredCaseStudy}
       faqs={faqs}
       adjacentDisciplines={adjacentDisciplines}
       ctaTitle="Ready to automate and scale your"

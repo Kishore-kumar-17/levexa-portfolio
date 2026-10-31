@@ -25,33 +25,27 @@ export interface ScriptClientWork {
   keyResult: string;
 }
 
+// Mirrors the live Instagram profile; update the counts when they change
 export const instagramProfileData = {
   handle: "levelupwith_lavanya",
-  displayName: "Lavanya • Business Growth Strategist & Script Architect",
-  verified: true,
+  displayName: "Lavanya | Revenue Marketer",
   avatarUrl: "/images/about/founder-lavanya-avatar.jpg",
   profileUrl: "https://www.instagram.com/levelupwith_lavanya/",
-  bio: [
-    "✍️ High-retention scriptwriting & content architecture for founders and brands",
-    "🎯 Viral hooks • Relational pacing • Automated ManyChat lead-generation systems",
-    "📈 7.1M+ Organic views & 21,400+ comment leads across client campaigns",
-    "📍 Strategic Advisory & Global Creative Direction",
-  ],
-  stats: {
-    reelsScripted: "140+",
-    totalViews: "7.1M+",
-    verifiedLikes: "53.3K+",
-    commentLeads: "21.4K+",
-    avgRetention: "84.2%",
-    clientsScaled: "38",
+  messageUrl: "https://ig.me/m/levelupwith_lavanya",
+  counts: {
+    posts: "16",
+    followers: "958",
+    following: "15",
   },
-  highlights: [
-    { title: "Viral Hooks", icon: "🔥", count: "18" },
-    { title: "Client Wins", icon: "🏆", count: "35" },
-    { title: "Frameworks", icon: "📐", count: "12" },
-    { title: "Lead Systems", icon: "💬", count: "24" },
-    { title: "Case Studies", icon: "💡", count: "40" },
+  bio: [
+    "I help business turn marketing into measurable revenue",
+    "Founder | Content , leads & Sales systems",
+    "Join our community👇🏻",
   ],
+  link: {
+    label: "chat.whatsapp.com/LaKzGGzM66LIvlvPUbsZMY",
+    url: "https://chat.whatsapp.com/LaKzGGzM66LIvlvPUbsZMY",
+  },
 };
 
 export const clientScriptWorks: ScriptClientWork[] = [

@@ -14,21 +14,6 @@ export interface ServiceItem {
   metricsFocus: string[];
 }
 
-export interface CaseStudy {
-  id: string;
-  title: string;
-  clientBadge: string;
-  industry: string;
-  serviceCategory: "Strategy" | "Marketing" | "Sales" | "Growth";
-  summary: string;
-  challenge: string;
-  approach: string;
-  solution: string;
-  outcomes: string[];
-  timeline: string;
-  isIllustrative: boolean;
-}
-
 export interface ProcessStep {
   step: string;
   title: string;

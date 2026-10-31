@@ -10,7 +10,6 @@ import {
 import {
   Play,
   Heart,
-  CheckCircle2,
   Bookmark,
   Sparkles,
   ArrowUpRight,
@@ -21,13 +20,15 @@ import {
   MessageCircle,
   Eye,
   TrendingUp,
+  MoreHorizontal,
+  Link2,
+  UserPlus,
 } from "lucide-react";
 
 export const InstagramProfileShowcase: React.FC = () => {
   const [activeTab, setActiveTab] = useState<"reels" | "breakdowns">("reels");
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [activeModalWork, setActiveModalWork] = useState<ScriptClientWork | null>(null);
-  const [activeHighlight, setActiveHighlight] = useState<string | null>(null);
 
   const categories = [
     "All",
@@ -46,216 +47,144 @@ export const InstagramProfileShowcase: React.FC = () => {
   return (
     <div className="w-full">
       {/* ========================================================================= */}
-      {/* 1. INSTAGRAM PROFILE CARD (LUXURY AGENCY EDITION)                          */}
+      {/* 1. INSTAGRAM PROFILE HEADER (mirrors the live profile)                    */}
       {/* ========================================================================= */}
-      <div className="bg-white rounded-3xl border border-[#D7D3CB] shadow-sm overflow-hidden mb-12">
-        {/* Subtle Top Gradient Banner */}
-        <div className="h-28 sm:h-36 bg-gradient-to-r from-[#07192F] via-[#0E2849] to-[#07192F] relative p-6 flex items-end justify-between border-b border-stone-200">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="text-[11px] font-mono font-bold tracking-widest uppercase text-emerald-300">
-              SCRIPT ARCHITECTURE LAB // ACCEPTING CLIENT SPREADS
-            </span>
-          </div>
-          <a
-            href={`https://www.instagram.com/${instagramProfileData.handle}/`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden sm:inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-white/80 hover:text-white bg-white/10 hover:bg-white/20 backdrop-blur-xs px-3 py-1.5 rounded-full transition-colors"
-          >
-            <span>instagram.com/{instagramProfileData.handle}</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
-          </a>
-        </div>
+      <div className="bg-[#0C1014] text-[#F5F5F5] rounded-3xl border border-[#262A2E] shadow-sm overflow-hidden mb-12">
+        <div className="px-5 sm:px-10 pt-7 sm:pt-10 pb-6 sm:pb-8">
+          <div className="flex items-center sm:items-start gap-5 sm:gap-10">
+            {/* Avatar */}
+            <a
+              href={instagramProfileData.profileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`@${instagramProfileData.handle} on Instagram`}
+              className="relative shrink-0 w-[84px] h-[84px] sm:w-[150px] sm:h-[150px] rounded-full overflow-hidden bg-[#262A2E]"
+            >
+              <Image
+                src={instagramProfileData.avatarUrl}
+                alt={instagramProfileData.displayName}
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 84px, 150px"
+              />
+            </a>
 
-        {/* Profile Content Body */}
-        <div className="px-6 sm:px-10 pb-8 sm:pb-10 pt-0 relative">
-          <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 -mt-12 sm:-mt-14 mb-8">
-            {/* Avatar with Animated Gold/Navy Story Ring */}
-            <div className="flex items-end gap-5">
-              <div className="relative group cursor-pointer">
-                <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full p-[3px] bg-gradient-to-tr from-[#C88A1A] via-[#E4AB3C] to-[#07192F] shadow-lg transition-transform duration-300 group-hover:scale-105">
-                  <div className="w-full h-full rounded-full border-2 border-white overflow-hidden relative bg-[#07192F]">
-                    <Image
-                      src={instagramProfileData.avatarUrl}
-                      alt={instagramProfileData.displayName}
-                      fill
-                      className="object-cover"
-                      sizes="112px"
-                    />
-                  </div>
-                </div>
-                <div className="absolute -bottom-1 -right-1 bg-[#C88A1A] text-white p-1 rounded-full border-2 border-white shadow-xs">
-                  <Sparkles className="w-3 h-3" />
-                </div>
+            {/* Identity, counts, bio and actions */}
+            <div className="min-w-0 flex-1">
+              <div className="flex items-center gap-3">
+                <h2 className="text-lg sm:text-xl font-semibold truncate">
+                  {instagramProfileData.handle}
+                </h2>
+                <MoreHorizontal className="w-5 h-5 text-[#F5F5F5] shrink-0" aria-hidden="true" />
               </div>
+              <p className="text-sm sm:text-[15px] text-[#F5F5F5]/90 mt-1">
+                {instagramProfileData.displayName}
+              </p>
 
-              {/* Identity & Verified */}
-              <div className="pt-8">
-                <div className="flex items-center gap-2">
-                  <h2 className="text-xl sm:text-2xl font-bold text-[#07192F] tracking-tight">
-                    @{instagramProfileData.handle}
-                  </h2>
-                  <CheckCircle2 className="w-5 h-5 text-[#C88A1A] fill-[#C88A1A]/20" />
-                </div>
-                <p className="text-sm text-slate-500 font-medium">
-                  {instagramProfileData.displayName}
-                </p>
+              {/* Counts (desktop position) */}
+              <ul className="hidden sm:flex items-center gap-8 mt-4 text-[15px]">
+                <li><span className="font-semibold">{instagramProfileData.counts.posts}</span> posts</li>
+                <li><span className="font-semibold">{instagramProfileData.counts.followers}</span> followers</li>
+                <li><span className="font-semibold">{instagramProfileData.counts.following}</span> following</li>
+              </ul>
+
+              {/* Bio (desktop position) */}
+              <div className="hidden sm:block mt-4 text-[15px] leading-snug space-y-0.5">
+                {instagramProfileData.bio.map((line) => (
+                  <p key={line}>{line}</p>
+                ))}
+                <a
+                  href={instagramProfileData.link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 pt-1 font-semibold text-[#8EA7FF] hover:underline break-all"
+                >
+                  <Link2 className="w-4 h-4 shrink-0 -rotate-45" aria-hidden="true" />
+                  {instagramProfileData.link.label}
+                </a>
               </div>
             </div>
+          </div>
 
-            {/* Profile CTA Buttons */}
-            <div className="flex flex-wrap items-center gap-3 pt-2 md:pt-14">
+          {/* Counts + bio (mobile position, full width under the avatar) */}
+          <div className="sm:hidden mt-4">
+            <ul className="flex items-center justify-between max-w-xs text-sm">
+              <li><span className="font-semibold">{instagramProfileData.counts.posts}</span> posts</li>
+              <li><span className="font-semibold">{instagramProfileData.counts.followers}</span> followers</li>
+              <li><span className="font-semibold">{instagramProfileData.counts.following}</span> following</li>
+            </ul>
+            <div className="mt-3 text-sm leading-snug space-y-0.5">
+              {instagramProfileData.bio.map((line) => (
+                <p key={line}>{line}</p>
+              ))}
               <a
-                href={`https://www.instagram.com/${instagramProfileData.handle}/`}
+                href={instagramProfileData.link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#07192F] text-white text-xs font-mono font-bold tracking-wider uppercase hover:bg-[#0E2849] transition-all shadow-xs"
+                className="inline-flex items-center gap-1.5 pt-1 font-semibold text-[#8EA7FF] hover:underline break-all"
               >
-                <span>View On Instagram</span>
-                <ExternalLink className="w-3.5 h-3.5" />
-              </a>
-
-              <a
-                href="/contact"
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-stone-100 hover:bg-stone-200 border border-stone-300/80 text-[#07192F] text-xs font-mono font-bold tracking-wider uppercase transition-colors"
-              >
-                <MessageCircle className="w-3.5 h-3.5 text-[#C88A1A]" />
-                <span>Commission Script</span>
+                <Link2 className="w-4 h-4 shrink-0 -rotate-45" aria-hidden="true" />
+                {instagramProfileData.link.label}
               </a>
             </div>
           </div>
 
-          {/* Quick Metrics Bar (Real Audited Numbers) */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-5 px-6 rounded-2xl bg-stone-50 border border-stone-200/70 mb-8">
-            <div className="flex flex-col">
-              <span className="text-2xl sm:text-3xl font-mono font-bold text-[#07192F]">
-                {instagramProfileData.stats.totalViews}
-              </span>
-              <span className="text-[11px] font-mono uppercase tracking-wider text-slate-500">
-                Verified Views
-              </span>
-            </div>
-            <div className="flex flex-col border-l border-stone-200 pl-4 sm:pl-6">
-              <span className="text-2xl sm:text-3xl font-mono font-bold text-[#C88A1A]">
-                {instagramProfileData.stats.verifiedLikes}
-              </span>
-              <span className="text-[11px] font-mono uppercase tracking-wider text-slate-500">
-                Audited Likes
-              </span>
-            </div>
-            <div className="flex flex-col border-l border-stone-200 pl-4 sm:pl-6">
-              <span className="text-2xl sm:text-3xl font-mono font-bold text-[#07192F]">
-                {instagramProfileData.stats.commentLeads}
-              </span>
-              <span className="text-[11px] font-mono uppercase tracking-wider text-slate-500">
-                Comment &amp; DM Leads
-              </span>
-            </div>
-            <div className="flex flex-col border-l border-stone-200 pl-4 sm:pl-6">
-              <span className="text-2xl sm:text-3xl font-mono font-bold text-[#07192F]">
-                {instagramProfileData.stats.avgRetention}
-              </span>
-              <span className="text-[11px] font-mono uppercase tracking-wider text-slate-500">
-                Avg Retention Rate
-              </span>
-            </div>
-          </div>
-
-          {/* Bio Description */}
-          <div className="space-y-1.5 text-sm text-slate-700 max-w-3xl mb-8">
-            {instagramProfileData.bio.map((line, idx) => (
-              <p key={idx} className="leading-relaxed">
-                {line}
-              </p>
-            ))}
-          </div>
-
-          {/* Story Highlights Bar */}
-          <div>
-            <div className="flex items-center gap-2 mb-3">
-              <span className="text-[11px] font-mono font-bold tracking-wider text-slate-500 uppercase">
-                STORY ARCHIVES &amp; FRAMEWORKS
-              </span>
-            </div>
-            <div className="flex items-center gap-4 sm:gap-6 overflow-x-auto pb-2 scrollbar-none">
-              {instagramProfileData.highlights.map((highlight, idx) => (
-                <button
-                  key={idx}
-                  type="button"
-                  onClick={() =>
-                    setActiveHighlight(
-                      activeHighlight === highlight.title ? null : highlight.title
-                    )
-                  }
-                  className="flex flex-col items-center gap-2 shrink-0 group focus:outline-hidden"
-                >
-                  <div
-                    className={`w-14 h-14 sm:w-16 sm:h-16 rounded-full p-[2px] transition-all duration-200 ${
-                      activeHighlight === highlight.title
-                        ? "bg-[#C88A1A] scale-105"
-                        : "bg-stone-300 group-hover:bg-[#C88A1A]"
-                    }`}
-                  >
-                    <div className="w-full h-full rounded-full bg-white flex items-center justify-center text-xl sm:text-2xl border border-stone-200 shadow-2xs">
-                      {highlight.icon}
-                    </div>
-                  </div>
-                  <span className="text-[11px] font-medium text-slate-700 group-hover:text-[#07192F] whitespace-nowrap">
-                    {highlight.title}
-                  </span>
-                </button>
-              ))}
-            </div>
-
-            {/* Active Story Highlight Banner (If Selected) */}
-            {activeHighlight && (
-              <div className="mt-4 p-4 rounded-xl bg-amber-50/70 border border-amber-200/80 flex items-center justify-between text-xs text-amber-950 animate-fadeIn">
-                <div className="flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-[#C88A1A] shrink-0" />
-                  <span>
-                    Viewing curated highlight: <strong>{activeHighlight}</strong>. Tap any
-                    reel below to inspect the complete script anatomy.
-                  </span>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setActiveHighlight(null)}
-                  className="text-stone-400 hover:text-stone-700 p-1"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              </div>
-            )}
+          {/* Actions */}
+          <div className="mt-5 sm:mt-7 flex items-center gap-2">
+            <a
+              href={instagramProfileData.profileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 inline-flex items-center justify-center h-10 sm:h-11 rounded-xl bg-[#4A5DF9] hover:bg-[#3B4FE6] text-white text-sm font-semibold transition-colors"
+            >
+              Follow
+            </a>
+            <a
+              href={instagramProfileData.messageUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 inline-flex items-center justify-center h-10 sm:h-11 rounded-xl bg-[#262A2E] hover:bg-[#33383D] text-white text-sm font-semibold transition-colors"
+            >
+              Message
+            </a>
+            <a
+              href={instagramProfileData.profileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Follow on Instagram"
+              className="inline-flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#262A2E] hover:bg-[#33383D] text-white transition-colors"
+            >
+              <UserPlus className="w-4 h-4" />
+            </a>
           </div>
         </div>
 
         {/* Tab Switcher: Reels Grid vs. Script Anatomy */}
-        <div className="border-t border-stone-200 flex items-center justify-around bg-stone-50/70">
+        <div className="border-t border-[#262A2E] flex items-center justify-around">
           <button
             type="button"
             onClick={() => setActiveTab("reels")}
-            className={`flex-1 py-4 flex items-center justify-center gap-2 text-xs font-mono font-bold uppercase tracking-wider transition-all border-b-2 ${
+            className={`flex-1 py-4 flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-wider transition-colors border-t-2 -mt-px ${
               activeTab === "reels"
-                ? "border-[#07192F] text-[#07192F] bg-white"
-                : "border-transparent text-slate-500 hover:text-slate-800"
+                ? "border-[#F5F5F5] text-[#F5F5F5]"
+                : "border-transparent text-[#A8A8A8] hover:text-[#F5F5F5]"
             }`}
           >
-            <Film className="w-4 h-4 text-[#C88A1A]" />
-            <span>Reels Grid ({filteredReels.length})</span>
+            <Film className="w-4 h-4" />
+            <span>Client Reels ({filteredReels.length})</span>
           </button>
 
           <button
             type="button"
             onClick={() => setActiveTab("breakdowns")}
-            className={`flex-1 py-4 flex items-center justify-center gap-2 text-xs font-mono font-bold uppercase tracking-wider transition-all border-b-2 ${
+            className={`flex-1 py-4 flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-wider transition-colors border-t-2 -mt-px ${
               activeTab === "breakdowns"
-                ? "border-[#07192F] text-[#07192F] bg-white"
-                : "border-transparent text-slate-500 hover:text-slate-800"
+                ? "border-[#F5F5F5] text-[#F5F5F5]"
+                : "border-transparent text-[#A8A8A8] hover:text-[#F5F5F5]"
             }`}
           >
-            <FileText className="w-4 h-4 text-[#C88A1A]" />
-            <span>Script Deconstructions</span>
+            <FileText className="w-4 h-4" />
+            <span>Script Breakdowns</span>
           </button>
         </div>
       </div>

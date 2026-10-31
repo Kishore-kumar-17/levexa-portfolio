@@ -3,14 +3,11 @@ import { Metadata } from "next";
 import { constructMetadata } from "@/lib/metadata";
 import {
   ServiceDisciplineTemplate,
-  MetricItem,
   DeliverableDetailed,
-  FrictionVsSolution,
   DisciplineProcessStep,
   DisciplineFAQ,
   AdjacentDiscipline,
 } from "@/components/services/ServiceDisciplineTemplate";
-import { caseStudiesData } from "@/data/case-studies";
 
 export const metadata: Metadata = constructMetadata({
   title: "Sales Enablement & Pipeline Conversion — Levexa",
@@ -20,102 +17,26 @@ export const metadata: Metadata = constructMetadata({
 });
 
 export default function SalesServicePage() {
-  const metrics: MetricItem[] = [
-    {
-      label: "Opportunity Win Rate",
-      value: "+34%",
-      detail:
-        "Lift in proposal-to-close conversion rate achieved through structured qualification and consultative objection handling.",
-    },
-    {
-      label: "Deal Cycle Compression",
-      value: "-42 Days",
-      detail:
-        "Reduction in average sales cycle duration through structured mutual action plans and multi-stakeholder consensus mapping.",
-    },
-    {
-      label: "Average Contract Value",
-      value: "+28%",
-      detail:
-        "Expansion in ACV driven by tiered value packaging, multi-year incentives, and eliminating unapproved rep discounting.",
-    },
-  ];
-
   const deliverablesDetailed: DeliverableDetailed[] = [
     {
       title: "Commercial Sales Strategy & Negotiation Playbook",
       description:
         "The definitive operating playbook that equips every rep with high-conviction objection scripts and closing rubrics.",
-      timeline: "Weeks 1–3",
-      items: [
-        "End-to-End Discovery Call Script & Question Architecture",
-        "Top-10 Objection Handling Rubric (Price, Timing, Competitor)",
-        "Procurement Negotiation & Concession Frameworks",
-        "Executive Mutual Action Plan (MAP) Templates",
-      ],
     },
     {
       title: "Live Sales Coaching & Call Quality Auditing",
       description:
         "Direct coaching clinics and deal teardowns that turn average performers into consistent quota-carrying closers.",
-      timeline: "Weeks 4–6",
-      items: [
-        "Weekly Recorded Call Audits & Rubric Scoring",
-        "Live Interactive Role-Play Clinics with Objection Scenarios",
-        "Multi-Threaded Stakeholder Selling Methodology",
-        "Pipeline Hygiene Coaching for Account Executives",
-      ],
     },
     {
       title: "Lead-Management Systems & CRM Pipeline Setup",
       description:
         "Rock-solid CRM architecture (HubSpot, Salesforce) that enforces pipeline hygiene and provides accurate revenue forecasting.",
-      timeline: "Weeks 7–8",
-      items: [
-        "Deal Stage Exit Criteria & Automated Field Validations",
-        "Lead Routing Protocols & Speed-to-Lead Workflows",
-        "Executive Pipeline Dashboard & Stage Velocity Metrics",
-        "Win/Loss Tagging & Lost Deal Retargeting Sequences",
-      ],
     },
     {
       title: "Sales SOPs & Conversion Rate Optimization (CRO)",
       description:
         "Standardized operating procedures covering the entire customer lifecycle from first demo to post-sale handoff.",
-      timeline: "Weeks 9–10",
-      items: [
-        "Sales-to-Customer Success Handoff SOP Documentation",
-        "Proposal & Pitch Deck Template Redesign",
-        "Automated Meeting Follow-Up Sequences & Collateral Packs",
-        "Rep Compensation & Commission Incentive Modeling",
-      ],
-    },
-  ];
-
-  const frictionVsSolution: FrictionVsSolution[] = [
-    {
-      friction:
-        "Revenue fluctuates wildly based entirely on whether your single star rainmaker has a good or bad quarter.",
-      solution:
-        "Codified sales playbooks and qualification rubrics that systematically level up the entire middle 70% of your sales team.",
-    },
-    {
-      friction:
-        "Promising deals sit dormant in pipeline limbo for 60+ days without clear next steps or executive urgency.",
-      solution:
-        "Mutual Action Plans (MAPs) signed with buyer champions that establish concrete milestone deadlines and procurement paths.",
-    },
-    {
-      friction:
-        "Sales reps immediately cave during contract negotiations, sacrificing profit margin just to hit monthly unit quota.",
-      solution:
-        "Structured concession frameworks that require give-and-take trade-offs, preserving margins and contract value.",
-    },
-    {
-      friction:
-        "Sales reps manually enter incomplete data into CRM, making executive revenue forecasting a guessing game.",
-      solution:
-        "Enforced CRM stage validation criteria and automated data capture that guarantees complete pipeline predictability.",
     },
   ];
 
@@ -193,8 +114,6 @@ export default function SalesServicePage() {
     },
   ];
 
-  const featuredCaseStudy = caseStudiesData[2]; // Industrial Sales Enablement
-
   return (
     <ServiceDisciplineTemplate
       pillarNumber="03"
@@ -205,11 +124,8 @@ export default function SalesServicePage() {
       image="/images/pillars/03-sales-conversion.jpg"
       imageAlt="Levexa Sales & Conversion Enablement"
       overviewSummary="Sales playbooks, team training, CRM infrastructure, and conversion rate optimization."
-      metrics={metrics}
       deliverablesDetailed={deliverablesDetailed}
-      frictionVsSolution={frictionVsSolution}
       roadmap={roadmap}
-      featuredCaseStudy={featuredCaseStudy}
       faqs={faqs}
       adjacentDisciplines={adjacentDisciplines}
       ctaTitle="Ready to accelerate your"
