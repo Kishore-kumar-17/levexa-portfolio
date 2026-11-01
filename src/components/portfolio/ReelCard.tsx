@@ -5,12 +5,16 @@ import { ExternalLink, Eye, Heart } from "lucide-react";
 import { ClientReel, reelUrl } from "@/data/instagram-works";
 import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
 
-// Card widths are fixed so heights are exact: 300px on phones, 330px from sm up.
-// Instagram's embed is a 54px header, a media area 1.25x the width tall, then ~109px down to
-// the end of the likes line, so the frame is cut right after the likes (no scrollbar, no
-// half-visible comment row): 54 + 1.25 * 300 + 109 = 538px, 54 + 1.25 * 330 + 109 = 576px.
+// Card widths are fixed so the crop below is exact: 300px on phones, 330px from sm up.
 const CARD_WIDTH = "w-[300px] sm:w-[330px]";
-const EMBED_HEIGHT = "h-[538px] sm:h-[576px]";
+
+// Instagram's embed (at layout width X) is a 54px account header, then a 4:5 media area
+// (1.25X tall) holding the 9:16 video, which is 0.703X wide. Laying the embed out at
+// X = 1.4222 x card width makes the video exactly as wide as the card; shifting it up 54px
+// and centring it shows only the video: no account name, avatar, buttons or likes row.
+//   card 300 -> X 427, left -64, height 533 (9:16)    card 330 -> X 469, left -70, height 587
+const VIDEO_BOX = "h-[533px] sm:h-[587px]";
+const EMBED_FRAME = "top-[-54px] left-[-64px] w-[427px] h-[680px] sm:left-[-70px] sm:w-[469px] sm:h-[740px]";
 
 // Self-hosted reel: plays muted and looped while on screen, pauses when scrolled away
 const AutoplayVideo: React.FC<{ reel: ClientReel }> = ({ reel }) => {
@@ -41,29 +45,29 @@ const AutoplayVideo: React.FC<{ reel: ClientReel }> = ({ reel }) => {
       playsInline
       preload="metadata"
       controls={prefersReducedMotion}
-      aria-label={`Reel by ${reel.clientHandle}`}
+      aria-label="Client reel"
       className="block w-full aspect-[9/16] object-cover bg-[#07192F]"
     />
   );
 };
 
-// Fallback until a video file is added: Instagram's official embed, cropped after the likes
+// Stopgap until a video file is added: Instagram's embed, cropped to the video only
 const InstagramEmbed: React.FC<{ reel: ClientReel }> = ({ reel }) => {
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <div className={`relative overflow-hidden bg-white ${EMBED_HEIGHT}`}>
+    <div className={`relative overflow-hidden bg-[#07192F] ${VIDEO_BOX}`}>
       {/* Skeleton while Instagram loads */}
-      {!loaded && <div className="absolute inset-0 animate-pulse bg-stone-100" aria-hidden="true" />}
+      {!loaded && <div className="absolute inset-0 animate-pulse bg-[#0E2849]" aria-hidden="true" />}
       <iframe
         src={`${reelUrl(reel)}embed/`}
-        title={`Instagram reel by ${reel.clientHandle}`}
+        title="Client reel"
         loading="lazy"
         scrolling="no"
         allow="autoplay; encrypted-media; picture-in-picture; web-share"
         allowFullScreen
         onLoad={() => setLoaded(true)}
-        className={`absolute inset-x-0 top-0 w-full h-[700px] border-0 transition-opacity duration-500 ${
+        className={`absolute max-w-none border-0 transition-opacity duration-500 ${EMBED_FRAME} ${
           loaded ? "opacity-100" : "opacity-0"
         }`}
       />
@@ -73,7 +77,7 @@ const InstagramEmbed: React.FC<{ reel: ClientReel }> = ({ reel }) => {
 
 export const ReelCard: React.FC<{ reel: ClientReel }> = ({ reel }) => (
   <article className={`${CARD_WIDTH} shrink-0 snap-center flex flex-col`}>
-    <div className="rounded-2xl overflow-hidden border border-stone-200 bg-white shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-md">
+    <div className="rounded-2xl overflow-hidden bg-[#07192F] shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-md">
       {reel.videoSrc ? <AutoplayVideo reel={reel} /> : <InstagramEmbed reel={reel} />}
     </div>
 
