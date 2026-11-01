@@ -5,6 +5,7 @@ import { CTASection } from "@/components/sections/CTASection";
 import { InstagramProfileShowcase } from "@/components/portfolio/InstagramProfileShowcase";
 import { clientReels } from "@/data/instagram-works";
 import { constructMetadata } from "@/lib/metadata";
+import { parseCount, formatCount } from "@/lib/counts";
 import { ShinyText } from "@/components/ui/ShinyText";
 
 export const metadata: Metadata = constructMetadata({
@@ -13,19 +14,6 @@ export const metadata: Metadata = constructMetadata({
     "Instagram reels scripted by Levexa for founders and brands: real view, like and comment results from client campaigns.",
   path: "/work",
 });
-
-// Parses Instagram-style counts such as "2,758", "485K" or "2.8M"
-function parseCount(value: string): number {
-  const clean = value.replace(/,/g, "").trim();
-  const multiplier = clean.endsWith("M") ? 1_000_000 : clean.endsWith("K") ? 1_000 : 1;
-  return parseFloat(clean) * multiplier;
-}
-
-function formatCount(total: number): string {
-  if (total >= 1_000_000) return `${Math.floor(total / 100_000) / 10}M+`;
-  if (total >= 1_000) return `${Math.floor(total / 100) / 10}K+`;
-  return String(total);
-}
 
 export default function WorkPage() {
   // Totals are computed from the featured reels so they always match the cards below
@@ -48,13 +36,13 @@ export default function WorkPage() {
         <Container>
           <div className="max-w-4xl">
 
-            <h1 className="text-5xl sm:text-7xl lg:text-[5rem] font-bold tracking-[-0.035em] leading-[0.98] mb-8">
+            <h1 className="type-display mb-8">
               <span>Our</span> <ShinyText text="Work." variant="gold" speed={4} />
             </h1>
 
             <div className="w-12 h-[3px] bg-[#C88A1A] rounded-full mb-8" aria-hidden="true" />
 
-            <p className="text-xl sm:text-2xl text-slate-800 leading-[1.45] max-w-3xl tracking-tight mb-10">
+            <p className="type-lead max-w-3xl mb-10">
               Reels we scripted for founders and brands. Watch them right here, or open them
               on Instagram.
             </p>
@@ -63,7 +51,7 @@ export default function WorkPage() {
               {stats.map((stat, idx) => (
                 <div key={stat.label} className={idx > 0 ? "border-l border-[#D7D3CB] pl-4 sm:pl-6" : ""}>
                   <dd className="text-2xl sm:text-3xl font-bold font-mono">{stat.value}</dd>
-                  <dt className="text-[11px] font-mono font-semibold text-slate-600 uppercase tracking-wider mt-1">
+                  <dt className="text-xs font-mono font-semibold text-slate-600 uppercase tracking-wider mt-1">
                     {stat.label}
                   </dt>
                 </div>

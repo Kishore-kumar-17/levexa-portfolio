@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowDown, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import InfiniteSpiral, { SpiralItem } from "@/components/ui/InfiniteSpiral";
 
 const spiralImages: SpiralItem[] = [
@@ -67,7 +67,7 @@ export const HeroSection: React.FC = () => {
           {/* Left Column: Monumental Headline & Value Proposition */}
           <div className="lg:col-span-7 xl:col-span-7 text-left">
             {/* Monumental Dual-Tone Headline */}
-            <h1 className="text-5xl sm:text-7xl lg:text-[4.75rem] xl:text-[5.5rem] font-bold tracking-[-0.035em] leading-[0.98] mt-1 mb-5 sm:mb-6">
+            <h1 className="type-display mt-1 mb-5 sm:mb-6">
               <span className="text-[#07192F]">Level up your excellence</span> <br />
               <span className="text-[#C88A1A]">with Levexa.</span>
             </h1>
@@ -79,7 +79,7 @@ export const HeroSection: React.FC = () => {
             />
 
             {/* Subheadline Paragraph with Authentic Levexa Value Proposition */}
-            <p className="text-xl sm:text-2xl lg:text-[1.65rem] xl:text-[1.85rem] text-slate-800 font-normal leading-[1.45] max-w-2xl tracking-tight">
+            <p className="type-lead max-w-2xl">
               Helping businesses grow, scale, and increase revenue. We engineer high-performance
               market positioning, demand generation, sales pipelines, and scalable automated systems.
             </p>
@@ -88,14 +88,14 @@ export const HeroSection: React.FC = () => {
             <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
               <Link
                 href="/contact"
-                className="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-[#C88A1A] text-[#07192F] font-bold text-base tracking-wide hover:bg-[#F5A900] transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98]"
+                className="group btn-primary"
               >
                 <span>Book a Free Consultation</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
                 href="/work"
-                className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full border border-[#07192F]/25 text-[#07192F] font-semibold text-base tracking-wide hover:border-[#07192F] hover:bg-[#07192F]/5 transition-all duration-300"
+                className="btn-secondary"
               >
                 See Our Work
               </Link>
@@ -131,31 +131,6 @@ export const HeroSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Bottom Navigation Strip */}
-        <div className="pt-6 sm:pt-8 border-t border-[#D7D3CB]">
-          <div className="flex items-center justify-between">
-            {/* Left: Scroll to Who We Are */}
-            <Link
-              href="#who-we-are"
-              className="group flex items-center gap-2.5 py-1.5 -my-1.5 text-xs sm:text-[13px] font-bold tracking-[0.2em] text-[#07192F] hover:text-[#C88A1A] transition-colors whitespace-nowrap"
-            >
-              <ArrowDown className="w-4 h-4 transition-transform duration-200 group-hover:translate-y-1" />
-              <span>WHO WE ARE</span>
-            </Link>
-
-            {/* Connecting Horizontal Line */}
-            <div className="flex-1 mx-6 sm:mx-10 lg:mx-14 h-[1px] bg-[#D7D3CB]" />
-
-            {/* Right: Link to About */}
-            <Link
-              href="/about"
-              className="group flex items-center gap-2.5 py-1.5 -my-1.5 text-xs sm:text-[13px] font-bold tracking-[0.2em] text-[#07192F] hover:text-[#C88A1A] transition-colors whitespace-nowrap"
-            >
-              <span>OUR PHILOSOPHY</span>
-              <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
-            </Link>
-          </div>
-        </div>
 
       </div>
     </section>

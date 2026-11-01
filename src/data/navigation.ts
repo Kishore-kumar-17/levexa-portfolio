@@ -4,10 +4,6 @@ export const mainNavigation: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
-  { label: "Strategy", href: "/services/strategy" },
-  { label: "Marketing", href: "/services/marketing" },
-  { label: "Sales", href: "/services/sales" },
-  { label: "Technology", href: "/services/technology" },
   { label: "Work", href: "/work" },
   { label: "Contact", href: "/contact" },
 ];

@@ -7,8 +7,6 @@ import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { MobileNavigation } from "./MobileNavigation";
-import { ShinyText } from "@/components/ui/ShinyText";
-import { ClickSpark } from "@/components/ui/ClickSpark";
 
 export const SiteHeader: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -33,12 +31,10 @@ export const SiteHeader: React.FC = () => {
   }, []);
 
   const navLinks = [
-    { label: "ABOUT", href: "/about" },
-    { label: "STRATEGY", href: "/services/strategy" },
-    { label: "MARKETING", href: "/services/marketing" },
-    { label: "SALES", href: "/services/sales" },
-    { label: "TECHNOLOGY", href: "/services/technology" },
-    { label: "WORK", href: "/work" },
+    { label: "About", href: "/about" },
+    { label: "Services", href: "/services" },
+    { label: "Work", href: "/work" },
+    { label: "Contact", href: "/contact" },
   ];
 
   return (
@@ -68,21 +64,22 @@ export const SiteHeader: React.FC = () => {
               />
             </Link>
 
-            {/* Desktop Navigation: Centered Minimalist Spaced Links (Graphite Style on White) */}
+            {/* Desktop Navigation */}
             <nav
-              className="hidden lg:flex items-center gap-6 xl:gap-8"
+              className="hidden lg:flex items-center gap-8 xl:gap-10"
               aria-label="Primary Navigation"
             >
               {navLinks.map((item) => {
-                const isActive = pathname === item.href;
+                // Service detail pages keep "Services" highlighted
+                const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
                 return (
                   <Link
                     key={item.label}
                     href={item.href}
-                    className={`text-[12px] uppercase font-medium tracking-[0.18em] transition-colors ${
+                    className={`text-[15px] font-medium py-2 border-b-2 transition-colors ${
                       isActive
-                        ? "text-black font-semibold"
-                        : "text-slate-600 hover:text-black"
+                        ? "text-[#07192F] font-semibold border-[#C88A1A]"
+                        : "text-slate-600 border-transparent hover:text-[#07192F]"
                     }`}
                     aria-current={isActive ? "page" : undefined}
                   >
@@ -92,16 +89,14 @@ export const SiteHeader: React.FC = () => {
               })}
             </nav>
 
-            {/* CTA: Rectangular Sharp Button (Graphite "TALK TO US" Style in Black on White) */}
+            {/* CTA: the site-wide primary button style, compact for the header */}
             <div className="flex items-center gap-3">
-              <ClickSpark sparkColor="#C88A1A" sparkRadius={25} sparkCount={6}>
-                <Link
-                  href="/contact"
-                  className="hidden sm:inline-flex items-center justify-center bg-black hover:bg-slate-800 text-white text-[12px] uppercase tracking-[0.16em] font-semibold px-6 py-2.5 rounded-none transition-all active:scale-98 shadow-xs"
-                >
-                  <ShinyText text="TALK TO US" variant="gold" speed={4} />
-                </Link>
-              </ClickSpark>
+              <Link
+                href="/contact"
+                className="btn-primary hidden sm:inline-flex !min-h-[44px] !px-5 !py-2.5 !text-sm"
+              >
+                Book a Consultation
+              </Link>
 
               {/* Mobile hamburger */}
               <button

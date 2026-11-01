@@ -26,31 +26,31 @@ interface ProcessStep {
 const PROCESS_STEPS: ProcessStep[] = [
   {
     number: "01",
-    titleLine1: "DISCOVERY &",
-    titleLine2: "UNDERSTANDING",
+    titleLine1: "Discovery &",
+    titleLine2: "understanding",
     description: "We understand your business, goals, challenges and opportunities.",
     image: "/images/process/01-discovery.jpg",
     icon: Search,
   },
   {
     number: "02",
-    titleLine1: "STRATEGY &",
-    titleLine2: "PLANNING",
+    titleLine1: "Strategy &",
+    titleLine2: "planning",
     description: "We create a clear strategy and roadmap tailored to your growth.",
     image: "/images/process/02-strategy.jpg",
     icon: Lightbulb,
   },
   {
     number: "03",
-    titleLine1: "DESIGN &",
-    titleLine2: "DEVELOPMENT",
+    titleLine1: "Design &",
+    titleLine2: "development",
     description: "We bring the strategy to life with creative designs and powerful technology.",
     image: "/images/process/03-design.jpg",
     icon: PenTool,
   },
   {
     number: "04",
-    titleLine1: "IMPLEMENTATION",
+    titleLine1: "Implementation",
     titleLine2: "",
     description: "We build, set up and integrate everything needed to execute the plan.",
     image: "/images/process/04-development.jpg",
@@ -58,16 +58,16 @@ const PROCESS_STEPS: ProcessStep[] = [
   },
   {
     number: "05",
-    titleLine1: "TESTING &",
-    titleLine2: "OPTIMIZATION",
+    titleLine1: "Testing &",
+    titleLine2: "optimization",
     description: "We test, refine and optimize for the best performance and results.",
     image: "/images/process/05-optimization.jpg",
     icon: BarChart2,
   },
   {
     number: "06",
-    titleLine1: "ONGOING SUPPORT",
-    titleLine2: "& GROWTH",
+    titleLine1: "Ongoing support",
+    titleLine2: "& growth",
     description: "We continue to support, track performance and help you scale further.",
     image: "/images/process/06-growth.jpg",
     icon: ArrowUpRight,
@@ -83,15 +83,15 @@ export const GrowthProcess: React.FC = () => {
       <div className="w-full max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 relative">
 
         {/* ======================================================== */}
-        {/* HEADER: "FROM IDEAS TO IMPACT"                           */}
+        {/* HEADER: "From ideas to impact"                           */}
         {/* ======================================================== */}
         <div className="mb-14 sm:mb-18 lg:mb-20">
 
-          {/* Giant Title: FROM IDEAS / TO IMPACT */}
-          <h2 className="text-5xl sm:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] font-black tracking-[-0.035em] leading-[0.92]">
-            <span className="text-[#07192F] block">FROM IDEAS</span>
-            <span className="text-[#07192F]">TO </span>
-            <span className="text-[#C88A1A]">IMPACT</span>
+          {/* Section Title */}
+          <h2 className="type-h2">
+            <span className="text-[#07192F]">From ideas </span>
+            <span className="text-[#07192F]">to </span>
+            <span className="text-[#C88A1A]">impact</span>
           </h2>
         </div>
 
@@ -146,7 +146,7 @@ export const GrowthProcess: React.FC = () => {
                     </div>
 
                     {/* Step Title */}
-                    <h3 className="text-sm sm:text-[15px] font-extrabold text-[#07192F] tracking-[0.05em] uppercase leading-[1.25] mb-2 group-hover:text-[#C88A1A] transition-colors">
+                    <h3 className="text-lg sm:text-xl font-bold text-[#07192F] leading-[1.25] mb-2 group-hover:text-[#C88A1A] transition-colors">
                       {step.titleLine1}
                       {step.titleLine2 && (
                         <>
@@ -157,17 +157,17 @@ export const GrowthProcess: React.FC = () => {
                     </h3>
 
                     {/* Step Description */}
-                    <p className="text-xs sm:text-[12.5px] text-slate-600 leading-[1.6] max-w-[195px] xl:max-w-[210px] mb-4 font-normal">
+                    <p className="text-[15px] sm:text-base text-slate-600 leading-[1.6] max-w-[250px] mb-4 font-normal">
                       {step.description}
                     </p>
 
                     {/* Circular Action Button */}
                     <Link
                       href="/services"
-                      className="w-8 h-8 rounded-full border border-[#C5BFB3] bg-transparent flex items-center justify-center text-[#07192F] transition-all duration-300 hover:bg-[#07192F] hover:text-white hover:border-[#07192F]"
+                      className="w-11 h-11 rounded-full border border-[#C5BFB3] bg-transparent flex items-center justify-center text-[#07192F] transition-all duration-300 hover:bg-[#07192F] hover:text-white hover:border-[#07192F]"
                       aria-label={`Learn more about ${step.titleLine1}`}
                     >
-                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+                      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
                     </Link>
                   </div>
                 </div>

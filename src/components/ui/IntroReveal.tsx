@@ -225,27 +225,17 @@ export const IntroReveal: React.FC<IntroRevealProps> = ({ onComplete }) => {
 
             {/* Desktop Navigation Links */}
             <nav className="hidden lg:flex items-center gap-8 xl:gap-10">
-              <span className="text-[12px] uppercase font-medium tracking-[0.18em] text-slate-500 hover:text-black transition-colors">
-                RESEARCH
-              </span>
-              <span className="text-[12px] uppercase font-medium tracking-[0.18em] text-slate-500 hover:text-black transition-colors">
-                STRATEGY
-              </span>
-              <span className="text-[12px] uppercase font-medium tracking-[0.18em] text-slate-500 hover:text-black transition-colors">
-                MARKETING
-              </span>
-              <span className="text-[12px] uppercase font-medium tracking-[0.18em] text-slate-500 hover:text-black transition-colors">
-                SALES
-              </span>
-              <span className="text-[12px] uppercase font-medium tracking-[0.18em] text-slate-500 hover:text-black transition-colors">
-                WORK
-              </span>
+              {["About", "Services", "Work", "Contact"].map((label) => (
+                <span key={label} className="text-[15px] font-medium text-slate-600">
+                  {label}
+                </span>
+              ))}
             </nav>
 
-            {/* Right Call-To-Action Button */}
+            {/* Right Call-To-Action Button (mirrors the real header) */}
             <div className="flex items-center">
-              <div className="bg-black text-white text-[12px] uppercase tracking-[0.16em] font-semibold px-6 py-2.5 transition-all">
-                TALK TO US
+              <div className="btn-primary hidden sm:inline-flex !min-h-[44px] !px-5 !py-2.5 !text-sm">
+                Book a Consultation
               </div>
             </div>
           </div>

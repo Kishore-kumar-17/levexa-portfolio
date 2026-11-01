@@ -1,8 +1,7 @@
 import React from "react";
 import { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
-import { PrimaryButton } from "@/components/ui/PrimaryButton";
-import { SecondaryButton } from "@/components/ui/SecondaryButton";
+import Link from "next/link";
 import { constructMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = constructMetadata({
@@ -17,7 +16,7 @@ export default function NotFound() {
         <section className="py-20 lg:py-28 max-w-3xl">
 
           {/* Dual-Tone Headline */}
-          <h1 className="text-5xl sm:text-7xl font-bold tracking-[-0.035em] leading-[0.98] mb-8">
+          <h1 className="type-display mb-8">
             This page has <br />
             <span className="text-[#C88A1A]">moved on.</span>
           </h1>
@@ -30,8 +29,12 @@ export default function NotFound() {
           </p>
 
           <div className="flex flex-wrap items-center gap-4">
-            <PrimaryButton href="/">Back to Home</PrimaryButton>
-            <SecondaryButton href="/contact">Contact Us</SecondaryButton>
+            <Link href="/" className="btn-primary">
+              Back to Home
+            </Link>
+            <Link href="/contact" className="btn-secondary">
+              Contact Us
+            </Link>
           </div>
         </section>
       </Container>

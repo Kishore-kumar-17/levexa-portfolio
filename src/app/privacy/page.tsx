@@ -21,7 +21,7 @@ export default function PrivacyPage() {
         <Container>
           <div className="max-w-4xl">
 
-            <h1 className="text-4xl sm:text-6xl lg:text-[4.5rem] font-bold tracking-[-0.035em] leading-[1.02] mb-6">
+            <h1 className="type-display mb-6">
               <span>Privacy</span> <span className="text-[#C88A1A]">Policy.</span>
             </h1>
 
@@ -42,16 +42,14 @@ export default function PrivacyPage() {
       {/* Main Content Body */}
       <section className="py-16 lg:py-24">
         <Container>
-          <div className="max-w-4xl space-y-8">
+          <div className="max-w-3xl space-y-8">
             
             {/* Commitment Card */}
             <div className="p-6 sm:p-8 rounded-2xl bg-white border border-[#C88A1A]/40 shadow-xs flex items-start gap-4">
               <ShieldCheck className="w-7 h-7 text-[#C88A1A] shrink-0 mt-0.5" />
               <div>
-                <h3 className="text-base font-bold text-[#07192F] mb-1">
-                  Confidential Advisory Guarantee
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                <p className="text-lg font-bold text-[#07192F] mb-1">Your information stays confidential</p>
+                <p className="text-base text-slate-700 leading-relaxed font-normal">
                   We operate as strategic advisors to high-growth enterprises and founders. All business metrics,
                   revenue data, and commercial discussions submitted through our platform are held in strict confidence
                   and never sold, rented, or distributed to any third parties.
@@ -59,9 +57,9 @@ export default function PrivacyPage() {
               </div>
             </div>
 
-            <div className="p-8 sm:p-10 rounded-2xl bg-white border border-stone-200/80 shadow-xs space-y-8 text-sm text-slate-700 leading-relaxed font-normal">
+            <div className="p-8 sm:p-10 rounded-2xl bg-white border border-stone-200/80 shadow-xs space-y-8 text-base text-slate-700 leading-relaxed font-normal">
               <div>
-                <h2 className="text-lg font-bold text-[#07192F] tracking-tight mb-2 uppercase font-mono">
+                <h2 className="text-xl font-bold text-[#07192F] tracking-tight mb-2">
                   1. Information We Collect
                 </h2>
                 <p>
@@ -72,11 +70,11 @@ export default function PrivacyPage() {
               </div>
 
               <div className="pt-6 border-t border-stone-100">
-                <h2 className="text-lg font-bold text-[#07192F] tracking-tight mb-2 uppercase font-mono">
+                <h2 className="text-xl font-bold text-[#07192F] tracking-tight mb-2">
                   2. Purpose of Data Processing
                 </h2>
                 <p className="mb-2">We process your submitted information solely to:</p>
-                <ul className="list-disc pl-5 space-y-1.5 text-xs sm:text-sm">
+                <ul className="list-disc pl-5 space-y-1.5">
                   <li>Review your commercial profile and assign the appropriate senior growth partner.</li>
                   <li>Schedule, prepare for, and conduct your confidential discovery briefing.</li>
                   <li>Formulate customized advisory proposals, diagnostic sprints, and execution roadmaps.</li>
@@ -85,7 +83,7 @@ export default function PrivacyPage() {
               </div>
 
               <div className="pt-6 border-t border-stone-100">
-                <h2 className="text-lg font-bold text-[#07192F] tracking-tight mb-2 uppercase font-mono">
+                <h2 className="text-xl font-bold text-[#07192F] tracking-tight mb-2">
                   3. Data Security &amp; Retention
                 </h2>
                 <p>
@@ -96,7 +94,7 @@ export default function PrivacyPage() {
               </div>
 
               <div className="pt-6 border-t border-stone-100">
-                <h2 className="text-lg font-bold text-[#07192F] tracking-tight mb-2 uppercase font-mono">
+                <h2 className="text-xl font-bold text-[#07192F] tracking-tight mb-2">
                   4. Third-Party Disclosures
                 </h2>
                 <p>
@@ -107,7 +105,7 @@ export default function PrivacyPage() {
               </div>
 
               <div className="pt-6 border-t border-stone-100">
-                <h2 className="text-lg font-bold text-[#07192F] tracking-tight mb-2 uppercase font-mono">
+                <h2 className="text-xl font-bold text-[#07192F] tracking-tight mb-2">
                   5. Contact &amp; Governance
                 </h2>
                 <p>

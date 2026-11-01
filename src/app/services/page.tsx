@@ -53,14 +53,14 @@ export default function ServicesPage() {
         <Container>
           <div className="max-w-4xl">
 
-            <h1 className="text-5xl sm:text-7xl lg:text-[5rem] font-bold tracking-[-0.035em] leading-[0.98] mb-8">
+            <h1 className="type-display mb-8">
               <span>Our</span>{" "}
               <ShinyText text="Services." variant="gold" speed={4} />
             </h1>
 
             <div className="w-12 h-[3px] bg-[#C88A1A] rounded-full mb-8" aria-hidden="true" />
 
-            <p className="text-xl sm:text-2xl text-slate-800 leading-[1.45] max-w-3xl tracking-tight">
+            <p className="type-lead max-w-3xl">
               Four connected disciplines that turn your marketing into measurable revenue: strategy,
               marketing, sales and automation.
             </p>
@@ -110,7 +110,7 @@ export default function ServicesPage() {
 
                   <Link
                     href={DISCIPLINE_LINKS[service.id] || "/contact"}
-                    className="group mt-auto inline-flex items-center gap-2 self-start text-sm font-bold uppercase tracking-wider text-[#07192F] hover:text-[#C88A1A] transition-colors"
+                    className="group mt-auto inline-flex items-center gap-2 self-start py-2.5 text-base font-bold text-[#07192F] hover:text-[#C88A1A] transition-colors"
                   >
                     <span>Learn more</span>
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -126,7 +126,7 @@ export default function ServicesPage() {
       <section className="py-14 sm:py-20 border-t border-[#D7D3CB] bg-white">
         <Container>
           <div className="max-w-3xl mb-10">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-[-0.03em] leading-tight">
+            <h2 className="type-h2">
               Each discipline feeds the next.
             </h2>
           </div>

@@ -1,7 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const STATS = [
   { value: "4", label: ["Core growth", "pillars"] },
@@ -17,15 +15,15 @@ export const WhoWeAreSection: React.FC = () => {
     >
       <div className="w-full max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
         {/* Section Headline */}
-        <h2 className="text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-bold tracking-[-0.035em] leading-[0.95] mb-10 lg:mb-14">
-          <span className="text-[#07192F]">WHO </span>
-          <span className="text-[#C88A1A]">WE ARE</span>
+        <h2 className="type-h2 mb-10 lg:mb-14">
+          <span className="text-[#07192F]">Who </span>
+          <span className="text-[#C88A1A]">we are</span>
         </h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           {/* Narrative & Metrics (same size as the hero description) */}
           <div className="lg:col-span-6">
-            <p className="text-xl sm:text-2xl lg:text-[1.65rem] xl:text-[1.85rem] text-slate-800 font-normal leading-[1.45] tracking-tight mb-10">
+            <p className="type-lead mb-10">
               We help founders and growing businesses turn marketing into measurable revenue, by
               connecting strategy, content, sales and automation into one growth system.
             </p>
@@ -67,28 +65,6 @@ export const WhoWeAreSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Bottom Navigation Strip */}
-        <div className="mt-14 lg:mt-16 pt-4 border-t border-[#D7D3CB]/60">
-          <div className="flex items-center justify-between">
-            <Link
-              href="/about"
-              className="group flex items-center gap-2.5 py-1.5 -my-1.5 text-xs sm:text-[13px] font-bold tracking-[0.2em] text-[#07192F] hover:text-[#C88A1A] transition-colors whitespace-nowrap"
-            >
-              <ArrowLeft className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1" />
-              <span>OUR STORY</span>
-            </Link>
-
-            <div className="flex-1 mx-6 sm:mx-10 lg:mx-14 h-[1px] bg-[#D7D3CB]" />
-
-            <Link
-              href="/about#philosophy"
-              className="group flex items-center gap-2.5 py-1.5 -my-1.5 text-xs sm:text-[13px] font-bold tracking-[0.2em] text-[#07192F] hover:text-[#C88A1A] transition-colors whitespace-nowrap"
-            >
-              <span>OUR PHILOSOPHY</span>
-              <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
-            </Link>
-          </div>
-        </div>
       </div>
     </section>
   );

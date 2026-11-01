@@ -7,7 +7,6 @@ import { usePathname } from "next/navigation";
 import { X, ArrowRight, Phone, Mail } from "lucide-react";
 import { mainNavigation } from "@/data/navigation";
 import { companyConfig } from "@/data/company";
-import { PrimaryButton } from "@/components/ui/PrimaryButton";
 
 interface MobileNavigationProps {
   isOpen: boolean;
@@ -129,21 +128,21 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
 
         {/* Footer info & CTA */}
         <div className="pt-6 mt-8 border-t border-slate-100 space-y-5">
-          <PrimaryButton href="/contact" fullWidth onClick={onClose}>
-            Let&apos;s Grow Your Business
-          </PrimaryButton>
+          <Link href="/contact" onClick={onClose} className="btn-primary w-full">
+            Book a Consultation
+          </Link>
 
-          <div className="space-y-2 text-xs text-slate-500 pt-2">
+          <div className="space-y-1 text-sm text-slate-600 pt-2">
             <a
               href={`mailto:${companyConfig.contact.email}`}
-              className="flex items-center gap-2.5 text-slate-600 hover:text-[#07192F] transition-colors py-0.5"
+              className="flex items-center gap-2.5 text-slate-600 hover:text-[#07192F] transition-colors py-2.5"
             >
               <Mail className="w-3.5 h-3.5 text-[#C88A1A]" />
               <span className="font-medium">{companyConfig.contact.email}</span>
             </a>
             <a
               href={`tel:${companyConfig.contact.phone.replace(/\s+/g, "")}`}
-              className="flex items-center gap-2.5 text-slate-600 hover:text-[#07192F] transition-colors py-0.5"
+              className="flex items-center gap-2.5 text-slate-600 hover:text-[#07192F] transition-colors py-2.5"
             >
               <Phone className="w-3.5 h-3.5 text-[#C88A1A]" />
               <span className="font-medium">{companyConfig.contact.phone}</span>

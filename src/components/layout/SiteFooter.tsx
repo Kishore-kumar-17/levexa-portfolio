@@ -94,13 +94,13 @@ export const SiteFooter: React.FC = () => {
 
           {/* Services links */}
           <nav aria-label="Footer services" className="lg:col-span-3">
-            <h3 className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-[#C88A1A] mb-4">
+            <h3 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#C88A1A] mb-4">
               Services
             </h3>
             <ul className="space-y-2.5">
               {footerServicesNavigation.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="hover:text-white transition-colors duration-200">
+                  <Link href={item.href} className="inline-block py-1 hover:text-white transition-colors duration-200">
                     {item.label}
                   </Link>
                 </li>
@@ -110,13 +110,13 @@ export const SiteFooter: React.FC = () => {
 
           {/* Company links */}
           <nav aria-label="Footer navigation" className="lg:col-span-2">
-            <h3 className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-[#C88A1A] mb-4">
+            <h3 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#C88A1A] mb-4">
               Company
             </h3>
             <ul className="space-y-2.5">
               {footerCompanyNavigation.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="hover:text-white transition-colors duration-200">
+                  <Link href={item.href} className="inline-block py-1 hover:text-white transition-colors duration-200">
                     {item.label}
                   </Link>
                 </li>
@@ -126,7 +126,7 @@ export const SiteFooter: React.FC = () => {
 
           {/* Contact details */}
           <div className="lg:col-span-3">
-            <h3 className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-[#C88A1A] mb-4">
+            <h3 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#C88A1A] mb-4">
               Contact
             </h3>
             <ul className="space-y-3">

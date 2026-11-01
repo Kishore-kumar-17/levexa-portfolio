@@ -2,8 +2,7 @@
 
 import React, { useEffect } from "react";
 import { Container } from "@/components/ui/Container";
-import { PrimaryButton } from "@/components/ui/PrimaryButton";
-import { SecondaryButton } from "@/components/ui/SecondaryButton";
+import Link from "next/link";
 import { companyConfig } from "@/data/company";
 
 export default function Error({
@@ -23,7 +22,7 @@ export default function Error({
         <section className="py-20 lg:py-28 max-w-3xl" role="alert">
 
           {/* Dual-Tone Headline */}
-          <h1 className="text-5xl sm:text-7xl font-bold tracking-[-0.035em] leading-[0.98] mb-8">
+          <h1 className="type-display mb-8">
             We hit an <br />
             <span className="text-[#C88A1A]">unexpected snag.</span>
           </h1>
@@ -42,8 +41,12 @@ export default function Error({
           </p>
 
           <div className="flex flex-wrap items-center gap-4">
-            <PrimaryButton onClick={reset}>Try Again</PrimaryButton>
-            <SecondaryButton href="/">Back to Home</SecondaryButton>
+            <button type="button" onClick={reset} className="btn-primary">
+              Try Again
+            </button>
+            <Link href="/" className="btn-secondary">
+              Back to Home
+            </Link>
           </div>
         </section>
       </Container>

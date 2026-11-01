@@ -57,7 +57,7 @@ const SectionIntro: React.FC<{ title: string; intro?: string }> = ({
   intro,
 }) => (
   <div className="max-w-3xl mb-10 sm:mb-12">
-    <h2 className="text-3xl sm:text-4xl font-bold text-[#07192F] tracking-[-0.03em] leading-tight">
+    <h2 className="type-h2 text-[#07192F]">
       {title}
     </h2>
     {intro && <p className="mt-4 text-base sm:text-lg text-slate-700 leading-relaxed">{intro}</p>}
@@ -93,11 +93,11 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
         <Container>
           {/* Breadcrumb */}
           <div className="flex items-center gap-2 text-xs font-mono text-slate-500 uppercase tracking-widest mb-8">
-            <Link href="/" className="hover:text-[#07192F] transition-colors">
+            <Link href="/" className="py-3 hover:text-[#07192F] transition-colors">
               Home
             </Link>
             <span>/</span>
-            <Link href="/services" className="hover:text-[#07192F] transition-colors">
+            <Link href="/services" className="py-3 hover:text-[#07192F] transition-colors">
               Services
             </Link>
             <span>/</span>
@@ -108,7 +108,7 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
             {/* Left Content */}
             <div className="lg:col-span-7">
 
-              <h1 className="text-4xl sm:text-6xl lg:text-[4.25rem] font-bold tracking-[-0.035em] leading-[1.02] mb-6">
+              <h1 className="type-title mb-6">
                 <span className="text-[#07192F]">{titleLine1}</span>{" "}
                 <br />
                 <ShinyText text={titleHighlight} variant="gold" speed={3.5} />
@@ -119,7 +119,7 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
                 aria-hidden="true"
               />
 
-              <p className="text-lg sm:text-xl text-slate-800 leading-relaxed max-w-2xl font-normal mb-8">
+              <p className="type-lead max-w-2xl mb-8">
                 {subtitle}
               </p>
 
@@ -127,14 +127,14 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
                 <ClickSpark sparkColor="#C88A1A" sparkRadius={25} sparkCount={6}>
                   <Link
                     href="/contact"
-                    className="inline-flex items-center justify-center bg-[#07192F] hover:bg-[#C88A1A] hover:text-[#07192F] text-white text-xs sm:text-sm uppercase tracking-[0.16em] font-bold px-8 py-4 transition-all duration-300 shadow-sm active:scale-98"
+                    className="btn-primary"
                   >
                     Request Consultation
                   </Link>
                 </ClickSpark>
                 <Link
                   href="#deliverables"
-                  className="inline-flex items-center justify-center bg-white hover:bg-stone-50 text-[#07192F] border border-stone-300 text-xs sm:text-sm uppercase tracking-[0.16em] font-semibold px-7 py-4 transition-all"
+                  className="btn-secondary"
                 >
                   What You Get
                 </Link>

@@ -51,7 +51,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
           <AnimatedSection direction="up" className="relative z-10">
 
             {/* Monumental Headline */}
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-[3.25rem] font-bold tracking-[-0.035em] leading-[1.08] mb-6 max-w-3xl mx-auto">
+            <h2 className="type-h2 mb-6 max-w-3xl mx-auto">
               <span>{title}</span>{" "}
               {highlight && (
                 <span className="block sm:inline">
@@ -74,7 +74,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
               <ClickSpark sparkColor="#07192F" sparkRadius={25} sparkCount={8}>
                 <Link
                   href="/contact"
-                  className="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-[#C88A1A] text-[#07192F] font-bold text-sm sm:text-base tracking-wide hover:bg-[#F5A900] transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98]"
+                  className="group btn-primary"
                 >
                   <span>{primaryCtaText}</span>
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -84,7 +84,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
               <ClickSpark sparkColor="#C88A1A" sparkRadius={25} sparkCount={6}>
                 <Link
                   href={secondaryCtaHref}
-                  className="group inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-full border border-white/20 text-white font-semibold text-sm sm:text-base tracking-wide hover:bg-white/10 hover:border-white/40 transition-all duration-300"
+                  className="group btn-secondary-dark"
                 >
                   <span>{secondaryCtaText}</span>
                   <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

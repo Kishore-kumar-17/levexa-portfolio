@@ -50,6 +50,37 @@
   }
 }
 
+/* Type scale: use these instead of ad-hoc sizes so every page shares one hierarchy */
+@layer components {
+  /* Page titles (H1): 44 / 60 / 72px */
+  .type-display {
+    @apply text-[2.75rem] sm:text-6xl lg:text-7xl font-bold tracking-[-0.035em] leading-[1.02];
+  }
+  /* Long page titles, e.g. service pages: 36 / 44 / 56px */
+  .type-title {
+    @apply text-4xl sm:text-[2.75rem] lg:text-[3.5rem] font-bold tracking-[-0.03em] leading-[1.05];
+  }
+  /* Section headings (H2): 30 / 36 / 48px */
+  .type-h2 {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.03em] leading-[1.08];
+  }
+  /* Intro paragraph under a title: 20 / 24px */
+  .type-lead {
+    @apply text-xl sm:text-2xl font-normal leading-[1.45] tracking-tight text-slate-800;
+  }
+
+  /* Buttons: one primary, one secondary, one secondary for dark backgrounds */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2.5 min-h-[52px] px-7 py-3.5 rounded-full bg-[#C88A1A] text-[#07192F] font-bold text-base tracking-wide shadow-md transition-all duration-300 hover:bg-[#F5A900] hover:shadow-lg active:scale-[0.98];
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2.5 min-h-[52px] px-7 py-3.5 rounded-full border border-[#07192F]/25 text-[#07192F] font-semibold text-base tracking-wide transition-all duration-300 hover:border-[#07192F] hover:bg-[#07192F]/5;
+  }
+  .btn-secondary-dark {
+    @apply inline-flex items-center justify-center gap-2.5 min-h-[52px] px-7 py-3.5 rounded-full border border-white/25 text-white font-semibold text-base tracking-wide transition-all duration-300 hover:bg-white/10 hover:border-white/40;
+  }
+}
+
 /* Reduced motion support: stop CSS transitions and keyframe loops (JS loops check the same preference) */
 @media (prefers-reduced-motion: reduce) {
   *,

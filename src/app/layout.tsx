@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Newsreader, IBM_Plex_Mono } from "next/font/google";
+import { Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
@@ -11,13 +11,6 @@ import { constructMetadata } from "@/lib/metadata";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
-  display: "swap",
-});
-
-const newsreader = Newsreader({
-  subsets: ["latin"],
-  style: ["normal", "italic"],
-  variable: "--font-serif",
   display: "swap",
 });
 
@@ -44,7 +37,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${newsreader.variable} ${ibmPlexMono.variable}`}
+      className={`${inter.variable} ${ibmPlexMono.variable}`}
     >
       <body className="bg-[#FAF8F5] text-navy-900 min-h-screen flex flex-col font-sans antialiased selection:bg-gold selection:text-navy-900">
         <StructuredData />
