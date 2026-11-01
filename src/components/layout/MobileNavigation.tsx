@@ -129,7 +129,7 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
         {/* Footer info & CTA */}
         <div className="pt-6 mt-8 border-t border-slate-100 space-y-5">
           <Link href="/contact" onClick={onClose} className="btn-primary w-full">
-            Book a Consultation
+            Book a growth call
           </Link>
 
           <div className="space-y-1 text-sm text-slate-600 pt-2">

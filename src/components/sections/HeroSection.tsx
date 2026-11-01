@@ -90,14 +90,14 @@ export const HeroSection: React.FC = () => {
                 href="/contact"
                 className="group btn-primary"
               >
-                <span>Book a Free Consultation</span>
+                <span>Book a growth call</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
                 href="/work"
                 className="btn-secondary"
               >
-                See Our Work
+                See our work
               </Link>
             </div>
           </div>

@@ -44,7 +44,7 @@ export default function GlobalError({ reset }: { error: Error & { digest?: strin
               cursor: "pointer",
             }}
           >
-            Try Again
+            Try again
           </button>
         </main>
       </body>

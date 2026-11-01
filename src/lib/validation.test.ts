@@ -13,7 +13,7 @@ const validSubmission = {
   email: "Priya@Example.com",
   company: "",
   service: "growth-strategy",
-  budget: "1m-5m",
+  budget: "25l-1cr",
   message: "We want to grow inbound leads from Instagram.",
   consent: true,
   honeypot: "",
@@ -82,6 +82,16 @@ test("enforces maximum lengths", () => {
   assert.ok(result.errors.message);
 });
 
+test("phone is optional but must look like a phone number when given", () => {
+  assert.equal(validateContactForm({ ...validSubmission, phone: "" }).isValid, true);
+  const ok = validateContactForm({ ...validSubmission, phone: " +91 82209 76712 " });
+  assert.equal(ok.isValid, true);
+  assert.equal(ok.sanitizedData?.phone, "+91 82209 76712");
+  const bad = validateContactForm({ ...validSubmission, phone: "call me maybe" });
+  assert.equal(bad.isValid, false);
+  assert.ok(bad.errors.phone);
+});
+
 test("rejects submissions that fill the honeypot", () => {
   const result = validateContactForm({ ...validSubmission, honeypot: "http://spam.example" });
   assert.equal(result.isValid, false);
@@ -89,6 +99,6 @@ test("rejects submissions that fill the honeypot", () => {
 });
 
 test("getOptionLabel returns the label, or the raw value when unknown", () => {
-  assert.equal(getOptionLabel(SERVICE_OPTIONS, "growth-strategy"), "01. Growth & Strategy Advisory");
+  assert.equal(getOptionLabel(SERVICE_OPTIONS, "growth-strategy"), "Growth & Strategy");
   assert.equal(getOptionLabel(SERVICE_OPTIONS, "unknown"), "unknown");
 });

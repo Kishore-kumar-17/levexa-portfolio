@@ -31,6 +31,7 @@ export interface CoreValue {
 export interface ContactFormData {
   fullName: string;
   email: string;
+  phone?: string; // optional phone / WhatsApp number
   company: string;
   service: string;
   budget?: string;

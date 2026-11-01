@@ -22,7 +22,7 @@ export default function PrivacyPage() {
           <div className="max-w-4xl">
 
             <h1 className="type-display mb-6">
-              <span>Privacy</span> <span className="text-[#C88A1A]">Policy.</span>
+              <span>Privacy</span> <span className="text-[#C88A1A]">policy</span>
             </h1>
 
             {/* Signature Gold Accent Line */}

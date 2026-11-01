@@ -52,17 +52,17 @@
 
 /* Type scale: use these instead of ad-hoc sizes so every page shares one hierarchy */
 @layer components {
-  /* Page titles (H1): 44 / 60 / 72px */
+  /* Page titles (H1): 40 / 52 / 64px */
   .type-display {
-    @apply text-[2.75rem] sm:text-6xl lg:text-7xl font-bold tracking-[-0.035em] leading-[1.02];
+    @apply text-[2.5rem] sm:text-[3.25rem] lg:text-[4rem] font-bold tracking-[-0.03em] leading-[1.05];
   }
-  /* Long page titles, e.g. service pages: 36 / 44 / 56px */
+  /* Long page titles, e.g. service pages: 34 / 40 / 52px */
   .type-title {
-    @apply text-4xl sm:text-[2.75rem] lg:text-[3.5rem] font-bold tracking-[-0.03em] leading-[1.05];
+    @apply text-[2.125rem] sm:text-[2.5rem] lg:text-[3.25rem] font-bold tracking-[-0.03em] leading-[1.08];
   }
-  /* Section headings (H2): 30 / 36 / 48px */
+  /* Section headings (H2): 30 / 34 / 40px */
   .type-h2 {
-    @apply text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.03em] leading-[1.08];
+    @apply text-3xl sm:text-[2.125rem] lg:text-[2.5rem] font-bold tracking-[-0.025em] leading-[1.15];
   }
   /* Intro paragraph under a title: 20 / 24px */
   .type-lead {

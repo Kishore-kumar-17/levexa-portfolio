@@ -1,10 +1,19 @@
 import React from "react";
 import Image from "next/image";
+import { clientReels } from "@/data/instagram-works";
+import { formatCount, parseCount } from "@/lib/counts";
 
+// Real results, computed from the featured client reels so they always match the Work page
 const STATS = [
-  { value: "4", label: ["Core growth", "pillars"] },
-  { value: "360°", label: ["Revenue", "advisory"] },
-  { value: "100%", label: ["Commercial", "focus"] },
+  {
+    value: formatCount(clientReels.reduce((sum, reel) => sum + parseCount(reel.views), 0)),
+    label: ["Reel views", "generated"],
+  },
+  {
+    value: formatCount(clientReels.reduce((sum, reel) => sum + parseCount(reel.likes), 0)),
+    label: ["Likes", "earned"],
+  },
+  { value: String(clientReels.length), label: ["Brands", "featured"] },
 ];
 
 export const WhoWeAreSection: React.FC = () => {

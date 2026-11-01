@@ -203,7 +203,7 @@ export const IntroReveal: React.FC<IntroRevealProps> = ({ onComplete }) => {
       id="intro-reveal-overlay"
       className="fixed inset-0 z-50 overflow-hidden pointer-events-none"
       style={{ backgroundColor: INITIAL_FRAME.backdropColor }}
-      aria-label="Levexa 3D Camera Fly-Through"
+      aria-hidden="true"
     >
       {/* Top Navigation Bar: Anchored on white background */}
       <header className="absolute top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-sm border-b border-slate-100 transition-colors duration-300 pointer-events-auto">
@@ -235,7 +235,7 @@ export const IntroReveal: React.FC<IntroRevealProps> = ({ onComplete }) => {
             {/* Right Call-To-Action Button (mirrors the real header) */}
             <div className="flex items-center">
               <div className="btn-primary hidden sm:inline-flex !min-h-[44px] !px-5 !py-2.5 !text-sm">
-                Book a Consultation
+                Book a growth call
               </div>
             </div>
           </div>

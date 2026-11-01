@@ -56,7 +56,7 @@ export const SiteHeader: React.FC = () => {
             >
               <Image
                 src="/levexa-logo-light-trans.png"
-                alt="Levexa Growth"
+                alt="Levexa"
                 fill
                 sizes="176px"
                 priority
@@ -95,7 +95,7 @@ export const SiteHeader: React.FC = () => {
                 href="/contact"
                 className="btn-primary hidden sm:inline-flex !min-h-[44px] !px-5 !py-2.5 !text-sm"
               >
-                Book a Consultation
+                Book a growth call
               </Link>
 
               {/* Mobile hamburger */}

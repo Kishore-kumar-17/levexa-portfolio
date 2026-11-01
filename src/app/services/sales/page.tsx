@@ -10,7 +10,7 @@ import {
 } from "@/components/services/ServiceDisciplineTemplate";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Sales Enablement & Pipeline Conversion — Levexa",
+  title: "Sales & Conversion Services — Levexa",
   description:
     "Standardize sales execution, accelerate deal velocity, and eliminate rep discounting with Levexa's commercial Sales & Conversion architecture.",
   path: "/services/sales",
@@ -57,7 +57,7 @@ export default function SalesServicePage() {
       week: "Weeks 6–8",
       phase: "COACHING & CRM",
       title: "Team Clinics & Pipeline Setup",
-      deliverable: "Certified Reps & Validated CRM Pipelines",
+      deliverable: "A Trained Sales Team & a Working CRM Pipeline",
     },
     {
       week: "Weeks 9–10",
@@ -92,21 +92,21 @@ export default function SalesServicePage() {
 
   const adjacentDisciplines: AdjacentDiscipline[] = [
     {
-      number: "01 // COMMERCIAL ARCHITECTURE",
+      number: "01",
       title: "Growth & Strategy",
       href: "/services/strategy",
       tagline:
         "Establish defensible market positioning and pricing power that gives your sales team an unfair competitive advantage.",
     },
     {
-      number: "02 // DEMAND GENERATION",
+      number: "02",
       title: "Branding & Marketing",
       href: "/services/marketing",
       tagline:
         "Fill your newly optimized sales pipeline with high-intent decision-makers educated by authority content.",
     },
     {
-      number: "04 // DIGITAL SYSTEMS",
+      number: "04",
       title: "Technology & Automation",
       href: "/services/technology",
       tagline:
@@ -118,12 +118,11 @@ export default function SalesServicePage() {
     <ServiceDisciplineTemplate
       pillarNumber="03"
       categoryTag="REVENUE ENGINE"
-      titleLine1="Pipeline Velocity &"
-      titleHighlight="High-Conversion Sales Systems."
+      titleLine1="Sales &"
+      titleHighlight="Conversion"
       subtitle="Standardizing commercial sales execution, objection handling, CRM pipeline hygiene, and deal closing rubrics to eliminate reliance on individual star performers."
       image="/images/pillars/03-sales-conversion.jpg"
-      imageAlt="Levexa Sales & Conversion Enablement"
-      overviewSummary="Sales playbooks, team training, CRM infrastructure, and conversion rate optimization."
+      imageAlt="A sales conversation with a client"
       deliverablesDetailed={deliverablesDetailed}
       roadmap={roadmap}
       faqs={faqs}

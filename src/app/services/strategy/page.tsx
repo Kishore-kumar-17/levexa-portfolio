@@ -10,7 +10,7 @@ import {
 } from "@/components/services/ServiceDisciplineTemplate";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Business Growth Strategy & GTM Advisory — Levexa",
+  title: "Growth & Strategy Services — Levexa",
   description:
     "Diagnose commercial bottlenecks, clarify market positioning, and architect high-velocity GTM playbooks with Levexa's Growth Strategy advisory.",
   path: "/services/strategy",
@@ -92,21 +92,21 @@ export default function StrategyServicePage() {
 
   const adjacentDisciplines: AdjacentDiscipline[] = [
     {
-      number: "02 // DEMAND GENERATION",
+      number: "02",
       title: "Branding & Marketing",
       href: "/services/marketing",
       tagline:
         "Transform strategic positioning into high-intent inbound demand and full-funnel ad performance.",
     },
     {
-      number: "03 // REVENUE ENGINE",
+      number: "03",
       title: "Sales & Conversion",
       href: "/services/sales",
       tagline:
         "Equip sales teams with scripts, objection frameworks, and CRM pipelines that close deals faster.",
     },
     {
-      number: "04 // DIGITAL SYSTEMS",
+      number: "04",
       title: "Technology & Automation",
       href: "/services/technology",
       tagline:
@@ -118,12 +118,11 @@ export default function StrategyServicePage() {
     <ServiceDisciplineTemplate
       pillarNumber="01"
       categoryTag="COMMERCIAL ARCHITECTURE"
-      titleLine1="Market Differentiation &"
-      titleHighlight="Business Growth Strategy."
+      titleLine1="Growth &"
+      titleHighlight="Strategy"
       subtitle="Diagnosing revenue friction, defining defensible positioning, architecting enterprise GTM playbooks, and aligning executive leadership around compounding unit economics."
       image="/images/pillars/01-growth-strategy.jpg"
-      imageAlt="Levexa Growth & Strategy Architecture"
-      overviewSummary="Market research, commercial positioning, GTM architecture, and KPI planning."
+      imageAlt="Growth strategy planning with charts and notes"
       deliverablesDetailed={deliverablesDetailed}
       roadmap={roadmap}
       faqs={faqs}

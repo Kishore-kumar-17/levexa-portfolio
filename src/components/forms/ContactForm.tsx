@@ -9,6 +9,7 @@ export const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState<ContactFormData>({
     fullName: "",
     email: "",
+    phone: "",
     company: "",
     service: "",
     budget: "",
@@ -73,6 +74,7 @@ export const ContactForm: React.FC = () => {
       setFormData({
         fullName: "",
         email: "",
+        phone: "",
         company: "",
         service: "",
         budget: "",
@@ -210,8 +212,36 @@ export const ContactForm: React.FC = () => {
         </div>
       </div>
 
-      {/* Row 2: Company & Service */}
+      {/* Row 2: Phone & Company */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div>
+          <label htmlFor="phone" className="block text-sm font-semibold text-slate-800 mb-2">
+            Phone / WhatsApp (optional)
+          </label>
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            inputMode="tel"
+            autoComplete="tel"
+            value={formData.phone}
+            onChange={handleChange}
+            placeholder="e.g. +91 98765 43210"
+            aria-invalid={Boolean(errors.phone)}
+            aria-describedby={errors.phone ? "phone-error" : undefined}
+            className={`w-full px-4 py-3.5 rounded-xl bg-[#FAF8F5] border text-[#07192F] placeholder-slate-500 text-base focus:outline-none transition-colors ${
+              errors.phone
+                ? "border-red-500 focus:border-red-400"
+                : "border-stone-200 focus:border-[#C88A1A] focus:ring-1 focus:ring-[#C88A1A]"
+            }`}
+          />
+          {errors.phone && (
+            <p id="phone-error" className="text-xs text-red-600 mt-1.5 font-medium">
+              {errors.phone}
+            </p>
+          )}
+        </div>
+
         <div>
           <label
             htmlFor="company"
@@ -240,7 +270,10 @@ export const ContactForm: React.FC = () => {
             </p>
           )}
         </div>
+      </div>
 
+      {/* Row 3: Service & Annual Revenue */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
           <label
             htmlFor="service"
@@ -262,7 +295,7 @@ export const ContactForm: React.FC = () => {
                 : "border-stone-200 focus:border-[#C88A1A] focus:ring-1 focus:ring-[#C88A1A]"
             }`}
           >
-            <option value="">Select primary focus...</option>
+            <option value="">Select a service...</option>
             {SERVICE_OPTIONS.map((opt) => (
               <option key={opt.value} value={opt.value}>
                 {opt.label}
@@ -275,15 +308,13 @@ export const ContactForm: React.FC = () => {
             </p>
           )}
         </div>
-      </div>
 
-      {/* Row 3: Revenue / Budget Stage */}
-      <div>
+        <div>
         <label
           htmlFor="budget"
           className="block text-sm font-semibold text-slate-800 mb-2"
         >
-          Company stage (optional)
+          Annual revenue (optional)
         </label>
         <select
           id="budget"
@@ -292,7 +323,7 @@ export const ContactForm: React.FC = () => {
           onChange={handleChange}
           className="w-full px-4 py-3.5 rounded-xl bg-[#FAF8F5] border border-stone-200 text-[#07192F] text-base focus:outline-none focus:border-[#C88A1A] focus:ring-1 focus:ring-[#C88A1A] transition-colors cursor-pointer"
         >
-          <option value="">Select current stage...</option>
+          <option value="">Select a range...</option>
           {BUDGET_OPTIONS.map((opt) => (
             <option key={opt.value} value={opt.value}>
               {opt.label}
@@ -302,6 +333,7 @@ export const ContactForm: React.FC = () => {
         {errors.budget && (
           <p className="text-xs text-red-600 mt-1.5 font-medium">{errors.budget}</p>
         )}
+        </div>
       </div>
 
       {/* Row 4: Message */}
@@ -343,6 +375,7 @@ export const ContactForm: React.FC = () => {
             name="consent"
             checked={formData.consent}
             onChange={handleChange}
+            required
             aria-invalid={Boolean(errors.consent)}
             aria-describedby={errors.consent ? "consent-error" : undefined}
             className="mt-0.5 w-5 h-5 shrink-0 rounded border-stone-300 text-[#C88A1A] focus:ring-[#C88A1A]"
@@ -352,7 +385,7 @@ export const ContactForm: React.FC = () => {
             <a href="/privacy" className="text-[#07192F] underline underline-offset-2 font-semibold hover:text-[#C88A1A]">
               Privacy Policy
             </a>
-            .
+            . <span className="text-[#C88A1A]">*</span>
           </span>
         </label>
         {errors.consent && (
@@ -371,7 +404,7 @@ export const ContactForm: React.FC = () => {
           </>
         ) : (
           <>
-            <span>Send Enquiry</span>
+            <span>Book my growth call</span>
             <ArrowRight className="w-4 h-4" />
           </>
         )}

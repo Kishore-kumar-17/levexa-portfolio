@@ -8,18 +8,18 @@ export interface ValidationResult {
 
 // Shared by the contact form (rendered options) and the API (allowed values)
 export const SERVICE_OPTIONS = [
-  { value: "growth-strategy", label: "01. Growth & Strategy Advisory" },
-  { value: "branding-marketing", label: "02. Branding & Demand Generation" },
-  { value: "sales-conversion", label: "03. Sales Velocity & Pipeline Conversion" },
-  { value: "technology-automation", label: "04. Technology, AI & Automation" },
-  { value: "full-echelon", label: "05. Full Echelon Commercial Overhaul" },
+  { value: "growth-strategy", label: "Growth & Strategy" },
+  { value: "branding-marketing", label: "Branding & Marketing" },
+  { value: "sales-conversion", label: "Sales & Conversion" },
+  { value: "technology-automation", label: "Technology & Automation" },
+  { value: "full-echelon", label: "All of the above" },
 ] as const;
 
 export const BUDGET_OPTIONS = [
-  { value: "under-1m", label: "Early Scaling (< $1M ARR / Annual Revenue)" },
-  { value: "1m-5m", label: "Growth Stage ($1M – $5M ARR)" },
-  { value: "5m-20m", label: "Expansion Stage ($5M – $20M ARR)" },
-  { value: "20m-plus", label: "Enterprise Tier ($20M+ ARR)" },
+  { value: "under-25l", label: "Under ₹25 lakh a year" },
+  { value: "25l-1cr", label: "₹25 lakh – ₹1 crore a year" },
+  { value: "1cr-10cr", label: "₹1 crore – ₹10 crore a year" },
+  { value: "10cr-plus", label: "Above ₹10 crore a year" },
 ] as const;
 
 export function getOptionLabel(
@@ -59,6 +59,12 @@ export function validateContactForm(data: Partial<ContactFormData>): ValidationR
     errors.email = "Please provide a valid email address.";
   } else if (email.length > 120) {
     errors.email = "Email cannot exceed 120 characters.";
+  }
+
+  // Phone / WhatsApp (optional): digits with optional +, spaces, dashes or brackets
+  const phone = data.phone?.trim() || "";
+  if (phone && !/^\+?[\d\s\-()]{7,20}$/.test(phone)) {
+    errors.phone = "Please enter a valid phone number, e.g. +91 98765 43210.";
   }
 
   // Company Name validation (optional)
@@ -105,6 +111,7 @@ export function validateContactForm(data: Partial<ContactFormData>): ValidationR
       ? {
           fullName,
           email,
+          phone: phone || undefined,
           company,
           service,
           budget: budget || undefined,

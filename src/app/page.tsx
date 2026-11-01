@@ -33,8 +33,8 @@ export default function HomePage() {
         title="Ready to turn your marketing"
         highlight="into revenue?"
         subtitle="Book a free consultation and we'll map out the fastest way to grow your leads and sales."
-        primaryCtaText="Book a Free Consultation"
-        secondaryCtaText="See Our Work"
+        primaryCtaText="Book a growth call"
+        secondaryCtaText="See our work"
         secondaryCtaHref="/work"
       />
     </>

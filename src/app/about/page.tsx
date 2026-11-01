@@ -65,11 +65,11 @@ export default function AboutPage() {
 
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Link href="/contact" className="group btn-primary">
-                  Book a Free Consultation
+                  Book a growth call
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                 </Link>
                 <Link href="/work" className="btn-secondary">
-                  See Our Work
+                  See our work
                 </Link>
               </div>
             </div>
@@ -100,7 +100,7 @@ export default function AboutPage() {
       <section className="py-16 lg:py-24 border-b border-[#D7D3CB]">
         <Container>
           <h2 className="type-h2 max-w-3xl mb-10 sm:mb-12">
-            Why most business growth <span className="text-[#C88A1A]">stalls.</span>
+            Why most business growth <span className="text-[#C88A1A]">stalls</span>
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
@@ -120,7 +120,7 @@ export default function AboutPage() {
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
             <h2 className="type-h2 lg:col-span-5">
-              You work directly with <span className="text-[#C88A1A]">the founder.</span>
+              You work directly with <span className="text-[#C88A1A]">the founder</span>
             </h2>
             <div className="lg:col-span-7">
               <p className="text-lg sm:text-xl text-slate-800 leading-relaxed mb-8">
@@ -144,7 +144,7 @@ export default function AboutPage() {
       <section className="py-16 lg:py-24">
         <Container>
           <h2 className="type-h2 max-w-3xl mb-10 sm:mb-12">
-            What we <span className="text-[#C88A1A]">stand for.</span>
+            What we <span className="text-[#C88A1A]">stand for</span>
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
@@ -167,8 +167,8 @@ export default function AboutPage() {
         title="Ready to engineer your company's"
         highlight="next growth breakthrough?"
         subtitle="Book a free consultation. We'll look at your current marketing and sales, and show you where the biggest growth opportunities are."
-        primaryCtaText="Book a Free Consultation"
-        secondaryCtaText="See Our Work"
+        primaryCtaText="Book a growth call"
+        secondaryCtaText="See our work"
         secondaryCtaHref="/work"
       />
     </div>

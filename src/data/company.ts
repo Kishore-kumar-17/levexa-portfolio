@@ -3,7 +3,7 @@ export const companyConfig = {
   tagline: "Level up your excellence with Levexa.",
   subTagline: "Helping businesses grow, scale, and increase revenue.",
   description:
-    "Levexa is a premier strategic growth advisory helping founders, executives, and scaling businesses engineer high-performance marketing, sales pipelines, and sustainable revenue models.",
+    "Levexa is a founder-led growth advisory helping founders and growing businesses turn marketing into measurable revenue.",
   eyebrow: "STRATEGY · MARKETING · SALES · GROWTH",
   
   // Official verified contact channels

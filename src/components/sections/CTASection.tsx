@@ -22,8 +22,8 @@ export const CTASection: React.FC<CTASectionProps> = ({
   title = "Ready to level up your business to the",
   highlight = "next echelon of growth?",
   subtitle = "Partner directly with Levexa to transform commercial strategy, marketing demand, and sales execution into an interconnected revenue engine.",
-  primaryCtaText = "Start Your Growth Consultation",
-  secondaryCtaText = "Explore Our Services",
+  primaryCtaText = "Book a growth call",
+  secondaryCtaText = "Explore our services",
   secondaryCtaHref = "/services",
 }) => {
   return (

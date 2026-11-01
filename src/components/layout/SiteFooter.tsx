@@ -170,7 +170,7 @@ export const SiteFooter: React.FC = () => {
         {/* Bottom utility row: Copyright + CircularText Stamp */}
         <div className="flex items-center gap-4 pt-6 border-t border-white/10 text-xs sm:text-sm">
           <span className="text-stone-400 font-normal">
-            © {currentYear} Levexa Growth
+            © {currentYear} Levexa
           </span>
           <div className="hidden sm:block pl-2">
             <CircularText

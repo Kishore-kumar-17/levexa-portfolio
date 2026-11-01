@@ -10,7 +10,7 @@ import {
 } from "@/components/services/ServiceDisciplineTemplate";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Branding & Demand Generation — Levexa",
+  title: "Branding & Marketing Services — Levexa",
   description:
     "Transform positioning into qualified inbound pipeline with Levexa's full-funnel Branding, Meta Ads, and Performance Marketing architecture.",
   path: "/services/marketing",
@@ -92,21 +92,21 @@ export default function MarketingServicePage() {
 
   const adjacentDisciplines: AdjacentDiscipline[] = [
     {
-      number: "01 // COMMERCIAL ARCHITECTURE",
+      number: "01",
       title: "Growth & Strategy",
       href: "/services/strategy",
       tagline:
         "Align market positioning, unit economics, and executive prioritization to underpin your marketing engine.",
     },
     {
-      number: "03 // REVENUE ENGINE",
+      number: "03",
       title: "Sales & Conversion",
       href: "/services/sales",
       tagline:
         "Convert the inbound demand generated into signed contracts with codified sales scripts and CRM playbooks.",
     },
     {
-      number: "04 // DIGITAL SYSTEMS",
+      number: "04",
       title: "Technology & Automation",
       href: "/services/technology",
       tagline:
@@ -118,12 +118,11 @@ export default function MarketingServicePage() {
     <ServiceDisciplineTemplate
       pillarNumber="02"
       categoryTag="DEMAND GENERATION"
-      titleLine1="High-Performance Branding &"
-      titleHighlight="Demand Generation."
+      titleLine1="Branding &"
+      titleHighlight="Marketing"
       subtitle="Transforming brand authority into predictable, high-intent inbound pipelines through multi-channel content strategy, Meta Ads, and full-funnel performance creative."
       image="/images/pillars/02-branding-marketing.jpg"
-      imageAlt="Levexa Branding & Demand Generation"
-      overviewSummary="Personal & business branding, Meta Ads, and performance creative engines."
+      imageAlt="Brand identity materials on a desk"
       deliverablesDetailed={deliverablesDetailed}
       roadmap={roadmap}
       faqs={faqs}

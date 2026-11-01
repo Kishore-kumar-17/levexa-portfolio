@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { fullName, email, company, service, budget, message } = validation.sanitizedData;
+    const { fullName, email, phone, company, service, budget, message } = validation.sanitizedData;
     const serviceLabel = getOptionLabel(SERVICE_OPTIONS, service);
     const budgetLabel = budget ? getOptionLabel(BUDGET_OPTIONS, budget) : "Not specified";
 
@@ -114,6 +114,7 @@ export async function POST(request: NextRequest) {
               <h2>New Growth Enquiry for Levexa</h2>
               <p><strong>Name:</strong> ${escapeHtml(fullName)}</p>
               <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+              <p><strong>Phone / WhatsApp:</strong> ${escapeHtml(phone || "Not provided")}</p>
               <p><strong>Company:</strong> ${escapeHtml(company || "Not specified")}</p>
               <p><strong>Service of Interest:</strong> ${escapeHtml(serviceLabel)}</p>
               <p><strong>Company Stage:</strong> ${escapeHtml(budgetLabel)}</p>

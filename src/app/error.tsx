@@ -42,10 +42,10 @@ export default function Error({
 
           <div className="flex flex-wrap items-center gap-4">
             <button type="button" onClick={reset} className="btn-primary">
-              Try Again
+              Try again
             </button>
             <Link href="/" className="btn-secondary">
-              Back to Home
+              Back to home
             </Link>
           </div>
         </section>

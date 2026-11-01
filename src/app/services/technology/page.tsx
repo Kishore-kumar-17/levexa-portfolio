@@ -10,7 +10,7 @@ import {
 } from "@/components/services/ServiceDisciplineTemplate";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Technology & Automation Advisory — Levexa",
+  title: "Technology & Automation Services — Levexa",
   description:
     "Scale commercial leverage with custom web applications, AI chatbots, WhatsApp automation, and seamless CRM integrations engineered by Levexa.",
   path: "/services/technology",
@@ -71,7 +71,7 @@ export default function TechnologyServicePage() {
     {
       question: "Which modern technologies do you build websites and applications with?",
       answer:
-        "We build with Next.js, React, TypeScript, TailwindCSS, and serverless Node.js infrastructure. This ensures sub-second load times, bank-grade security, flawless mobile responsiveness, and zero reliance on fragile, bloated plugins.",
+        "We build with Next.js, React, TypeScript, TailwindCSS, and serverless Node.js infrastructure. This gives you fast load times, secure modern infrastructure, flawless mobile responsiveness, and zero reliance on fragile, bloated plugins.",
     },
     {
       question: "How do your WhatsApp and AI bots interact with our existing CRM?",
@@ -92,21 +92,21 @@ export default function TechnologyServicePage() {
 
   const adjacentDisciplines: AdjacentDiscipline[] = [
     {
-      number: "01 // COMMERCIAL ARCHITECTURE",
+      number: "01",
       title: "Growth & Strategy",
       href: "/services/strategy",
       tagline:
         "Ground your digital platforms in clear positioning, market research, and targeted customer journey funnels.",
     },
     {
-      number: "02 // DEMAND GENERATION",
+      number: "02",
       title: "Branding & Marketing",
       href: "/services/marketing",
       tagline:
         "Drive high-volume, high-intent traffic directly into your newly automated conversion funnels.",
     },
     {
-      number: "03 // REVENUE ENGINE",
+      number: "03",
       title: "Sales & Conversion",
       href: "/services/sales",
       tagline:
@@ -118,12 +118,11 @@ export default function TechnologyServicePage() {
     <ServiceDisciplineTemplate
       pillarNumber="04"
       categoryTag="DIGITAL SYSTEMS"
-      titleLine1="Scalable Digital Architecture &"
-      titleHighlight="Intelligent Automation."
+      titleLine1="Technology &"
+      titleHighlight="Automation"
       subtitle="Custom web development, mobile apps, WhatsApp & AI bots, CRM integrations, and automated operational workflows engineered to maximize commercial leverage."
       image="/images/pillars/04-technology-automation.jpg"
-      imageAlt="Levexa Technology & Automation Architecture"
-      overviewSummary="Custom web development, mobile apps, CRM, AI, and workflow automation."
+      imageAlt="A laptop showing an automation dashboard"
       deliverablesDetailed={deliverablesDetailed}
       roadmap={roadmap}
       faqs={faqs}

@@ -37,7 +37,7 @@ export default function WorkPage() {
           <div className="max-w-4xl">
 
             <h1 className="type-display mb-8">
-              <span>Our</span> <ShinyText text="Work." variant="gold" speed={4} />
+              <span>Our</span> <ShinyText text="work" variant="gold" speed={4} />
             </h1>
 
             <div className="w-12 h-[3px] bg-[#C88A1A] rounded-full mb-8" aria-hidden="true" />
@@ -73,8 +73,8 @@ export default function WorkPage() {
         title="Want reels that"
         highlight="bring in leads?"
         subtitle="Tell us about your brand and goals, and we'll show you how scripted content can turn views into enquiries."
-        primaryCtaText="Start a Project"
-        secondaryCtaText="Explore Our Services"
+        primaryCtaText="Book a growth call"
+        secondaryCtaText="Explore our services"
       />
     </div>
   );

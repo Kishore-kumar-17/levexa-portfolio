@@ -30,10 +30,10 @@ export default function NotFound() {
 
           <div className="flex flex-wrap items-center gap-4">
             <Link href="/" className="btn-primary">
-              Back to Home
+              Back to home
             </Link>
             <Link href="/contact" className="btn-secondary">
-              Contact Us
+              Contact us
             </Link>
           </div>
         </section>

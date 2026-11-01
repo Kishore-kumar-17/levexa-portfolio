@@ -1,6 +1,4 @@
-"use client";
-
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
@@ -41,7 +39,6 @@ export interface ServiceDisciplineTemplateProps {
   subtitle: string;
   image: string;
   imageAlt: string;
-  overviewSummary: string;
   deliverablesDetailed: DeliverableDetailed[];
   roadmap: DisciplineProcessStep[];
   faqs: DisciplineFAQ[];
@@ -71,7 +68,6 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
   subtitle,
   image,
   imageAlt,
-  overviewSummary,
   deliverablesDetailed,
   roadmap,
   faqs,
@@ -80,19 +76,13 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
   ctaHighlight = "commercial architecture?",
   ctaSubtitle = "Schedule a confidential discovery briefing with Levexa to diagnose your revenue engine.",
 }) => {
-  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
-
-  const toggleFaq = (index: number) => {
-    setOpenFaqIndex(openFaqIndex === index ? null : index);
-  };
-
   return (
     <div className="pt-24 sm:pt-28 bg-[#FAF8F5] text-[#07192F] min-h-screen">
       {/* 1. Breadcrumbs & Top Meta */}
       <section className="pt-8 sm:pt-12 border-b border-[#D7D3CB] pb-16 sm:pb-24 relative overflow-hidden">
         <Container>
           {/* Breadcrumb */}
-          <div className="flex items-center gap-2 text-xs font-mono text-slate-500 uppercase tracking-widest mb-8">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm text-slate-600 mb-8">
             <Link href="/" className="py-3 hover:text-[#07192F] transition-colors">
               Home
             </Link>
@@ -101,8 +91,10 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
               Services
             </Link>
             <span>/</span>
-            <span className="text-[#C88A1A] font-bold">{titleHighlight}</span>
-          </div>
+            <span className="text-[#07192F] font-semibold" aria-current="page">
+              {titleLine1} {titleHighlight}
+            </span>
+          </nav>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Content */}
@@ -110,7 +102,6 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
 
               <h1 className="type-title mb-6">
                 <span className="text-[#07192F]">{titleLine1}</span>{" "}
-                <br />
                 <ShinyText text={titleHighlight} variant="gold" speed={3.5} />
               </h1>
 
@@ -129,14 +120,14 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
                     href="/contact"
                     className="btn-primary"
                   >
-                    Request Consultation
+                    Book a growth call
                   </Link>
                 </ClickSpark>
                 <Link
                   href="#deliverables"
                   className="btn-secondary"
                 >
-                  What You Get
+                  What you get
                 </Link>
               </div>
             </div>
@@ -152,19 +143,10 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
                 <div className="absolute top-6 right-6">
                   <span className="text-6xl sm:text-7xl font-mono font-black text-white/40 leading-none select-none">
                     {pillarNumber}
                   </span>
-                </div>
-                <div className="absolute bottom-6 left-6 right-6 text-white">
-                  <p className="text-xs font-mono uppercase tracking-[0.2em] text-[#F5A900] mb-1 font-bold">
-                    PRIMARY DISCIPLINE
-                  </p>
-                  <p className="text-sm font-medium leading-snug text-white/95">
-                    {overviewSummary}
-                  </p>
                 </div>
               </div>
             </div>
@@ -186,7 +168,7 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
                 <CheckCircle2 className="w-5 h-5 text-[#C88A1A] shrink-0 mt-1" />
                 <div>
                   <h3 className="text-lg font-bold text-[#07192F] mb-2">{deliv.title}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">{deliv.description}</p>
+                  <p className="text-base text-slate-600 leading-relaxed">{deliv.description}</p>
                 </div>
               </div>
             ))}
@@ -229,34 +211,22 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
             <SectionIntro title="Common questions" />
 
             <div className="space-y-3">
-              {faqs.slice(0, 4).map((faq, idx) => {
-                const isOpen = openFaqIndex === idx;
-                return (
-                  <div
-                    key={faq.question}
-                    className="rounded-xl border border-stone-200/90 bg-white overflow-hidden shadow-2xs"
-                  >
-                    <button
-                      type="button"
-                      onClick={() => toggleFaq(idx)}
-                      className="w-full text-left px-5 sm:px-6 py-4 sm:py-5 flex items-center justify-between gap-4 font-bold text-base sm:text-lg text-[#07192F] hover:text-[#C88A1A] transition-colors"
-                      aria-expanded={isOpen}
-                    >
-                      <span>{faq.question}</span>
-                      <ChevronDown
-                        className={`w-5 h-5 text-slate-400 transition-transform duration-300 shrink-0 ${
-                          isOpen ? "rotate-180 text-[#C88A1A]" : ""
-                        }`}
-                      />
-                    </button>
-                    {isOpen && (
-                      <div className="px-5 sm:px-6 pb-5 pt-1 text-sm text-slate-600 leading-relaxed border-t border-stone-100">
-                        {faq.answer}
-                      </div>
-                    )}
+              {/* Native <details>: every answer is in the HTML (readable by search engines), works without JS */}
+              {faqs.slice(0, 4).map((faq, idx) => (
+                <details
+                  key={faq.question}
+                  open={idx === 0}
+                  className="group rounded-xl border border-stone-200/90 bg-white overflow-hidden shadow-2xs"
+                >
+                  <summary className="list-none [&::-webkit-details-marker]:hidden cursor-pointer w-full text-left px-5 sm:px-6 py-4 sm:py-5 flex items-center justify-between gap-4 font-bold text-base sm:text-lg text-[#07192F] hover:text-[#C88A1A] transition-colors">
+                    <span>{faq.question}</span>
+                    <ChevronDown className="w-5 h-5 text-slate-400 transition-transform duration-300 shrink-0 group-open:rotate-180 group-open:text-[#C88A1A]" />
+                  </summary>
+                  <div className="px-5 sm:px-6 pb-5 pt-1 text-base text-slate-600 leading-relaxed border-t border-stone-100">
+                    {faq.answer}
                   </div>
-                );
-              })}
+                </details>
+              ))}
             </div>
           </div>
         </Container>
@@ -294,8 +264,8 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
         title={ctaTitle}
         highlight={ctaHighlight}
         subtitle={ctaSubtitle}
-        primaryCtaText="Request Consultation"
-        secondaryCtaText="All Services"
+        primaryCtaText="Book a growth call"
+        secondaryCtaText="Explore all services"
       />
     </div>
   );

@@ -6,7 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { CTASection } from "@/components/sections/CTASection";
 import { servicesData } from "@/data/services";
 import { constructMetadata } from "@/lib/metadata";
-import { ArrowRight } from "lucide-react";
+import { ArrowDown, ArrowRight, RefreshCw } from "lucide-react";
 import { ShinyText } from "@/components/ui/ShinyText";
 
 export const metadata: Metadata = constructMetadata({
@@ -55,15 +55,25 @@ export default function ServicesPage() {
 
             <h1 className="type-display mb-8">
               <span>Our</span>{" "}
-              <ShinyText text="Services." variant="gold" speed={4} />
+              <ShinyText text="services" variant="gold" speed={4} />
             </h1>
 
             <div className="w-12 h-[3px] bg-[#C88A1A] rounded-full mb-8" aria-hidden="true" />
 
-            <p className="type-lead max-w-3xl">
+            <p className="type-lead max-w-3xl mb-10">
               Four connected disciplines that turn your marketing into measurable revenue: strategy,
               marketing, sales and automation.
             </p>
+
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <Link href="/contact" className="group btn-primary">
+                Book a growth call
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+              </Link>
+              <Link href="/work" className="btn-secondary">
+                See our work
+              </Link>
+            </div>
           </div>
         </Container>
       </section>
@@ -112,7 +122,7 @@ export default function ServicesPage() {
                     href={DISCIPLINE_LINKS[service.id] || "/contact"}
                     className="group mt-auto inline-flex items-center gap-2 self-start py-2.5 text-base font-bold text-[#07192F] hover:text-[#C88A1A] transition-colors"
                   >
-                    <span>Learn more</span>
+                    <span>Explore {service.title}</span>
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
@@ -127,19 +137,36 @@ export default function ServicesPage() {
         <Container>
           <div className="max-w-3xl mb-10">
             <h2 className="type-h2">
-              Each discipline feeds the next.
+              Each discipline feeds <span className="text-[#C88A1A]">the next</span>
             </h2>
           </div>
 
-          <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {/* Loop diagram: four steps joined by arrows, closing back to Strategy */}
+          <ol className="grid grid-cols-1 lg:grid-cols-4 gap-10 lg:gap-12">
             {FLYWHEEL.map((step, idx) => (
-              <li key={step.title} className="p-6 rounded-2xl bg-[#FAF8F5] border border-stone-200/90">
-                <span className="text-xs font-mono font-bold text-slate-600 block mb-2">0{idx + 1}</span>
+              <li key={step.title} className="relative p-6 rounded-2xl bg-[#FAF8F5] border border-stone-200/90">
+                <span className="text-sm font-mono font-bold text-slate-600 block mb-2">0{idx + 1}</span>
                 <h3 className="text-xl font-bold mb-2">{step.title}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed">{step.desc}</p>
+                <p className="text-base text-slate-600 leading-relaxed">{step.desc}</p>
+                {idx < FLYWHEEL.length - 1 && (
+                  <span
+                    className="absolute z-10 flex items-center justify-center w-9 h-9 rounded-full bg-[#07192F] text-white left-1/2 -translate-x-1/2 -bottom-[30px] lg:left-auto lg:translate-x-0 lg:top-1/2 lg:-translate-y-1/2 lg:-right-[30px] lg:bottom-auto"
+                    aria-hidden="true"
+                  >
+                    <ArrowDown className="w-4 h-4 lg:hidden" />
+                    <ArrowRight className="w-4 h-4 hidden lg:block" />
+                  </span>
+                )}
               </li>
             ))}
           </ol>
+
+          <div className="mt-6 flex items-center justify-center gap-3 rounded-2xl border-2 border-dashed border-[#C88A1A]/50 px-5 py-4 text-center">
+            <RefreshCw className="w-5 h-5 text-[#C88A1A] shrink-0" aria-hidden="true" />
+            <p className="text-base text-slate-700">
+              Results from automation feed back into strategy, so every cycle gets sharper.
+            </p>
+          </div>
         </Container>
       </section>
 
@@ -148,8 +175,8 @@ export default function ServicesPage() {
         title="Not sure where to start?"
         highlight="Let's find your biggest growth lever."
         subtitle="Tell us about your business and we'll recommend the right starting point across strategy, marketing, sales or automation."
-        primaryCtaText="Book a Consultation"
-        secondaryCtaText="See Our Work"
+        primaryCtaText="Book a growth call"
+        secondaryCtaText="See our work"
         secondaryCtaHref="/work"
       />
     </div>
