@@ -42,20 +42,20 @@ export const SiteHeader: React.FC = () => {
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled
-            ? "bg-[#FAF8F5]/95 backdrop-blur-md border-b border-[#D7D3CB] shadow-2xs py-4"
-            : "bg-[#FAF8F5]/85 backdrop-blur-sm border-b border-transparent py-5 sm:py-6"
+            ? "bg-[#07192F]/95 backdrop-blur-md border-b border-white/10 shadow-md py-4"
+            : "bg-[#07192F] border-b border-transparent py-5 sm:py-6"
         }`}
       >
         <Container>
           <div className="flex items-center justify-between">
-            {/* Logo: Transparent White-background version */}
+            {/* Logo: light-on-dark version for the navy header */}
             <Link
               href="/"
               className="relative block w-36 sm:w-44 h-8 sm:h-9 transition-transform active:scale-95 focus-visible:outline-none"
               aria-label="Levexa Home"
             >
               <Image
-                src="/levexa-logo-light-trans.png"
+                src="/levexa-logo-dark-trans.png"
                 alt="Levexa"
                 fill
                 sizes="176px"
@@ -78,8 +78,8 @@ export const SiteHeader: React.FC = () => {
                     href={item.href}
                     className={`text-[15px] font-medium py-2 border-b-2 transition-colors ${
                       isActive
-                        ? "text-[#07192F] font-semibold border-[#C88A1A]"
-                        : "text-slate-600 border-transparent hover:text-[#07192F]"
+                        ? "text-white font-semibold border-[#C88A1A]"
+                        : "text-stone-300 border-transparent hover:text-white"
                     }`}
                     aria-current={isActive ? "page" : undefined}
                   >
@@ -102,11 +102,11 @@ export const SiteHeader: React.FC = () => {
               <button
                 type="button"
                 onClick={handleOpenMobileMenu}
-                className="lg:hidden p-2 rounded-xs bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 hover:text-black transition-colors focus-visible:outline-none cursor-pointer"
+                className="lg:hidden p-2 rounded-xs bg-white/10 hover:bg-white/15 border border-white/15 text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C88A1A] cursor-pointer"
                 aria-label="Open mobile navigation menu"
                 aria-expanded={isMobileMenuOpen}
               >
-                <Menu className="w-5 h-5 text-slate-800" />
+                <Menu className="w-5 h-5 text-white" />
               </button>
             </div>
           </div>

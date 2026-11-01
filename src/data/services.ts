@@ -5,6 +5,9 @@ export const servicesData: ServiceItem[] = [
     id: "growth-strategy",
     title: "Growth & Strategy",
     tagline: "Market research, commercial positioning, GTM architecture, and KPI planning.",
+    summary:
+      "We study your market, sharpen your offer and set the numbers that matter, so every effort pulls in one direction.",
+    href: "/services/strategy",
     description:
       "Business growth strategy, GTM strategy, market research, positioning, competitor analysis, customer journey, funnels, growth consulting and KPI planning.",
     iconName: "Compass",
@@ -30,6 +33,9 @@ export const servicesData: ServiceItem[] = [
     id: "branding-marketing",
     title: "Branding & Marketing",
     tagline: "Personal & business branding, Meta Ads, and performance creative engines.",
+    summary:
+      "Personal and business branding, reels, social media and Meta Ads that turn attention into enquiries.",
+    href: "/services/marketing",
     description:
       "Personal branding, business branding, content strategy, social media management, video production/editing, organic lead generation, Meta Ads, performance marketing and creative strategy.",
     iconName: "TrendingUp",
@@ -55,6 +61,8 @@ export const servicesData: ServiceItem[] = [
     id: "sales-conversion",
     title: "Sales & Conversion",
     tagline: "Sales playbooks, team training, CRM infrastructure, and conversion rate optimization.",
+    summary: "Sales scripts, team training and CRM follow-up that turn more of those enquiries into customers.",
+    href: "/services/sales",
     description:
       "Sales strategy, scripts, sales-team training, call audits, objection handling, lead-management systems, CRM setup, SOPs and conversion optimization.",
     iconName: "Target",
@@ -80,6 +88,8 @@ export const servicesData: ServiceItem[] = [
     id: "technology-automation",
     title: "Technology & Automation",
     tagline: "Custom web development, mobile apps, CRM, AI, and workflow automation.",
+    summary: "Websites, CRM, WhatsApp bots and dashboards that save your team hours and keep growth running.",
+    href: "/services/technology",
     description:
       "Website and landing-page development, e-commerce development, custom web applications, mobile apps, CRM implementation, WhatsApp/chatbot automation, marketing automation, AI integrations, dashboards and custom business software.",
     iconName: "Layers",

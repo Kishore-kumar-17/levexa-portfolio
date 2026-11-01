@@ -152,7 +152,9 @@ const InstagramEmbed: React.FC<{ reel: ClientReel }> = ({ reel }) => {
 };
 
 export const ReelCard: React.FC<{ reel: ClientReel }> = ({ reel }) => (
-  <article className={`${CARD_WIDTH} shrink-0 snap-center flex flex-col`}>
+  // relative: keeps the hidden screen-reader labels inside the card, so cards scrolled out of
+  // view in the swipe row can't widen the page on phones
+  <article className={`${CARD_WIDTH} relative shrink-0 snap-center flex flex-col`}>
     <div className="rounded-2xl overflow-hidden bg-[#07192F] shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-md">
       {reel.videoSrc ? <AutoplayVideo reel={reel} /> : <InstagramEmbed reel={reel} />}
     </div>

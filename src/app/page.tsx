@@ -1,42 +1,30 @@
 import React from "react";
 import { IntroReveal } from "@/components/ui/IntroReveal";
-import { HeroSection } from "@/components/sections/HeroSection";
-import { WhoWeAreSection } from "@/components/sections/WhoWeAreSection";
-import { FourPillarsPath } from "@/components/sections/FourPillarsPath";
-import { GrowthProcess } from "@/components/sections/GrowthProcess";
+import { HomeHero } from "@/components/home/HomeHero";
+import { DeliveredStats } from "@/components/home/DeliveredStats";
+import { SpecialiseCards } from "@/components/home/SpecialiseCards";
+import { OutcomeTabs } from "@/components/home/OutcomeTabs";
+import { MethodTimeline } from "@/components/home/MethodTimeline";
+import { Milestones } from "@/components/home/Milestones";
+import { AuthorityBanner } from "@/components/home/AuthorityBanner";
+import { FounderIntro } from "@/components/home/FounderIntro";
 import { RecentWork } from "@/components/sections/RecentWork";
-import { CTASection } from "@/components/sections/CTASection";
+import { GetStartedBox } from "@/components/sections/GetStartedBox";
 
 export default function HomePage() {
   return (
     <>
-      {/* Loading & Intro Animation */}
       <IntroReveal />
-
-      {/* 1. Hero Section */}
-      <HeroSection />
-
-      {/* 2. Who We Are Section */}
-      <WhoWeAreSection />
-
-      {/* 3. What We Do / Services Section */}
-      <FourPillarsPath />
-
-      {/* 4. Recent Work: proof from client reels */}
+      <HomeHero />
+      <DeliveredStats />
+      <SpecialiseCards />
+      <OutcomeTabs />
+      <MethodTimeline />
+      <Milestones />
+      <AuthorityBanner />
+      <FounderIntro />
       <RecentWork />
-
-      {/* 5. Our Process / From Ideas to Impact */}
-      <GrowthProcess />
-
-      {/* 6. Closing Call To Action */}
-      <CTASection
-        title="Ready to turn your marketing"
-        highlight="into revenue?"
-        subtitle="Book a free consultation and we'll map out the fastest way to grow your leads and sales."
-        primaryCtaText="Book a growth call"
-        secondaryCtaText="See our work"
-        secondaryCtaHref="/work"
-      />
+      <GetStartedBox />
     </>
   );
 }

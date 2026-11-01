@@ -1,12 +1,16 @@
 import React from "react";
 import { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import { Instagram, Lightbulb, LineChart, RefreshCw, ShieldCheck, Users } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { CTASection } from "@/components/sections/CTASection";
+import { Underline } from "@/components/ui/Underline";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
+import { PageBanner } from "@/components/sections/PageBanner";
+import { GetStartedBox } from "@/components/sections/GetStartedBox";
+import { instagramProfileData } from "@/data/instagram-works";
+import { companyConfig } from "@/data/company";
+import { reelTotals } from "@/lib/reelStats";
 import { constructMetadata } from "@/lib/metadata";
-import { ArrowRight, CheckCircle2, Lightbulb, LineChart, RefreshCw, ShieldCheck } from "lucide-react";
-import { BlurText } from "@/components/ui/BlurText";
 
 export const metadata: Metadata = constructMetadata({
   title: "About Levexa — Strategic Business Growth Advisory",
@@ -14,27 +18,6 @@ export const metadata: Metadata = constructMetadata({
     "Levexa is a founder-led growth advisory helping businesses turn marketing into measurable revenue by connecting strategy, content, sales and automation.",
   path: "/about",
 });
-
-const PROBLEMS = [
-  {
-    title: "Strategy without execution is just theory",
-    desc: "A plan only matters when it turns into daily actions your team can actually follow.",
-  },
-  {
-    title: "Marketing disconnected from sales is waste",
-    desc: "Leads are only valuable when your sales process is ready to convert them.",
-  },
-  {
-    title: "Growth without systems doesn't last",
-    desc: "Clear processes and automation let you grow without adding chaos and cost.",
-  },
-];
-
-const WORKING_STYLE = [
-  "A clear diagnosis before any recommendation",
-  "Practical plans your team can run every day",
-  "Regular reviews against your real numbers",
-];
 
 const VALUES = [
   { title: "Clarity", desc: "We focus on the few numbers that truly drive your growth.", icon: Lightbulb },
@@ -44,48 +27,74 @@ const VALUES = [
 ];
 
 export default function AboutPage() {
+  const whatsappHref = `${companyConfig.socials.whatsapp}?text=${encodeURIComponent(
+    companyConfig.socials.whatsappGreeting
+  )}`;
+
   return (
-    <div className="pt-24 sm:pt-28 bg-[#FAF8F5] text-[#07192F] min-h-screen">
-      {/* 1. Hero with founder portrait */}
-      <section className="pt-8 sm:pt-12 lg:pt-16 pb-16 sm:pb-20 border-b border-[#D7D3CB]">
+    <div className="bg-[#07192F] text-white">
+      {/* 1. Banner */}
+      <PageBanner
+        image="/images/process/01-discovery.jpg"
+        title={
+          <>
+            About us? It&apos;s really about <span className="text-[#E4AB3C]">you.</span>
+          </>
+        }
+        subtitle={
+          <>
+            Most About pages talk about the agency. Ours starts with you: your goals, your customers and
+            the revenue you want to reach. No recycled templates and no vanity metrics, just a{" "}
+            <Underline>clear plan</Underline> and steady execution that move your numbers.
+          </>
+        }
+        ctaLabel="Work with us"
+        ctaHref="/contact"
+      />
+
+      {/* 2. Our story */}
+      <section className="py-20 sm:py-24">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <div className="lg:col-span-7">
-              <h1 className="type-display mb-8">
-                <BlurText text="Built for scale." className="text-[#07192F] inline-flex" delay={80} />
-                <BlurText text="Driven by excellence." className="text-[#C88A1A] inline-flex" delay={120} />
-              </h1>
-
-              <div className="w-12 h-[3px] bg-[#C88A1A] rounded-full mb-8" aria-hidden="true" />
-
-              <p className="type-lead max-w-2xl mb-10">
-                Levexa is a founder-led growth advisory. We help businesses turn marketing into measurable
-                revenue by connecting strategy, content, sales and automation.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <Link href="/contact" className="group btn-primary">
-                  Book a growth call
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-                </Link>
-                <Link href="/work" className="btn-secondary">
-                  See our work
-                </Link>
+              <h2 className="type-h2 mb-8">
+                <Underline>Levexa</Underline>…
+              </h2>
+              <div className="space-y-5 text-lg text-stone-300 leading-relaxed">
+                <p>
+                  <span className="text-[#E4AB3C] font-semibold">Levexa</span> is a founder-led growth advisory,
+                  built on one simple idea: marketing only matters when it turns into revenue.
+                </p>
+                <p>
+                  <span className="text-[#E4AB3C] font-semibold">Lavanya</span>, our founder, saw the same
+                  problem again and again. Businesses posted content, ran ads and hired salespeople, but each
+                  part worked on its own. Attention never became enquiries, and enquiries never became
+                  customers.
+                </p>
+                <p>
+                  So Levexa connects all of it: a clear strategy, content that people stop for, a sales
+                  process that closes, and automation that keeps everything running. Every engagement is led by
+                  Lavanya personally, from the first call to the results.
+                </p>
+                <p>
+                  Today we script reels, build brands and set up sales systems for founders, coaches and
+                  growing businesses, and help them reach new customers in the{" "}
+                  <span className="text-[#E4AB3C] font-semibold">digital world</span>.
+                </p>
               </div>
             </div>
 
             <div className="lg:col-span-5">
-              <div className="relative max-w-md mx-auto lg:ml-auto rounded-tl-[80px] sm:rounded-tl-[120px] rounded-br-3xl rounded-tr-3xl rounded-bl-3xl overflow-hidden shadow-card-elevated border border-stone-200/80 bg-stone-100 aspect-[4/5]">
+              <div className="relative max-w-md mx-auto lg:ml-auto aspect-[4/5] rounded-3xl overflow-hidden ring-1 ring-white/15 shadow-2xl bg-[#0E2849]">
                 <Image
                   src="/images/about/founder-lavanya.jpg"
                   alt="Lavanya, Founder & CEO of Levexa"
                   fill
                   sizes="(max-width: 1024px) 100vw, 448px"
                   className="object-cover"
-                  priority
                 />
                 <div className="absolute bottom-4 left-4 right-4 px-4 py-3 rounded-xl bg-[#07192F]/85 backdrop-blur-md border border-white/10">
-                  <p className="text-base font-bold text-white tracking-tight">Lavanya</p>
+                  <p className="text-base font-bold">Lavanya</p>
                   <p className="text-xs font-mono font-semibold text-[#E4AB3C] uppercase tracking-wider">
                     Founder &amp; CEO, Levexa
                   </p>
@@ -96,65 +105,118 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* 2. Why growth stalls */}
-      <section className="py-16 lg:py-24 border-b border-[#D7D3CB]">
+      {/* 3. Community + follow */}
+      <section className="py-20 sm:py-24 border-t border-white/10">
         <Container>
-          <h2 className="type-h2 max-w-3xl mb-10 sm:mb-12">
-            Why most business growth <span className="text-[#C88A1A]">stalls</span>
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
-            {PROBLEMS.map((item, idx) => (
-              <div key={item.title} className="bg-white p-7 sm:p-8 rounded-2xl border border-stone-200 shadow-2xs">
-                <span className="text-sm font-mono font-bold text-slate-600 block mb-4">0{idx + 1}</span>
-                <h3 className="text-xl font-bold leading-snug mb-3">{item.title}</h3>
-                <p className="text-base text-slate-700 leading-relaxed">{item.desc}</p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Instagram profile card */}
+            <a
+              href={instagramProfileData.profileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block max-w-md mx-auto w-full rounded-2xl bg-[#FAF8F5] text-[#07192F] p-6 shadow-2xl transition-transform hover:-translate-y-1"
+            >
+              <div className="flex items-center gap-5">
+                <div className="relative w-20 h-20 rounded-full overflow-hidden ring-2 ring-[#C88A1A] ring-offset-2 shrink-0">
+                  <Image src={instagramProfileData.avatarUrl} alt="" fill sizes="80px" className="object-cover" />
+                </div>
+                <div className="min-w-0">
+                  <p className="font-bold truncate">{instagramProfileData.handle}</p>
+                  <ul className="flex gap-4 text-sm mt-1.5">
+                    <li><span className="font-bold">{instagramProfileData.counts.posts}</span> posts</li>
+                    <li><span className="font-bold">{instagramProfileData.counts.followers}</span> followers</li>
+                  </ul>
+                </div>
               </div>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* 3. How we work (founder-led) */}
-      <section className="py-16 lg:py-24 border-b border-[#D7D3CB] bg-white">
-        <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-            <h2 className="type-h2 lg:col-span-5">
-              You work directly with <span className="text-[#C88A1A]">the founder</span>
-            </h2>
-            <div className="lg:col-span-7">
-              <p className="text-lg sm:text-xl text-slate-800 leading-relaxed mb-8">
-                Every engagement is led by Lavanya personally. We start by understanding your business and your
-                numbers, build a clear plan, then work alongside your team until it delivers results.
-              </p>
-              <ul className="space-y-4">
-                {WORKING_STYLE.map((point) => (
-                  <li key={point} className="flex items-start gap-3 text-base sm:text-lg text-slate-800">
-                    <CheckCircle2 className="w-5 h-5 text-[#C88A1A] shrink-0 mt-1" aria-hidden="true" />
-                    <span>{point}</span>
-                  </li>
+              <div className="mt-4 text-sm leading-snug space-y-0.5">
+                <p className="font-semibold">{instagramProfileData.displayName}</p>
+                {instagramProfileData.bio.slice(0, 2).map((line) => (
+                  <p key={line} className="text-slate-700">{line}</p>
                 ))}
-              </ul>
+              </div>
+              <span className="mt-5 flex items-center justify-center gap-2 h-10 rounded-lg bg-[#07192F] text-white text-sm font-semibold">
+                <Instagram className="w-4 h-4" aria-hidden="true" />
+                View on Instagram
+              </span>
+            </a>
+
+            <div>
+              <h2 className="type-h2 mb-6">
+                Join the <span className="text-[#E4AB3C]">Levexa community</span>
+              </h2>
+              <p className="text-lg sm:text-xl text-stone-300 leading-relaxed mb-8">
+                Get Lavanya&apos;s practical tips on content, leads and sales, straight to your WhatsApp. If
+                you&apos;re ready to grow your brand, reach out to Lavanya and the team directly.
+              </p>
+              <a
+                href={instagramProfileData.link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary"
+              >
+                <Users className="w-4 h-4" aria-hidden="true" />
+                Join the community
+              </a>
+
+              <h3 className="text-xl font-bold mt-12 mb-4">Follow Lavanya</h3>
+              <div className="flex items-center gap-3">
+                <a
+                  href={companyConfig.socials.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Lavanya on Instagram"
+                  className="w-11 h-11 rounded-full bg-[#C88A1A] text-[#07192F] flex items-center justify-center hover:bg-[#F5A900] transition-colors"
+                >
+                  <Instagram className="w-5 h-5" aria-hidden="true" />
+                </a>
+                <a
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Message Levexa on WhatsApp"
+                  className="w-11 h-11 rounded-full bg-[#C88A1A] text-[#07192F] flex items-center justify-center hover:bg-[#F5A900] transition-colors"
+                >
+                  <WhatsAppIcon className="w-5 h-5" />
+                </a>
+              </div>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* 4. Values */}
-      <section className="py-16 lg:py-24">
+      {/* 4. Proof band */}
+      <section className="bg-[#C88A1A] text-[#07192F] py-12 sm:py-14">
         <Container>
-          <h2 className="type-h2 max-w-3xl mb-10 sm:mb-12">
-            What we <span className="text-[#C88A1A]">stand for</span>
-          </h2>
+          <p className="text-center text-2xl sm:text-3xl font-bold tracking-tight max-w-4xl mx-auto leading-snug">
+            Reels scripted by Levexa have earned{" "}
+            <span className="font-mono">{reelTotals.views}</span> views for our clients, and we&apos;re only
+            getting started!
+          </p>
+        </Container>
+      </section>
+
+      {/* 5. Levexa is… */}
+      <section className="py-20 sm:py-24">
+        <Container>
+          <div className="max-w-3xl mb-12">
+            <h2 className="type-h2 mb-6">
+              Levexa <Underline>is…</Underline>
+            </h2>
+            <p className="text-lg sm:text-xl text-stone-300 leading-relaxed">
+              …a growth partner for businesses that want results they can measure. We plan your strategy,
+              create content that earns attention, train your team to close, and automate the follow-up, so
+              you get a stronger brand, more leads and more sales.
+            </p>
+          </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
             {VALUES.map((value) => {
               const Icon = value.icon;
               return (
-                <div key={value.title} className="p-7 rounded-2xl bg-white border border-stone-200 shadow-2xs">
-                  <Icon className="w-6 h-6 text-[#C88A1A] mb-5" aria-hidden="true" />
+                <div key={value.title} className="p-7 rounded-2xl border border-white/20">
+                  <Icon className="w-7 h-7 text-[#E4AB3C] mb-5" aria-hidden="true" />
                   <h3 className="text-xl font-bold mb-2">{value.title}</h3>
-                  <p className="text-base text-slate-700 leading-relaxed">{value.desc}</p>
+                  <p className="text-base text-stone-300 leading-relaxed">{value.desc}</p>
                 </div>
               );
             })}
@@ -162,15 +224,8 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* 5. CTA */}
-      <CTASection
-        title="Ready to engineer your company's"
-        highlight="next growth breakthrough?"
-        subtitle="Book a free consultation. We'll look at your current marketing and sales, and show you where the biggest growth opportunities are."
-        primaryCtaText="Book a growth call"
-        secondaryCtaText="See our work"
-        secondaryCtaHref="/work"
-      />
+      {/* 6. Closing */}
+      <GetStartedBox />
     </div>
   );
 }

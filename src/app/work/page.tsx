@@ -1,12 +1,12 @@
 import React from "react";
 import { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
-import { CTASection } from "@/components/sections/CTASection";
-import { InstagramProfileShowcase } from "@/components/portfolio/InstagramProfileShowcase";
+import { Underline } from "@/components/ui/Underline";
+import { PageBanner } from "@/components/sections/PageBanner";
+import { GetStartedBox } from "@/components/sections/GetStartedBox";
+import { ReelCard } from "@/components/portfolio/ReelCard";
 import { clientReels } from "@/data/instagram-works";
 import { constructMetadata } from "@/lib/metadata";
-import { parseCount, formatCount } from "@/lib/counts";
-import { ShinyText } from "@/components/ui/ShinyText";
 
 export const metadata: Metadata = constructMetadata({
   title: "Our Work — Instagram Scripts & Reels",
@@ -15,67 +15,89 @@ export const metadata: Metadata = constructMetadata({
   path: "/work",
 });
 
+// What each client does (no account names, as agreed); keyed by reel id
+const CASES: Record<string, { label: string; about: string }> = {
+  "reel-01": { label: "Business coach", about: "A business coach who teaches founders how to build a strong brand." },
+  "reel-02": { label: "Entrepreneur", about: "A young entrepreneur sharing what it really takes to build a business." },
+  "reel-03": { label: "Ayurveda brand", about: "A mompreneur running an Ayurveda beauty and wellness brand." },
+  "reel-04": { label: "Lifestyle brand", about: "A lifestyle brand building trust with a fast-growing audience." },
+  "reel-05": { label: "Education brand", about: "An education company helping Indian students plan their higher studies." },
+  "reel-06": { label: "Levexa", about: "Lavanya's own Instagram, where she shares lessons on content, leads and sales." },
+};
+
 export default function WorkPage() {
-  // Totals are computed from the featured reels so they always match the cards below
-  const stats = [
-    { value: String(clientReels.length), label: "Featured reels" },
-    {
-      value: formatCount(clientReels.reduce((sum, reel) => sum + parseCount(reel.views), 0)),
-      label: "Combined views",
-    },
-    {
-      value: formatCount(clientReels.reduce((sum, reel) => sum + parseCount(reel.likes), 0)),
-      label: "Combined likes",
-    },
-  ];
-
   return (
-    <div className="pt-24 sm:pt-28 bg-[#FAF8F5] text-[#07192F] min-h-screen">
-      {/* 1. Hero */}
-      <section className="pt-8 sm:pt-12 lg:pt-16 pb-12 sm:pb-16 border-b border-[#D7D3CB]">
+    <div className="bg-[#07192F] text-white">
+      {/* 1. Banner */}
+      <PageBanner
+        image="/images/process/05-optimization.jpg"
+        title="Work"
+        subtitle={
+          <>
+            Reels we&apos;ve scripted for founders, coaches and brands, and the results they earned. These are
+            some of the projects we&apos;re <Underline>proudest of</Underline>.
+          </>
+        }
+        ctaLabel="Work with us"
+        ctaHref="/contact"
+      />
+
+      {/* 2. One block per reel, alternating sides */}
+      <section className="py-20 sm:py-24">
         <Container>
-          <div className="max-w-4xl">
+          <div className="space-y-20 sm:space-y-24">
+            {clientReels.map((reel, idx) => {
+              const info = CASES[reel.id] ?? { label: "Client", about: "" };
+              const reversed = idx % 2 === 1;
+              return (
+                <article
+                  key={reel.id}
+                  className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center max-w-6xl mx-auto"
+                >
+                  <div className={reversed ? "lg:order-2" : ""}>
+                    <h2 className="inline-block px-6 py-2 rounded-full border-2 border-[#C88A1A] text-2xl sm:text-3xl font-bold text-[#E4AB3C] mb-6">
+                      {info.label}
+                    </h2>
+                    <p className="text-lg text-stone-200 leading-relaxed mb-8">{info.about}</p>
 
-            <h1 className="type-display mb-8">
-              <span>Our</span> <ShinyText text="work" variant="gold" speed={4} />
-            </h1>
+                    <h3 className="text-lg font-semibold text-[#E4AB3C] mb-2">How we helped</h3>
+                    <p className="text-base sm:text-lg text-stone-300 leading-relaxed mb-8">
+                      We wrote the script: a hook for the first three seconds, a story the audience relates to,
+                      and a clear call to action at the end.
+                    </p>
 
-            <div className="w-12 h-[3px] bg-[#C88A1A] rounded-full mb-8" aria-hidden="true" />
+                    <h3 className="text-lg font-semibold text-[#E4AB3C] mb-3">Results</h3>
+                    <dl className="grid grid-cols-3 gap-4 max-w-md mb-8">
+                      {[
+                        { label: "Views", value: reel.views },
+                        { label: "Likes", value: reel.likes },
+                        { label: "Comments", value: reel.comments },
+                      ].map((stat) => (
+                        <div key={stat.label} className="flex flex-col-reverse">
+                          <dt className="text-sm text-stone-400 mt-0.5">{stat.label}</dt>
+                          <dd className="text-2xl sm:text-3xl font-bold font-mono">{stat.value}</dd>
+                        </div>
+                      ))}
+                    </dl>
 
-            <p className="type-lead max-w-3xl mb-10">
-              Reels we scripted for founders and brands. Watch them right here, or open them
-              on Instagram.
-            </p>
+                    <h3 className="text-lg font-semibold text-[#E4AB3C] mb-1">Platform</h3>
+                    <p className="text-xl font-semibold">Instagram</p>
+                  </div>
 
-            <dl className="grid grid-cols-3 gap-4 sm:gap-6 pt-6 border-t border-[#D7D3CB] max-w-2xl">
-              {stats.map((stat, idx) => (
-                <div key={stat.label} className={idx > 0 ? "border-l border-[#D7D3CB] pl-4 sm:pl-6" : ""}>
-                  <dd className="text-2xl sm:text-3xl font-bold font-mono">{stat.value}</dd>
-                  <dt className="text-xs font-mono font-semibold text-slate-600 uppercase tracking-wider mt-1">
-                    {stat.label}
-                  </dt>
-                </div>
-              ))}
-            </dl>
+                  <div className={`flex justify-center ${reversed ? "lg:order-1" : ""}`}>
+                    <div className="rounded-3xl bg-[#FAF8F5] p-4 sm:p-5 shadow-2xl">
+                      <ReelCard reel={reel} />
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </Container>
       </section>
 
-      {/* 2. Instagram Profile & Client Reels */}
-      <section className="py-12 sm:py-16 lg:py-20">
-        <Container>
-          <InstagramProfileShowcase />
-        </Container>
-      </section>
-
-      {/* 3. CTA */}
-      <CTASection
-        title="Want reels that"
-        highlight="bring in leads?"
-        subtitle="Tell us about your brand and goals, and we'll show you how scripted content can turn views into enquiries."
-        primaryCtaText="Book a growth call"
-        secondaryCtaText="Explore our services"
-      />
+      {/* 3. Closing */}
+      <GetStartedBox />
     </div>
   );
 }

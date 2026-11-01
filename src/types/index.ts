@@ -7,6 +7,10 @@ export interface ServiceItem {
   id: string;
   title: string;
   tagline: string;
+  /** One plain-language sentence for service cards */
+  summary: string;
+  /** Detail page for this service */
+  href: string;
   description: string;
   iconName: string;
   challenges: string[];

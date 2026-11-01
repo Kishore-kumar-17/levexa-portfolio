@@ -1,184 +1,184 @@
 import React from "react";
 import { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight, Check, X } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { CTASection } from "@/components/sections/CTASection";
+import { Underline } from "@/components/ui/Underline";
+import { PageBanner } from "@/components/sections/PageBanner";
+import { FounderQuote } from "@/components/sections/FounderQuote";
+import { GetStartedBox } from "@/components/sections/GetStartedBox";
+import { SERVICE_ICONS } from "@/components/home/SpecialiseCards";
 import { servicesData } from "@/data/services";
+import { companyConfig } from "@/data/company";
 import { constructMetadata } from "@/lib/metadata";
-import { ArrowDown, ArrowRight, RefreshCw } from "lucide-react";
-import { ShinyText } from "@/components/ui/ShinyText";
 
 export const metadata: Metadata = constructMetadata({
   title: "Growth Advisory Services — Strategy, Marketing, Sales & Automation",
   description:
-    "Explore Levexa's four interconnected commercial disciplines: Business Growth Strategy, Branding & Demand Generation, Sales Pipeline Conversion, and Technology Automation.",
+    "Levexa's services and plans: growth strategy, branding and content, sales conversion, and technology and automation, under one founder-led team.",
   path: "/services",
 });
 
-const PILLAR_IMAGES: Record<string, string> = {
-  "growth-strategy": "/images/pillars/01-growth-strategy.jpg",
-  "branding-marketing": "/images/pillars/02-branding-marketing.jpg",
-  "sales-conversion": "/images/pillars/03-sales-conversion.jpg",
-  "technology-automation": "/images/pillars/04-technology-automation.jpg",
-};
-
-const DISCIPLINE_LINKS: Record<string, string> = {
-  "growth-strategy": "/services/strategy",
-  "branding-marketing": "/services/marketing",
-  "sales-conversion": "/services/sales",
-  "technology-automation": "/services/technology",
-};
-
-// Short alias anchors so #strategy, #marketing, #sales, #technology keep working
-const DISCIPLINE_SHORT_ALIASES: Record<string, string> = {
-  "growth-strategy": "strategy",
-  "branding-marketing": "marketing",
-  "sales-conversion": "sales",
-  "technology-automation": "technology",
-};
-
-const FLYWHEEL = [
-  { title: "Strategy", desc: "Defines your ideal customer, positioning and pricing." },
-  { title: "Marketing", desc: "Content, ads and funnels that attract high-intent buyers." },
-  { title: "Sales", desc: "Scripts, follow-up and CRM cadence that close deals faster." },
-  { title: "Automation", desc: "CRM sync, WhatsApp bots and dashboards that scale it all." },
+// Rows shown on every plan card; each plan lists which rows it includes
+const FEATURES = [
+  "Growth strategy & positioning",
+  "Content strategy & reel scripts",
+  "Social media management",
+  "Meta Ads & performance marketing",
+  "Sales scripts & team training",
+  "CRM & lead management setup",
+  "WhatsApp & marketing automation",
+  "Website or landing page",
+  "Monthly performance review",
+  "Weekly reviews with Lavanya",
 ];
+
+const PLANS = [
+  {
+    name: "Launch",
+    forWho: "For founders starting to build their brand online.",
+    includes: [0, 1, 2, 8],
+  },
+  {
+    name: "Grow",
+    forWho: "For businesses ready to turn attention into steady leads and sales.",
+    includes: [0, 1, 2, 3, 4, 5, 8],
+    popular: true,
+  },
+  {
+    name: "Scale",
+    forWho: "For teams that want the full growth system, run with us every week.",
+    includes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+  },
+];
+
+const quoteHref = (plan: string) =>
+  `${companyConfig.socials.whatsapp}?text=${encodeURIComponent(`Hi Levexa, I'd like a quote for the ${plan} plan.`)}`;
 
 export default function ServicesPage() {
   return (
-    <div className="pt-24 sm:pt-28 bg-[#FAF8F5] text-[#07192F] min-h-screen">
-      {/* 1. Hero */}
-      <section className="pt-8 sm:pt-12 lg:pt-16 pb-14 sm:pb-16 border-b border-[#D7D3CB]">
+    <div className="bg-[#07192F] text-white">
+      {/* 1. Banner */}
+      <PageBanner
+        image="/images/pillars/02-branding-marketing.jpg"
+        title="Services"
+        subtitle={
+          <>
+            Everything you need to turn attention into revenue: strategy, content, sales and automation,
+            under one roof, so your brand <Underline>gets results</Underline>.
+          </>
+        }
+        ctaLabel="Get started"
+        ctaHref="/contact"
+      />
+
+      {/* 2. Service cards */}
+      <section className="py-20 sm:py-24">
         <Container>
-          <div className="max-w-4xl">
-
-            <h1 className="type-display mb-8">
-              <span>Our</span>{" "}
-              <ShinyText text="services" variant="gold" speed={4} />
-            </h1>
-
-            <div className="w-12 h-[3px] bg-[#C88A1A] rounded-full mb-8" aria-hidden="true" />
-
-            <p className="type-lead max-w-3xl mb-10">
-              Four connected disciplines that turn your marketing into measurable revenue: strategy,
-              marketing, sales and automation.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-              <Link href="/contact" className="group btn-primary">
-                Book a growth call
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-              </Link>
-              <Link href="/work" className="btn-secondary">
-                See our work
-              </Link>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* 2. Service Cards */}
-      <section className="py-14 sm:py-20">
-        <Container>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            {servicesData.map((service, index) => (
-              <article
-                key={service.id}
-                id={service.id}
-                className="relative scroll-mt-28 bg-white rounded-2xl border border-stone-200/90 shadow-2xs overflow-hidden flex flex-col"
-              >
-                <span
-                  id={DISCIPLINE_SHORT_ALIASES[service.id]}
-                  className="absolute -top-28"
-                  aria-hidden="true"
-                />
-                <div className="relative aspect-[16/9] bg-stone-100">
-                  <Image
-                    src={PILLAR_IMAGES[service.id]}
-                    alt=""
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover"
-                    priority={index < 2}
-                  />
-                </div>
-
-                <div className="p-6 sm:p-8 flex flex-col flex-1">
-                  <span className="text-xs font-mono font-bold text-slate-600 mb-2">0{index + 1}</span>
-                  <h2 className="text-2xl sm:text-3xl font-bold tracking-[-0.02em] mb-3">{service.title}</h2>
-                  <p className="text-base text-slate-700 leading-relaxed mb-5">{service.tagline}</p>
-
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 lg:gap-6">
+            {servicesData.map((service) => {
+              const Icon = SERVICE_ICONS[service.id];
+              return (
+                <Link
+                  key={service.id}
+                  id={service.id}
+                  href={service.href}
+                  className="group scroll-mt-28 flex flex-col rounded-2xl border border-white/20 p-7 sm:p-8 transition-colors hover:border-[#C88A1A] hover:bg-white/[0.03]"
+                >
+                  <Icon className="w-10 h-10 text-[#E4AB3C] mb-7" aria-hidden="true" />
+                  <h2 className="text-xl font-bold uppercase tracking-wide mb-3">{service.title}</h2>
+                  <p className="text-base text-stone-300 leading-relaxed mb-5">{service.summary}</p>
                   <ul className="space-y-2 mb-7">
                     {service.deliverables.slice(0, 3).map((item) => (
-                      <li key={item} className="flex items-start gap-2.5 text-sm text-slate-800">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#C88A1A] mt-2 shrink-0" />
+                      <li key={item} className="flex items-start gap-2.5 text-sm text-stone-200">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#C88A1A] mt-2 shrink-0" aria-hidden="true" />
                         <span>{item}</span>
                       </li>
                     ))}
                   </ul>
+                  <span className="mt-auto inline-flex items-center gap-2 text-sm font-bold text-[#E4AB3C]">
+                    Learn more
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+        </Container>
+      </section>
 
-                  <Link
-                    href={DISCIPLINE_LINKS[service.id] || "/contact"}
-                    className="group mt-auto inline-flex items-center gap-2 self-start py-2.5 text-base font-bold text-[#07192F] hover:text-[#C88A1A] transition-colors"
-                  >
-                    <span>Explore {service.title}</span>
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
+      {/* 3. Founder quote */}
+      <FounderQuote />
+
+      {/* 4. Plans */}
+      <section className="py-20 sm:py-24">
+        <Container>
+          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-14">
+            <h2 className="type-h2">
+              Choose the plan that works best for <Underline>you</Underline>
+            </h2>
+            <p className="mt-6 text-lg text-stone-300 leading-relaxed">
+              Every plan is shaped around your business. Tell us which one fits, and we&apos;ll send you a
+              quote.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
+            {PLANS.map((plan) => (
+              <article
+                key={plan.name}
+                className={`relative flex flex-col rounded-2xl overflow-hidden bg-[#0E2849] border ${
+                  plan.popular ? "border-[#C88A1A] shadow-2xl md:-translate-y-3" : "border-white/15"
+                }`}
+              >
+                {plan.popular && (
+                  <span className="absolute top-4 right-4 px-3 py-1 rounded-full bg-[#07192F] text-[#E4AB3C] text-xs font-bold uppercase tracking-wider">
+                    Most popular
+                  </span>
+                )}
+                <div className="bg-[#C88A1A] text-[#07192F] px-6 pt-8 pb-6 text-center">
+                  <h3 className="text-3xl font-bold tracking-tight">{plan.name}</h3>
+                  <p className="mt-2 text-sm font-medium">{plan.forWho}</p>
                 </div>
+                <div className="px-6 py-6 border-b border-white/10">
+                  <a
+                    href={quoteHref(plan.name)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`${plan.popular ? "btn-primary" : "btn-secondary-dark"} w-full !min-h-[46px]`}
+                  >
+                    Get a quote
+                  </a>
+                </div>
+                <ul className="px-6 py-6 space-y-3.5 flex-1">
+                  {FEATURES.map((feature, idx) => {
+                    const included = plan.includes.includes(idx);
+                    return (
+                      <li
+                        key={feature}
+                        className={`flex items-start gap-3 text-[15px] ${included ? "text-white" : "text-stone-400"}`}
+                      >
+                        {included ? (
+                          <Check className="w-4 h-4 text-[#E4AB3C] mt-0.5 shrink-0" aria-hidden="true" />
+                        ) : (
+                          <X className="w-4 h-4 text-stone-500 mt-0.5 shrink-0" aria-hidden="true" />
+                        )}
+                        <span>
+                          <span className="sr-only">{included ? "Included: " : "Not included: "}</span>
+                          {feature}
+                        </span>
+                      </li>
+                    );
+                  })}
+                </ul>
               </article>
             ))}
           </div>
         </Container>
       </section>
 
-      {/* 3. How They Connect */}
-      <section className="py-14 sm:py-20 border-t border-[#D7D3CB] bg-white">
-        <Container>
-          <div className="max-w-3xl mb-10">
-            <h2 className="type-h2">
-              Each discipline feeds <span className="text-[#C88A1A]">the next</span>
-            </h2>
-          </div>
-
-          {/* Loop diagram: four steps joined by arrows, closing back to Strategy */}
-          <ol className="grid grid-cols-1 lg:grid-cols-4 gap-10 lg:gap-12">
-            {FLYWHEEL.map((step, idx) => (
-              <li key={step.title} className="relative p-6 rounded-2xl bg-[#FAF8F5] border border-stone-200/90">
-                <span className="text-sm font-mono font-bold text-slate-600 block mb-2">0{idx + 1}</span>
-                <h3 className="text-xl font-bold mb-2">{step.title}</h3>
-                <p className="text-base text-slate-600 leading-relaxed">{step.desc}</p>
-                {idx < FLYWHEEL.length - 1 && (
-                  <span
-                    className="absolute z-10 flex items-center justify-center w-9 h-9 rounded-full bg-[#07192F] text-white left-1/2 -translate-x-1/2 -bottom-[30px] lg:left-auto lg:translate-x-0 lg:top-1/2 lg:-translate-y-1/2 lg:-right-[30px] lg:bottom-auto"
-                    aria-hidden="true"
-                  >
-                    <ArrowDown className="w-4 h-4 lg:hidden" />
-                    <ArrowRight className="w-4 h-4 hidden lg:block" />
-                  </span>
-                )}
-              </li>
-            ))}
-          </ol>
-
-          <div className="mt-6 flex items-center justify-center gap-3 rounded-2xl border-2 border-dashed border-[#C88A1A]/50 px-5 py-4 text-center">
-            <RefreshCw className="w-5 h-5 text-[#C88A1A] shrink-0" aria-hidden="true" />
-            <p className="text-base text-slate-700">
-              Results from automation feed back into strategy, so every cycle gets sharper.
-            </p>
-          </div>
-        </Container>
-      </section>
-
-      {/* 4. CTA */}
-      <CTASection
-        title="Not sure where to start?"
-        highlight="Let's find your biggest growth lever."
-        subtitle="Tell us about your business and we'll recommend the right starting point across strategy, marketing, sales or automation."
-        primaryCtaText="Book a growth call"
-        secondaryCtaText="See our work"
-        secondaryCtaHref="/work"
-      />
+      {/* 5. Closing */}
+      <GetStartedBox />
     </div>
   );
 }
