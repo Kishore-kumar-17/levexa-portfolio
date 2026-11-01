@@ -50,6 +50,14 @@
   }
 }
 
+/* Horizontal swipe rows (e.g. the reels carousel on phones) without a visible scrollbar */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 /* Type scale: use these instead of ad-hoc sizes so every page shares one hierarchy */
 @layer components {
   /* Page titles (H1): 40 / 52 / 64px */

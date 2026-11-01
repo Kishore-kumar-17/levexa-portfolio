@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { instagramProfileData, clientReels } from "@/data/instagram-works";
-import { ReelEmbedCard } from "@/components/portfolio/ReelEmbedCard";
+import { ReelRow } from "@/components/portfolio/ReelCard";
 import { Clapperboard, Link2, MoreHorizontal, UserPlus } from "lucide-react";
 
 export const InstagramProfileShowcase: React.FC = () => {
@@ -126,13 +126,9 @@ export const InstagramProfileShowcase: React.FC = () => {
       </div>
 
       {/* ========================================================================= */}
-      {/* 2. REELS GRID: real Instagram embeds                                     */}
+      {/* 2. REELS: autoplaying video when a file is set, Instagram embed otherwise   */}
       {/* ========================================================================= */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10 justify-items-center">
-        {clientReels.map((reel) => (
-          <ReelEmbedCard key={reel.id} reel={reel} />
-        ))}
-      </div>
+      <ReelRow reels={clientReels} />
     </div>
   );
 };

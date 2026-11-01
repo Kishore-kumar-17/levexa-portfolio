@@ -7,6 +7,14 @@ export interface ClientReel {
   views: string;
   likes: string;
   comments: string;
+  /**
+   * Optional self-hosted video, e.g. "/reels/reel-01.mp4" (put the file in public/reels/).
+   * When set, the card shows just this video, autoplaying muted; otherwise it falls back
+   * to Instagram's official embed.
+   */
+  videoSrc?: string;
+  /** Optional still image shown before the video loads, e.g. "/reels/reel-01.jpg" */
+  poster?: string;
 }
 
 // Mirrors the live Instagram profile; update the counts when they change

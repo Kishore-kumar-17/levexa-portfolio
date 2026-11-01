@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { clientReels } from "@/data/instagram-works";
 import { parseCount } from "@/lib/counts";
-import { ReelEmbedCard } from "@/components/portfolio/ReelEmbedCard";
+import { ReelRow } from "@/components/portfolio/ReelCard";
 
 // Home page proof: the three most-viewed client reels, with a link to all work
 export const RecentWork: React.FC = () => {
@@ -27,11 +27,7 @@ export const RecentWork: React.FC = () => {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10 justify-items-center">
-          {topReels.map((reel) => (
-            <ReelEmbedCard key={reel.id} reel={reel} />
-          ))}
-        </div>
+        <ReelRow reels={topReels} />
       </div>
     </section>
   );
