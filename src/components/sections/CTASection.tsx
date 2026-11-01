@@ -4,10 +4,8 @@ import React from "react";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
-import { companyConfig } from "@/data/company";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { ShinyText } from "@/components/ui/ShinyText";
-import { DecryptedText } from "@/components/ui/DecryptedText";
 import { ClickSpark } from "@/components/ui/ClickSpark";
 import { Squares } from "@/components/ui/Squares";
 
@@ -51,19 +49,6 @@ export const CTASection: React.FC<CTASectionProps> = ({
           </div>
 
           <AnimatedSection direction="up" className="relative z-10">
-            {/* Eyebrow */}
-            <div className="inline-flex items-center gap-3 mb-6">
-              <span className="w-8 h-[2px] bg-[#C88A1A]" />
-              <span className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.22em] text-[#C88A1A] uppercase">
-                <DecryptedText
-                  text={companyConfig.tagline}
-                  speed={40}
-                  maxIterations={8}
-                  animateOn="view"
-                  className="text-[#C88A1A]"
-                />
-              </span>
-            </div>
 
             {/* Monumental Headline */}
             <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-[3.25rem] font-bold tracking-[-0.035em] leading-[1.08] mb-6 max-w-3xl mx-auto">

@@ -15,13 +15,6 @@ export default function NotFound() {
     <div className="pt-24 sm:pt-28 bg-[#FAF8F5] text-[#07192F] flex-1 flex items-center">
       <Container>
         <section className="py-20 lg:py-28 max-w-3xl">
-          {/* Eyebrow */}
-          <div className="flex items-center gap-3 mb-6 sm:mb-8">
-            <span className="w-8 h-[2px] bg-[#C88A1A]" />
-            <span className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.22em] uppercase">
-              Error 404
-            </span>
-          </div>
 
           {/* Dual-Tone Headline */}
           <h1 className="text-5xl sm:text-7xl font-bold tracking-[-0.035em] leading-[0.98] mb-8">

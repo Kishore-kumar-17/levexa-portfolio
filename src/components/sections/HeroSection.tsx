@@ -83,6 +83,23 @@ export const HeroSection: React.FC = () => {
               Helping businesses grow, scale, and increase revenue. We engineer high-performance
               market positioning, demand generation, sales pipelines, and scalable automated systems.
             </p>
+
+            {/* Primary Call To Action */}
+            <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+              <Link
+                href="/contact"
+                className="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-[#C88A1A] text-[#07192F] font-bold text-base tracking-wide hover:bg-[#F5A900] transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98]"
+              >
+                <span>Book a Free Consultation</span>
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+              <Link
+                href="/work"
+                className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full border border-[#07192F]/25 text-[#07192F] font-semibold text-base tracking-wide hover:border-[#07192F] hover:bg-[#07192F]/5 transition-all duration-300"
+              >
+                See Our Work
+              </Link>
+            </div>
           </div>
 
           {/* Right Column: Interactive 3D Infinite Spiral (Seamlessly integrated into hero background) */}

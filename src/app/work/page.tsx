@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { CTASection } from "@/components/sections/CTASection";
 import { InstagramProfileShowcase } from "@/components/portfolio/InstagramProfileShowcase";
-import { clientScriptWorks } from "@/data/instagram-works";
+import { clientReels } from "@/data/instagram-works";
 import { constructMetadata } from "@/lib/metadata";
 import { ShinyText } from "@/components/ui/ShinyText";
 
@@ -30,13 +30,13 @@ function formatCount(total: number): string {
 export default function WorkPage() {
   // Totals are computed from the featured reels so they always match the cards below
   const stats = [
-    { value: String(clientScriptWorks.length), label: "Featured reels" },
+    { value: String(clientReels.length), label: "Featured reels" },
     {
-      value: formatCount(clientScriptWorks.reduce((sum, reel) => sum + parseCount(reel.views), 0)),
+      value: formatCount(clientReels.reduce((sum, reel) => sum + parseCount(reel.views), 0)),
       label: "Combined views",
     },
     {
-      value: formatCount(clientScriptWorks.reduce((sum, reel) => sum + parseCount(reel.likes), 0)),
+      value: formatCount(clientReels.reduce((sum, reel) => sum + parseCount(reel.likes), 0)),
       label: "Combined likes",
     },
   ];
@@ -47,12 +47,6 @@ export default function WorkPage() {
       <section className="pt-8 sm:pt-12 lg:pt-16 pb-12 sm:pb-16 border-b border-[#D7D3CB]">
         <Container>
           <div className="max-w-4xl">
-            <div className="flex items-center gap-3 mb-6 sm:mb-8">
-              <span className="w-8 h-[2px] bg-[#C88A1A]" />
-              <span className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.22em] uppercase">
-                Instagram scripts &amp; reels
-              </span>
-            </div>
 
             <h1 className="text-5xl sm:text-7xl lg:text-[5rem] font-bold tracking-[-0.035em] leading-[0.98] mb-8">
               <span>Our</span> <ShinyText text="Work." variant="gold" speed={4} />
@@ -61,8 +55,8 @@ export default function WorkPage() {
             <div className="w-12 h-[3px] bg-[#C88A1A] rounded-full mb-8" aria-hidden="true" />
 
             <p className="text-xl sm:text-2xl text-slate-800 leading-[1.45] max-w-3xl tracking-tight mb-10">
-              Reels we scripted for founders and brands. Tap any reel to see the hook, structure
-              and call to action behind it.
+              Reels we scripted for founders and brands. Watch them right here, or open them
+              on Instagram.
             </p>
 
             <dl className="grid grid-cols-3 gap-4 sm:gap-6 pt-6 border-t border-[#D7D3CB] max-w-2xl">

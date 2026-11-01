@@ -22,7 +22,6 @@ import { BlurText } from "@/components/ui/BlurText";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { CountUp } from "@/components/ui/CountUp";
 import { ShinyText } from "@/components/ui/ShinyText";
-import { DecryptedText } from "@/components/ui/DecryptedText";
 import { SplitText } from "@/components/ui/SplitText";
 import { Particles } from "@/components/ui/Particles";
 import { TrueFocus } from "@/components/ui/TrueFocus";
@@ -110,23 +109,10 @@ export default function AboutPage() {
         />
         <Container className="relative z-10">
           <div className="max-w-5xl">
-            {/* Eyebrow */}
-            <div className="flex items-center gap-3 mb-6 sm:mb-8">
-              <span className="w-8 h-[2px] bg-[#C88A1A]" />
-              <span className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.22em] text-[#07192F] uppercase">
-                <DecryptedText
-                  text="OUR PHILOSOPHY & MISSION"
-                  speed={35}
-                  maxIterations={8}
-                  animateOn="view"
-                  className="text-[#07192F]"
-                />
-              </span>
-            </div>
 
             {/* Monumental Dual-Tone Headline */}
             <h1 className="text-5xl sm:text-7xl lg:text-[5rem] xl:text-[5.75rem] font-bold tracking-[-0.035em] leading-[0.98] mb-8 sm:mb-10">
-              <BlurText text="Built for scale." className="text-[#07192F] inline-flex" delay={80} /> <br />
+              <BlurText text="Built for scale." className="text-[#07192F] inline-flex" delay={80} />
               <BlurText text="Driven by excellence." className="text-[#C88A1A] inline-flex" delay={120} />
             </h1>
 
@@ -164,12 +150,6 @@ export default function AboutPage() {
         <Container>
           {/* Eyebrow & Headline */}
           <div className="max-w-3xl mb-14 sm:mb-18">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="w-8 h-[2px] bg-[#C88A1A]" />
-              <span className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.22em] text-[#07192F] uppercase">
-                THE REALITY OF COMMERCIAL SCALE
-              </span>
-            </div>
             <h2 className="text-3xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-[-0.035em] leading-[1.05]">
               <SplitText text="Why traditional business" delay={30} /> <br />
               <ShinyText text="growth models break." variant="gold" speed={4} />
@@ -299,12 +279,6 @@ export default function AboutPage() {
             {/* Right Column: Narrative & Metrics */}
             <div className="lg:col-span-6 flex flex-col justify-between">
               <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="w-8 h-[2px] bg-[#C88A1A]" />
-                  <span className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.22em] text-[#07192F] uppercase">
-                    OUR ENGAGEMENT MODEL
-                  </span>
-                </div>
 
                 <h2 className="text-3xl sm:text-4xl lg:text-[2.85rem] font-bold tracking-[-0.03em] leading-[1.08] mb-6">
                   Senior partners at the table, <br />
@@ -372,12 +346,6 @@ export default function AboutPage() {
         <Container>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14 sm:mb-18">
             <div>
-              <div className="flex items-center gap-3 mb-4">
-                <span className="w-8 h-[2px] bg-[#C88A1A]" />
-                <span className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.22em] text-[#07192F] uppercase">
-                  OUR CODE OF EXCELLENCE
-                </span>
-              </div>
               <h2 className="text-3xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-[-0.035em] leading-[1.05]">
                 <SplitText text="Core values that govern" delay={30} /> <br />
                 <ShinyText text="every advisory sprint." variant="gold" speed={4} />
@@ -434,12 +402,6 @@ export default function AboutPage() {
         <Container>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14 sm:mb-18">
             <div>
-              <div className="flex items-center gap-3 mb-4">
-                <span className="w-8 h-[2px] bg-[#C88A1A]" />
-                <span className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.22em] text-[#07192F] uppercase">
-                  UNIFIED REVENUE FLYWHEEL
-                </span>
-              </div>
               <h2 className="text-3xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-[-0.035em] leading-[1.05]">
                 Four interconnected engines <br />
                 <span className="text-[#C88A1A]">powering commercial scale.</span>

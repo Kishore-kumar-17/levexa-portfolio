@@ -64,13 +64,6 @@ export const FourPillarsPath: React.FC = () => {
       className="relative w-full bg-[#FAF8F5] text-[#07192F] py-8 sm:py-10 lg:py-12 overflow-hidden"
     >
       <div className="w-full">
-        {/* Eyebrow */}
-        <div className="flex items-center gap-3 px-6 sm:px-10 lg:px-16 xl:px-20 mb-2 sm:mb-3">
-          <span className="w-8 h-[2px] bg-[#C88A1A]" />
-          <span className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.22em] text-[#07192F] uppercase">
-            OUR CORE PILLARS
-          </span>
-        </div>
 
         {/* Section Headline */}
         <div className="px-6 sm:px-10 lg:px-16 xl:px-20 mb-5 sm:mb-7 lg:mb-8 flex items-end justify-between">

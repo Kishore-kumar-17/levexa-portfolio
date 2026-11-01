@@ -8,7 +8,6 @@ import { Mail, Phone, Clock, MapPin, ShieldCheck } from "lucide-react";
 import { BlurText } from "@/components/ui/BlurText";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { ShinyText } from "@/components/ui/ShinyText";
-import { DecryptedText } from "@/components/ui/DecryptedText";
 
 export const metadata: Metadata = constructMetadata({
   title: "Contact Levexa — Request Strategic Growth Consultation",
@@ -45,23 +44,10 @@ export default function ContactPage() {
       <section className="pt-8 sm:pt-12 lg:pt-16 pb-16 sm:pb-20 border-b border-[#D7D3CB] relative overflow-hidden">
         <Container>
           <div className="max-w-5xl">
-            {/* Eyebrow */}
-            <div className="flex items-center gap-3 mb-6 sm:mb-8">
-              <span className="w-8 h-[2px] bg-[#C88A1A]" />
-              <span className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.22em] text-[#07192F] uppercase">
-                <DecryptedText
-                  text="EXECUTIVE CONSULTATION & INQUIRY"
-                  speed={35}
-                  maxIterations={8}
-                  animateOn="view"
-                  className="text-[#07192F]"
-                />
-              </span>
-            </div>
 
             {/* Monumental Dual-Tone Headline */}
             <h1 className="text-5xl sm:text-7xl lg:text-[5rem] xl:text-[5.75rem] font-bold tracking-[-0.035em] leading-[0.98] mb-8 sm:mb-10">
-              <BlurText text="Let's talk" className="text-[#07192F] inline-flex" delay={80} /> <br />
+              <BlurText text="Let's talk" className="text-[#07192F] inline-flex" delay={80} />
               <BlurText text="growth." className="text-[#C88A1A] inline-flex" delay={120} />
             </h1>
 
@@ -167,7 +153,6 @@ export default function ContactPage() {
               <SpotlightCard theme="gold" spotlightColor="#C88A1A" intensity={0.22}>
                 <div className="p-8 space-y-6">
                   <div className="flex items-center gap-2.5">
-                    <span className="w-6 h-[2px] bg-[#C88A1A]" />
                     <h2 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#07192F]">
                       WHAT HAPPENS NEXT:
                     </h2>

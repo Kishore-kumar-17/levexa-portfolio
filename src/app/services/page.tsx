@@ -52,12 +52,6 @@ export default function ServicesPage() {
       <section className="pt-8 sm:pt-12 lg:pt-16 pb-14 sm:pb-16 border-b border-[#D7D3CB]">
         <Container>
           <div className="max-w-4xl">
-            <div className="flex items-center gap-3 mb-6 sm:mb-8">
-              <span className="w-8 h-[2px] bg-[#C88A1A]" />
-              <span className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.22em] uppercase">
-                What we do
-              </span>
-            </div>
 
             <h1 className="text-5xl sm:text-7xl lg:text-[5rem] font-bold tracking-[-0.035em] leading-[0.98] mb-8">
               <span>Our</span>{" "}
@@ -132,12 +126,6 @@ export default function ServicesPage() {
       <section className="py-14 sm:py-20 border-t border-[#D7D3CB] bg-white">
         <Container>
           <div className="max-w-3xl mb-10">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="w-8 h-[2px] bg-[#C88A1A]" />
-              <span className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.22em] uppercase">
-                How they connect
-              </span>
-            </div>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-[-0.03em] leading-tight">
               Each discipline feeds the next.
             </h2>

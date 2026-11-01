@@ -20,13 +20,6 @@ export default function PrivacyPage() {
       <section className="pt-8 sm:pt-12 lg:pt-16 pb-14 sm:pb-16 border-b border-[#D7D3CB] relative">
         <Container>
           <div className="max-w-4xl">
-            {/* Eyebrow */}
-            <div className="flex items-center gap-3 mb-4">
-              <span className="w-8 h-[2px] bg-[#C88A1A]" />
-              <span className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.22em] text-[#07192F] uppercase">
-                LEGAL ARCHITECTURE &amp; COMPLIANCE
-              </span>
-            </div>
 
             <h1 className="text-4xl sm:text-6xl lg:text-[4.5rem] font-bold tracking-[-0.035em] leading-[1.02] mb-6">
               <span>Privacy</span> <span className="text-[#C88A1A]">Policy.</span>

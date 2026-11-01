@@ -7,7 +7,6 @@ import { Container } from "@/components/ui/Container";
 import { CTASection } from "@/components/sections/CTASection";
 import { ArrowRight, CheckCircle2, ChevronDown } from "lucide-react";
 import { ShinyText } from "@/components/ui/ShinyText";
-import { DecryptedText } from "@/components/ui/DecryptedText";
 import { ClickSpark } from "@/components/ui/ClickSpark";
 
 export interface DeliverableDetailed {
@@ -52,19 +51,12 @@ export interface ServiceDisciplineTemplateProps {
   ctaSubtitle?: string;
 }
 
-// Shared section heading: gold eyebrow line + title + optional intro
-const SectionIntro: React.FC<{ eyebrow: string; title: string; intro?: string }> = ({
-  eyebrow,
+// Shared section heading: title + optional intro
+const SectionIntro: React.FC<{ title: string; intro?: string }> = ({
   title,
   intro,
 }) => (
   <div className="max-w-3xl mb-10 sm:mb-12">
-    <div className="flex items-center gap-3 mb-4">
-      <span className="w-8 h-[2px] bg-[#C88A1A]" />
-      <span className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.22em] text-[#07192F] uppercase">
-        {eyebrow}
-      </span>
-    </div>
     <h2 className="text-3xl sm:text-4xl font-bold text-[#07192F] tracking-[-0.03em] leading-tight">
       {title}
     </h2>
@@ -74,7 +66,6 @@ const SectionIntro: React.FC<{ eyebrow: string; title: string; intro?: string }>
 
 export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps> = ({
   pillarNumber,
-  categoryTag,
   titleLine1,
   titleHighlight,
   subtitle,
@@ -116,18 +107,6 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Content */}
             <div className="lg:col-span-7">
-              <div className="flex items-center gap-3 mb-6">
-                <span className="w-8 h-[2px] bg-[#C88A1A]" />
-                <span className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.22em] text-[#07192F] uppercase">
-                  <DecryptedText
-                    text={`${pillarNumber} // ${categoryTag}`}
-                    speed={35}
-                    maxIterations={8}
-                    animateOn="view"
-                    className="text-[#07192F]"
-                  />
-                </span>
-              </div>
 
               <h1 className="text-4xl sm:text-6xl lg:text-[4.25rem] font-bold tracking-[-0.035em] leading-[1.02] mb-6">
                 <span className="text-[#07192F]">{titleLine1}</span>{" "}
@@ -196,7 +175,7 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
       {/* 2. What's Included */}
       <section id="deliverables" className="py-16 lg:py-24 border-b border-[#D7D3CB] scroll-mt-24">
         <Container>
-          <SectionIntro eyebrow="What's included" title="What you get" />
+          <SectionIntro title="What you get" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
             {deliverablesDetailed.map((deliv) => (
@@ -219,7 +198,6 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
       <section className="py-16 lg:py-24 border-b border-[#D7D3CB] bg-white">
         <Container>
           <SectionIntro
-            eyebrow="How we work"
             title={`${roadmap.length} focused stages`}
             intro="A clear path from diagnosis to execution, with a concrete deliverable at every stage."
           />
@@ -248,7 +226,7 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
       <section className="py-16 lg:py-24 border-b border-[#D7D3CB]">
         <Container>
           <div className="max-w-3xl mx-auto">
-            <SectionIntro eyebrow="FAQ" title="Common questions" />
+            <SectionIntro title="Common questions" />
 
             <div className="space-y-3">
               {faqs.slice(0, 4).map((faq, idx) => {

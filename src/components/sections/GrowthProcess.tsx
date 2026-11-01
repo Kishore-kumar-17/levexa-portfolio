@@ -86,13 +86,6 @@ export const GrowthProcess: React.FC = () => {
         {/* HEADER: "FROM IDEAS TO IMPACT"                           */}
         {/* ======================================================== */}
         <div className="mb-14 sm:mb-18 lg:mb-20">
-          {/* Eyebrow */}
-          <div className="flex items-center gap-3 mb-4 sm:mb-5">
-            <span className="w-9 h-[2px] bg-[#C88A1A]" />
-            <span className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.24em] text-[#07192F] uppercase">
-              OUR PROCESS
-            </span>
-          </div>
 
           {/* Giant Title: FROM IDEAS / TO IMPACT */}
           <h2 className="text-5xl sm:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] font-black tracking-[-0.035em] leading-[0.92]">
