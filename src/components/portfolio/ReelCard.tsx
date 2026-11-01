@@ -4,6 +4,15 @@ import React, { useEffect, useRef, useState } from "react";
 import { ExternalLink, Eye, Heart } from "lucide-react";
 import { ClientReel, reelUrl } from "@/data/instagram-works";
 import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
+import {
+  clearActiveReel,
+  firstVisibleVideo,
+  getActiveReel,
+  markVideoHidden,
+  markVideoVisible,
+  registerPlayer,
+  setActiveReel,
+} from "@/lib/reelPlayback";
 
 // Card widths are fixed so the crop below is exact: 300px on phones, 330px from sm up.
 const CARD_WIDTH = "w-[300px] sm:w-[330px]";
@@ -16,24 +25,50 @@ const CARD_WIDTH = "w-[300px] sm:w-[330px]";
 const VIDEO_BOX = "h-[533px] sm:h-[587px]";
 const EMBED_FRAME = "top-[-54px] left-[-64px] w-[427px] h-[680px] sm:left-[-70px] sm:w-[469px] sm:h-[740px]";
 
-// Self-hosted reel: plays muted and looped while on screen, pauses when scrolled away
+// Self-hosted reel, muted and looped. Only one reel plays at a time: the first one on screen
+// autoplays, hovering or tapping another switches to it, and when the playing one scrolls
+// away the next visible video takes over.
 const AutoplayVideo: React.FC<{ reel: ClientReel }> = ({ reel }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const prefersReducedMotion = usePrefersReducedMotion();
 
+  const playThis = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    setActiveReel(reel.id);
+    video.play().catch(() => {});
+  };
+
   useEffect(() => {
     const video = videoRef.current;
-    if (!video || prefersReducedMotion) return;
+    if (!video) return;
+    const unregister = registerPlayer(reel.id, { pause: () => video.pause() });
+    if (prefersReducedMotion) return unregister;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) video.play().catch(() => {});
-        else video.pause();
+        if (entry.isIntersecting) {
+          markVideoVisible(reel.id, playThis);
+          if (!getActiveReel()) playThis();
+        } else {
+          markVideoHidden(reel.id);
+          video.pause();
+          if (getActiveReel() === reel.id) {
+            clearActiveReel(reel.id);
+            firstVisibleVideo()?.[1]();
+          }
+        }
       },
       { threshold: 0.5 }
     );
     observer.observe(video);
-    return () => observer.disconnect();
-  }, [prefersReducedMotion]);
+    return () => {
+      observer.disconnect();
+      markVideoHidden(reel.id);
+      unregister();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [prefersReducedMotion, reel.id]);
 
   return (
     <video
@@ -45,21 +80,62 @@ const AutoplayVideo: React.FC<{ reel: ClientReel }> = ({ reel }) => {
       playsInline
       preload="metadata"
       controls={prefersReducedMotion}
+      onMouseEnter={prefersReducedMotion ? undefined : playThis}
+      onClick={playThis}
+      // Playing via the native controls also stops any other reel
+      onPlay={() => setActiveReel(reel.id)}
       aria-label="Client reel"
       className="block w-full aspect-[9/16] object-cover bg-[#07192F]"
     />
   );
 };
 
-// Stopgap until a video file is added: Instagram's embed, cropped to the video only
+// Stopgap until a video file is added: Instagram's embed, cropped to the video only.
+// The embed can't be paused from outside, so when another reel starts this one is reloaded,
+// which stops it. Starting it is detected by focus moving into its iframe on click.
 const InstagramEmbed: React.FC<{ reel: ClientReel }> = ({ reel }) => {
   const [loaded, setLoaded] = useState(false);
+  const [reloadKey, setReloadKey] = useState(0);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const startedRef = useRef(false);
+
+  useEffect(() => {
+    const unregister = registerPlayer(reel.id, {
+      pause: () => {
+        if (!startedRef.current) return;
+        startedRef.current = false;
+        setLoaded(false);
+        setReloadKey((key) => key + 1);
+      },
+    });
+
+    // Clicking inside the iframe moves focus into it, which blurs this window
+    const handleBlur = () => {
+      setTimeout(() => {
+        if (document.activeElement !== iframeRef.current) return;
+        startedRef.current = true;
+        setActiveReel(reel.id);
+        // Hand focus back (after Instagram has handled the click) so the next click on
+        // another reel blurs the window again and is detected too
+        iframeRef.current?.blur();
+        window.focus();
+      }, 300);
+    };
+    window.addEventListener("blur", handleBlur);
+
+    return () => {
+      window.removeEventListener("blur", handleBlur);
+      unregister();
+    };
+  }, [reel.id]);
 
   return (
     <div className={`relative overflow-hidden bg-[#07192F] ${VIDEO_BOX}`}>
       {/* Skeleton while Instagram loads */}
       {!loaded && <div className="absolute inset-0 animate-pulse bg-[#0E2849]" aria-hidden="true" />}
       <iframe
+        key={reloadKey}
+        ref={iframeRef}
         src={`${reelUrl(reel)}embed/`}
         title="Client reel"
         loading="lazy"
