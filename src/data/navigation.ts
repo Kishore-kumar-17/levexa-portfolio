@@ -9,7 +9,7 @@ export const mainNavigation: NavItem[] = [
 ];
 
 export const footerServicesNavigation: NavItem[] = [
-  { label: "Growth Strategy", href: "/services/strategy" },
+  { label: "Growth & Strategy", href: "/services/strategy" },
   { label: "Branding & Marketing", href: "/services/marketing" },
   { label: "Sales & Conversion", href: "/services/sales" },
   { label: "Technology & Automation", href: "/services/technology" },

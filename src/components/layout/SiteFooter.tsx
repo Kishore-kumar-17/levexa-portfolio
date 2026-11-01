@@ -64,12 +64,12 @@ export const SiteFooter: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-10 text-sm">
           {/* Brand: Logo, tagline, social channels */}
           <div className="lg:col-span-4 space-y-5">
-            <Link href="/" aria-label="Levexa Home" className="relative block w-44 h-8">
+            <Link href="/" aria-label="Levexa Home" className="relative block w-[210px] h-8 sm:w-[236px] sm:h-9">
               <Image
                 src="/levexa-logo-dark-trans.png"
                 alt="Levexa"
                 fill
-                sizes="176px"
+                sizes="236px"
                 className="object-contain object-left"
               />
             </Link>
