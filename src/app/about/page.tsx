@@ -38,7 +38,7 @@ export default function AboutPage() {
         image="/images/process/01-discovery.jpg"
         title={
           <>
-            About us? It&apos;s really about <span className="text-[#C88A1A]">you.</span>
+            About us? It&apos;s really about <span className="text-gold-deep">you.</span>
           </>
         }
         subtitle={
@@ -62,11 +62,11 @@ export default function AboutPage() {
               </h2>
               <div className="space-y-5 text-lg text-slate-700 leading-relaxed">
                 <p>
-                  <span className="text-[#C88A1A] font-semibold">Levexa</span> is a founder-led growth advisory,
+                  <span className="text-gold-ink font-semibold">Levexa</span> is a founder-led growth advisory,
                   built on one simple idea: marketing only matters when it turns into revenue.
                 </p>
                 <p>
-                  <span className="text-[#C88A1A] font-semibold">Lavanya</span>, our founder, saw the same
+                  <span className="text-gold-ink font-semibold">Lavanya</span>, our founder, saw the same
                   problem again and again. Businesses posted content, ran ads and hired salespeople, but each
                   part worked on its own. Attention never became enquiries, and enquiries never became
                   customers.
@@ -79,7 +79,7 @@ export default function AboutPage() {
                 <p>
                   Today we script reels, build brands and set up sales systems for founders, coaches and
                   growing businesses, and help them reach new customers in the{" "}
-                  <span className="text-[#C88A1A] font-semibold">digital world</span>.
+                  <span className="text-gold-ink font-semibold">digital world</span>.
                 </p>
               </div>
             </div>
@@ -142,7 +142,7 @@ export default function AboutPage() {
 
             <div>
               <h2 className="type-h2 mb-6">
-                Join the <span className="text-[#C88A1A]">Levexa community</span>
+                Join the <span className="text-gold-deep">Levexa community</span>
               </h2>
               <p className="text-lg sm:text-xl text-slate-700 leading-relaxed mb-8">
                 Get Lavanya&apos;s practical tips on content, leads and sales, straight to your WhatsApp. If
@@ -198,7 +198,7 @@ export default function AboutPage() {
         <Container>
           <p className="text-center text-2xl sm:text-3xl font-bold tracking-tight max-w-4xl mx-auto leading-snug">
             Reels scripted by Levexa have earned{" "}
-            <span className="font-mono">{reelTotals.views}</span> views for our clients, and we&apos;re only
+            <span className="font-mono">{reelTotals.views}</span> views, and we&apos;re only
             getting started!
           </p>
         </Container>

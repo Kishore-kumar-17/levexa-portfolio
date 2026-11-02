@@ -96,7 +96,7 @@ export default function ServicesPage() {
                       </li>
                     ))}
                   </ul>
-                  <span className="mt-auto inline-flex items-center gap-2 text-sm font-bold text-[#07192F] group-hover:text-[#C88A1A] transition-colors">
+                  <span className="mt-auto inline-flex items-center gap-2 text-sm font-bold text-[#07192F] group-hover:text-gold-ink transition-colors">
                     Learn more
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                   </span>
@@ -133,7 +133,7 @@ export default function ServicesPage() {
               >
                 {plan.popular && (
                   <span className="absolute top-4 right-4 px-3 py-1 rounded-full bg-[#07192F] text-[#E4AB3C] text-xs font-bold uppercase tracking-wider">
-                    Most popular
+                    Recommended
                   </span>
                 )}
                 <div className="bg-[#C88A1A] text-[#07192F] px-6 pt-8 pb-6 text-center">
@@ -156,7 +156,7 @@ export default function ServicesPage() {
                     return (
                       <li
                         key={feature}
-                        className={`flex items-start gap-3 text-[15px] ${included ? "text-[#07192F]" : "text-slate-400"}`}
+                        className={`flex items-start gap-3 text-[15px] ${included ? "text-[#07192F]" : "text-slate-500"}`}
                       >
                         {included ? (
                           <Check className="w-4 h-4 text-[#C88A1A] mt-0.5 shrink-0" aria-hidden="true" />

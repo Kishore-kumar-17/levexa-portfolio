@@ -2,17 +2,30 @@ import { NextRequest, NextResponse } from "next/server";
 import {
   validateContactForm,
   getOptionLabel,
+  isSubmittedTooFast,
   SERVICE_OPTIONS,
   BUDGET_OPTIONS,
 } from "@/lib/validation";
 
-// Simple in-memory rate limiting store (IP -> array of timestamps)
+// Simple in-memory rate limiting store (IP -> array of timestamps). On Vercel each server
+// instance keeps its own copy, so this is a first line of defence, not a hard limit.
 const rateLimitMap = new Map<string, number[]>();
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 minutes
 const MAX_REQUESTS_PER_WINDOW = 5;
+const MAX_TRACKED_IPS = 5000;
+// A real enquiry is a few KB at most (the message is capped at 2,500 characters)
+const MAX_BODY_BYTES = 16 * 1024;
 
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
+
+  // Keep memory bounded: drop addresses with no recent submissions
+  if (rateLimitMap.size > MAX_TRACKED_IPS) {
+    for (const [key, times] of rateLimitMap) {
+      if (!times.some((t) => now - t < RATE_LIMIT_WINDOW_MS)) rateLimitMap.delete(key);
+    }
+  }
+
   const timestamps = rateLimitMap.get(ip) || [];
 
   // Filter timestamps within current window
@@ -27,8 +40,28 @@ function isRateLimited(ip: string): boolean {
   return false;
 }
 
+// Browsers send an Origin header with form posts; only accept ones from this site
+function isFromAnotherSite(request: NextRequest): boolean {
+  const origin = request.headers.get("origin");
+  if (!origin) return false; // non-browser clients; still rate limited and validated
+  try {
+    return new URL(origin).host !== request.headers.get("host");
+  } catch {
+    return true;
+  }
+}
+
 export async function POST(request: NextRequest) {
   try {
+    // 0. Reject posts from other websites and oversized requests before doing any work
+    if (isFromAnotherSite(request)) {
+      return NextResponse.json({ success: false, message: "Request not allowed." }, { status: 403 });
+    }
+    const declaredSize = Number(request.headers.get("content-length") || 0);
+    if (declaredSize > MAX_BODY_BYTES) {
+      return NextResponse.json({ success: false, message: "Request is too large." }, { status: 413 });
+    }
+
     // 1. IP extraction & Rate limiting
     const ip =
       request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
@@ -56,7 +89,18 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 3. Server-side validation
+    // 3. Bot check: sent too quickly after the form was shown
+    if (isSubmittedTooFast(body?.elapsedMs)) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "That was quick! Please wait a few seconds, then send the form again.",
+        },
+        { status: 400 }
+      );
+    }
+
+    // 4. Server-side validation
     const validation = validateContactForm(body);
     if (!validation.isValid || !validation.sanitizedData) {
       return NextResponse.json(
@@ -73,12 +117,12 @@ export async function POST(request: NextRequest) {
     const serviceLabel = getOptionLabel(SERVICE_OPTIONS, service);
     const budgetLabel = budget ? getOptionLabel(BUDGET_OPTIONS, budget) : "Not specified";
 
-    // 4. Safe server logging: no personal data (email domain only)
+    // 5. Safe server logging: no personal data (email domain only)
     console.log(
       `[Contact Submission] from @${email.split("@")[1]} | Company: ${company || "n/a"} | Service: ${service}`
     );
 
-    // 5. Provider integration check (e.g. Resend / Webhook)
+    // 6. Provider integration check (e.g. Resend / Webhook)
     const resendApiKey = process.env.RESEND_API_KEY;
     const recipientEmail = process.env.CONTACT_EMAIL_RECIPIENT || "ceo.levexa@gmail.com";
     const senderEmail =

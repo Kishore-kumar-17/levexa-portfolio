@@ -42,6 +42,13 @@ export default function RootLayout({
       <body className="bg-[#FAF8F5] text-navy-900 min-h-screen flex flex-col font-sans antialiased selection:bg-gold selection:text-navy-900">
         <StructuredData />
         <MotionProvider>
+          {/* First Tab stop: lets keyboard users jump past the header menu */}
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:px-5 focus:py-3 focus:rounded-full focus:bg-[#07192F] focus:text-white focus:font-semibold"
+          >
+            Skip to content
+          </a>
           <SiteHeader />
           <main id="main-content" className="flex-1 flex flex-col">
             {children}

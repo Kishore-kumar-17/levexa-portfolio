@@ -39,7 +39,7 @@ export const DeliveredStats: React.FC = () => (
     <Container>
       <div className="text-center">
         <h2 className="type-h2">We have delivered</h2>
-        <p className="mt-4 text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-[#C88A1A] font-mono">
+        <p className="mt-4 text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-gold-deep font-mono">
           {reelTotals.views}
         </p>
         <p className="mt-3 text-xl sm:text-2xl text-slate-700">content views and counting</p>
@@ -47,7 +47,7 @@ export const DeliveredStats: React.FC = () => (
         <dl className="mt-12 grid grid-cols-3 gap-4 sm:gap-8 max-w-3xl mx-auto">
           {STATS.map((stat) => (
             <div key={stat.label} className="flex flex-col-reverse">
-              <dt className="mt-1 text-sm sm:text-base font-semibold text-[#C88A1A]">{stat.label}</dt>
+              <dt className="mt-1 text-sm sm:text-base font-semibold text-gold-ink">{stat.label}</dt>
               <dd className="text-3xl sm:text-5xl font-bold tracking-tight font-mono">{stat.value}</dd>
             </div>
           ))}

@@ -20,8 +20,8 @@ export const Milestones: React.FC = () => (
           Key <Underline>milestones</Underline> we&apos;ve reached
         </h2>
         <p className="mt-6 text-lg text-slate-700 leading-relaxed">
-          Views, engagement and real conversations: here&apos;s what reels we scripted have delivered for
-          our clients.
+          Views, engagement and real conversations: here&apos;s what the reels we&apos;ve scripted have
+          delivered.
         </p>
       </div>
 

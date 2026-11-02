@@ -29,6 +29,14 @@ export function getOptionLabel(
   return options.find((opt) => opt.value === value)?.label ?? value;
 }
 
+// People need several seconds to fill in the form; bots submit almost instantly
+export const MIN_FILL_MS = 3000;
+
+/** True when a submission arrives too soon after the form was shown (or without timing). */
+export function isSubmittedTooFast(elapsedMs: unknown): boolean {
+  return typeof elapsedMs !== "number" || !Number.isFinite(elapsedMs) || elapsedMs < MIN_FILL_MS;
+}
+
 export function validateContactForm(data: Partial<ContactFormData>): ValidationResult {
   const errors: Record<string, string> = {};
 

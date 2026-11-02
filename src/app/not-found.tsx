@@ -18,7 +18,7 @@ export default function NotFound() {
           {/* Dual-Tone Headline */}
           <h1 className="type-display mb-8">
             This page has <br />
-            <span className="text-[#C88A1A]">moved on.</span>
+            <span className="text-gold-deep">moved on.</span>
           </h1>
 
           <div className="w-12 h-[3px] bg-[#C88A1A] rounded-full mb-8" aria-hidden="true" />

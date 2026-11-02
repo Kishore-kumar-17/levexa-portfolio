@@ -24,7 +24,7 @@ export default function Error({
           {/* Dual-Tone Headline */}
           <h1 className="type-display mb-8">
             We hit an <br />
-            <span className="text-[#C88A1A]">unexpected snag.</span>
+            <span className="text-gold-deep">unexpected snag.</span>
           </h1>
 
           <div className="w-12 h-[3px] bg-[#C88A1A] rounded-full mb-8" aria-hidden="true" />
@@ -33,7 +33,7 @@ export default function Error({
             Please try again. If the problem continues, reach us directly at{" "}
             <a
               href={`mailto:${companyConfig.contact.email}`}
-              className="text-[#C88A1A] font-semibold hover:underline"
+              className="text-gold-ink font-semibold hover:underline"
             >
               {companyConfig.contact.email}
             </a>

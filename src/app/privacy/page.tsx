@@ -1,131 +1,176 @@
 import React from "react";
 import { Metadata } from "next";
-import { Container } from "@/components/ui/Container";
-import { constructMetadata } from "@/lib/metadata";
+import Link from "next/link";
+import { LegalPage, LegalSection } from "@/components/legal/LegalPage";
 import { companyConfig } from "@/data/company";
-import { ShieldCheck } from "lucide-react";
+import { constructMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Privacy Policy — Levexa Strategic Growth",
+  title: "Privacy Policy — Levexa",
   description:
-    "Information on how Levexa collects, uses, and safeguards information submitted through our website and strategic advisory enquiry forms.",
+    "What information Levexa collects through this website and its contact form, why, who processes it, how long it is kept, and your rights.",
   path: "/privacy",
 });
 
+const EMAIL = companyConfig.contact.email;
+
+const MailLink = () => (
+  <a href={`mailto:${EMAIL}`} className="font-semibold text-gold-ink underline underline-offset-2">
+    {EMAIL}
+  </a>
+);
+
 export default function PrivacyPage() {
   return (
-    <div className="pt-24 sm:pt-28 bg-[#FAF8F5] text-[#07192F] min-h-screen">
-      
-      {/* Hero Header */}
-      <section className="pt-8 sm:pt-12 lg:pt-16 pb-14 sm:pb-16 border-b border-[#D7D3CB] relative">
-        <Container>
-          <div className="max-w-4xl">
+    <LegalPage
+      title="Privacy"
+      highlight="policy"
+      effectiveDate="2 November 2026"
+      intro={
+        <>
+          This policy explains what information Levexa (&ldquo;we&rdquo;, &ldquo;us&rdquo;) collects when you
+          use this website or contact us, why we collect it, and the choices and rights you have.
+        </>
+      }
+      summary={[
+        "We only collect what you type into our contact form, or send us by email, phone or WhatsApp.",
+        "We use it to reply to you and to prepare and hold your consultation. We never sell it.",
+        "This website does not use cookies or analytics tracking.",
+        "You can ask us to show, correct or delete your information at any time.",
+      ]}
+    >
+      <LegalSection title="1. Who we are">
+        <p>
+          Levexa is a founder-led growth advisory run by Lavanya. For anything about your information,
+          contact us at <MailLink /> or {companyConfig.contact.phone}.
+        </p>
+      </LegalSection>
 
-            <h1 className="type-display mb-6">
-              <span>Privacy</span> <span className="text-[#C88A1A]">policy</span>
-            </h1>
+      <LegalSection title="2. Information we collect">
+        <p>
+          <strong className="text-[#07192F]">When you fill in our contact form:</strong> your name, email
+          address, phone or WhatsApp number (optional), company or website (optional), the service you are
+          interested in, your annual revenue range (optional), your message, and your agreement to this policy.
+        </p>
+        <p>
+          <strong className="text-[#07192F]">When you contact us directly</strong> by email, phone or
+          WhatsApp: the details and messages you choose to send.
+        </p>
+        <p>
+          <strong className="text-[#07192F]">Technical information:</strong> like any website, our hosting
+          provider processes technical data such as your IP address, browser type and the pages requested, to
+          deliver the site and protect it from attacks. To stop spam, our contact form briefly keeps your IP
+          address in memory (for about 10 minutes) to limit repeated submissions.
+        </p>
+        <p>
+          <strong className="text-[#07192F]">Cookies:</strong> this website does not set cookies and does not
+          use analytics or advertising trackers. If we add analytics in future, we will update this policy and
+          ask for your consent first where required.
+        </p>
+      </LegalSection>
 
-            {/* Signature Gold Accent Line */}
-            <div
-              className="w-12 h-[3px] bg-[#C88A1A] rounded-full mb-6"
-              aria-hidden="true"
-            />
+      <LegalSection title="3. Why we use it">
+        <ul className="list-disc pl-5 space-y-1.5">
+          <li>To reply to your enquiry and answer your questions.</li>
+          <li>To prepare for and hold your discovery call, and to send you a proposal if you ask for one.</li>
+          <li>To keep a record of our communication with you.</li>
+          <li>To keep this website secure and free of spam.</li>
+        </ul>
+        <p>
+          We do not sell, rent or trade your information, and we do not add you to marketing lists without
+          your permission.
+        </p>
+      </LegalSection>
 
-            <p className="text-base sm:text-lg text-slate-700 font-normal leading-relaxed">
-              Effective Date: October 2026. This policy outlines how Levexa (&ldquo;we&rdquo;, &ldquo;our&rdquo;, or &ldquo;us&rdquo;)
-              collects, processes, and safeguards business enquiry and commercial telemetry information.
-            </p>
-          </div>
-        </Container>
-      </section>
+      <LegalSection title="4. Your consent">
+        <p>
+          We process the information you submit through the contact form on the basis of the consent you give
+          by ticking the agreement box. You can withdraw your consent at any time by emailing <MailLink />.
+          Withdrawing consent does not affect anything we did with your information before that.
+        </p>
+      </LegalSection>
 
-      {/* Main Content Body */}
-      <section className="py-16 lg:py-24">
-        <Container>
-          <div className="max-w-3xl space-y-8">
-            
-            {/* Commitment Card */}
-            <div className="p-6 sm:p-8 rounded-2xl bg-white border border-[#C88A1A]/40 shadow-xs flex items-start gap-4">
-              <ShieldCheck className="w-7 h-7 text-[#C88A1A] shrink-0 mt-0.5" />
-              <div>
-                <p className="text-lg font-bold text-[#07192F] mb-1">Your information stays confidential</p>
-                <p className="text-base text-slate-700 leading-relaxed font-normal">
-                  We operate as strategic advisors to high-growth enterprises and founders. All business metrics,
-                  revenue data, and commercial discussions submitted through our platform are held in strict confidence
-                  and never sold, rented, or distributed to any third parties.
-                </p>
-              </div>
-            </div>
+      <LegalSection title="5. Service providers who handle your information">
+        <p>We use a small number of trusted providers to run this website and receive your enquiry:</p>
+        <ul className="list-disc pl-5 space-y-1.5">
+          <li>
+            <strong className="text-[#07192F]">Vercel</strong>: hosts this website.
+          </li>
+          <li>
+            <strong className="text-[#07192F]">Resend</strong>: delivers your contact-form enquiry to us by
+            email.
+          </li>
+          <li>
+            <strong className="text-[#07192F]">Google (Gmail)</strong>: the mailbox where we receive and keep
+            enquiries.
+          </li>
+          <li>
+            <strong className="text-[#07192F]">WhatsApp (Meta)</strong>: only if you choose to message us on
+            WhatsApp.
+          </li>
+        </ul>
+        <p>
+          These providers may store or process information on servers outside India. They only use it to
+          provide their service to us.
+        </p>
+      </LegalSection>
 
-            <div className="p-8 sm:p-10 rounded-2xl bg-white border border-stone-200/80 shadow-xs space-y-8 text-base text-slate-700 leading-relaxed font-normal">
-              <div>
-                <h2 className="text-xl font-bold text-[#07192F] tracking-tight mb-2">
-                  1. Information We Collect
-                </h2>
-                <p>
-                  When you request an advisory consultation or submit an inquiry through the Levexa website,
-                  we collect information voluntarily provided by you: your full name, business email address, company
-                  name, estimated revenue stage, selected commercial growth disciplines, and project objectives.
-                </p>
-              </div>
+      <LegalSection title="6. How long we keep it">
+        <p>
+          We keep enquiries for up to 24 months after our last contact with you, so we can follow up on
+          conversations you started. If you become a client, we keep the information needed for our work
+          together, and records we are legally required to keep (for example for tax purposes) for as long as
+          the law requires. After that, we delete it.
+        </p>
+      </LegalSection>
 
-              <div className="pt-6 border-t border-stone-100">
-                <h2 className="text-xl font-bold text-[#07192F] tracking-tight mb-2">
-                  2. Purpose of Data Processing
-                </h2>
-                <p className="mb-2">We process your submitted information solely to:</p>
-                <ul className="list-disc pl-5 space-y-1.5">
-                  <li>Review your commercial profile and assign the appropriate senior growth partner.</li>
-                  <li>Schedule, prepare for, and conduct your confidential discovery briefing.</li>
-                  <li>Formulate customized advisory proposals, diagnostic sprints, and execution roadmaps.</li>
-                  <li>Maintain secure administrative records of business communications.</li>
-                </ul>
-              </div>
+      <LegalSection title="7. Your rights">
+        <p>Under India&apos;s Digital Personal Data Protection Act, 2023, you can ask us to:</p>
+        <ul className="list-disc pl-5 space-y-1.5">
+          <li>tell you what information we hold about you and how we use it;</li>
+          <li>correct, complete or update your information;</li>
+          <li>delete your information;</li>
+          <li>stop using your information, by withdrawing your consent.</li>
+        </ul>
+        <p>
+          You can also nominate another person to act on your behalf. To use any of these rights, email{" "}
+          <MailLink />. We aim to respond within 30 days.
+        </p>
+      </LegalSection>
 
-              <div className="pt-6 border-t border-stone-100">
-                <h2 className="text-xl font-bold text-[#07192F] tracking-tight mb-2">
-                  3. Data Security &amp; Retention
-                </h2>
-                <p>
-                  We implement robust enterprise security protocols, encryption in transit (HTTPS/TLS),
-                  and restricted role-based internal access to ensure that all commercial data remains protected
-                  against unauthorized access or disclosure.
-                </p>
-              </div>
+      <LegalSection title="8. Security">
+        <p>
+          This website uses encrypted connections (HTTPS), checks every form submission on our server, and
+          limits access to enquiries to the Levexa team. No website can be completely secure, but we take
+          reasonable care to protect your information.
+        </p>
+      </LegalSection>
 
-              <div className="pt-6 border-t border-stone-100">
-                <h2 className="text-xl font-bold text-[#07192F] tracking-tight mb-2">
-                  4. Third-Party Disclosures
-                </h2>
-                <p>
-                  Levexa does not monetize or trade client data. We only utilize trusted cloud infrastructure
-                  providers (such as Vercel and secure transactional mail servers) necessary to host our application
-                  and route your correspondence securely.
-                </p>
-              </div>
+      <LegalSection title="9. Children">
+        <p>
+          This website and our services are meant for business owners and professionals aged 18 or over. We
+          do not knowingly collect information from children.
+        </p>
+      </LegalSection>
 
-              <div className="pt-6 border-t border-stone-100">
-                <h2 className="text-xl font-bold text-[#07192F] tracking-tight mb-2">
-                  5. Contact &amp; Governance
-                </h2>
-                <p>
-                  If you have inquiries regarding our data handling practices or wish to request data erasure,
-                  please contact our executive team directly at:{" "}
-                  <a
-                    href={`mailto:${companyConfig.contact.email}`}
-                    className="font-bold text-[#C88A1A] hover:underline"
-                  >
-                    {companyConfig.contact.email}
-                  </a>
-                  .
-                </p>
-              </div>
-            </div>
+      <LegalSection title="10. Changes to this policy">
+        <p>
+          If we change this policy, we will update it on this page and change the effective date above. Please
+          also read our{" "}
+          <Link href="/terms" className="font-semibold text-gold-ink underline underline-offset-2">
+            Terms of Use
+          </Link>
+          .
+        </p>
+      </LegalSection>
 
-          </div>
-        </Container>
-      </section>
-
-    </div>
+      <LegalSection title="11. Questions and complaints">
+        <p>
+          If you have a question or a complaint about how we handle your information, contact Lavanya, Founder,
+          at <MailLink /> or {companyConfig.contact.phone}. If you are not satisfied with our response, you may
+          contact the Data Protection Board of India.
+        </p>
+      </LegalSection>
+    </LegalPage>
   );
 }

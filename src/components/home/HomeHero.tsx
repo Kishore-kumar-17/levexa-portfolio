@@ -26,7 +26,7 @@ export const HomeHero: React.FC = () => (
             Build a brand that brings you{" "}
             <span className="sr-only">leads, sales, revenue and growth</span>
             <span aria-hidden="true" className="block">
-              <RotatingText texts={OUTCOMES} rotationInterval={2400} className="text-[#C88A1A]" />
+              <RotatingText texts={OUTCOMES} rotationInterval={2400} className="text-gold-deep" />
             </span>
           </h1>
 

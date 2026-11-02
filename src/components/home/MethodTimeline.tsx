@@ -40,7 +40,7 @@ export const MethodTimeline: React.FC = () => (
             follows the same four steps.
           </p>
           <p className="text-lg sm:text-xl text-[#07192F]">
-            We call it the <span className="font-semibold text-[#C88A1A]">Level Up Method</span>.
+            We call it the <span className="font-semibold text-gold-ink">Level Up Method</span>.
           </p>
         </div>
 
@@ -51,7 +51,7 @@ export const MethodTimeline: React.FC = () => (
             return (
               <li key={step.title} className="relative">
                 <span
-                  className="absolute -left-10 sm:-left-12 top-7 w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 border-[#C88A1A] bg-white flex items-center justify-center text-[10px] sm:text-xs font-bold text-[#C88A1A]"
+                  className="absolute -left-10 sm:-left-12 top-7 w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 border-[#C88A1A] bg-white flex items-center justify-center text-[10px] sm:text-xs font-bold text-gold-ink"
                   aria-hidden="true"
                 >
                   {idx + 1}

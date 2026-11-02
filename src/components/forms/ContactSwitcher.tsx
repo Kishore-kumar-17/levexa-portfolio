@@ -138,7 +138,7 @@ export const ContactSwitcher: React.FC = () => {
             <ol className="space-y-6">
               {STEPS.map((step, idx) => (
                 <li key={step.title} className="flex items-start gap-4">
-                  <span className="w-8 h-8 rounded-full border-2 border-[#C88A1A] text-[#C88A1A] text-sm font-bold flex items-center justify-center shrink-0">
+                  <span className="w-8 h-8 rounded-full border-2 border-[#C88A1A] text-gold-ink text-sm font-bold flex items-center justify-center shrink-0">
                     {idx + 1}
                   </span>
                   <div>

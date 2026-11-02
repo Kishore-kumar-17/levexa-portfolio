@@ -4,7 +4,6 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { CTASection } from "@/components/sections/CTASection";
 import { ArrowRight, CheckCircle2, ChevronDown } from "lucide-react";
-import { ShinyText } from "@/components/ui/ShinyText";
 import { ClickSpark } from "@/components/ui/ClickSpark";
 
 export interface DeliverableDetailed {
@@ -102,7 +101,7 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
 
               <h1 className="type-title mb-6">
                 <span className="text-[#07192F]">{titleLine1}</span>{" "}
-                <ShinyText text={titleHighlight} variant="gold" speed={3.5} />
+                <span className="text-gold-deep">{titleHighlight}</span>
               </h1>
 
               <div
@@ -143,7 +142,8 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"
                 />
-                <div className="absolute top-6 right-6">
+                {/* Decorative watermark number on the photo */}
+                <div className="absolute top-6 right-6" aria-hidden="true">
                   <span className="text-6xl sm:text-7xl font-mono font-black text-white/40 leading-none select-none">
                     {pillarNumber}
                   </span>
@@ -218,7 +218,7 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
                   open={idx === 0}
                   className="group rounded-xl border border-stone-200/90 bg-white overflow-hidden shadow-2xs"
                 >
-                  <summary className="list-none [&::-webkit-details-marker]:hidden cursor-pointer w-full text-left px-5 sm:px-6 py-4 sm:py-5 flex items-center justify-between gap-4 font-bold text-base sm:text-lg text-[#07192F] hover:text-[#C88A1A] transition-colors">
+                  <summary className="list-none [&::-webkit-details-marker]:hidden cursor-pointer w-full text-left px-5 sm:px-6 py-4 sm:py-5 flex items-center justify-between gap-4 font-bold text-base sm:text-lg text-[#07192F] hover:text-gold-ink transition-colors">
                     <span>{faq.question}</span>
                     <ChevronDown className="w-5 h-5 text-slate-400 transition-transform duration-300 shrink-0 group-open:rotate-180 group-open:text-[#C88A1A]" />
                   </summary>
@@ -249,7 +249,7 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
                   <span className="text-xs font-mono font-bold text-slate-600">{item.number}</span>
                   <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-[#C88A1A] group-hover:translate-x-1 transition-all" />
                 </div>
-                <h3 className="text-lg font-bold text-[#07192F] group-hover:text-[#C88A1A] transition-colors mb-1">
+                <h3 className="text-lg font-bold text-[#07192F] group-hover:text-gold-ink transition-colors mb-1">
                   {item.title}
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed">{item.tagline}</p>

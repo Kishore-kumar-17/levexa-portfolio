@@ -4,6 +4,8 @@ import assert from "node:assert/strict";
 import {
   validateContactForm,
   getOptionLabel,
+  isSubmittedTooFast,
+  MIN_FILL_MS,
   SERVICE_OPTIONS,
   BUDGET_OPTIONS,
 } from "./validation.ts";
@@ -101,4 +103,18 @@ test("rejects submissions that fill the honeypot", () => {
 test("getOptionLabel returns the label, or the raw value when unknown", () => {
   assert.equal(getOptionLabel(SERVICE_OPTIONS, "growth-strategy"), "Growth & Strategy");
   assert.equal(getOptionLabel(SERVICE_OPTIONS, "unknown"), "unknown");
+});
+
+test("flags submissions sent faster than a person could fill the form", () => {
+  assert.equal(isSubmittedTooFast(800), true);
+  assert.equal(isSubmittedTooFast(MIN_FILL_MS - 1), true);
+  assert.equal(isSubmittedTooFast(MIN_FILL_MS), false);
+  assert.equal(isSubmittedTooFast(45_000), false);
+});
+
+test("flags submissions with missing or invalid timing (e.g. bots posting directly)", () => {
+  assert.equal(isSubmittedTooFast(undefined), true);
+  assert.equal(isSubmittedTooFast("5000"), true);
+  assert.equal(isSubmittedTooFast(Number.NaN), true);
+  assert.equal(isSubmittedTooFast(Number.POSITIVE_INFINITY), true);
 });

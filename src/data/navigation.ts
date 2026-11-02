@@ -19,4 +19,5 @@ export const footerCompanyNavigation: NavItem[] = [
   { label: "All Services Overview", href: "/services" },
   { label: "Get in Touch", href: "/contact" },
   { label: "Privacy Policy", href: "/privacy" },
+  { label: "Terms of Use", href: "/terms" },
 ];

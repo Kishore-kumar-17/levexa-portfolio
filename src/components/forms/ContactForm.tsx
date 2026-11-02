@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { CheckCircle2, AlertCircle, Loader2, ArrowRight } from "lucide-react";
 import { validateContactForm, SERVICE_OPTIONS, BUDGET_OPTIONS } from "@/lib/validation";
 import { ContactFormData } from "@/types";
@@ -22,6 +22,12 @@ export const ContactForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+
+  // When the form appeared, to measure how long the visitor took (spam check on the server)
+  const shownAtRef = useRef(0);
+  useEffect(() => {
+    shownAtRef.current = Date.now();
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -61,7 +67,8 @@ export const ContactForm: React.FC = () => {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        // elapsedMs lets the server reject bots that submit instantly
+        body: JSON.stringify({ ...formData, elapsedMs: Date.now() - shownAtRef.current }),
       });
 
       const data = await response.json();
@@ -71,6 +78,7 @@ export const ContactForm: React.FC = () => {
       }
 
       setSubmitSuccess(true);
+      shownAtRef.current = Date.now();
       setFormData({
         fullName: "",
         email: "",
@@ -111,7 +119,7 @@ export const ContactForm: React.FC = () => {
         <button
           type="button"
           onClick={() => setSubmitSuccess(false)}
-          className="text-xs font-mono font-bold text-[#C88A1A] uppercase tracking-wider hover:underline pt-3 cursor-pointer block mx-auto"
+          className="text-xs font-mono font-bold text-gold-ink uppercase tracking-wider hover:underline pt-3 cursor-pointer block mx-auto"
         >
           Submit Another Enquiry
         </button>
@@ -156,7 +164,7 @@ export const ContactForm: React.FC = () => {
             htmlFor="fullName"
             className="block text-sm font-semibold text-slate-800 mb-2"
           >
-            Full Name <span className="text-[#C88A1A]">*</span>
+            Full Name <span className="text-gold-ink">*</span>
           </label>
           <input
             id="fullName"
@@ -186,7 +194,7 @@ export const ContactForm: React.FC = () => {
             htmlFor="email"
             className="block text-sm font-semibold text-slate-800 mb-2"
           >
-            Business Email <span className="text-[#C88A1A]">*</span>
+            Business Email <span className="text-gold-ink">*</span>
           </label>
           <input
             id="email"
@@ -279,7 +287,7 @@ export const ContactForm: React.FC = () => {
             htmlFor="service"
             className="block text-sm font-semibold text-slate-800 mb-2"
           >
-            Service you&apos;re interested in <span className="text-[#C88A1A]">*</span>
+            Service you&apos;re interested in <span className="text-gold-ink">*</span>
           </label>
           <select
             id="service"
@@ -342,7 +350,7 @@ export const ContactForm: React.FC = () => {
           htmlFor="message"
           className="block text-sm font-semibold text-slate-800 mb-2"
         >
-          What would you like help with? <span className="text-[#C88A1A]">*</span>
+          What would you like help with? <span className="text-gold-ink">*</span>
         </label>
         <textarea
           id="message"
@@ -382,10 +390,10 @@ export const ContactForm: React.FC = () => {
           />
           <span className="text-sm text-slate-700 leading-relaxed">
             I agree to Levexa using these details to respond to my enquiry, in line with the{" "}
-            <a href="/privacy" className="text-[#07192F] underline underline-offset-2 font-semibold hover:text-[#C88A1A]">
+            <a href="/privacy" className="text-[#07192F] underline underline-offset-2 font-semibold hover:text-gold-ink">
               Privacy Policy
             </a>
-            . <span className="text-[#C88A1A]">*</span>
+            . <span className="text-gold-ink">*</span>
           </span>
         </label>
         {errors.consent && (

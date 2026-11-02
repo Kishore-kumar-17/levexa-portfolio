@@ -42,6 +42,7 @@ export interface ContactFormData {
   message: string;
   consent: boolean;
   honeypot?: string; // spam protection
+  elapsedMs?: number; // spam protection: time from form shown to submit, measured in the browser
 }
 
 export interface ApiResponse<T = unknown> {

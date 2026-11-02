@@ -33,6 +33,10 @@ const config: Config = {
           700: "#B37600",
           800: "#8D5A00",
           hover: "#E59B00",
+          // Gold for TEXT on cream/white, dark enough to read (WCAG AA). Keep #C88A1A for
+          // buttons, icons and lines.
+          ink: "#8A5F0E", // normal-size text: 5.3:1 on cream
+          deep: "#A87512", // big headline words (24px+): 3.8:1 on cream
         },
         coolgray: {
           50: "#F8FAFC",

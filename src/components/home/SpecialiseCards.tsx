@@ -39,7 +39,7 @@ export const SpecialiseCards: React.FC = () => (
               </span>
               <h3 className="text-xl font-bold mb-3">{service.title}</h3>
               <p className="text-base text-slate-700 leading-relaxed mb-6">{service.summary}</p>
-              <span className="mt-auto inline-flex items-center gap-2 text-sm font-bold text-[#07192F] group-hover:text-[#C88A1A] transition-colors">
+              <span className="mt-auto inline-flex items-center gap-2 text-sm font-bold text-[#07192F] group-hover:text-gold-ink transition-colors">
                 Learn more
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
               </span>
