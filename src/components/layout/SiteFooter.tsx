@@ -168,8 +168,8 @@ export const SiteFooter: React.FC = () => {
           </div>
         </div>
 
-        {/* Bottom utility row: Copyright + CircularText Stamp */}
-        <div className="flex items-center gap-4 pt-6 border-t border-white/10 text-xs sm:text-sm">
+        {/* Bottom utility row: Copyright + CircularText Stamp + developer credit */}
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-3 pt-6 border-t border-white/10 text-xs sm:text-sm">
           <span className="text-stone-400 font-normal">
             © {currentYear} Levexa
           </span>
@@ -181,6 +181,19 @@ export const SiteFooter: React.FC = () => {
               className="text-[#C88A1A] opacity-80"
             />
           </div>
+          <p className="w-full sm:w-auto sm:ml-auto text-stone-400">
+            Designed &amp; developed by{" "}
+            <a
+              href="https://www.linkedin.com/in/kishore2617"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 py-1 font-semibold text-stone-200 hover:text-[#C88A1A] transition-colors duration-200"
+            >
+              Kishore Kumar R
+              <Linkedin className="w-3.5 h-3.5" aria-hidden="true" />
+              <span className="sr-only">(LinkedIn, opens in a new tab)</span>
+            </a>
+          </p>
         </div>
       </Container>
 

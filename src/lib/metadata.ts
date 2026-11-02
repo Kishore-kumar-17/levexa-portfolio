@@ -33,6 +33,7 @@ export function constructMetadata({
     title: pageTitle,
     description,
     metadataBase: new URL(siteConfig.siteUrl),
+    creator: "Kishore Kumar R",
     alternates: {
       canonical: canonicalUrl,
     },

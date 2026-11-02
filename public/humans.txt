@@ -1,0 +1,12 @@
+/* TEAM */
+Founder & CEO: Lavanya
+Company: Levexa
+LinkedIn: https://www.linkedin.com/company/levexa-growth-hub/
+
+Designer & developer: Kishore Kumar R
+LinkedIn: https://www.linkedin.com/in/kishore2617
+
+/* SITE */
+Built with: Next.js, React, TypeScript, Tailwind CSS
+Hosted on: Vercel
+Last update: 2026-11-02
