@@ -38,14 +38,14 @@ export const OutcomeTabs: React.FC = () => {
   };
 
   return (
-    <section className="bg-[#07192F] text-white pb-20 sm:pb-24">
+    <section className="bg-[#FAF8F5] text-[#07192F] pb-20 sm:pb-24">
       <Container>
         <h2 className="type-h2 text-center max-w-3xl mx-auto mb-10 sm:mb-12">
           And more, to help you create <Underline>content</Underline> that…
         </h2>
 
         <div className="max-w-4xl mx-auto">
-          <div role="tablist" aria-label="What our content does" className="grid grid-cols-3 rounded-t-2xl overflow-hidden" onKeyDown={onKeyDown}>
+          <div role="tablist" aria-label="What our content does" className="grid grid-cols-3 rounded-t-2xl overflow-hidden border border-b-0 border-stone-200" onKeyDown={onKeyDown}>
             {TABS.map((tab, idx) => {
               const Icon = tab.icon;
               const selected = idx === active;
@@ -60,7 +60,7 @@ export const OutcomeTabs: React.FC = () => {
                   tabIndex={selected ? 0 : -1}
                   onClick={() => setActive(idx)}
                   className={`relative flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2 px-2 py-4 text-sm sm:text-base font-semibold transition-colors cursor-pointer ${
-                    selected ? "bg-[#C88A1A] text-[#07192F]" : "bg-[#FAF8F5] text-[#07192F]/70 hover:text-[#07192F]"
+                    selected ? "bg-[#C88A1A] text-[#07192F]" : "bg-white text-slate-600 hover:text-[#07192F]"
                   }`}
                 >
                   <Icon className="w-5 h-5 shrink-0" aria-hidden="true" />
@@ -79,9 +79,9 @@ export const OutcomeTabs: React.FC = () => {
             id={`${baseId}-panel`}
             role="tabpanel"
             aria-labelledby={`${baseId}-tab-${active}`}
-            className="rounded-b-2xl border border-t-0 border-white/25 px-6 sm:px-10 py-9 sm:py-10 min-h-[140px]"
+            className="rounded-b-2xl bg-white border border-stone-200 shadow-2xs px-6 sm:px-10 py-9 sm:py-10 min-h-[140px]"
           >
-            <p className="text-lg sm:text-xl text-stone-200 leading-relaxed">{TABS[active].text}</p>
+            <p className="text-lg sm:text-xl text-slate-700 leading-relaxed">{TABS[active].text}</p>
           </div>
         </div>
       </Container>

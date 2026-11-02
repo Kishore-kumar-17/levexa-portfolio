@@ -7,7 +7,7 @@ import { Underline } from "@/components/ui/Underline";
 
 // "I'm Lavanya. I started Levexa…": founder photo and a short introduction
 export const FounderIntro: React.FC = () => (
-  <section className="bg-[#FAF8F5] text-[#07192F] py-20 sm:py-24">
+  <section className="bg-white text-[#07192F] py-20 sm:py-24">
     <Container>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
         <div className="lg:col-span-5">

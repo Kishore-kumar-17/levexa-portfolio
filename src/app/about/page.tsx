@@ -32,13 +32,13 @@ export default function AboutPage() {
   )}`;
 
   return (
-    <div className="bg-[#07192F] text-white">
+    <div className="bg-[#FAF8F5] text-[#07192F]">
       {/* 1. Banner */}
       <PageBanner
         image="/images/process/01-discovery.jpg"
         title={
           <>
-            About us? It&apos;s really about <span className="text-[#E4AB3C]">you.</span>
+            About us? It&apos;s really about <span className="text-[#C88A1A]">you.</span>
           </>
         }
         subtitle={
@@ -53,20 +53,20 @@ export default function AboutPage() {
       />
 
       {/* 2. Our story */}
-      <section className="py-20 sm:py-24">
+      <section className="py-20 sm:py-24 bg-white border-t border-stone-200/70">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <div className="lg:col-span-7">
               <h2 className="type-h2 mb-8">
                 <Underline>Levexa</Underline>…
               </h2>
-              <div className="space-y-5 text-lg text-stone-300 leading-relaxed">
+              <div className="space-y-5 text-lg text-slate-700 leading-relaxed">
                 <p>
-                  <span className="text-[#E4AB3C] font-semibold">Levexa</span> is a founder-led growth advisory,
+                  <span className="text-[#C88A1A] font-semibold">Levexa</span> is a founder-led growth advisory,
                   built on one simple idea: marketing only matters when it turns into revenue.
                 </p>
                 <p>
-                  <span className="text-[#E4AB3C] font-semibold">Lavanya</span>, our founder, saw the same
+                  <span className="text-[#C88A1A] font-semibold">Lavanya</span>, our founder, saw the same
                   problem again and again. Businesses posted content, ran ads and hired salespeople, but each
                   part worked on its own. Attention never became enquiries, and enquiries never became
                   customers.
@@ -79,13 +79,13 @@ export default function AboutPage() {
                 <p>
                   Today we script reels, build brands and set up sales systems for founders, coaches and
                   growing businesses, and help them reach new customers in the{" "}
-                  <span className="text-[#E4AB3C] font-semibold">digital world</span>.
+                  <span className="text-[#C88A1A] font-semibold">digital world</span>.
                 </p>
               </div>
             </div>
 
             <div className="lg:col-span-5">
-              <div className="relative max-w-md mx-auto lg:ml-auto aspect-[4/5] rounded-3xl overflow-hidden ring-1 ring-white/15 shadow-2xl bg-[#0E2849]">
+              <div className="relative max-w-md mx-auto lg:ml-auto aspect-[4/5] rounded-3xl overflow-hidden border border-stone-200 shadow-card-elevated bg-stone-100">
                 <Image
                   src="/images/about/founder-lavanya.jpg"
                   alt="Lavanya, Founder & CEO of Levexa"
@@ -94,7 +94,7 @@ export default function AboutPage() {
                   className="object-cover"
                 />
                 <div className="absolute bottom-4 left-4 right-4 px-4 py-3 rounded-xl bg-[#07192F]/85 backdrop-blur-md border border-white/10">
-                  <p className="text-base font-bold">Lavanya</p>
+                  <p className="text-base font-bold text-white">Lavanya</p>
                   <p className="text-xs font-mono font-semibold text-[#E4AB3C] uppercase tracking-wider">
                     Founder &amp; CEO, Levexa
                   </p>
@@ -106,7 +106,7 @@ export default function AboutPage() {
       </section>
 
       {/* 3. Community + follow */}
-      <section className="py-20 sm:py-24 border-t border-white/10">
+      <section className="py-20 sm:py-24 border-t border-stone-200/70">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Instagram profile card */}
@@ -114,7 +114,7 @@ export default function AboutPage() {
               href={instagramProfileData.profileUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="block max-w-md mx-auto w-full rounded-2xl bg-[#FAF8F5] text-[#07192F] p-6 shadow-2xl transition-transform hover:-translate-y-1"
+              className="block max-w-md mx-auto w-full rounded-2xl bg-white border border-stone-200 text-[#07192F] p-6 shadow-card-elevated transition-transform hover:-translate-y-1"
             >
               <div className="flex items-center gap-5">
                 <div className="relative w-20 h-20 rounded-full overflow-hidden ring-2 ring-[#C88A1A] ring-offset-2 shrink-0">
@@ -142,9 +142,9 @@ export default function AboutPage() {
 
             <div>
               <h2 className="type-h2 mb-6">
-                Join the <span className="text-[#E4AB3C]">Levexa community</span>
+                Join the <span className="text-[#C88A1A]">Levexa community</span>
               </h2>
-              <p className="text-lg sm:text-xl text-stone-300 leading-relaxed mb-8">
+              <p className="text-lg sm:text-xl text-slate-700 leading-relaxed mb-8">
                 Get Lavanya&apos;s practical tips on content, leads and sales, straight to your WhatsApp. If
                 you&apos;re ready to grow your brand, reach out to Lavanya and the team directly.
               </p>
@@ -196,13 +196,13 @@ export default function AboutPage() {
       </section>
 
       {/* 5. Levexa is… */}
-      <section className="py-20 sm:py-24">
+      <section className="py-20 sm:py-24 bg-white">
         <Container>
           <div className="max-w-3xl mb-12">
             <h2 className="type-h2 mb-6">
               Levexa <Underline>is…</Underline>
             </h2>
-            <p className="text-lg sm:text-xl text-stone-300 leading-relaxed">
+            <p className="text-lg sm:text-xl text-slate-700 leading-relaxed">
               …a growth partner for businesses that want results they can measure. We plan your strategy,
               create content that earns attention, train your team to close, and automate the follow-up, so
               you get a stronger brand, more leads and more sales.
@@ -213,10 +213,10 @@ export default function AboutPage() {
             {VALUES.map((value) => {
               const Icon = value.icon;
               return (
-                <div key={value.title} className="p-7 rounded-2xl border border-white/20">
-                  <Icon className="w-7 h-7 text-[#E4AB3C] mb-5" aria-hidden="true" />
+                <div key={value.title} className="p-7 rounded-2xl bg-[#FAF8F5] border border-stone-200">
+                  <Icon className="w-7 h-7 text-[#C88A1A] mb-5" aria-hidden="true" />
                   <h3 className="text-xl font-bold mb-2">{value.title}</h3>
-                  <p className="text-base text-stone-300 leading-relaxed">{value.desc}</p>
+                  <p className="text-base text-slate-700 leading-relaxed">{value.desc}</p>
                 </div>
               );
             })}

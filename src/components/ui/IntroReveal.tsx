@@ -73,7 +73,7 @@ function getFrameStyles(fan: number, fly: number, flying: boolean) {
 
   return {
     // The overlay fades to reveal the REAL underlying HeroSection (no duplicate text)
-    backdropColor: `rgba(7, 25, 47, ${flying ? Math.max(0, 1 - fly * 1.35) : 1})`,
+    backdropColor: `rgba(250, 248, 245, ${flying ? Math.max(0, 1 - fly * 1.35) : 1})`,
     stageOpacity: String(Math.max(0, 1 - Math.pow(fly, 2.2))),
     cylinderTransform: `scale(${cameraScale}) translateZ(${cameraZ}px) rotateY(${cylinderRotation}deg)`,
     cards: REVEAL_CARDS.map((card, index) => {
@@ -205,15 +205,15 @@ export const IntroReveal: React.FC<IntroRevealProps> = ({ onComplete }) => {
       style={{ backgroundColor: INITIAL_FRAME.backdropColor }}
       aria-hidden="true"
     >
-      {/* Top navigation bar: matches the real navy header */}
-      <header className="absolute top-0 left-0 right-0 z-40 bg-[#07192F] border-b border-transparent transition-colors duration-300 pointer-events-auto">
+      {/* Top Navigation Bar: Anchored on white background */}
+      <header className="absolute top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-sm border-b border-slate-100 transition-colors duration-300 pointer-events-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20 sm:h-24">
             {/* Logo */}
             <div className="flex-shrink-0">
               <div className="relative w-36 sm:w-44 h-8 sm:h-9">
                 <Image
-                  src="/levexa-logo-dark-trans.png"
+                  src="/levexa-logo-light-trans.png"
                   alt="Levexa"
                   fill
                   sizes="176px"
@@ -225,8 +225,8 @@ export const IntroReveal: React.FC<IntroRevealProps> = ({ onComplete }) => {
 
             {/* Desktop Navigation Links */}
             <nav className="hidden lg:flex items-center gap-8 xl:gap-10">
-              {["About", "Services", "Work", "Contact"].map((label) => (
-                <span key={label} className="text-[15px] font-medium text-stone-300">
+              {["About", "Services", "Contact"].map((label) => (
+                <span key={label} className="text-[15px] font-medium text-slate-600">
                   {label}
                 </span>
               ))}

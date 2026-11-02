@@ -8,7 +8,6 @@ import { MethodTimeline } from "@/components/home/MethodTimeline";
 import { Milestones } from "@/components/home/Milestones";
 import { AuthorityBanner } from "@/components/home/AuthorityBanner";
 import { FounderIntro } from "@/components/home/FounderIntro";
-import { RecentWork } from "@/components/sections/RecentWork";
 import { GetStartedBox } from "@/components/sections/GetStartedBox";
 
 export default function HomePage() {
@@ -23,7 +22,6 @@ export default function HomePage() {
       <Milestones />
       <AuthorityBanner />
       <FounderIntro />
-      <RecentWork />
       <GetStartedBox />
     </>
   );

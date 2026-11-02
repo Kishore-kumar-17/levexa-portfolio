@@ -57,7 +57,7 @@ const quoteHref = (plan: string) =>
 
 export default function ServicesPage() {
   return (
-    <div className="bg-[#07192F] text-white">
+    <div className="bg-[#FAF8F5] text-[#07192F]">
       {/* 1. Banner */}
       <PageBanner
         image="/images/pillars/02-branding-marketing.jpg"
@@ -73,7 +73,7 @@ export default function ServicesPage() {
       />
 
       {/* 2. Service cards */}
-      <section className="py-20 sm:py-24">
+      <section className="py-20 sm:py-24 bg-white border-t border-stone-200/70">
         <Container>
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 lg:gap-6">
             {servicesData.map((service) => {
@@ -83,20 +83,20 @@ export default function ServicesPage() {
                   key={service.id}
                   id={service.id}
                   href={service.href}
-                  className="group scroll-mt-28 flex flex-col rounded-2xl border border-white/20 p-7 sm:p-8 transition-colors hover:border-[#C88A1A] hover:bg-white/[0.03]"
+                  className="group scroll-mt-28 flex flex-col rounded-2xl bg-[#FAF8F5] border border-stone-200 p-7 sm:p-8 transition-all hover:border-[#C88A1A] hover:shadow-md hover:-translate-y-0.5"
                 >
-                  <Icon className="w-10 h-10 text-[#E4AB3C] mb-7" aria-hidden="true" />
+                  <Icon className="w-10 h-10 text-[#C88A1A] mb-7" aria-hidden="true" />
                   <h2 className="text-xl font-bold uppercase tracking-wide mb-3">{service.title}</h2>
-                  <p className="text-base text-stone-300 leading-relaxed mb-5">{service.summary}</p>
+                  <p className="text-base text-slate-700 leading-relaxed mb-5">{service.summary}</p>
                   <ul className="space-y-2 mb-7">
                     {service.deliverables.slice(0, 3).map((item) => (
-                      <li key={item} className="flex items-start gap-2.5 text-sm text-stone-200">
+                      <li key={item} className="flex items-start gap-2.5 text-sm text-slate-800">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#C88A1A] mt-2 shrink-0" aria-hidden="true" />
                         <span>{item}</span>
                       </li>
                     ))}
                   </ul>
-                  <span className="mt-auto inline-flex items-center gap-2 text-sm font-bold text-[#E4AB3C]">
+                  <span className="mt-auto inline-flex items-center gap-2 text-sm font-bold text-[#07192F] group-hover:text-[#C88A1A] transition-colors">
                     Learn more
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                   </span>
@@ -117,7 +117,7 @@ export default function ServicesPage() {
             <h2 className="type-h2">
               Choose the plan that works best for <Underline>you</Underline>
             </h2>
-            <p className="mt-6 text-lg text-stone-300 leading-relaxed">
+            <p className="mt-6 text-lg text-slate-700 leading-relaxed">
               Every plan is shaped around your business. Tell us which one fits, and we&apos;ll send you a
               quote.
             </p>
@@ -127,8 +127,8 @@ export default function ServicesPage() {
             {PLANS.map((plan) => (
               <article
                 key={plan.name}
-                className={`relative flex flex-col rounded-2xl overflow-hidden bg-[#0E2849] border ${
-                  plan.popular ? "border-[#C88A1A] shadow-2xl md:-translate-y-3" : "border-white/15"
+                className={`relative flex flex-col rounded-2xl overflow-hidden bg-white border ${
+                  plan.popular ? "border-[#C88A1A] shadow-card-elevated md:-translate-y-3" : "border-stone-200 shadow-2xs"
                 }`}
               >
                 {plan.popular && (
@@ -140,12 +140,12 @@ export default function ServicesPage() {
                   <h3 className="text-3xl font-bold tracking-tight">{plan.name}</h3>
                   <p className="mt-2 text-sm font-medium">{plan.forWho}</p>
                 </div>
-                <div className="px-6 py-6 border-b border-white/10">
+                <div className="px-6 py-6 border-b border-stone-200">
                   <a
                     href={quoteHref(plan.name)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`${plan.popular ? "btn-primary" : "btn-secondary-dark"} w-full !min-h-[46px]`}
+                    className={`${plan.popular ? "btn-primary" : "btn-secondary"} w-full !min-h-[46px]`}
                   >
                     Get a quote
                   </a>
@@ -156,12 +156,12 @@ export default function ServicesPage() {
                     return (
                       <li
                         key={feature}
-                        className={`flex items-start gap-3 text-[15px] ${included ? "text-white" : "text-stone-400"}`}
+                        className={`flex items-start gap-3 text-[15px] ${included ? "text-[#07192F]" : "text-slate-400"}`}
                       >
                         {included ? (
-                          <Check className="w-4 h-4 text-[#E4AB3C] mt-0.5 shrink-0" aria-hidden="true" />
+                          <Check className="w-4 h-4 text-[#C88A1A] mt-0.5 shrink-0" aria-hidden="true" />
                         ) : (
-                          <X className="w-4 h-4 text-stone-500 mt-0.5 shrink-0" aria-hidden="true" />
+                          <X className="w-4 h-4 text-slate-300 mt-0.5 shrink-0" aria-hidden="true" />
                         )}
                         <span>
                           <span className="sr-only">{included ? "Included: " : "Not included: "}</span>

@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const isDev = process.env.NODE_ENV !== "production";
 
 // Everything is self-hosted (fonts via next/font, local images); only the Vercel
-// preview toolbar and the Instagram reel embeds on /work need outside access.
+// preview toolbar needs outside access.
 // 'unsafe-inline' covers Next's inline bootstrap scripts and the JSON-LD block;
 // 'unsafe-eval' is only needed by the dev server.
 const contentSecurityPolicy = [
@@ -13,7 +13,7 @@ const contentSecurityPolicy = [
   "img-src 'self' data: blob: https://vercel.live https://vercel.com",
   "font-src 'self' https://vercel.live https://assets.vercel.com",
   "connect-src 'self' https://vercel.live wss://ws-us3.pusher.com",
-  "frame-src https://vercel.live https://www.instagram.com",
+  "frame-src https://vercel.live",
   "frame-ancestors 'none'",
   "base-uri 'self'",
   "form-action 'self'",
@@ -24,6 +24,10 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   images: {
     formats: ["image/avif", "image/webp"],
+  },
+  // The Work page was removed; send old links and search results to the home page
+  async redirects() {
+    return [{ source: "/work", destination: "/", permanent: true }];
   },
   // Ensure headers for security best practices
   async headers() {

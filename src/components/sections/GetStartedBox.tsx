@@ -3,11 +3,11 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 
-// Closing call to action on every main page: a gold box on navy
+// Closing call to action on every main page: a gold box
 export const GetStartedBox: React.FC = () => (
-  <section className="bg-[#07192F] py-16 sm:py-20 lg:py-24">
+  <section className="bg-[#FAF8F5] py-16 sm:py-20 lg:py-24 border-t border-stone-200/70">
     <Container>
-      <div className="relative overflow-hidden max-w-5xl mx-auto rounded-3xl bg-[#C88A1A] text-[#07192F] px-6 py-12 sm:px-12 sm:py-16 text-center">
+      <div className="relative overflow-hidden max-w-5xl mx-auto rounded-3xl bg-[#C88A1A] text-[#07192F] shadow-card-elevated px-6 py-12 sm:px-12 sm:py-16 text-center">
         <div className="absolute -top-24 -right-24 w-64 h-64 rounded-full bg-white/15 blur-2xl" aria-hidden="true" />
         <div className="absolute -bottom-24 -left-24 w-64 h-64 rounded-full bg-[#07192F]/10 blur-2xl" aria-hidden="true" />
         <div className="relative">

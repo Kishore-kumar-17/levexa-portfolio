@@ -16,19 +16,19 @@ const PLATFORMS = [
 // "Become the go-to name" photo banner, followed by the platforms we work on
 export const AuthorityBanner: React.FC = () => (
   <>
-    <section className="relative isolate overflow-hidden bg-[#07192F] text-white py-24 sm:py-32">
-      <Image src="/images/process/06-growth.jpg" alt="" fill sizes="100vw" className="object-cover -z-20 opacity-40" />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#07192F] via-[#07192F]/85 to-[#07192F]/40" aria-hidden="true" />
+    <section className="relative isolate overflow-hidden bg-[#FAF8F5] text-[#07192F] py-24 sm:py-32 border-t border-stone-200/70">
+      <Image src="/images/process/06-growth.jpg" alt="" fill sizes="100vw" className="object-cover object-right -z-20" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#FAF8F5] via-[#FAF8F5]/90 to-[#FAF8F5]/30" aria-hidden="true" />
       <Container>
         <div className="max-w-2xl">
-          <p className="text-lg font-semibold text-[#E4AB3C] mb-3">Become the go-to name</p>
+          <p className="text-lg font-semibold text-[#C88A1A] mb-3">Become the go-to name</p>
           <h2 className="type-h2">
             in your industry, <br />
             <Encircle>with content</Encircle>
           </h2>
-          <p className="mt-7 text-lg sm:text-xl text-stone-200 leading-relaxed">
+          <p className="mt-7 text-lg sm:text-xl text-slate-700 leading-relaxed">
             We help founders and experts grow an audience and turn it into enquiries, with content on{" "}
-            <span className="text-[#E4AB3C]">Instagram, YouTube and LinkedIn</span>.
+            <span className="font-semibold text-[#C88A1A]">Instagram, YouTube and LinkedIn</span>.
           </p>
           <Link href="/contact" className="group btn-primary mt-9">
             Contact us
@@ -38,10 +38,10 @@ export const AuthorityBanner: React.FC = () => (
       </Container>
     </section>
 
-    <section className="bg-[#0E2849] text-white py-10 sm:py-12">
+    <section className="bg-white text-[#07192F] py-10 sm:py-12 border-y border-stone-200/70">
       <Container>
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-          <h2 className="text-base font-semibold text-[#E4AB3C] shrink-0">Platforms we work on</h2>
+          <h2 className="text-base font-semibold text-[#C88A1A] shrink-0">Platforms we work on</h2>
           <ul className="flex flex-wrap items-center justify-center lg:justify-between gap-x-10 gap-y-6 flex-1">
             {PLATFORMS.map((platform) => (
               <li key={platform.name} className="flex items-center gap-3 text-xl sm:text-2xl font-bold tracking-tight">

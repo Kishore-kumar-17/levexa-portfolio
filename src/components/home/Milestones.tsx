@@ -13,13 +13,13 @@ const MILESTONES = [
 ];
 
 export const Milestones: React.FC = () => (
-  <section className="bg-[#07192F] text-white py-20 sm:py-24 border-t border-white/10">
+  <section className="bg-[#FAF8F5] text-[#07192F] py-20 sm:py-24 border-t border-stone-200/70">
     <Container>
       <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-14">
         <h2 className="type-h2">
           Key <Underline>milestones</Underline> we&apos;ve reached
         </h2>
-        <p className="mt-6 text-lg text-stone-300 leading-relaxed">
+        <p className="mt-6 text-lg text-slate-700 leading-relaxed">
           Views, engagement and real conversations: here&apos;s what reels we scripted have delivered for
           our clients.
         </p>
@@ -30,9 +30,9 @@ export const Milestones: React.FC = () => (
           const Icon = item.icon;
           return (
             <div key={item.label} className="flex flex-col items-center">
-              <Icon className="w-9 h-9 text-[#E4AB3C] mb-4" aria-hidden="true" />
+              <Icon className="w-9 h-9 text-[#C88A1A] mb-4" aria-hidden="true" />
               <dd className="text-5xl sm:text-6xl font-bold tracking-tight font-mono">{item.value}</dd>
-              <dt className="mt-3 text-base text-stone-300">{item.label}</dt>
+              <dt className="mt-3 text-base text-slate-700">{item.label}</dt>
             </div>
           );
         })}

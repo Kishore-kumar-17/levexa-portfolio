@@ -49,7 +49,7 @@ export const ContactSwitcher: React.FC = () => {
       onClick={() => setMode(value)}
       aria-pressed={mode === value}
       className={`px-5 py-2.5 rounded-full text-sm sm:text-base font-semibold transition-colors cursor-pointer ${
-        mode === value ? "bg-[#C88A1A] text-[#07192F]" : "text-stone-300 hover:text-white"
+        mode === value ? "bg-[#C88A1A] text-[#07192F]" : "text-slate-600 hover:text-[#07192F]"
       }`}
     >
       {label}
@@ -59,7 +59,7 @@ export const ContactSwitcher: React.FC = () => {
   return (
     <div>
       <div className="flex justify-center mb-12">
-        <div className="inline-flex p-1.5 rounded-full bg-white/10 border border-white/15">
+        <div className="inline-flex p-1.5 rounded-full bg-white border border-stone-200 shadow-2xs">
           {option("form", "Send a message")}
           {option("talk", "Talk to Lavanya")}
         </div>
@@ -69,10 +69,10 @@ export const ContactSwitcher: React.FC = () => {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-10">
             <div className="relative mx-auto w-[220px] aspect-[1396/213] mb-6">
-              <Image src="/levexa-logo-dark-trans.png" alt="Levexa" fill sizes="220px" className="object-contain" />
+              <Image src="/levexa-logo-light-trans.png" alt="Levexa" fill sizes="220px" className="object-contain" />
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#E4AB3C] mb-3">Welcome to the Levexa contact form</h2>
-            <p className="text-lg text-stone-300">
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#07192F] mb-3">Welcome to the Levexa contact form</h2>
+            <p className="text-lg text-slate-700">
               A few quick questions about you and your business, so we can see how we can help.
             </p>
           </div>
@@ -80,9 +80,9 @@ export const ContactSwitcher: React.FC = () => {
         </div>
       ) : (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
-          <div className="p-7 sm:p-8 rounded-2xl bg-[#0E2849] border border-white/10">
+          <div className="p-7 sm:p-8 rounded-2xl bg-[#07192F] text-white">
             <div className="flex items-center gap-4 mb-5">
-              <div className="relative w-16 h-16 rounded-full overflow-hidden ring-2 ring-[#C88A1A] ring-offset-2 ring-offset-[#0E2849] shrink-0">
+              <div className="relative w-16 h-16 rounded-full overflow-hidden ring-2 ring-[#C88A1A] ring-offset-2 ring-offset-[#07192F] shrink-0">
                 <Image
                   src="/images/about/founder-lavanya-avatar.jpg"
                   alt="Lavanya, Founder & CEO of Levexa"
@@ -133,17 +133,17 @@ export const ContactSwitcher: React.FC = () => {
             </ul>
           </div>
 
-          <div className="p-7 sm:p-8 rounded-2xl border border-white/15">
+          <div className="p-7 sm:p-8 rounded-2xl bg-white border border-stone-200 shadow-2xs">
             <h2 className="text-xl font-bold mb-6">What happens next</h2>
             <ol className="space-y-6">
               {STEPS.map((step, idx) => (
                 <li key={step.title} className="flex items-start gap-4">
-                  <span className="w-8 h-8 rounded-full border-2 border-[#C88A1A] text-[#E4AB3C] text-sm font-bold flex items-center justify-center shrink-0">
+                  <span className="w-8 h-8 rounded-full border-2 border-[#C88A1A] text-[#C88A1A] text-sm font-bold flex items-center justify-center shrink-0">
                     {idx + 1}
                   </span>
                   <div>
                     <h3 className="text-base font-bold mb-1">{step.title}</h3>
-                    <p className="text-base text-stone-300 leading-relaxed">{step.desc}</p>
+                    <p className="text-base text-slate-700 leading-relaxed">{step.desc}</p>
                   </div>
                 </li>
               ))}

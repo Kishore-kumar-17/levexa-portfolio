@@ -33,7 +33,7 @@ export default function ContactPage() {
   ];
 
   return (
-    <div className="bg-[#07192F] text-white">
+    <div className="bg-[#FAF8F5] text-[#07192F]">
       {/* 1. Banner */}
       <PageBanner
         image="/images/process/02-strategy.jpg"
@@ -49,7 +49,7 @@ export default function ContactPage() {
       />
 
       {/* 2. Form or direct contact */}
-      <section id="contact-form" className="scroll-mt-24 py-16 sm:py-20 lg:py-24">
+      <section id="contact-form" className="scroll-mt-24 py-16 sm:py-20 lg:py-24 border-t border-stone-200/70">
         <Container>
           <ContactSwitcher />
 
