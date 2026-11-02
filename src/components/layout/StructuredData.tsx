@@ -2,14 +2,9 @@ import React from "react";
 import { companyConfig } from "@/data/company";
 import { siteConfig } from "@/lib/metadata";
 
-// The bare linkedin.com URL is a placeholder until the real profile is supplied
-const LINKEDIN_PLACEHOLDER = "https://www.linkedin.com/";
-
 // schema.org business details so search engines can show name, founder and contact info
 export const StructuredData: React.FC = () => {
-  const sameAs = [companyConfig.socials.instagram, companyConfig.socials.linkedin].filter(
-    (url) => url !== LINKEDIN_PLACEHOLDER
-  );
+  const sameAs = [companyConfig.socials.instagram, companyConfig.socials.linkedin];
 
   const data = {
     "@context": "https://schema.org",

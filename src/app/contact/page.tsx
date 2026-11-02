@@ -1,6 +1,6 @@
 import React from "react";
 import { Metadata } from "next";
-import { Instagram, Mail, Phone } from "lucide-react";
+import { Instagram, Linkedin, Mail, Phone } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Underline } from "@/components/ui/Underline";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
@@ -19,6 +19,7 @@ export const metadata: Metadata = constructMetadata({
 export default function ContactPage() {
   const socials = [
     { label: "Instagram", href: companyConfig.socials.instagram, icon: <Instagram className="w-5 h-5" aria-hidden="true" /> },
+    { label: "LinkedIn", href: companyConfig.socials.linkedin, icon: <Linkedin className="w-5 h-5" aria-hidden="true" /> },
     {
       label: "WhatsApp",
       href: `${companyConfig.socials.whatsapp}?text=${encodeURIComponent(companyConfig.socials.whatsappGreeting)}`,

@@ -19,8 +19,8 @@ export const companyConfig = {
     // Pre-filled first message for the floating "Talk with us" button
     whatsappGreeting: "Hi Levexa, I'd like to talk about growing my business.",
     instagram: "https://www.instagram.com/levelupwith_lavanya/",
-    // TODO: replace with the official LinkedIn profile URL once supplied
-    linkedin: "https://www.linkedin.com/",
+    // Levexa's LinkedIn company page
+    linkedin: "https://www.linkedin.com/company/levexa-growth-hub/",
   },
 
   brandColors: {

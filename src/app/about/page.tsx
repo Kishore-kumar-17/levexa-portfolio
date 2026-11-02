@@ -1,7 +1,7 @@
 import React from "react";
 import { Metadata } from "next";
 import Image from "next/image";
-import { Instagram, Lightbulb, LineChart, RefreshCw, ShieldCheck, Users } from "lucide-react";
+import { Instagram, Lightbulb, LineChart, Linkedin, RefreshCw, ShieldCheck, Users } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Underline } from "@/components/ui/Underline";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
@@ -158,7 +158,7 @@ export default function AboutPage() {
                 Join the community
               </a>
 
-              <h3 className="text-xl font-bold mt-12 mb-4">Follow Lavanya</h3>
+              <h3 className="text-xl font-bold mt-12 mb-4">Follow Levexa</h3>
               <div className="flex items-center gap-3">
                 <a
                   href={companyConfig.socials.instagram}
@@ -168,6 +168,15 @@ export default function AboutPage() {
                   className="w-11 h-11 rounded-full bg-[#C88A1A] text-[#07192F] flex items-center justify-center hover:bg-[#F5A900] transition-colors"
                 >
                   <Instagram className="w-5 h-5" aria-hidden="true" />
+                </a>
+                <a
+                  href={companyConfig.socials.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Levexa on LinkedIn"
+                  className="w-11 h-11 rounded-full bg-[#C88A1A] text-[#07192F] flex items-center justify-center hover:bg-[#F5A900] transition-colors"
+                >
+                  <Linkedin className="w-5 h-5" aria-hidden="true" />
                 </a>
                 <a
                   href={whatsappHref}
