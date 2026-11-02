@@ -1,7 +1,6 @@
 'use client';
 
-import React, { useState, useId } from 'react';
-import { motion } from 'framer-motion';
+import React, { useId, useRef } from 'react';
 
 export interface CircularTextProps {
   text: string;
@@ -11,6 +10,10 @@ export interface CircularTextProps {
   radius?: number;
 }
 
+const HOVER_RATE = { speedUp: 2.5, slowDown: 0.5, pause: 0 } as const;
+
+// Spins with a CSS animation (no animation library). Hovering changes the playback rate,
+// which keeps the current angle, so the text never jumps. Reduced motion stops the spin (globals.css).
 export const CircularText: React.FC<CircularTextProps> = ({
   text,
   spinDuration = 20,
@@ -20,37 +23,29 @@ export const CircularText: React.FC<CircularTextProps> = ({
 }) => {
   const id = useId();
   const pathId = `circle-path-${id.replace(/:/g, '')}`;
-  const [currentSpeed, setCurrentSpeed] = useState<number>(spinDuration);
+  const svgRef = useRef<SVGSVGElement>(null);
 
-  const handleMouseEnter = () => {
-    if (onHover === 'speedUp') setCurrentSpeed(spinDuration / 2.5);
-    if (onHover === 'slowDown') setCurrentSpeed(spinDuration * 2);
-    if (onHover === 'pause') setCurrentSpeed(0);
+  const setRate = (rate: number) => {
+    svgRef.current?.getAnimations().forEach((a) => {
+      a.playbackRate = rate;
+    });
   };
 
-  const handleMouseLeave = () => {
-    setCurrentSpeed(spinDuration);
-  };
-
-  const letters = Array.from(text);
   const size = radius * 2 + 20;
 
   return (
     <div
       className={`relative inline-flex items-center justify-center select-none ${className}`}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={() => setRate(HOVER_RATE[onHover])}
+      onMouseLeave={() => setRate(1)}
       style={{ width: size, height: size }}
     >
-      <motion.svg
+      <svg
+        ref={svgRef}
         viewBox={`0 0 ${size} ${size}`}
-        className="w-full h-full"
-        animate={{ rotate: 360 }}
-        transition={{
-          repeat: Infinity,
-          ease: 'linear',
-          duration: currentSpeed === 0 ? 0 : currentSpeed,
-        }}
+        className="w-full h-full animate-spin"
+        style={{ animationDuration: `${spinDuration}s` }}
+        aria-hidden="true"
       >
         <path
           id={pathId}
@@ -58,11 +53,12 @@ export const CircularText: React.FC<CircularTextProps> = ({
           fill="none"
         />
         <text className="text-[9.5px] font-mono font-bold uppercase tracking-[0.22em] fill-current">
-          <textPath href={`#${pathId}`} startOffset="0%">
-            {letters.join('')}
+          {/* Spread the text evenly around the whole circle, so it always closes into a full ring */}
+          <textPath href={`#${pathId}`} startOffset="0%" textLength={2 * Math.PI * radius} lengthAdjust="spacing">
+            {text}
           </textPath>
         </text>
-      </motion.svg>
+      </svg>
     </div>
   );
 };

@@ -1,8 +1,9 @@
 import { Metadata } from "next";
+import { SITE_URL } from "@/lib/siteUrl";
 
 export const siteConfig = {
   name: "Levexa",
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://levexa.com",
+  siteUrl: SITE_URL,
   tagline: "Level up your excellence with Levexa",
   description:
     "Helping businesses grow, scale, and increase revenue through high-impact Strategy, Marketing, Sales, and Growth architecture.",

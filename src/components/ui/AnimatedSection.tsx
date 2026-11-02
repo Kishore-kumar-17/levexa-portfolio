@@ -1,7 +1,6 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
 
 interface AnimatedSectionProps {
   children: React.ReactNode;
@@ -10,45 +9,57 @@ interface AnimatedSectionProps {
   direction?: "up" | "down" | "left" | "right" | "none";
 }
 
+const OFFSET: Record<NonNullable<AnimatedSectionProps["direction"]>, string> = {
+  up: "translate3d(0, 24px, 0)",
+  down: "translate3d(0, -24px, 0)",
+  left: "translate3d(24px, 0, 0)",
+  right: "translate3d(-24px, 0, 0)",
+  none: "none",
+};
+
+// Fades and slides its content in the first time it scrolls into view.
+// Plain CSS transition + IntersectionObserver (no animation library). Server and client render the
+// same hidden state, so there's no hydration mismatch; reduced motion makes the reveal instant (globals.css).
 export const AnimatedSection: React.FC<AnimatedSectionProps> = ({
   children,
   className = "",
   delay = 0,
   direction = "up",
 }) => {
-  // Always render the same element on server and client (a reduced-motion branch here
-  // caused a hydration mismatch that left the content stuck at opacity 0). The app-wide
-  // MotionConfig reducedMotion="user" drops the slide for those users; the fade remains.
-  const getOffset = () => {
-    switch (direction) {
-      case "up":
-        return { y: 24, x: 0 };
-      case "down":
-        return { y: -24, x: 0 };
-      case "left":
-        return { x: 24, y: 0 };
-      case "right":
-        return { x: -24, y: 0 };
-      default:
-        return { x: 0, y: 0 };
-    }
-  };
+  const ref = useRef<HTMLDivElement>(null);
+  const [shown, setShown] = useState(false);
 
-  const offset = getOffset();
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (typeof IntersectionObserver === "undefined") {
+      setShown(true);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShown(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "0px 0px -50px 0px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, ...offset }}
-      whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{
-        duration: 0.5,
-        delay,
-        ease: [0.21, 0.47, 0.32, 0.98],
-      }}
+    <div
+      ref={ref}
       className={className}
+      style={{
+        opacity: shown ? 1 : 0,
+        transform: shown ? "none" : OFFSET[direction],
+        transition: `opacity 0.5s cubic-bezier(0.21, 0.47, 0.32, 0.98) ${delay}s, transform 0.5s cubic-bezier(0.21, 0.47, 0.32, 0.98) ${delay}s`,
+      }}
     >
       {children}
-    </motion.div>
+    </div>
   );
 };

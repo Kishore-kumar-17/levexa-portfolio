@@ -81,6 +81,14 @@
   }
 }
 
+/* RotatingText: word slides out upward, the next slides in from below */
+@keyframes rt-out {
+  to { transform: translateY(-100%); opacity: 0; }
+}
+@keyframes rt-in {
+  from { transform: translateY(100%); opacity: 0; }
+}
+
 /* Reduced motion support: stop CSS transitions and keyframe loops (JS loops check the same preference) */
 @media (prefers-reduced-motion: reduce) {
   *,

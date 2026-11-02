@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 
 export interface RotatingTextProps {
   texts: string[];
@@ -10,6 +9,10 @@ export interface RotatingTextProps {
   mainClassName?: string;
 }
 
+const SWAP_MS = 450; // matches the rt-in / rt-out keyframes in globals.css
+
+// Cycles through words: the current one slides up and out, then the next slides up and in.
+// CSS keyframes only (no animation library). The first word is shown immediately, not animated.
 export const RotatingText: React.FC<RotatingTextProps> = ({
   texts,
   rotationInterval = 3000,
@@ -17,31 +20,34 @@ export const RotatingText: React.FC<RotatingTextProps> = ({
   mainClassName = '',
 }) => {
   const [index, setIndex] = useState(0);
+  const [phase, setPhase] = useState<'idle' | 'out' | 'in'>('idle');
 
   useEffect(() => {
     if (texts.length <= 1) return;
-
+    let swap: ReturnType<typeof setTimeout>;
     const interval = setInterval(() => {
-      setIndex((prevIndex) => (prevIndex + 1) % texts.length);
+      setPhase('out');
+      swap = setTimeout(() => {
+        setIndex((i) => (i + 1) % texts.length);
+        setPhase('in');
+      }, SWAP_MS);
     }, rotationInterval);
-
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      clearTimeout(swap);
+    };
   }, [texts, rotationInterval]);
+
+  const animation =
+    phase === 'out' ? 'rt-out 0.45s cubic-bezier(0.23, 1, 0.32, 1) forwards'
+    : phase === 'in' ? 'rt-in 0.45s cubic-bezier(0.23, 1, 0.32, 1) both'
+    : undefined;
 
   return (
     <span className={`inline-flex overflow-hidden py-1 ${mainClassName}`}>
-      <AnimatePresence mode="wait">
-        <motion.span
-          key={index}
-          initial={{ y: '100%', opacity: 0 }}
-          animate={{ y: '0%', opacity: 1 }}
-          exit={{ y: '-100%', opacity: 0 }}
-          transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
-          className={`inline-block ${className}`}
-        >
-          {texts[index]}
-        </motion.span>
-      </AnimatePresence>
+      <span key={`${index}-${phase}`} className={`inline-block ${className}`} style={{ animation }}>
+        {texts[index]}
+      </span>
     </span>
   );
 };

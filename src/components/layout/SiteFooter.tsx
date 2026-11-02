@@ -175,7 +175,7 @@ export const SiteFooter: React.FC = () => {
           </span>
           <div className="hidden sm:block pl-2">
             <CircularText
-              text="• LEVEXA • STRATEGIC ADVISORY • LONDON •"
+              text="LEVEXA • STRATEGIC ADVISORY • "
               radius={36}
               spinDuration={24}
               className="text-[#C88A1A] opacity-80"
