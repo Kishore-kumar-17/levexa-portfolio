@@ -48,22 +48,22 @@ export default function PrivacyPage() {
 
       <LegalSection title="2. Information we collect">
         <p>
-          <strong className="text-[#04162A]">When you fill in our contact form:</strong> your name, email
+          <strong className="text-fg">When you fill in our contact form:</strong> your name, email
           address, phone or WhatsApp number (optional), company or website (optional), the service you are
           interested in, your annual revenue range (optional), your message, and your agreement to this policy.
         </p>
         <p>
-          <strong className="text-[#04162A]">When you contact us directly</strong> by email, phone or
+          <strong className="text-fg">When you contact us directly</strong> by email, phone or
           WhatsApp: the details and messages you choose to send.
         </p>
         <p>
-          <strong className="text-[#04162A]">Technical information:</strong> like any website, our hosting
+          <strong className="text-fg">Technical information:</strong> like any website, our hosting
           provider processes technical data such as your IP address, browser type and the pages requested, to
           deliver the site and protect it from attacks. To stop spam, our contact form briefly keeps your IP
           address in memory (for about 10 minutes) to limit repeated submissions.
         </p>
         <p>
-          <strong className="text-[#04162A]">Cookies:</strong> this website does not set cookies and does not
+          <strong className="text-fg">Cookies:</strong> this website does not set cookies and does not
           use analytics or advertising trackers. If we add analytics in future, we will update this policy and
           ask for your consent first where required.
         </p>
@@ -94,18 +94,18 @@ export default function PrivacyPage() {
         <p>We use a small number of trusted providers to run this website and receive your enquiry:</p>
         <ul className="list-disc pl-5 space-y-1.5">
           <li>
-            <strong className="text-[#04162A]">Vercel</strong>: hosts this website.
+            <strong className="text-fg">Vercel</strong>: hosts this website.
           </li>
           <li>
-            <strong className="text-[#04162A]">Resend</strong>: delivers your contact-form enquiry to us by
+            <strong className="text-fg">Resend</strong>: delivers your contact-form enquiry to us by
             email.
           </li>
           <li>
-            <strong className="text-[#04162A]">Google (Gmail)</strong>: the mailbox where we receive and keep
+            <strong className="text-fg">Google (Gmail)</strong>: the mailbox where we receive and keep
             enquiries.
           </li>
           <li>
-            <strong className="text-[#04162A]">WhatsApp (Meta)</strong>: only if you choose to message us on
+            <strong className="text-fg">WhatsApp (Meta)</strong>: only if you choose to message us on
             WhatsApp.
           </li>
         </ul>

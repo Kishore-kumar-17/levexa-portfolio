@@ -32,7 +32,7 @@ export default function AboutPage() {
   )}`;
 
   return (
-    <div className="bg-[#FAF8F5] text-[#04162A]">
+    <div className="bg-page text-fg">
       {/* 1. Banner */}
       <PageBanner
         image="/images/process/01-discovery.jpg"
@@ -53,14 +53,14 @@ export default function AboutPage() {
       />
 
       {/* 2. Our story */}
-      <section className="py-20 sm:py-24 bg-white border-t border-stone-200/70">
+      <section className="py-20 sm:py-24 bg-band border-t border-line/70">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <div className="lg:col-span-7">
               <h2 className="type-h2 mb-8">
                 <Underline>Levexa</Underline>…
               </h2>
-              <div className="space-y-5 text-lg text-slate-700 leading-relaxed">
+              <div className="space-y-5 text-lg text-fg-2 leading-relaxed">
                 <p>
                   <span className="text-gold-ink font-semibold">Levexa</span> is a founder-led growth advisory,
                   built on one simple idea: marketing only matters when it turns into revenue.
@@ -85,7 +85,7 @@ export default function AboutPage() {
             </div>
 
             <div className="lg:col-span-5">
-              <div className="relative max-w-md mx-auto lg:ml-auto aspect-[4/5] rounded-3xl overflow-hidden border border-stone-200 shadow-card-elevated bg-stone-100">
+              <div className="relative max-w-md mx-auto lg:ml-auto aspect-[4/5] rounded-3xl overflow-hidden border border-line shadow-card-elevated bg-fg/5">
                 <Image
                   src="/images/about/founder-lavanya.jpg"
                   alt="Lavanya, Founder & CEO of Levexa"
@@ -95,7 +95,7 @@ export default function AboutPage() {
                 />
                 <div className="absolute bottom-4 left-4 right-4 px-4 py-3 rounded-xl bg-[#04162A]/85 backdrop-blur-md border border-white/10">
                   <p className="text-base font-bold text-white">Lavanya</p>
-                  <p className="text-xs font-mono font-semibold text-[#E4AB3C] uppercase tracking-wider">
+                  <p className="text-xs font-mono font-semibold text-[#FEB005] uppercase tracking-wider">
                     Founder &amp; CEO, Levexa
                   </p>
                 </div>
@@ -106,7 +106,7 @@ export default function AboutPage() {
       </section>
 
       {/* 3. Community + follow */}
-      <section className="py-20 sm:py-24 border-t border-stone-200/70">
+      <section className="py-20 sm:py-24 border-t border-line/70">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Instagram profile card */}
@@ -114,10 +114,10 @@ export default function AboutPage() {
               href={instagramProfileData.profileUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="block max-w-md mx-auto w-full rounded-2xl bg-white border border-stone-200 text-[#04162A] p-6 shadow-card-elevated transition-transform hover:-translate-y-1"
+              className="block max-w-md mx-auto w-full rounded-2xl bg-card border border-line text-fg p-6 shadow-card-elevated transition-transform hover:-translate-y-1"
             >
               <div className="flex items-center gap-5">
-                <div className="relative w-20 h-20 rounded-full overflow-hidden ring-2 ring-[#C88A1A] ring-offset-2 shrink-0">
+                <div className="relative w-20 h-20 rounded-full overflow-hidden ring-2 ring-accent ring-offset-2 ring-offset-card shrink-0">
                   <Image src={instagramProfileData.avatarUrl} alt="" fill sizes="80px" className="object-cover" />
                 </div>
                 <div className="min-w-0">
@@ -131,10 +131,10 @@ export default function AboutPage() {
               <div className="mt-4 text-sm leading-snug space-y-0.5">
                 <p className="font-semibold">{instagramProfileData.displayName}</p>
                 {instagramProfileData.bio.slice(0, 2).map((line) => (
-                  <p key={line} className="text-slate-700">{line}</p>
+                  <p key={line} className="text-fg-2">{line}</p>
                 ))}
               </div>
-              <span className="mt-5 flex items-center justify-center gap-2 h-10 rounded-lg bg-[#04162A] text-white text-sm font-semibold">
+              <span className="mt-5 flex items-center justify-center gap-2 h-10 rounded-lg bg-fg text-page text-sm font-semibold">
                 <Instagram className="w-4 h-4" aria-hidden="true" />
                 View on Instagram
               </span>
@@ -144,7 +144,7 @@ export default function AboutPage() {
               <h2 className="type-h2 mb-6">
                 Join the <span className="text-gold-deep">Levexa community</span>
               </h2>
-              <p className="text-lg sm:text-xl text-slate-700 leading-relaxed mb-8">
+              <p className="text-lg sm:text-xl text-fg-2 leading-relaxed mb-8">
                 Get Lavanya&apos;s practical tips on content, leads and sales, straight to your WhatsApp. If
                 you&apos;re ready to grow your brand, reach out to Lavanya and the team directly.
               </p>
@@ -165,7 +165,7 @@ export default function AboutPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Lavanya on Instagram"
-                  className="w-11 h-11 rounded-full bg-[#C88A1A] text-[#04162A] flex items-center justify-center hover:bg-[#F5A900] transition-colors"
+                  className="w-11 h-11 rounded-full bg-[#FEB005] text-[#04162A] flex items-center justify-center hover:bg-[#FFC53D] transition-colors"
                 >
                   <Instagram className="w-5 h-5" aria-hidden="true" />
                 </a>
@@ -174,7 +174,7 @@ export default function AboutPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Levexa on LinkedIn"
-                  className="w-11 h-11 rounded-full bg-[#C88A1A] text-[#04162A] flex items-center justify-center hover:bg-[#F5A900] transition-colors"
+                  className="w-11 h-11 rounded-full bg-[#FEB005] text-[#04162A] flex items-center justify-center hover:bg-[#FFC53D] transition-colors"
                 >
                   <Linkedin className="w-5 h-5" aria-hidden="true" />
                 </a>
@@ -183,7 +183,7 @@ export default function AboutPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Message Levexa on WhatsApp"
-                  className="w-11 h-11 rounded-full bg-[#C88A1A] text-[#04162A] flex items-center justify-center hover:bg-[#F5A900] transition-colors"
+                  className="w-11 h-11 rounded-full bg-[#FEB005] text-[#04162A] flex items-center justify-center hover:bg-[#FFC53D] transition-colors"
                 >
                   <WhatsAppIcon className="w-5 h-5" />
                 </a>
@@ -194,24 +194,24 @@ export default function AboutPage() {
       </section>
 
       {/* 4. Proof band */}
-      <section className="on-dark bg-[#04162A] text-white py-14 sm:py-16">
+      <section className="bg-band text-fg border-y border-line py-14 sm:py-16">
         <Container>
           <p className="text-center font-display text-2xl sm:text-3xl font-bold tracking-tight max-w-4xl mx-auto leading-snug">
             Reels scripted by Levexa have earned{" "}
-            <span className="text-[#FEB005] font-extrabold">{reelTotals.views}</span> views, and we&apos;re only
+            <span className="text-gold-deep font-extrabold">{reelTotals.views}</span> views, and we&apos;re only
             getting started!
           </p>
         </Container>
       </section>
 
       {/* 5. Levexa is… */}
-      <section className="py-20 sm:py-24 bg-white">
+      <section className="py-20 sm:py-24 bg-band">
         <Container>
           <div className="max-w-3xl mb-12">
             <h2 className="type-h2 mb-6">
               Levexa <Underline>is…</Underline>
             </h2>
-            <p className="text-lg sm:text-xl text-slate-700 leading-relaxed">
+            <p className="text-lg sm:text-xl text-fg-2 leading-relaxed">
               …a growth partner for businesses that want results they can measure. We plan your strategy,
               create content that earns attention, train your team to close, and automate the follow-up, so
               you get a stronger brand, more leads and more sales.
@@ -222,10 +222,10 @@ export default function AboutPage() {
             {VALUES.map((value) => {
               const Icon = value.icon;
               return (
-                <div key={value.title} className="p-7 rounded-2xl bg-[#FAF8F5] border border-stone-200">
-                  <Icon className="w-7 h-7 text-[#C88A1A] mb-5" aria-hidden="true" />
+                <div key={value.title} className="p-7 rounded-2xl bg-page border border-line">
+                  <Icon className="w-7 h-7 text-accent mb-5" aria-hidden="true" />
                   <h3 className="text-xl font-bold mb-2">{value.title}</h3>
-                  <p className="text-base text-slate-700 leading-relaxed">{value.desc}</p>
+                  <p className="text-base text-fg-2 leading-relaxed">{value.desc}</p>
                 </div>
               );
             })}

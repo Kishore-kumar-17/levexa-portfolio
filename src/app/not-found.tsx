@@ -11,7 +11,7 @@ export const metadata: Metadata = constructMetadata({
 
 export default function NotFound() {
   return (
-    <div className="pt-24 sm:pt-28 bg-[#FAF8F5] text-[#04162A] flex-1 flex items-center">
+    <div className="pt-24 sm:pt-28 bg-page text-fg flex-1 flex items-center">
       <Container>
         <section className="py-20 lg:py-28 max-w-3xl">
 
@@ -21,9 +21,9 @@ export default function NotFound() {
             <span className="text-gold-deep">moved on.</span>
           </h1>
 
-          <div className="w-12 h-[3px] bg-[#C88A1A] rounded-full mb-8" aria-hidden="true" />
+          <div className="w-12 h-[3px] bg-accent rounded-full mb-8" aria-hidden="true" />
 
-          <p className="text-lg sm:text-xl text-slate-800 leading-relaxed mb-10 max-w-xl">
+          <p className="text-lg sm:text-xl text-fg-2 leading-relaxed mb-10 max-w-xl">
             The page you&apos;re looking for doesn&apos;t exist or may have been renamed. Let&apos;s
             get you back on track.
           </p>

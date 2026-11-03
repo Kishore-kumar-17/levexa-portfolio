@@ -5,6 +5,8 @@ import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { StructuredData } from "@/components/layout/StructuredData";
 import { WhatsAppFloatingButton } from "@/components/layout/WhatsAppFloatingButton";
+import { ThemeSwitcher } from "@/components/layout/ThemeSwitcher";
+import { THEME_STORAGE_KEY, type Theme } from "@/lib/theme";
 import { constructMetadata } from "@/lib/metadata";
 
 const inter = Inter({
@@ -36,6 +38,12 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = constructMetadata();
 
+// Site theme. While Lavanya compares the two, previews show a White / Navy switch.
+const DEFAULT_THEME: Theme = "navy";
+const SHOW_THEME_SWITCHER = process.env.VERCEL_ENV !== "production";
+// Runs before the page paints, so a remembered choice never flashes the other theme
+const themeInitScript = `try{var t=localStorage.getItem("${THEME_STORAGE_KEY}");if(t==="light"||t==="navy")document.documentElement.setAttribute("data-theme",t)}catch(e){}`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -44,14 +52,19 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-theme={DEFAULT_THEME}
       className={`${inter.variable} ${ibmPlexMono.variable} ${poppins.variable}`}
+      suppressHydrationWarning
     >
-      <body className="bg-[#FAF8F5] text-navy-900 min-h-screen flex flex-col font-sans antialiased selection:bg-gold selection:text-navy-900">
+      <head>
+        {SHOW_THEME_SWITCHER && <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />}
+      </head>
+      <body className="bg-page text-fg min-h-screen flex flex-col font-sans antialiased selection:bg-gold selection:text-[#04162A]">
         <StructuredData />
         {/* First Tab stop: lets keyboard users jump past the header menu */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:px-5 focus:py-3 focus:rounded-full focus:bg-[#04162A] focus:text-white focus:font-semibold"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:px-5 focus:py-3 focus:rounded-full focus:bg-fg focus:text-page focus:font-semibold"
         >
           Skip to content
         </a>
@@ -61,6 +74,7 @@ export default function RootLayout({
         </main>
         <SiteFooter />
         <WhatsAppFloatingButton />
+        {SHOW_THEME_SWITCHER && <ThemeSwitcher defaultTheme={DEFAULT_THEME} />}
       </body>
     </html>
   );

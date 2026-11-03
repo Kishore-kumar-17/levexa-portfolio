@@ -17,7 +17,7 @@ const STACK = [
 ];
 
 export const HomeHero: React.FC = () => (
-  <section className="on-dark relative overflow-hidden bg-[#04162A] text-white pt-32 sm:pt-36 lg:pt-40 pb-20 sm:pb-24 lg:pb-28">
+  <section className="relative overflow-hidden bg-page text-fg pt-32 sm:pt-36 lg:pt-40 pb-20 sm:pb-24 lg:pb-28">
     <GoldArcs />
 
     <Container className="relative">
@@ -33,7 +33,7 @@ export const HomeHero: React.FC = () => (
 
           <div className="w-12 h-[3px] bg-[#FEB005] rounded-full my-7" aria-hidden="true" />
 
-          <p className="type-lead !text-white/85 max-w-2xl">
+          <p className="type-lead max-w-2xl">
             Strategy, content, sales and automation from one founder-led team, so the attention your
             brand earns turns into paying customers.
           </p>
@@ -55,7 +55,7 @@ export const HomeHero: React.FC = () => (
             {STACK.map((card) => (
               <div
                 key={card.src}
-                className={`absolute aspect-[4/5] rounded-2xl overflow-hidden ring-1 ring-white/15 shadow-2xl shadow-black/40 ${card.className}`}
+                className={`absolute aspect-[4/5] rounded-2xl overflow-hidden ring-1 ring-line shadow-2xl shadow-black/20 ${card.className}`}
               >
                 <Image src={card.src} alt="" fill sizes="(max-width: 1024px) 50vw, 260px" className="object-cover" priority />
               </div>

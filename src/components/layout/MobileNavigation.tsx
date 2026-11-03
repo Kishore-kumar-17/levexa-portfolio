@@ -2,11 +2,11 @@
 
 import React, { useEffect, useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { X, ArrowRight, Phone, Mail } from "lucide-react";
 import { mainNavigation } from "@/data/navigation";
 import { companyConfig } from "@/data/company";
+import { ThemeLogo } from "@/components/ui/ThemeLogo";
 
 interface MobileNavigationProps {
   isOpen: boolean;
@@ -72,14 +72,13 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
       {/* Drawer */}
       <div
         ref={drawerRef}
-        className="fixed inset-y-0 right-0 w-full max-w-sm bg-white border-l border-slate-200 shadow-2xl flex flex-col justify-between p-6 overflow-y-auto"
+        className="fixed inset-y-0 right-0 w-full max-w-sm bg-card border-l border-line shadow-2xl flex flex-col justify-between p-6 overflow-y-auto"
       >
         <div>
           {/* Header row */}
-          <div className="flex items-center justify-between pb-6 border-b border-slate-100">
+          <div className="flex items-center justify-between pb-6 border-b border-line">
             <Link href="/" onClick={onClose} className="block relative w-36 h-9">
-              <Image
-                src="/levexa-logo-light-trans.png"
+              <ThemeLogo
                 alt="Levexa"
                 fill
                 sizes="144px"
@@ -91,7 +90,7 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
               ref={closeBtnRef}
               type="button"
               onClick={onClose}
-              className="p-2.5 rounded-lg text-slate-500 hover:text-navy-900 hover:bg-slate-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+              className="p-2.5 rounded-lg text-fg-3 hover:text-fg hover:bg-fg/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
               aria-label="Close navigation menu"
             >
               <X className="w-6 h-6" />
@@ -109,15 +108,15 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
                   onClick={onClose}
                   className={`flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-medium transition-all ${
                     isActive
-                      ? "bg-slate-100 text-navy-900 border border-gold/40 font-bold"
-                      : "text-slate-600 hover:text-navy-900 hover:bg-slate-50"
+                      ? "bg-fg/5 text-fg border border-gold/40 font-bold"
+                      : "text-fg-3 hover:text-fg hover:bg-fg/5"
                   }`}
                   aria-current={isActive ? "page" : undefined}
                 >
                   <span>{item.label}</span>
                   <ArrowRight
                     className={`w-4 h-4 transition-transform ${
-                      isActive ? "text-gold-700" : "text-slate-400"
+                      isActive ? "text-gold-700" : "text-fg-3"
                     }`}
                   />
                 </Link>
@@ -127,24 +126,24 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
         </div>
 
         {/* Footer info & CTA */}
-        <div className="pt-6 mt-8 border-t border-slate-100 space-y-5">
+        <div className="pt-6 mt-8 border-t border-line space-y-5">
           <Link href="/contact" onClick={onClose} className="btn-primary w-full">
             Book a growth call
           </Link>
 
-          <div className="space-y-1 text-sm text-slate-600 pt-2">
+          <div className="space-y-1 text-sm text-fg-3 pt-2">
             <a
               href={`mailto:${companyConfig.contact.email}`}
-              className="flex items-center gap-2.5 text-slate-600 hover:text-[#04162A] transition-colors py-2.5"
+              className="flex items-center gap-2.5 text-fg-3 hover:text-fg transition-colors py-2.5"
             >
-              <Mail className="w-3.5 h-3.5 text-[#C88A1A]" />
+              <Mail className="w-3.5 h-3.5 text-accent" />
               <span className="font-medium">{companyConfig.contact.email}</span>
             </a>
             <a
               href={`tel:${companyConfig.contact.phone.replace(/\s+/g, "")}`}
-              className="flex items-center gap-2.5 text-slate-600 hover:text-[#04162A] transition-colors py-2.5"
+              className="flex items-center gap-2.5 text-fg-3 hover:text-fg transition-colors py-2.5"
             >
-              <Phone className="w-3.5 h-3.5 text-[#C88A1A]" />
+              <Phone className="w-3.5 h-3.5 text-accent" />
               <span className="font-medium">{companyConfig.contact.phone}</span>
             </a>
           </div>

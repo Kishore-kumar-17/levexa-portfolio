@@ -13,16 +13,16 @@ interface LegalPageProps {
 
 // Shared layout for Privacy Policy and Terms of Use
 export const LegalPage: React.FC<LegalPageProps> = ({ title, highlight, effectiveDate, intro, summary, children }) => (
-  <div className="pt-24 sm:pt-28 bg-[#FAF8F5] text-[#04162A]">
-    <section className="pt-8 sm:pt-12 lg:pt-16 pb-12 sm:pb-14 border-b border-[#D7D3CB]">
+  <div className="pt-24 sm:pt-28 bg-page text-fg">
+    <section className="pt-8 sm:pt-12 lg:pt-16 pb-12 sm:pb-14 border-b border-line">
       <Container>
         <div className="max-w-3xl">
           <h1 className="type-display mb-6">
             {title} <span className="text-gold-deep">{highlight}</span>
           </h1>
-          <div className="w-12 h-[3px] bg-[#C88A1A] rounded-full mb-6" aria-hidden="true" />
-          <p className="text-base sm:text-lg text-slate-700 leading-relaxed">{intro}</p>
-          <p className="mt-4 text-sm font-semibold text-slate-600">Effective date: {effectiveDate}</p>
+          <div className="w-12 h-[3px] bg-accent rounded-full mb-6" aria-hidden="true" />
+          <p className="text-base sm:text-lg text-fg-2 leading-relaxed">{intro}</p>
+          <p className="mt-4 text-sm font-semibold text-fg-3">Effective date: {effectiveDate}</p>
         </div>
       </Container>
     </section>
@@ -30,16 +30,16 @@ export const LegalPage: React.FC<LegalPageProps> = ({ title, highlight, effectiv
     <section className="py-14 lg:py-20">
       <Container>
         <div className="max-w-3xl space-y-8">
-          <div className="p-6 sm:p-8 rounded-2xl bg-white border border-[#C88A1A]/40 shadow-2xs">
+          <div className="p-6 sm:p-8 rounded-2xl bg-card border border-accent/40 shadow-2xs">
             <h2 className="text-lg font-bold mb-3">In short</h2>
-            <ul className="list-disc pl-5 space-y-1.5 text-base text-slate-700 leading-relaxed">
+            <ul className="list-disc pl-5 space-y-1.5 text-base text-fg-2 leading-relaxed">
               {summary.map((line) => (
                 <li key={line}>{line}</li>
               ))}
             </ul>
           </div>
 
-          <div className="p-7 sm:p-10 rounded-2xl bg-white border border-stone-200/80 shadow-2xs text-base text-slate-700 leading-relaxed">
+          <div className="p-7 sm:p-10 rounded-2xl bg-card border border-line/80 shadow-2xs text-base text-fg-2 leading-relaxed">
             {children}
           </div>
         </div>
@@ -50,8 +50,8 @@ export const LegalPage: React.FC<LegalPageProps> = ({ title, highlight, effectiv
 
 // One numbered section of a legal page
 export const LegalSection: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => (
-  <section className="py-6 first:pt-0 last:pb-0 border-t first:border-t-0 border-stone-100 space-y-3">
-    <h2 className="text-xl font-bold text-[#04162A] tracking-tight">{title}</h2>
+  <section className="py-6 first:pt-0 last:pb-0 border-t first:border-t-0 border-line space-y-3">
+    <h2 className="text-xl font-bold text-fg tracking-tight">{title}</h2>
     {children}
   </section>
 );

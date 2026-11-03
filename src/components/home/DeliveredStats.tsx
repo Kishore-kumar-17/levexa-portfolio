@@ -26,7 +26,7 @@ const STATS = [
 
 // "We have delivered": the headline number over a faint photo collage
 export const DeliveredStats: React.FC = () => (
-  <section className="relative isolate overflow-hidden bg-white text-[#04162A] py-20 sm:py-24 border-t border-stone-200/70">
+  <section className="relative isolate overflow-hidden bg-band text-fg py-20 sm:py-24 border-t border-line/70">
     <div className="absolute inset-0 -z-20 grid grid-cols-3 sm:grid-cols-5 gap-3 p-3 opacity-[0.1]" aria-hidden="true">
       {COLLAGE.map((src) => (
         <div key={src} className="relative aspect-[4/5] rounded-xl overflow-hidden">
@@ -34,7 +34,7 @@ export const DeliveredStats: React.FC = () => (
         </div>
       ))}
     </div>
-    <div className="absolute inset-0 -z-10 bg-gradient-to-b from-white via-white/60 to-white" aria-hidden="true" />
+    <div className="absolute inset-0 -z-10 bg-gradient-to-b from-band via-band/60 to-band" aria-hidden="true" />
 
     <Container>
       <div className="text-center">
@@ -42,7 +42,7 @@ export const DeliveredStats: React.FC = () => (
         <p className="mt-4 text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight text-gold-deep font-display">
           {reelTotals.views}
         </p>
-        <p className="mt-3 text-xl sm:text-2xl text-slate-700">content views and counting</p>
+        <p className="mt-3 text-xl sm:text-2xl text-fg-2">content views and counting</p>
 
         <dl className="mt-12 grid grid-cols-3 gap-4 sm:gap-8 max-w-3xl mx-auto">
           {STATS.map((stat) => (

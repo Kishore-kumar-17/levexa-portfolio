@@ -17,7 +17,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="pt-24 sm:pt-28 bg-[#FAF8F5] text-[#04162A] flex-1 flex items-center">
+    <div className="pt-24 sm:pt-28 bg-page text-fg flex-1 flex items-center">
       <Container>
         <section className="py-20 lg:py-28 max-w-3xl" role="alert">
 
@@ -27,9 +27,9 @@ export default function Error({
             <span className="text-gold-deep">unexpected snag.</span>
           </h1>
 
-          <div className="w-12 h-[3px] bg-[#C88A1A] rounded-full mb-8" aria-hidden="true" />
+          <div className="w-12 h-[3px] bg-accent rounded-full mb-8" aria-hidden="true" />
 
-          <p className="text-lg sm:text-xl text-slate-800 leading-relaxed mb-10 max-w-xl">
+          <p className="text-lg sm:text-xl text-fg-2 leading-relaxed mb-10 max-w-xl">
             Please try again. If the problem continues, reach us directly at{" "}
             <a
               href={`mailto:${companyConfig.contact.email}`}

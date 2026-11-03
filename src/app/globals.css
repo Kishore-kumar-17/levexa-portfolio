@@ -2,18 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Gold that adapts to its background: readable on cream by default, brand amber on navy */
-:root {
-  --gold-ink: #8A5F0E;
-  --gold-deep: #A87512;
-  --gold-line: #C88A1A;
+/* ---------------------------------------------------------------------------------------------
+   Themes. Every colour on the site comes from these variables (Tailwind: page, band, card, fg,
+   fg-2, fg-3, line, accent, wordmark). <html data-theme="light|navy"> picks the set.
+   Channels are "R G B" so Tailwind opacity modifiers work (e.g. bg-page/90).
+   Contrast (WCAG AA) is checked for both sets.
+   --------------------------------------------------------------------------------------------- */
+:root,
+[data-theme="light"] {
+  --c-page: 250 248 245;   /* cream page background */
+  --c-band: 255 255 255;   /* alternate section background */
+  --c-card: 255 255 255;   /* cards, form fields */
+  --c-fg: 4 22 42;         /* headings and main text: navy */
+  --c-fg-2: 51 65 85;      /* body text */
+  --c-fg-3: 71 85 105;     /* secondary text (7.5:1 on white) */
+  --c-line: 231 229 228;   /* borders */
+  --c-accent: 200 138 26;  /* icons, rules, rings */
+  --c-wordmark: 233 228 218;
+  --gold-ink: #8A5F0E;     /* gold text, normal size: 5.3:1 on cream */
+  --gold-deep: #A87512;    /* gold text, 24px+: 3.8:1 on cream */
   --focus-ring: #04162A;
+  color-scheme: light;
 }
-.on-dark {
-  --gold-ink: #FEB005;
+
+[data-theme="navy"] {
+  --c-page: 4 22 42;       /* #04162A, the slides' navy */
+  --c-band: 7 31 56;       /* #071F38 */
+  --c-card: 11 39 68;      /* #0B2744 */
+  --c-fg: 255 255 255;
+  --c-fg-2: 214 221 230;
+  --c-fg-3: 168 180 194;   /* 7.2:1 on cards */
+  --c-line: 30 56 86;
+  --c-accent: 254 176 5;   /* #FEB005, the slides' amber */
+  --c-wordmark: 221 216 206;
+  --gold-ink: #FEB005;     /* 9.8:1 on navy */
   --gold-deep: #FEB005;
-  --gold-line: #FEB005;
   --focus-ring: #FEB005;
+  color-scheme: dark;
+}
+
+/* Show an element in one theme only (e.g. the light/dark logo files) */
+[data-theme="navy"] .only-light,
+:root:not([data-theme="navy"]) .only-navy {
+  display: none !important;
 }
 
 :root {
@@ -34,15 +65,14 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    color-scheme: light;
-    background-color: #FFFFFF;
-    color: #04162A;
+    background-color: rgb(var(--c-page));
+    color: rgb(var(--c-fg));
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
   body {
-    background-color: #FFFFFF;
-    color: #04162A;
+    background-color: rgb(var(--c-page));
+    color: rgb(var(--c-fg));
     font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
@@ -86,18 +116,18 @@
   }
   /* Intro paragraph under a title: 20 / 24px */
   .type-lead {
-    @apply text-xl sm:text-2xl font-normal leading-[1.45] tracking-tight text-slate-800;
+    @apply text-xl sm:text-2xl font-normal leading-[1.45] tracking-tight text-fg-2;
   }
 
-  /* Buttons: one primary, one secondary, one secondary for dark backgrounds */
+  /* Buttons: amber primary, outline secondary (follows the theme); -dark kept as an alias */
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2.5 min-h-[52px] px-7 py-3.5 rounded-full bg-[#FEB005] text-[#04162A] font-bold text-base tracking-wide shadow-md transition-all duration-300 hover:bg-[#FFC53D] hover:shadow-lg active:scale-[0.98];
   }
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2.5 min-h-[52px] px-7 py-3.5 rounded-full border border-[#04162A]/25 text-[#04162A] font-semibold text-base tracking-wide transition-all duration-300 hover:border-[#04162A] hover:bg-[#04162A]/5;
+    @apply inline-flex items-center justify-center gap-2.5 min-h-[52px] px-7 py-3.5 rounded-full border border-fg/25 text-fg font-semibold text-base tracking-wide transition-all duration-300 hover:border-fg hover:bg-fg/5;
   }
   .btn-secondary-dark {
-    @apply inline-flex items-center justify-center gap-2.5 min-h-[52px] px-7 py-3.5 rounded-full border border-white/25 text-white font-semibold text-base tracking-wide transition-all duration-300 hover:bg-white/10 hover:border-white/40;
+    @apply btn-secondary;
   }
 }
 

@@ -10,6 +10,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Theme colours (values per theme in globals.css)
+        page: "rgb(var(--c-page) / <alpha-value>)",
+        band: "rgb(var(--c-band) / <alpha-value>)",
+        card: "rgb(var(--c-card) / <alpha-value>)",
+        fg: {
+          DEFAULT: "rgb(var(--c-fg) / <alpha-value>)",
+          2: "rgb(var(--c-fg-2) / <alpha-value>)",
+          3: "rgb(var(--c-fg-3) / <alpha-value>)",
+        },
+        line: "rgb(var(--c-line) / <alpha-value>)",
+        accent: "rgb(var(--c-accent) / <alpha-value>)",
+        wordmark: "rgb(var(--c-wordmark) / <alpha-value>)",
         navy: {
           DEFAULT: "#04162A", // brand navy, matched to Levexa's slides
           950: "#020D19",

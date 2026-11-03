@@ -54,10 +54,10 @@ const SectionIntro: React.FC<{ title: string; intro?: string }> = ({
   intro,
 }) => (
   <div className="max-w-3xl mb-10 sm:mb-12">
-    <h2 className="type-h2 text-[#04162A]">
+    <h2 className="type-h2 text-fg">
       {title}
     </h2>
-    {intro && <p className="mt-4 text-base sm:text-lg text-slate-700 leading-relaxed">{intro}</p>}
+    {intro && <p className="mt-4 text-base sm:text-lg text-fg-2 leading-relaxed">{intro}</p>}
   </div>
 );
 
@@ -77,22 +77,22 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
   ctaSubtitle = "Schedule a confidential discovery briefing with Levexa to diagnose your revenue engine.",
 }) => {
   return (
-    <div className="bg-[#FAF8F5] text-[#04162A] min-h-screen">
+    <div className="bg-page text-fg min-h-screen">
       {/* 1. Breadcrumbs & Top Meta: navy hero, like the slides */}
-      <section className="on-dark relative overflow-hidden bg-[#04162A] text-white pt-32 sm:pt-40 pb-16 sm:pb-24">
+      <section className="relative overflow-hidden bg-page text-fg border-b border-line pt-32 sm:pt-40 pb-16 sm:pb-24">
         <GoldArcs flip />
         <Container className="relative">
           {/* Breadcrumb */}
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm text-white/70 mb-8">
-            <Link href="/" className="py-3 hover:text-white transition-colors">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm text-fg-3 mb-8">
+            <Link href="/" className="py-3 hover:text-fg transition-colors">
               Home
             </Link>
             <span>/</span>
-            <Link href="/services" className="py-3 hover:text-white transition-colors">
+            <Link href="/services" className="py-3 hover:text-fg transition-colors">
               Services
             </Link>
             <span>/</span>
-            <span className="text-white font-semibold" aria-current="page">
+            <span className="text-fg font-semibold" aria-current="page">
               {titleLine1} {titleHighlight}
             </span>
           </nav>
@@ -102,7 +102,7 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
             <div className="lg:col-span-7">
 
               <h1 className="type-title mb-6">
-                <span className="text-white">{titleLine1}</span>{" "}
+                <span className="text-fg">{titleLine1}</span>{" "}
                 <span className="text-gold-deep">{titleHighlight}</span>
               </h1>
 
@@ -111,7 +111,7 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
                 aria-hidden="true"
               />
 
-              <p className="type-lead !text-white/85 max-w-2xl mb-8">
+              <p className="type-lead max-w-2xl mb-8">
                 {subtitle}
               </p>
 
@@ -135,7 +135,7 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
 
             {/* Right Arched Visual & Ghost Numeral */}
             <div className="lg:col-span-5 relative">
-              <div className="relative w-full aspect-[4/4.5] rounded-t-full sm:rounded-tl-[120px] rounded-br-3xl rounded-tr-3xl rounded-bl-3xl overflow-hidden shadow-2xl shadow-black/40 ring-1 ring-white/15 bg-[#0A223E]">
+              <div className="relative w-full aspect-[4/4.5] rounded-t-full sm:rounded-tl-[120px] rounded-br-3xl rounded-tr-3xl rounded-bl-3xl overflow-hidden shadow-2xl shadow-black/20 ring-1 ring-line bg-card">
                 <Image
                   src={image}
                   alt={imageAlt}
@@ -157,7 +157,7 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
       </section>
 
       {/* 2. What's Included */}
-      <section id="deliverables" className="py-16 lg:py-24 border-b border-[#D7D3CB] scroll-mt-24">
+      <section id="deliverables" className="py-16 lg:py-24 border-b border-line scroll-mt-24">
         <Container>
           <SectionIntro title="What you get" />
 
@@ -165,12 +165,12 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
             {deliverablesDetailed.map((deliv) => (
               <div
                 key={deliv.title}
-                className="bg-white p-6 sm:p-7 rounded-2xl border border-stone-200 shadow-2xs flex gap-4"
+                className="bg-card p-6 sm:p-7 rounded-2xl border border-line shadow-2xs flex gap-4"
               >
-                <CheckCircle2 className="w-5 h-5 text-[#C88A1A] shrink-0 mt-1" />
+                <CheckCircle2 className="w-5 h-5 text-accent shrink-0 mt-1" />
                 <div>
-                  <h3 className="text-lg font-bold text-[#04162A] mb-2">{deliv.title}</h3>
-                  <p className="text-base text-slate-600 leading-relaxed">{deliv.description}</p>
+                  <h3 className="text-lg font-bold text-fg mb-2">{deliv.title}</h3>
+                  <p className="text-base text-fg-3 leading-relaxed">{deliv.description}</p>
                 </div>
               </div>
             ))}
@@ -179,7 +179,7 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
       </section>
 
       {/* 3. How We Work */}
-      <section className="py-16 lg:py-24 border-b border-[#D7D3CB] bg-white">
+      <section className="py-16 lg:py-24 border-b border-line bg-band">
         <Container>
           <SectionIntro
             title={`${roadmap.length} focused stages`}
@@ -190,14 +190,14 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
             {roadmap.map((step, idx) => (
               <li
                 key={step.title}
-                className="p-6 rounded-2xl bg-[#FAF8F5] border border-stone-200/90 flex flex-col"
+                className="p-6 rounded-2xl bg-page border border-line/90 flex flex-col"
               >
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-2xl font-mono font-black text-[#04162A]">0{idx + 1}</span>
-                  <span className="text-xs font-mono font-semibold text-slate-600">{step.week}</span>
+                  <span className="text-2xl font-mono font-black text-fg">0{idx + 1}</span>
+                  <span className="text-xs font-mono font-semibold text-fg-3">{step.week}</span>
                 </div>
-                <h3 className="text-lg font-bold text-[#04162A] mb-3">{step.title}</h3>
-                <p className="mt-auto pt-3 border-t border-stone-200 text-sm text-slate-600">
+                <h3 className="text-lg font-bold text-fg mb-3">{step.title}</h3>
+                <p className="mt-auto pt-3 border-t border-line text-sm text-fg-3">
                   {step.deliverable}
                 </p>
               </li>
@@ -207,7 +207,7 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
       </section>
 
       {/* 4. FAQs */}
-      <section className="py-16 lg:py-24 border-b border-[#D7D3CB]">
+      <section className="py-16 lg:py-24 border-b border-line">
         <Container>
           <div className="max-w-3xl mx-auto">
             <SectionIntro title="Common questions" />
@@ -218,13 +218,13 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
                 <details
                   key={faq.question}
                   open={idx === 0}
-                  className="group rounded-xl border border-stone-200/90 bg-white overflow-hidden shadow-2xs"
+                  className="group rounded-xl border border-line/90 bg-card overflow-hidden shadow-2xs"
                 >
-                  <summary className="list-none [&::-webkit-details-marker]:hidden cursor-pointer w-full text-left px-5 sm:px-6 py-4 sm:py-5 flex items-center justify-between gap-4 font-bold text-base sm:text-lg text-[#04162A] hover:text-gold-ink transition-colors">
+                  <summary className="list-none [&::-webkit-details-marker]:hidden cursor-pointer w-full text-left px-5 sm:px-6 py-4 sm:py-5 flex items-center justify-between gap-4 font-bold text-base sm:text-lg text-fg hover:text-gold-ink transition-colors">
                     <span>{faq.question}</span>
-                    <ChevronDown className="w-5 h-5 text-slate-400 transition-transform duration-300 shrink-0 group-open:rotate-180 group-open:text-[#C88A1A]" />
+                    <ChevronDown className="w-5 h-5 text-fg-3 transition-transform duration-300 shrink-0 group-open:rotate-180 group-open:text-accent" />
                   </summary>
-                  <div className="px-5 sm:px-6 pb-5 pt-1 text-base text-slate-600 leading-relaxed border-t border-stone-100">
+                  <div className="px-5 sm:px-6 pb-5 pt-1 text-base text-fg-3 leading-relaxed border-t border-line">
                     {faq.answer}
                   </div>
                 </details>
@@ -235,9 +235,9 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
       </section>
 
       {/* 5. Other Services */}
-      <section className="py-14 border-b border-[#D7D3CB] bg-white">
+      <section className="py-14 border-b border-line bg-band">
         <Container>
-          <span className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-slate-600 block mb-6">
+          <span className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-fg-3 block mb-6">
             Explore other services
           </span>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
@@ -245,16 +245,16 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
               <Link
                 key={item.href}
                 href={item.href}
-                className="group p-5 sm:p-6 rounded-2xl bg-[#FAF8F5] border border-stone-200 hover:border-[#C88A1A]/40 transition-all block"
+                className="group p-5 sm:p-6 rounded-2xl bg-page border border-line hover:border-accent/40 transition-all block"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-mono font-bold text-slate-600">{item.number}</span>
-                  <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-[#C88A1A] group-hover:translate-x-1 transition-all" />
+                  <span className="text-xs font-mono font-bold text-fg-3">{item.number}</span>
+                  <ArrowRight className="w-4 h-4 text-fg-3 group-hover:text-accent group-hover:translate-x-1 transition-all" />
                 </div>
-                <h3 className="text-lg font-bold text-[#04162A] group-hover:text-gold-ink transition-colors mb-1">
+                <h3 className="text-lg font-bold text-fg group-hover:text-gold-ink transition-colors mb-1">
                   {item.title}
                 </h3>
-                <p className="text-sm text-slate-600 leading-relaxed">{item.tagline}</p>
+                <p className="text-sm text-fg-3 leading-relaxed">{item.tagline}</p>
               </Link>
             ))}
           </div>

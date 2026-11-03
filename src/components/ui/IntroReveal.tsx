@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { ThemeLogo } from "@/components/ui/ThemeLogo";
 
 interface IntroRevealProps {
   onComplete?: () => void;
@@ -73,7 +74,7 @@ function getFrameStyles(fan: number, fly: number, flying: boolean) {
 
   return {
     // The overlay fades to reveal the REAL underlying HeroSection (no duplicate text)
-    backdropColor: `rgba(250, 248, 245, ${flying ? Math.max(0, 1 - fly * 1.35) : 1})`,
+    backdropColor: `rgb(var(--c-page) / ${flying ? Math.max(0, 1 - fly * 1.35) : 1})`,
     stageOpacity: String(Math.max(0, 1 - Math.pow(fly, 2.2))),
     cylinderTransform: `scale(${cameraScale}) translateZ(${cameraZ}px) rotateY(${cylinderRotation}deg)`,
     cards: REVEAL_CARDS.map((card, index) => {
@@ -206,14 +207,13 @@ export const IntroReveal: React.FC<IntroRevealProps> = ({ onComplete }) => {
       aria-hidden="true"
     >
       {/* Top Navigation Bar: Anchored on white background */}
-      <header className="absolute top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-sm border-b border-slate-100 transition-colors duration-300 pointer-events-auto">
+      <header className="absolute top-0 left-0 right-0 z-40 bg-card/95 backdrop-blur-sm border-b border-line transition-colors duration-300 pointer-events-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20 sm:h-24">
             {/* Logo */}
             <div className="flex-shrink-0">
               <div className="relative w-36 sm:w-44 h-8 sm:h-9">
-                <Image
-                  src="/levexa-logo-light-trans.png"
+                <ThemeLogo
                   alt="Levexa"
                   fill
                   sizes="176px"
@@ -226,7 +226,7 @@ export const IntroReveal: React.FC<IntroRevealProps> = ({ onComplete }) => {
             {/* Desktop Navigation Links */}
             <nav className="hidden lg:flex items-center gap-8 xl:gap-10">
               {["About", "Services", "Contact"].map((label) => (
-                <span key={label} className="text-[15px] font-medium text-slate-600">
+                <span key={label} className="text-[15px] font-medium text-fg-3">
                   {label}
                 </span>
               ))}
@@ -268,7 +268,7 @@ export const IntroReveal: React.FC<IntroRevealProps> = ({ onComplete }) => {
               ref={(el) => {
                 cardRefs.current[index] = el;
               }}
-              className="absolute inset-0 rounded-[4px] shadow-2xl overflow-hidden border border-slate-200/90 bg-white will-change-transform"
+              className="absolute inset-0 rounded-[4px] shadow-2xl overflow-hidden border border-line/90 bg-card will-change-transform"
               style={{
                 transformStyle: "preserve-3d",
                 transform: INITIAL_FRAME.cards[index].transform,
@@ -277,11 +277,10 @@ export const IntroReveal: React.FC<IntroRevealProps> = ({ onComplete }) => {
             >
               {card.isCenterBrand ? (
                 /* Center Brand Card: Official Levexa Logo in Center Gateway */
-                <div className="relative w-full h-full bg-[#FAFAF9] flex flex-col items-center justify-center p-6 text-center border-2 border-slate-900/10">
+                <div className="relative w-full h-full bg-page flex flex-col items-center justify-center p-6 text-center border-2 border-line/10">
                   {/* Official Levexa Logo */}
                   <div className="relative w-44 sm:w-48 h-12 sm:h-14 mb-4">
-                    <Image
-                      src="/levexa-logo-light-trans.png"
+                    <ThemeLogo
                       alt="Levexa Logo"
                       fill
                       sizes="192px"
@@ -290,18 +289,18 @@ export const IntroReveal: React.FC<IntroRevealProps> = ({ onComplete }) => {
                     />
                   </div>
 
-                  <div className="text-[10px] font-mono tracking-[0.22em] text-[#04162A] uppercase font-bold mb-1">
+                  <div className="text-[10px] font-mono tracking-[0.22em] text-fg uppercase font-bold mb-1">
                     COMMERCIAL ARCHITECTURE
                   </div>
 
                   {/* Gold Signature Accent Line */}
-                  <div className="w-10 h-[3px] bg-[#C88A1A] rounded-full my-3" />
+                  <div className="w-10 h-[3px] bg-accent rounded-full my-3" />
 
-                  <p className="text-[11px] text-slate-500 font-medium tracking-wide max-w-[210px] leading-relaxed">
+                  <p className="text-[11px] text-fg-3 font-medium tracking-wide max-w-[210px] leading-relaxed">
                     A Research-Driven Growth Agency for Ambitious Brands
                   </p>
 
-                  <div className="mt-5 flex items-center gap-1.5 text-[9px] font-mono tracking-wider text-slate-500 uppercase">
+                  <div className="mt-5 flex items-center gap-1.5 text-[9px] font-mono tracking-wider text-fg-3 uppercase">
                     <span>01</span>
                     <span>•</span>
                     <span>02</span>
@@ -326,7 +325,7 @@ export const IntroReveal: React.FC<IntroRevealProps> = ({ onComplete }) => {
                   )}
                   {/* Gradient scrim for clean, crisp caption legibility */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex flex-col justify-end p-5 text-white">
-                    <div className="text-[10px] font-mono tracking-widest text-[#C88A1A] uppercase font-bold">
+                    <div className="text-[10px] font-mono tracking-widest text-accent uppercase font-bold">
                       {card.tag}
                     </div>
                     <div className="text-lg font-semibold tracking-tight mt-1 text-white leading-tight">

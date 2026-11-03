@@ -7,11 +7,11 @@ import { Underline } from "@/components/ui/Underline";
 
 // "I'm Lavanya. I started Levexa…": founder photo and a short introduction
 export const FounderIntro: React.FC = () => (
-  <section className="bg-white text-[#04162A] py-20 sm:py-24">
+  <section className="bg-band text-fg py-20 sm:py-24">
     <Container>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
         <div className="lg:col-span-5">
-          <div className="relative max-w-sm mx-auto lg:mx-0 aspect-[4/5] rounded-3xl overflow-hidden shadow-card-elevated border border-stone-200 bg-stone-100">
+          <div className="relative max-w-sm mx-auto lg:mx-0 aspect-[4/5] rounded-3xl overflow-hidden shadow-card-elevated border border-line bg-fg/5">
             <Image
               src="/images/about/founder-lavanya.jpg"
               alt="Lavanya, Founder & CEO of Levexa"
@@ -29,7 +29,7 @@ export const FounderIntro: React.FC = () => (
           <p className="type-lead mb-5">
             …a founder-led growth advisory that helps businesses turn marketing into measurable revenue.
           </p>
-          <p className="text-lg text-slate-700 leading-relaxed mb-9 max-w-2xl">
+          <p className="text-lg text-fg-2 leading-relaxed mb-9 max-w-2xl">
             We bring strategy, content, sales and automation together, so the attention your brand earns
             turns into leads, sales and long-term growth. When you work with Levexa, you work with me
             directly.
