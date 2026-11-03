@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { CTASection } from "@/components/sections/CTASection";
 import { ArrowRight, CheckCircle2, ChevronDown } from "lucide-react";
 import { ClickSpark } from "@/components/ui/ClickSpark";
+import { GoldArcs } from "@/components/ui/GoldArcs";
 
 export interface DeliverableDetailed {
   title: string;
@@ -53,7 +54,7 @@ const SectionIntro: React.FC<{ title: string; intro?: string }> = ({
   intro,
 }) => (
   <div className="max-w-3xl mb-10 sm:mb-12">
-    <h2 className="type-h2 text-[#07192F]">
+    <h2 className="type-h2 text-[#04162A]">
       {title}
     </h2>
     {intro && <p className="mt-4 text-base sm:text-lg text-slate-700 leading-relaxed">{intro}</p>}
@@ -76,21 +77,22 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
   ctaSubtitle = "Schedule a confidential discovery briefing with Levexa to diagnose your revenue engine.",
 }) => {
   return (
-    <div className="pt-24 sm:pt-28 bg-[#FAF8F5] text-[#07192F] min-h-screen">
-      {/* 1. Breadcrumbs & Top Meta */}
-      <section className="pt-8 sm:pt-12 border-b border-[#D7D3CB] pb-16 sm:pb-24 relative overflow-hidden">
-        <Container>
+    <div className="bg-[#FAF8F5] text-[#04162A] min-h-screen">
+      {/* 1. Breadcrumbs & Top Meta: navy hero, like the slides */}
+      <section className="on-dark relative overflow-hidden bg-[#04162A] text-white pt-32 sm:pt-40 pb-16 sm:pb-24">
+        <GoldArcs flip />
+        <Container className="relative">
           {/* Breadcrumb */}
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm text-slate-600 mb-8">
-            <Link href="/" className="py-3 hover:text-[#07192F] transition-colors">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm text-white/70 mb-8">
+            <Link href="/" className="py-3 hover:text-white transition-colors">
               Home
             </Link>
             <span>/</span>
-            <Link href="/services" className="py-3 hover:text-[#07192F] transition-colors">
+            <Link href="/services" className="py-3 hover:text-white transition-colors">
               Services
             </Link>
             <span>/</span>
-            <span className="text-[#07192F] font-semibold" aria-current="page">
+            <span className="text-white font-semibold" aria-current="page">
               {titleLine1} {titleHighlight}
             </span>
           </nav>
@@ -100,21 +102,21 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
             <div className="lg:col-span-7">
 
               <h1 className="type-title mb-6">
-                <span className="text-[#07192F]">{titleLine1}</span>{" "}
+                <span className="text-white">{titleLine1}</span>{" "}
                 <span className="text-gold-deep">{titleHighlight}</span>
               </h1>
 
               <div
-                className="w-12 h-[3px] bg-[#C88A1A] rounded-full mb-6"
+                className="w-12 h-[3px] bg-[#FEB005] rounded-full mb-6"
                 aria-hidden="true"
               />
 
-              <p className="type-lead max-w-2xl mb-8">
+              <p className="type-lead !text-white/85 max-w-2xl mb-8">
                 {subtitle}
               </p>
 
               <div className="flex flex-wrap items-center gap-4 pt-2">
-                <ClickSpark sparkColor="#C88A1A" sparkRadius={25} sparkCount={6}>
+                <ClickSpark sparkColor="#FEB005" sparkRadius={25} sparkCount={6}>
                   <Link
                     href="/contact"
                     className="btn-primary"
@@ -124,7 +126,7 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
                 </ClickSpark>
                 <Link
                   href="#deliverables"
-                  className="btn-secondary"
+                  className="btn-secondary-dark"
                 >
                   What you get
                 </Link>
@@ -133,7 +135,7 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
 
             {/* Right Arched Visual & Ghost Numeral */}
             <div className="lg:col-span-5 relative">
-              <div className="relative w-full aspect-[4/4.5] rounded-t-full sm:rounded-tl-[120px] rounded-br-3xl rounded-tr-3xl rounded-bl-3xl overflow-hidden shadow-card-elevated border border-stone-200/80 bg-stone-100">
+              <div className="relative w-full aspect-[4/4.5] rounded-t-full sm:rounded-tl-[120px] rounded-br-3xl rounded-tr-3xl rounded-bl-3xl overflow-hidden shadow-2xl shadow-black/40 ring-1 ring-white/15 bg-[#0A223E]">
                 <Image
                   src={image}
                   alt={imageAlt}
@@ -167,7 +169,7 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
               >
                 <CheckCircle2 className="w-5 h-5 text-[#C88A1A] shrink-0 mt-1" />
                 <div>
-                  <h3 className="text-lg font-bold text-[#07192F] mb-2">{deliv.title}</h3>
+                  <h3 className="text-lg font-bold text-[#04162A] mb-2">{deliv.title}</h3>
                   <p className="text-base text-slate-600 leading-relaxed">{deliv.description}</p>
                 </div>
               </div>
@@ -191,10 +193,10 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
                 className="p-6 rounded-2xl bg-[#FAF8F5] border border-stone-200/90 flex flex-col"
               >
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-2xl font-mono font-black text-[#07192F]">0{idx + 1}</span>
+                  <span className="text-2xl font-mono font-black text-[#04162A]">0{idx + 1}</span>
                   <span className="text-xs font-mono font-semibold text-slate-600">{step.week}</span>
                 </div>
-                <h3 className="text-lg font-bold text-[#07192F] mb-3">{step.title}</h3>
+                <h3 className="text-lg font-bold text-[#04162A] mb-3">{step.title}</h3>
                 <p className="mt-auto pt-3 border-t border-stone-200 text-sm text-slate-600">
                   {step.deliverable}
                 </p>
@@ -218,7 +220,7 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
                   open={idx === 0}
                   className="group rounded-xl border border-stone-200/90 bg-white overflow-hidden shadow-2xs"
                 >
-                  <summary className="list-none [&::-webkit-details-marker]:hidden cursor-pointer w-full text-left px-5 sm:px-6 py-4 sm:py-5 flex items-center justify-between gap-4 font-bold text-base sm:text-lg text-[#07192F] hover:text-gold-ink transition-colors">
+                  <summary className="list-none [&::-webkit-details-marker]:hidden cursor-pointer w-full text-left px-5 sm:px-6 py-4 sm:py-5 flex items-center justify-between gap-4 font-bold text-base sm:text-lg text-[#04162A] hover:text-gold-ink transition-colors">
                     <span>{faq.question}</span>
                     <ChevronDown className="w-5 h-5 text-slate-400 transition-transform duration-300 shrink-0 group-open:rotate-180 group-open:text-[#C88A1A]" />
                   </summary>
@@ -249,7 +251,7 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
                   <span className="text-xs font-mono font-bold text-slate-600">{item.number}</span>
                   <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-[#C88A1A] group-hover:translate-x-1 transition-all" />
                 </div>
-                <h3 className="text-lg font-bold text-[#07192F] group-hover:text-gold-ink transition-colors mb-1">
+                <h3 className="text-lg font-bold text-[#04162A] group-hover:text-gold-ink transition-colors mb-1">
                   {item.title}
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed">{item.tagline}</p>

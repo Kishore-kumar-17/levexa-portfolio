@@ -4,6 +4,7 @@ import { ArrowRight, Eye, Heart, MessageCircle } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Underline } from "@/components/ui/Underline";
 import { reelBests } from "@/lib/reelStats";
+import { GoldArcs } from "@/components/ui/GoldArcs";
 
 // Best single-reel results, taken from the reel data
 const MILESTONES = [
@@ -13,13 +14,14 @@ const MILESTONES = [
 ];
 
 export const Milestones: React.FC = () => (
-  <section className="bg-[#FAF8F5] text-[#07192F] py-20 sm:py-24 border-t border-stone-200/70">
-    <Container>
+  <section className="on-dark relative overflow-hidden bg-[#04162A] text-white py-20 sm:py-24">
+    <GoldArcs flip />
+    <Container className="relative">
       <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-14">
         <h2 className="type-h2">
           Key <Underline>milestones</Underline> we&apos;ve reached
         </h2>
-        <p className="mt-6 text-lg text-slate-700 leading-relaxed">
+        <p className="mt-6 text-lg text-white/80 leading-relaxed">
           Views, engagement and real conversations: here&apos;s what the reels we&apos;ve scripted have
           delivered.
         </p>
@@ -30,9 +32,9 @@ export const Milestones: React.FC = () => (
           const Icon = item.icon;
           return (
             <div key={item.label} className="flex flex-col items-center">
-              <Icon className="w-9 h-9 text-[#C88A1A] mb-4" aria-hidden="true" />
-              <dd className="text-5xl sm:text-6xl font-bold tracking-tight font-mono">{item.value}</dd>
-              <dt className="mt-3 text-base text-slate-700">{item.label}</dt>
+              <Icon className="w-9 h-9 text-[#FEB005] mb-4" aria-hidden="true" />
+              <dd className="text-5xl sm:text-6xl font-extrabold tracking-tight font-display text-[#FEB005]">{item.value}</dd>
+              <dt className="mt-3 text-base text-white/80">{item.label}</dt>
             </div>
           );
         })}

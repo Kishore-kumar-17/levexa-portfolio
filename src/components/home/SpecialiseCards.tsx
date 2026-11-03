@@ -14,7 +14,7 @@ export const SERVICE_ICONS: Record<string, LucideIcon> = {
 
 // "We specialise in": one card per service, each linking to its page
 export const SpecialiseCards: React.FC = () => (
-  <section id="services" className="bg-[#FAF8F5] text-[#07192F] py-20 sm:py-24 border-t border-stone-200/70">
+  <section id="services" className="bg-[#FAF8F5] text-[#04162A] py-20 sm:py-24 border-t border-stone-200/70">
     <Container>
       <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-14">
         <h2 className="type-h2">
@@ -39,7 +39,7 @@ export const SpecialiseCards: React.FC = () => (
               </span>
               <h3 className="text-xl font-bold mb-3">{service.title}</h3>
               <p className="text-base text-slate-700 leading-relaxed mb-6">{service.summary}</p>
-              <span className="mt-auto inline-flex items-center gap-2 text-sm font-bold text-[#07192F] group-hover:text-gold-ink transition-colors">
+              <span className="mt-auto inline-flex items-center gap-2 text-sm font-bold text-[#04162A] group-hover:text-gold-ink transition-colors">
                 Learn more
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
               </span>

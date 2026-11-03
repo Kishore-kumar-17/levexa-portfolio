@@ -290,7 +290,7 @@ export const IntroReveal: React.FC<IntroRevealProps> = ({ onComplete }) => {
                     />
                   </div>
 
-                  <div className="text-[10px] font-mono tracking-[0.22em] text-[#07192F] uppercase font-bold mb-1">
+                  <div className="text-[10px] font-mono tracking-[0.22em] text-[#04162A] uppercase font-bold mb-1">
                     COMMERCIAL ARCHITECTURE
                   </div>
 

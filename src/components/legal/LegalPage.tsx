@@ -13,7 +13,7 @@ interface LegalPageProps {
 
 // Shared layout for Privacy Policy and Terms of Use
 export const LegalPage: React.FC<LegalPageProps> = ({ title, highlight, effectiveDate, intro, summary, children }) => (
-  <div className="pt-24 sm:pt-28 bg-[#FAF8F5] text-[#07192F]">
+  <div className="pt-24 sm:pt-28 bg-[#FAF8F5] text-[#04162A]">
     <section className="pt-8 sm:pt-12 lg:pt-16 pb-12 sm:pb-14 border-b border-[#D7D3CB]">
       <Container>
         <div className="max-w-3xl">
@@ -51,7 +51,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ title, highlight, effectiv
 // One numbered section of a legal page
 export const LegalSection: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => (
   <section className="py-6 first:pt-0 last:pb-0 border-t first:border-t-0 border-stone-100 space-y-3">
-    <h2 className="text-xl font-bold text-[#07192F] tracking-tight">{title}</h2>
+    <h2 className="text-xl font-bold text-[#04162A] tracking-tight">{title}</h2>
     {children}
   </section>
 );

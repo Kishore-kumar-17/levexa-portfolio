@@ -49,7 +49,7 @@ export const ContactSwitcher: React.FC = () => {
       onClick={() => setMode(value)}
       aria-pressed={mode === value}
       className={`px-5 py-2.5 rounded-full text-sm sm:text-base font-semibold transition-colors cursor-pointer ${
-        mode === value ? "bg-[#C88A1A] text-[#07192F]" : "text-slate-600 hover:text-[#07192F]"
+        mode === value ? "bg-[#FEB005] text-[#04162A]" : "text-slate-600 hover:text-[#04162A]"
       }`}
     >
       {label}
@@ -71,7 +71,7 @@ export const ContactSwitcher: React.FC = () => {
             <div className="relative mx-auto w-[220px] aspect-[1396/213] mb-6">
               <Image src="/levexa-logo-light-trans.png" alt="Levexa" fill sizes="220px" className="object-contain" />
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#07192F] mb-3">Welcome to the Levexa contact form</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#04162A] mb-3">Welcome to the Levexa contact form</h2>
             <p className="text-lg text-slate-700">
               A few quick questions about you and your business, so we can see how we can help.
             </p>
@@ -80,9 +80,9 @@ export const ContactSwitcher: React.FC = () => {
         </div>
       ) : (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
-          <div className="p-7 sm:p-8 rounded-2xl bg-[#07192F] text-white">
+          <div className="p-7 sm:p-8 rounded-2xl bg-[#04162A] text-white">
             <div className="flex items-center gap-4 mb-5">
-              <div className="relative w-16 h-16 rounded-full overflow-hidden ring-2 ring-[#C88A1A] ring-offset-2 ring-offset-[#07192F] shrink-0">
+              <div className="relative w-16 h-16 rounded-full overflow-hidden ring-2 ring-[#C88A1A] ring-offset-2 ring-offset-[#04162A] shrink-0">
                 <Image
                   src="/images/about/founder-lavanya-avatar.jpg"
                   alt="Lavanya, Founder & CEO of Levexa"

@@ -11,9 +11,9 @@ const config: Config = {
     extend: {
       colors: {
         navy: {
-          DEFAULT: "#07192F",
-          950: "#040E1B",
-          900: "#07192F",
+          DEFAULT: "#04162A", // brand navy, matched to Levexa's slides
+          950: "#020D19",
+          900: "#04162A",
           850: "#0A223E",
           800: "#0E2C50",
           700: "#143B68",
@@ -33,10 +33,11 @@ const config: Config = {
           700: "#B37600",
           800: "#8D5A00",
           hover: "#E59B00",
-          // Gold for TEXT on cream/white, dark enough to read (WCAG AA). Keep #C88A1A for
-          // buttons, icons and lines.
-          ink: "#8A5F0E", // normal-size text: 5.3:1 on cream
-          deep: "#A87512", // big headline words (24px+): 3.8:1 on cream
+          bright: "#FEB005", // brand amber from the slides: buttons, and text on navy only (9.8:1)
+          // Gold for TEXT. These follow the section: darker on cream/white (WCAG AA there),
+          // brand amber inside an .on-dark section. Values live in globals.css.
+          ink: "var(--gold-ink)", // normal-size text: 5.3:1 on cream
+          deep: "var(--gold-deep)", // big headline words (24px+): 3.8:1 on cream
         },
         coolgray: {
           50: "#F8FAFC",
@@ -52,6 +53,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "-apple-system", "sans-serif"],
+        display: ["var(--font-display)", "var(--font-sans)", "system-ui", "sans-serif"],
         serif: ["var(--font-serif)", "Georgia", "serif"],
         mono: ["var(--font-mono)", "monospace"],
       },
@@ -59,7 +61,7 @@ const config: Config = {
         "gold-glow": "0 10px 30px -5px rgba(245, 169, 0, 0.35)",
         "gold-sm": "0 4px 15px -3px rgba(245, 169, 0, 0.25)",
         "card-subtle": "0 1px 3px rgba(0, 0, 0, 0.05), 0 10px 30px -5px rgba(0, 0, 0, 0.03)",
-        "card-elevated": "0 20px 40px -15px rgba(7, 25, 47, 0.08)",
+        "card-elevated": "0 20px 40px -15px rgba(4, 22, 42, 0.08)",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

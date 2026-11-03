@@ -52,7 +52,7 @@ export const SiteFooter: React.FC = () => {
   }, [prefersReducedMotion]);
 
   return (
-    <footer className="relative bg-[#0C0D0E] text-stone-400 overflow-hidden pt-12 sm:pt-16 md:pt-20 pb-0 border-t border-white/5">
+    <footer className="on-dark relative bg-[#04162A] text-stone-300 overflow-hidden pt-12 sm:pt-16 md:pt-20 pb-0 border-t border-white/5">
       {/* Subtle tactile noise/texture overlay matching the video */}
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]"
@@ -85,7 +85,7 @@ export const SiteFooter: React.FC = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-stone-300 hover:text-[#0C0D0E] hover:bg-[#C88A1A] hover:border-[#C88A1A] transition-colors duration-200"
+                  className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-stone-300 hover:text-[#04162A] hover:bg-[#FEB005] hover:border-[#FEB005] transition-colors duration-200"
                 >
                   <Icon className="w-[18px] h-[18px]" />
                 </a>
@@ -95,7 +95,7 @@ export const SiteFooter: React.FC = () => {
 
           {/* Services links */}
           <nav aria-label="Footer services" className="lg:col-span-3">
-            <h3 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#C88A1A] mb-4">
+            <h3 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#FEB005] mb-4">
               Services
             </h3>
             <ul className="space-y-2.5">
@@ -111,7 +111,7 @@ export const SiteFooter: React.FC = () => {
 
           {/* Company links */}
           <nav aria-label="Footer navigation" className="lg:col-span-2">
-            <h3 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#C88A1A] mb-4">
+            <h3 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#FEB005] mb-4">
               Company
             </h3>
             <ul className="space-y-2.5">
@@ -127,7 +127,7 @@ export const SiteFooter: React.FC = () => {
 
           {/* Contact details */}
           <div className="lg:col-span-3">
-            <h3 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#C88A1A] mb-4">
+            <h3 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#FEB005] mb-4">
               Contact
             </h3>
             <ul className="space-y-3">
@@ -136,7 +136,7 @@ export const SiteFooter: React.FC = () => {
                   href={`mailto:${companyConfig.contact.email}`}
                   className="flex items-center gap-2.5 hover:text-white transition-colors duration-200"
                 >
-                  <Mail className="w-4 h-4 text-[#C88A1A] shrink-0" />
+                  <Mail className="w-4 h-4 text-[#FEB005] shrink-0" />
                   <span>{companyConfig.contact.email}</span>
                 </a>
               </li>
@@ -145,7 +145,7 @@ export const SiteFooter: React.FC = () => {
                   href={`tel:${companyConfig.contact.phone.replace(/\s+/g, "")}`}
                   className="flex items-center gap-2.5 hover:text-white transition-colors duration-200"
                 >
-                  <Phone className="w-4 h-4 text-[#C88A1A] shrink-0" />
+                  <Phone className="w-4 h-4 text-[#FEB005] shrink-0" />
                   <span>{companyConfig.contact.phone}</span>
                 </a>
               </li>
@@ -156,12 +156,12 @@ export const SiteFooter: React.FC = () => {
                   rel="noopener noreferrer"
                   className="flex items-center gap-2.5 hover:text-white transition-colors duration-200"
                 >
-                  <WhatsAppIcon className="w-4 h-4 text-[#C88A1A] shrink-0" />
+                  <WhatsAppIcon className="w-4 h-4 text-[#FEB005] shrink-0" />
                   <span>Chat on WhatsApp</span>
                 </a>
               </li>
               <li className="flex items-start gap-2.5">
-                <Clock className="w-4 h-4 text-[#C88A1A] shrink-0 mt-0.5" />
+                <Clock className="w-4 h-4 text-[#FEB005] shrink-0 mt-0.5" />
                 <span>{companyConfig.contact.supportHours}</span>
               </li>
             </ul>
@@ -178,7 +178,7 @@ export const SiteFooter: React.FC = () => {
               text="LEVEXA • STRATEGIC ADVISORY • "
               radius={36}
               spinDuration={24}
-              className="text-[#C88A1A] opacity-80"
+              className="text-[#FEB005] opacity-80"
             />
           </div>
           <p className="w-full sm:w-auto sm:ml-auto text-stone-400">
@@ -187,7 +187,7 @@ export const SiteFooter: React.FC = () => {
               href="https://www.linkedin.com/in/kishore2617"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 py-1 font-semibold text-stone-200 hover:text-[#C88A1A] transition-colors duration-200"
+              className="inline-flex items-center gap-1.5 py-1 font-semibold text-stone-200 hover:text-[#FEB005] transition-colors duration-200"
             >
               Kishore Kumar R
               <Linkedin className="w-3.5 h-3.5" aria-hidden="true" />

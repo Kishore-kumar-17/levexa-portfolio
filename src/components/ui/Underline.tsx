@@ -5,7 +5,7 @@ export const Underline: React.FC<{ children: React.ReactNode }> = ({ children })
   <span className="relative inline-block whitespace-nowrap">
     {children}
     <svg
-      className="absolute left-0 -bottom-1.5 w-full h-3 text-[#C88A1A]"
+      className="absolute left-0 -bottom-1.5 w-full h-3 text-[color:var(--gold-line)]"
       viewBox="0 0 200 12"
       preserveAspectRatio="none"
       aria-hidden="true"
@@ -20,7 +20,7 @@ export const Encircle: React.FC<{ children: React.ReactNode }> = ({ children }) 
   <span className="relative inline-block px-3">
     {children}
     <svg
-      className="absolute -inset-x-1 -inset-y-1 w-[calc(100%+0.5rem)] h-[calc(100%+0.5rem)] text-[#C88A1A]"
+      className="absolute -inset-x-1 -inset-y-1 w-[calc(100%+0.5rem)] h-[calc(100%+0.5rem)] text-[color:var(--gold-line)]"
       viewBox="0 0 200 80"
       preserveAspectRatio="none"
       aria-hidden="true"

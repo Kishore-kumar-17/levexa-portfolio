@@ -38,7 +38,7 @@ export const OutcomeTabs: React.FC = () => {
   };
 
   return (
-    <section className="bg-[#FAF8F5] text-[#07192F] pb-20 sm:pb-24">
+    <section className="bg-[#FAF8F5] text-[#04162A] pb-20 sm:pb-24">
       <Container>
         <h2 className="type-h2 text-center max-w-3xl mx-auto mb-10 sm:mb-12">
           And more, to help you create <Underline>content</Underline> that…
@@ -60,14 +60,14 @@ export const OutcomeTabs: React.FC = () => {
                   tabIndex={selected ? 0 : -1}
                   onClick={() => setActive(idx)}
                   className={`relative flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2 px-2 py-4 text-sm sm:text-base font-semibold transition-colors cursor-pointer ${
-                    selected ? "bg-[#C88A1A] text-[#07192F]" : "bg-white text-slate-600 hover:text-[#07192F]"
+                    selected ? "bg-[#FEB005] text-[#04162A]" : "bg-white text-slate-600 hover:text-[#04162A]"
                   }`}
                 >
                   <Icon className="w-5 h-5 shrink-0" aria-hidden="true" />
                   {tab.label}
                   {selected && (
                     <span
-                      className="absolute left-1/2 -bottom-2 -translate-x-1/2 w-4 h-4 rotate-45 bg-[#C88A1A]"
+                      className="absolute left-1/2 -bottom-2 -translate-x-1/2 w-4 h-4 rotate-45 bg-[#FEB005]"
                       aria-hidden="true"
                     />
                   )}

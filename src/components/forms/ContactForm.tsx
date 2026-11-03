@@ -109,7 +109,7 @@ export const ContactForm: React.FC = () => {
         <div className="w-14 h-14 rounded-full bg-[#FAF8F5] border border-[#C88A1A] flex items-center justify-center mx-auto text-[#C88A1A]">
           <CheckCircle2 className="w-7 h-7" />
         </div>
-        <h3 className="text-2xl font-bold text-[#07192F] tracking-tight">
+        <h3 className="text-2xl font-bold text-[#04162A] tracking-tight">
           Thank you, your enquiry is in
         </h3>
         <p className="text-sm text-slate-700 max-w-md mx-auto leading-relaxed">
@@ -176,7 +176,7 @@ export const ContactForm: React.FC = () => {
             placeholder="e.g. Priya Sharma"
             aria-invalid={Boolean(errors.fullName)}
             aria-describedby={errors.fullName ? "fullName-error" : undefined}
-            className={`w-full px-4 py-3.5 rounded-xl bg-[#FAF8F5] border text-[#07192F] placeholder-slate-500 text-base focus:outline-none transition-colors ${
+            className={`w-full px-4 py-3.5 rounded-xl bg-[#FAF8F5] border text-[#04162A] placeholder-slate-500 text-base focus:outline-none transition-colors ${
               errors.fullName
                 ? "border-red-500 focus:border-red-400"
                 : "border-stone-200 focus:border-[#C88A1A] focus:ring-1 focus:ring-[#C88A1A]"
@@ -206,7 +206,7 @@ export const ContactForm: React.FC = () => {
             placeholder="you@company.com"
             aria-invalid={Boolean(errors.email)}
             aria-describedby={errors.email ? "email-error" : undefined}
-            className={`w-full px-4 py-3.5 rounded-xl bg-[#FAF8F5] border text-[#07192F] placeholder-slate-500 text-base focus:outline-none transition-colors ${
+            className={`w-full px-4 py-3.5 rounded-xl bg-[#FAF8F5] border text-[#04162A] placeholder-slate-500 text-base focus:outline-none transition-colors ${
               errors.email
                 ? "border-red-500 focus:border-red-400"
                 : "border-stone-200 focus:border-[#C88A1A] focus:ring-1 focus:ring-[#C88A1A]"
@@ -237,7 +237,7 @@ export const ContactForm: React.FC = () => {
             placeholder="e.g. +91 98765 43210"
             aria-invalid={Boolean(errors.phone)}
             aria-describedby={errors.phone ? "phone-error" : undefined}
-            className={`w-full px-4 py-3.5 rounded-xl bg-[#FAF8F5] border text-[#07192F] placeholder-slate-500 text-base focus:outline-none transition-colors ${
+            className={`w-full px-4 py-3.5 rounded-xl bg-[#FAF8F5] border text-[#04162A] placeholder-slate-500 text-base focus:outline-none transition-colors ${
               errors.phone
                 ? "border-red-500 focus:border-red-400"
                 : "border-stone-200 focus:border-[#C88A1A] focus:ring-1 focus:ring-[#C88A1A]"
@@ -266,7 +266,7 @@ export const ContactForm: React.FC = () => {
             placeholder="e.g. Acme Foods (acmefoods.in)"
             aria-invalid={Boolean(errors.company)}
             aria-describedby={errors.company ? "company-error" : undefined}
-            className={`w-full px-4 py-3.5 rounded-xl bg-[#FAF8F5] border text-[#07192F] placeholder-slate-500 text-base focus:outline-none transition-colors ${
+            className={`w-full px-4 py-3.5 rounded-xl bg-[#FAF8F5] border text-[#04162A] placeholder-slate-500 text-base focus:outline-none transition-colors ${
               errors.company
                 ? "border-red-500 focus:border-red-400"
                 : "border-stone-200 focus:border-[#C88A1A] focus:ring-1 focus:ring-[#C88A1A]"
@@ -297,7 +297,7 @@ export const ContactForm: React.FC = () => {
             onChange={handleChange}
             aria-invalid={Boolean(errors.service)}
             aria-describedby={errors.service ? "service-error" : undefined}
-            className={`w-full px-4 py-3.5 rounded-xl bg-[#FAF8F5] border text-[#07192F] text-base focus:outline-none transition-colors cursor-pointer ${
+            className={`w-full px-4 py-3.5 rounded-xl bg-[#FAF8F5] border text-[#04162A] text-base focus:outline-none transition-colors cursor-pointer ${
               errors.service
                 ? "border-red-500 focus:border-red-400"
                 : "border-stone-200 focus:border-[#C88A1A] focus:ring-1 focus:ring-[#C88A1A]"
@@ -329,7 +329,7 @@ export const ContactForm: React.FC = () => {
           name="budget"
           value={formData.budget}
           onChange={handleChange}
-          className="w-full px-4 py-3.5 rounded-xl bg-[#FAF8F5] border border-stone-200 text-[#07192F] text-base focus:outline-none focus:border-[#C88A1A] focus:ring-1 focus:ring-[#C88A1A] transition-colors cursor-pointer"
+          className="w-full px-4 py-3.5 rounded-xl bg-[#FAF8F5] border border-stone-200 text-[#04162A] text-base focus:outline-none focus:border-[#C88A1A] focus:ring-1 focus:ring-[#C88A1A] transition-colors cursor-pointer"
         >
           <option value="">Select a range...</option>
           {BUDGET_OPTIONS.map((opt) => (
@@ -362,7 +362,7 @@ export const ContactForm: React.FC = () => {
           placeholder="Tell us about your business, what you've tried so far and what you'd like to achieve..."
           aria-invalid={Boolean(errors.message)}
           aria-describedby={errors.message ? "message-error" : undefined}
-          className={`w-full px-4 py-3.5 rounded-xl bg-[#FAF8F5] border text-[#07192F] placeholder-slate-500 text-base focus:outline-none transition-colors ${
+          className={`w-full px-4 py-3.5 rounded-xl bg-[#FAF8F5] border text-[#04162A] placeholder-slate-500 text-base focus:outline-none transition-colors ${
             errors.message
               ? "border-red-500 focus:border-red-400"
               : "border-stone-200 focus:border-[#C88A1A] focus:ring-1 focus:ring-[#C88A1A]"
@@ -390,7 +390,7 @@ export const ContactForm: React.FC = () => {
           />
           <span className="text-sm text-slate-700 leading-relaxed">
             I agree to Levexa using these details to respond to my enquiry, in line with the{" "}
-            <a href="/privacy" className="text-[#07192F] underline underline-offset-2 font-semibold hover:text-gold-ink">
+            <a href="/privacy" className="text-[#04162A] underline underline-offset-2 font-semibold hover:text-gold-ink">
               Privacy Policy
             </a>
             . <span className="text-gold-ink">*</span>

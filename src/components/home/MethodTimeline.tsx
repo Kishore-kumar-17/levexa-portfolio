@@ -28,7 +28,7 @@ const STEPS = [
 
 // "How we do it": intro on the left, a vertical timeline of the four steps on the right
 export const MethodTimeline: React.FC = () => (
-  <section id="process" className="bg-white text-[#07192F] py-20 sm:py-24 border-t border-stone-200/70">
+  <section id="process" className="bg-white text-[#04162A] py-20 sm:py-24 border-t border-stone-200/70">
     <Container>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
         <div className="lg:sticky lg:top-32">
@@ -39,7 +39,7 @@ export const MethodTimeline: React.FC = () => (
             We&apos;ve learned what works by building, testing and measuring. Every project, big or small,
             follows the same four steps.
           </p>
-          <p className="text-lg sm:text-xl text-[#07192F]">
+          <p className="text-lg sm:text-xl text-[#04162A]">
             We call it the <span className="font-semibold text-gold-ink">Level Up Method</span>.
           </p>
         </div>
@@ -56,7 +56,7 @@ export const MethodTimeline: React.FC = () => (
                 >
                   {idx + 1}
                 </span>
-                <div className="rounded-2xl bg-[#FAF8F5] border border-stone-200 text-[#07192F] p-6 sm:p-7 shadow-2xs">
+                <div className="rounded-2xl bg-[#FAF8F5] border border-stone-200 text-[#04162A] p-6 sm:p-7 shadow-2xs">
                   <Icon className="w-7 h-7 text-[#C88A1A] mb-4" aria-hidden="true" />
                   <h3 className="text-xl font-bold mb-2">
                     <span className="sr-only">Step {idx + 1}: </span>

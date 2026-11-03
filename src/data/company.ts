@@ -24,7 +24,7 @@ export const companyConfig = {
   },
 
   brandColors: {
-    navy: "#07192F",
+    navy: "#04162A",
     gold: "#F5A900",
     white: "#FFFFFF",
     coolGray: "#F4F6F9",

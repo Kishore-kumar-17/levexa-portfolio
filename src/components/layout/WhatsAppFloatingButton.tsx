@@ -39,7 +39,7 @@ export const WhatsAppFloatingButton: React.FC = () => {
       <span className="flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#25D366] text-white">
         <WhatsAppIcon className="w-[22px] h-[22px] sm:w-6 sm:h-6" />
       </span>
-      <span className="text-sm font-bold text-[#07192F] whitespace-nowrap">WhatsApp us</span>
+      <span className="text-sm font-bold text-[#04162A] whitespace-nowrap">WhatsApp us</span>
     </a>
   );
 };

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, IBM_Plex_Mono } from "next/font/google";
+import { Inter, IBM_Plex_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
@@ -10,6 +10,14 @@ import { constructMetadata } from "@/lib/metadata";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
+  display: "swap",
+});
+
+// Headings: the same heavy geometric face as Levexa's slides and reels
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
+  variable: "--font-display",
   display: "swap",
 });
 
@@ -36,14 +44,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${ibmPlexMono.variable}`}
+      className={`${inter.variable} ${ibmPlexMono.variable} ${poppins.variable}`}
     >
       <body className="bg-[#FAF8F5] text-navy-900 min-h-screen flex flex-col font-sans antialiased selection:bg-gold selection:text-navy-900">
         <StructuredData />
         {/* First Tab stop: lets keyboard users jump past the header menu */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:px-5 focus:py-3 focus:rounded-full focus:bg-[#07192F] focus:text-white focus:font-semibold"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:px-5 focus:py-3 focus:rounded-full focus:bg-[#04162A] focus:text-white focus:font-semibold"
         >
           Skip to content
         </a>

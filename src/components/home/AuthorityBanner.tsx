@@ -16,7 +16,7 @@ const PLATFORMS = [
 // "Become the go-to name" photo banner, followed by the platforms we work on
 export const AuthorityBanner: React.FC = () => (
   <>
-    <section className="relative isolate overflow-hidden bg-[#FAF8F5] text-[#07192F] py-24 sm:py-32 border-t border-stone-200/70">
+    <section className="relative isolate overflow-hidden bg-[#FAF8F5] text-[#04162A] py-24 sm:py-32 border-t border-stone-200/70">
       <Image src="/images/process/06-growth.jpg" alt="" fill sizes="100vw" className="object-cover object-right -z-20" />
       <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#FAF8F5] via-[#FAF8F5]/90 to-[#FAF8F5]/30" aria-hidden="true" />
       <Container>
@@ -38,7 +38,7 @@ export const AuthorityBanner: React.FC = () => (
       </Container>
     </section>
 
-    <section className="bg-white text-[#07192F] py-10 sm:py-12 border-y border-stone-200/70">
+    <section className="bg-white text-[#04162A] py-10 sm:py-12 border-y border-stone-200/70">
       <Container>
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
           <h2 className="text-base font-semibold text-gold-ink shrink-0">Platforms we work on</h2>

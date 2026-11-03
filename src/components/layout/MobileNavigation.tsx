@@ -135,14 +135,14 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
           <div className="space-y-1 text-sm text-slate-600 pt-2">
             <a
               href={`mailto:${companyConfig.contact.email}`}
-              className="flex items-center gap-2.5 text-slate-600 hover:text-[#07192F] transition-colors py-2.5"
+              className="flex items-center gap-2.5 text-slate-600 hover:text-[#04162A] transition-colors py-2.5"
             >
               <Mail className="w-3.5 h-3.5 text-[#C88A1A]" />
               <span className="font-medium">{companyConfig.contact.email}</span>
             </a>
             <a
               href={`tel:${companyConfig.contact.phone.replace(/\s+/g, "")}`}
-              className="flex items-center gap-2.5 text-slate-600 hover:text-[#07192F] transition-colors py-2.5"
+              className="flex items-center gap-2.5 text-slate-600 hover:text-[#04162A] transition-colors py-2.5"
             >
               <Phone className="w-3.5 h-3.5 text-[#C88A1A]" />
               <span className="font-medium">{companyConfig.contact.phone}</span>

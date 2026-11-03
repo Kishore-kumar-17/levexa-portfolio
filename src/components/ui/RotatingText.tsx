@@ -45,7 +45,7 @@ export const RotatingText: React.FC<RotatingTextProps> = ({
 
   return (
     <span className={`inline-flex overflow-hidden py-1 ${mainClassName}`}>
-      <span key={`${index}-${phase}`} className={`inline-block ${className}`} style={{ animation }}>
+      <span key={`${index}-${phase}`} className={`rt-word inline-block ${className}`} style={{ animation }}>
         {texts[index]}
       </span>
     </span>

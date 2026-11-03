@@ -34,7 +34,7 @@ export default function ContactPage() {
   ];
 
   return (
-    <div className="bg-[#FAF8F5] text-[#07192F]">
+    <div className="bg-[#FAF8F5] text-[#04162A]">
       {/* 1. Banner */}
       <PageBanner
         image="/images/process/02-strategy.jpg"
@@ -63,7 +63,7 @@ export default function ContactPage() {
                   target={social.href.startsWith("http") ? "_blank" : undefined}
                   rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
                   aria-label={social.label}
-                  className="w-11 h-11 rounded-full bg-[#C88A1A] text-[#07192F] flex items-center justify-center hover:bg-[#F5A900] transition-colors"
+                  className="w-11 h-11 rounded-full bg-[#C88A1A] text-[#04162A] flex items-center justify-center hover:bg-[#F5A900] transition-colors"
                 >
                   {social.icon}
                 </a>

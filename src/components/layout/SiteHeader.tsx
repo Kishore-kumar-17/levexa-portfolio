@@ -41,8 +41,8 @@ export const SiteHeader: React.FC = () => {
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled
-            ? "bg-[#FAF8F5]/95 backdrop-blur-md border-b border-[#D7D3CB] shadow-2xs py-4"
-            : "bg-[#FAF8F5]/85 backdrop-blur-sm border-b border-transparent py-5 sm:py-6"
+            ? "bg-[#FAF8F5] border-b border-[#D7D3CB] shadow-2xs py-4"
+            : "bg-[#FAF8F5] border-b border-transparent py-5 sm:py-6"
         }`}
       >
         <Container>
@@ -77,8 +77,8 @@ export const SiteHeader: React.FC = () => {
                     href={item.href}
                     className={`text-[15px] font-medium py-2 border-b-2 transition-colors ${
                       isActive
-                        ? "text-[#07192F] font-semibold border-[#C88A1A]"
-                        : "text-slate-600 border-transparent hover:text-[#07192F]"
+                        ? "text-[#04162A] font-semibold border-[#C88A1A]"
+                        : "text-slate-600 border-transparent hover:text-[#04162A]"
                     }`}
                     aria-current={isActive ? "page" : undefined}
                   >

@@ -17,7 +17,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="pt-24 sm:pt-28 bg-[#FAF8F5] text-[#07192F] flex-1 flex items-center">
+    <div className="pt-24 sm:pt-28 bg-[#FAF8F5] text-[#04162A] flex-1 flex items-center">
       <Container>
         <section className="py-20 lg:py-28 max-w-3xl" role="alert">
 

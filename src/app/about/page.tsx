@@ -32,7 +32,7 @@ export default function AboutPage() {
   )}`;
 
   return (
-    <div className="bg-[#FAF8F5] text-[#07192F]">
+    <div className="bg-[#FAF8F5] text-[#04162A]">
       {/* 1. Banner */}
       <PageBanner
         image="/images/process/01-discovery.jpg"
@@ -93,7 +93,7 @@ export default function AboutPage() {
                   sizes="(max-width: 1024px) 100vw, 448px"
                   className="object-cover"
                 />
-                <div className="absolute bottom-4 left-4 right-4 px-4 py-3 rounded-xl bg-[#07192F]/85 backdrop-blur-md border border-white/10">
+                <div className="absolute bottom-4 left-4 right-4 px-4 py-3 rounded-xl bg-[#04162A]/85 backdrop-blur-md border border-white/10">
                   <p className="text-base font-bold text-white">Lavanya</p>
                   <p className="text-xs font-mono font-semibold text-[#E4AB3C] uppercase tracking-wider">
                     Founder &amp; CEO, Levexa
@@ -114,7 +114,7 @@ export default function AboutPage() {
               href={instagramProfileData.profileUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="block max-w-md mx-auto w-full rounded-2xl bg-white border border-stone-200 text-[#07192F] p-6 shadow-card-elevated transition-transform hover:-translate-y-1"
+              className="block max-w-md mx-auto w-full rounded-2xl bg-white border border-stone-200 text-[#04162A] p-6 shadow-card-elevated transition-transform hover:-translate-y-1"
             >
               <div className="flex items-center gap-5">
                 <div className="relative w-20 h-20 rounded-full overflow-hidden ring-2 ring-[#C88A1A] ring-offset-2 shrink-0">
@@ -134,7 +134,7 @@ export default function AboutPage() {
                   <p key={line} className="text-slate-700">{line}</p>
                 ))}
               </div>
-              <span className="mt-5 flex items-center justify-center gap-2 h-10 rounded-lg bg-[#07192F] text-white text-sm font-semibold">
+              <span className="mt-5 flex items-center justify-center gap-2 h-10 rounded-lg bg-[#04162A] text-white text-sm font-semibold">
                 <Instagram className="w-4 h-4" aria-hidden="true" />
                 View on Instagram
               </span>
@@ -165,7 +165,7 @@ export default function AboutPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Lavanya on Instagram"
-                  className="w-11 h-11 rounded-full bg-[#C88A1A] text-[#07192F] flex items-center justify-center hover:bg-[#F5A900] transition-colors"
+                  className="w-11 h-11 rounded-full bg-[#C88A1A] text-[#04162A] flex items-center justify-center hover:bg-[#F5A900] transition-colors"
                 >
                   <Instagram className="w-5 h-5" aria-hidden="true" />
                 </a>
@@ -174,7 +174,7 @@ export default function AboutPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Levexa on LinkedIn"
-                  className="w-11 h-11 rounded-full bg-[#C88A1A] text-[#07192F] flex items-center justify-center hover:bg-[#F5A900] transition-colors"
+                  className="w-11 h-11 rounded-full bg-[#C88A1A] text-[#04162A] flex items-center justify-center hover:bg-[#F5A900] transition-colors"
                 >
                   <Linkedin className="w-5 h-5" aria-hidden="true" />
                 </a>
@@ -183,7 +183,7 @@ export default function AboutPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Message Levexa on WhatsApp"
-                  className="w-11 h-11 rounded-full bg-[#C88A1A] text-[#07192F] flex items-center justify-center hover:bg-[#F5A900] transition-colors"
+                  className="w-11 h-11 rounded-full bg-[#C88A1A] text-[#04162A] flex items-center justify-center hover:bg-[#F5A900] transition-colors"
                 >
                   <WhatsAppIcon className="w-5 h-5" />
                 </a>
@@ -194,11 +194,11 @@ export default function AboutPage() {
       </section>
 
       {/* 4. Proof band */}
-      <section className="bg-[#C88A1A] text-[#07192F] py-12 sm:py-14">
+      <section className="on-dark bg-[#04162A] text-white py-14 sm:py-16">
         <Container>
-          <p className="text-center text-2xl sm:text-3xl font-bold tracking-tight max-w-4xl mx-auto leading-snug">
+          <p className="text-center font-display text-2xl sm:text-3xl font-bold tracking-tight max-w-4xl mx-auto leading-snug">
             Reels scripted by Levexa have earned{" "}
-            <span className="font-mono">{reelTotals.views}</span> views, and we&apos;re only
+            <span className="text-[#FEB005] font-extrabold">{reelTotals.views}</span> views, and we&apos;re only
             getting started!
           </p>
         </Container>

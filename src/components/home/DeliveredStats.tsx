@@ -26,7 +26,7 @@ const STATS = [
 
 // "We have delivered": the headline number over a faint photo collage
 export const DeliveredStats: React.FC = () => (
-  <section className="relative isolate overflow-hidden bg-white text-[#07192F] py-20 sm:py-24 border-t border-stone-200/70">
+  <section className="relative isolate overflow-hidden bg-white text-[#04162A] py-20 sm:py-24 border-t border-stone-200/70">
     <div className="absolute inset-0 -z-20 grid grid-cols-3 sm:grid-cols-5 gap-3 p-3 opacity-[0.1]" aria-hidden="true">
       {COLLAGE.map((src) => (
         <div key={src} className="relative aspect-[4/5] rounded-xl overflow-hidden">
@@ -39,7 +39,7 @@ export const DeliveredStats: React.FC = () => (
     <Container>
       <div className="text-center">
         <h2 className="type-h2">We have delivered</h2>
-        <p className="mt-4 text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-gold-deep font-mono">
+        <p className="mt-4 text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight text-gold-deep font-display">
           {reelTotals.views}
         </p>
         <p className="mt-3 text-xl sm:text-2xl text-slate-700">content views and counting</p>
@@ -48,7 +48,7 @@ export const DeliveredStats: React.FC = () => (
           {STATS.map((stat) => (
             <div key={stat.label} className="flex flex-col-reverse">
               <dt className="mt-1 text-sm sm:text-base font-semibold text-gold-ink">{stat.label}</dt>
-              <dd className="text-3xl sm:text-5xl font-bold tracking-tight font-mono">{stat.value}</dd>
+              <dd className="text-3xl sm:text-5xl font-extrabold tracking-tight font-display">{stat.value}</dd>
             </div>
           ))}
         </dl>

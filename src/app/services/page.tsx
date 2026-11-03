@@ -57,7 +57,7 @@ const quoteHref = (plan: string) =>
 
 export default function ServicesPage() {
   return (
-    <div className="bg-[#FAF8F5] text-[#07192F]">
+    <div className="bg-[#FAF8F5] text-[#04162A]">
       {/* 1. Banner */}
       <PageBanner
         image="/images/pillars/02-branding-marketing.jpg"
@@ -96,7 +96,7 @@ export default function ServicesPage() {
                       </li>
                     ))}
                   </ul>
-                  <span className="mt-auto inline-flex items-center gap-2 text-sm font-bold text-[#07192F] group-hover:text-gold-ink transition-colors">
+                  <span className="mt-auto inline-flex items-center gap-2 text-sm font-bold text-[#04162A] group-hover:text-gold-ink transition-colors">
                     Learn more
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                   </span>
@@ -128,17 +128,21 @@ export default function ServicesPage() {
               <article
                 key={plan.name}
                 className={`relative flex flex-col rounded-2xl overflow-hidden bg-white border ${
-                  plan.popular ? "border-[#C88A1A] shadow-card-elevated md:-translate-y-3" : "border-stone-200 shadow-2xs"
+                  plan.popular ? "border-[#FEB005] shadow-card-elevated md:-translate-y-3" : "border-stone-200 shadow-2xs"
                 }`}
               >
                 {plan.popular && (
-                  <span className="absolute top-4 right-4 px-3 py-1 rounded-full bg-[#07192F] text-[#E4AB3C] text-xs font-bold uppercase tracking-wider">
+                  <span className="absolute top-4 right-4 px-3 py-1 rounded-full bg-[#04162A] text-[#FEB005] text-xs font-bold uppercase tracking-wider">
                     Recommended
                   </span>
                 )}
-                <div className="bg-[#C88A1A] text-[#07192F] px-6 pt-8 pb-6 text-center">
-                  <h3 className="text-3xl font-bold tracking-tight">{plan.name}</h3>
-                  <p className="mt-2 text-sm font-medium">{plan.forWho}</p>
+                <div
+                  className={`px-6 pt-8 pb-6 text-center ${
+                    plan.popular ? "bg-[#FEB005] text-[#04162A]" : "on-dark bg-[#04162A] text-white"
+                  }`}
+                >
+                  <h3 className="text-3xl font-extrabold tracking-tight">{plan.name}</h3>
+                  <p className={`mt-2 text-sm font-medium ${plan.popular ? "" : "text-white/80"}`}>{plan.forWho}</p>
                 </div>
                 <div className="px-6 py-6 border-b border-stone-200">
                   <a
@@ -156,7 +160,7 @@ export default function ServicesPage() {
                     return (
                       <li
                         key={feature}
-                        className={`flex items-start gap-3 text-[15px] ${included ? "text-[#07192F]" : "text-slate-500"}`}
+                        className={`flex items-start gap-3 text-[15px] ${included ? "text-[#04162A]" : "text-slate-500"}`}
                       >
                         {included ? (
                           <Check className="w-4 h-4 text-[#C88A1A] mt-0.5 shrink-0" aria-hidden="true" />
