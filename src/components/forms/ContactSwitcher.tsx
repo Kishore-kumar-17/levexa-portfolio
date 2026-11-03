@@ -81,7 +81,7 @@ export const ContactSwitcher: React.FC = () => {
         </div>
       ) : (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
-          <div className="p-7 sm:p-8 rounded-2xl bg-card border border-line text-fg">
+          <div data-theme="navy" className="p-7 sm:p-8 rounded-2xl bg-page text-fg">
             <div className="flex items-center gap-4 mb-5">
               <div className="relative w-16 h-16 rounded-full overflow-hidden ring-2 ring-accent ring-offset-2 ring-offset-card shrink-0">
                 <Image

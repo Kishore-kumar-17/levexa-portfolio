@@ -8,7 +8,7 @@ import { GoldArcs } from "@/components/ui/GoldArcs";
 export const GetStartedBox: React.FC = () => (
   <section className="bg-page py-16 sm:py-20 lg:py-24 border-t border-line/70">
     <Container>
-      <div className="relative overflow-hidden max-w-5xl mx-auto rounded-3xl bg-card border border-line text-fg shadow-card-elevated px-6 py-14 sm:px-12 sm:py-20 text-center">
+      <div data-theme="navy" className="relative overflow-hidden max-w-5xl mx-auto rounded-3xl bg-page text-fg shadow-card-elevated px-6 py-14 sm:px-12 sm:py-20 text-center">
         <GoldArcs />
         <div className="relative">
           <h2 className="type-h2 mb-5">

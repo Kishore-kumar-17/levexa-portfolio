@@ -6,6 +6,7 @@ import { CTASection } from "@/components/sections/CTASection";
 import { ArrowRight, CheckCircle2, ChevronDown } from "lucide-react";
 import { ClickSpark } from "@/components/ui/ClickSpark";
 import { GoldArcs } from "@/components/ui/GoldArcs";
+import { DotGrid } from "@/components/ui/DotGrid";
 
 export interface DeliverableDetailed {
   title: string;
@@ -79,7 +80,7 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
   return (
     <div className="bg-page text-fg min-h-screen">
       {/* 1. Breadcrumbs & Top Meta: navy hero, like the slides */}
-      <section className="relative overflow-hidden bg-page text-fg border-b border-line pt-32 sm:pt-40 pb-16 sm:pb-24">
+      <section data-theme="navy" className="relative overflow-hidden bg-page text-fg pt-32 sm:pt-40 pb-16 sm:pb-24">
         <GoldArcs flip />
         <Container className="relative">
           {/* Breadcrumb */}
@@ -157,7 +158,8 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
       </section>
 
       {/* 2. What's Included */}
-      <section id="deliverables" className="py-16 lg:py-24 border-b border-line scroll-mt-24">
+      <section id="deliverables" className="relative py-16 lg:py-24 border-b border-line scroll-mt-24">
+        <DotGrid />
         <Container>
           <SectionIntro title="What you get" />
 

@@ -11,6 +11,8 @@ import { SERVICE_ICONS } from "@/components/home/SpecialiseCards";
 import { servicesData } from "@/data/services";
 import { companyConfig } from "@/data/company";
 import { constructMetadata } from "@/lib/metadata";
+import { Eyebrow } from "@/components/ui/Eyebrow";
+import { DotGrid } from "@/components/ui/DotGrid";
 
 export const metadata: Metadata = constructMetadata({
   title: "Growth Advisory Services — Strategy, Marketing, Sales & Automation",
@@ -111,9 +113,11 @@ export default function ServicesPage() {
       <FounderQuote />
 
       {/* 4. Plans */}
-      <section className="py-20 sm:py-24">
+      <section className="relative py-20 sm:py-24">
+        <DotGrid />
         <Container>
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-14">
+            <Eyebrow>Choose your path</Eyebrow>
             <h2 className="type-h2">
               Choose the plan that works best for <Underline>you</Underline>
             </h2>
@@ -127,6 +131,7 @@ export default function ServicesPage() {
             {PLANS.map((plan) => (
               <article
                 key={plan.name}
+                data-theme={plan.popular ? "navy" : undefined}
                 className={`relative flex flex-col rounded-2xl overflow-hidden bg-card border ${
                   plan.popular ? "border-[#FEB005] shadow-card-elevated md:-translate-y-3" : "border-line shadow-2xs"
                 }`}
@@ -138,11 +143,11 @@ export default function ServicesPage() {
                 )}
                 <div
                   className={`px-6 pt-8 pb-6 text-center ${
-                    plan.popular ? "bg-[#FEB005] text-[#04162A]" : "bg-fg text-page"
+                    plan.popular ? "bg-[#FEB005] text-[#04162A]" : "bg-card text-fg border-b border-line"
                   }`}
                 >
                   <h3 className="text-3xl font-extrabold tracking-tight">{plan.name}</h3>
-                  <p className={`mt-2 text-sm font-medium ${plan.popular ? "" : "text-page/80"}`}>{plan.forWho}</p>
+                  <p className={`mt-2 text-sm font-medium ${plan.popular ? "" : "text-fg-3"}`}>{plan.forWho}</p>
                 </div>
                 <div className="px-6 py-6 border-b border-line">
                   <a

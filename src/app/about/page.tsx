@@ -11,6 +11,8 @@ import { instagramProfileData } from "@/data/instagram-works";
 import { companyConfig } from "@/data/company";
 import { reelTotals } from "@/lib/reelStats";
 import { constructMetadata } from "@/lib/metadata";
+import { Eyebrow } from "@/components/ui/Eyebrow";
+import { DotGrid } from "@/components/ui/DotGrid";
 
 export const metadata: Metadata = constructMetadata({
   title: "About Levexa — Strategic Business Growth Advisory",
@@ -57,6 +59,7 @@ export default function AboutPage() {
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <div className="lg:col-span-7">
+              <Eyebrow>Our story</Eyebrow>
               <h2 className="type-h2 mb-8">
                 <Underline>Levexa</Underline>…
               </h2>
@@ -106,7 +109,8 @@ export default function AboutPage() {
       </section>
 
       {/* 3. Community + follow */}
-      <section className="py-20 sm:py-24 border-t border-line/70">
+      <section className="relative py-20 sm:py-24 border-t border-line/70">
+        <DotGrid />
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Instagram profile card */}
@@ -141,6 +145,7 @@ export default function AboutPage() {
             </a>
 
             <div>
+              <Eyebrow>Community</Eyebrow>
               <h2 className="type-h2 mb-6">
                 Join the <span className="text-gold-deep">Levexa community</span>
               </h2>
@@ -194,7 +199,7 @@ export default function AboutPage() {
       </section>
 
       {/* 4. Proof band */}
-      <section className="bg-band text-fg border-y border-line py-14 sm:py-16">
+      <section data-theme="navy" className="bg-page text-fg py-14 sm:py-16">
         <Container>
           <p className="text-center font-display text-2xl sm:text-3xl font-bold tracking-tight max-w-4xl mx-auto leading-snug">
             Reels scripted by Levexa have earned{" "}
@@ -208,6 +213,7 @@ export default function AboutPage() {
       <section className="py-20 sm:py-24 bg-band">
         <Container>
           <div className="max-w-3xl mb-12">
+            <Eyebrow>What we stand for</Eyebrow>
             <h2 className="type-h2 mb-6">
               Levexa <Underline>is…</Underline>
             </h2>

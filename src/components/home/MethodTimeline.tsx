@@ -2,6 +2,8 @@ import React from "react";
 import { LineChart, Map, Rocket, Search } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Underline } from "@/components/ui/Underline";
+import { Eyebrow } from "@/components/ui/Eyebrow";
+import { DotGrid } from "@/components/ui/DotGrid";
 
 const STEPS = [
   {
@@ -28,10 +30,12 @@ const STEPS = [
 
 // "How we do it": intro on the left, a vertical timeline of the four steps on the right
 export const MethodTimeline: React.FC = () => (
-  <section id="process" className="bg-band text-fg py-20 sm:py-24 border-t border-line/70">
+  <section id="process" className="relative bg-band text-fg py-20 sm:py-24 border-t border-line/70">
+    <DotGrid />
     <Container>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
         <div className="lg:sticky lg:top-32">
+          <Eyebrow>The method</Eyebrow>
           <h2 className="type-h2 mb-7">
             How we <Underline>do it</Underline>
           </h2>

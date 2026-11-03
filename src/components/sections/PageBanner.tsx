@@ -16,7 +16,7 @@ interface PageBannerProps {
 
 // Top-of-page banner used by About, Services and Contact: faded photo background, centred title
 export const PageBanner: React.FC<PageBannerProps> = ({ title, subtitle, ctaLabel, ctaHref, image }) => (
-  <section className="relative isolate overflow-hidden bg-page text-fg pt-36 sm:pt-40 lg:pt-44 pb-20 sm:pb-24 lg:pb-28">
+  <section data-theme="navy" className="relative isolate overflow-hidden bg-page text-fg pt-36 sm:pt-40 lg:pt-44 pb-20 sm:pb-24 lg:pb-28">
     <Image src={image} alt="" fill priority sizes="100vw" className="object-cover -z-20 opacity-20" />
     <div
       className="absolute inset-0 -z-10 bg-gradient-to-b from-page/85 via-page/80 to-page"

@@ -4,6 +4,8 @@ import { ArrowRight, Compass, Megaphone, Target, Workflow, LucideIcon } from "lu
 import { Container } from "@/components/ui/Container";
 import { Underline } from "@/components/ui/Underline";
 import { servicesData } from "@/data/services";
+import { Eyebrow } from "@/components/ui/Eyebrow";
+import { DotGrid } from "@/components/ui/DotGrid";
 
 export const SERVICE_ICONS: Record<string, LucideIcon> = {
   "growth-strategy": Compass,
@@ -14,9 +16,11 @@ export const SERVICE_ICONS: Record<string, LucideIcon> = {
 
 // "We specialise in": one card per service, each linking to its page
 export const SpecialiseCards: React.FC = () => (
-  <section id="services" className="bg-page text-fg py-20 sm:py-24 border-t border-line/70">
+  <section id="services" className="relative bg-page text-fg py-20 sm:py-24 border-t border-line/70">
+    <DotGrid />
     <Container>
       <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-14">
+        <Eyebrow>What we do</Eyebrow>
         <h2 className="type-h2">
           We <Underline>specialise</Underline> in
         </h2>

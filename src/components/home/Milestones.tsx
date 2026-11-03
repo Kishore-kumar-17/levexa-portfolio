@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { Underline } from "@/components/ui/Underline";
 import { reelBests } from "@/lib/reelStats";
 import { GoldArcs } from "@/components/ui/GoldArcs";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 
 // Best single-reel results, taken from the reel data
 const MILESTONES = [
@@ -14,10 +15,11 @@ const MILESTONES = [
 ];
 
 export const Milestones: React.FC = () => (
-  <section className="relative overflow-hidden bg-band text-fg py-20 sm:py-24">
+  <section data-theme="navy" className="relative overflow-hidden bg-page text-fg py-20 sm:py-24">
     <GoldArcs flip />
     <Container className="relative">
       <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-14">
+        <Eyebrow>Best results</Eyebrow>
         <h2 className="type-h2">
           Key <Underline>milestones</Underline> we&apos;ve reached
         </h2>

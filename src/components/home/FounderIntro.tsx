@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Underline } from "@/components/ui/Underline";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 
 // "I'm Lavanya. I started Levexa…": founder photo and a short introduction
 export const FounderIntro: React.FC = () => (
@@ -23,6 +24,7 @@ export const FounderIntro: React.FC = () => (
         </div>
 
         <div className="lg:col-span-7">
+          <Eyebrow>Who&apos;s behind Levexa</Eyebrow>
           <h2 className="type-h2 mb-7">
             I&apos;m Lavanya. <br />I started <Underline>Levexa</Underline>…
           </h2>

@@ -4,6 +4,7 @@ import React, { useId, useState } from "react";
 import { BadgeCheck, Magnet, TrendingUp } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Underline } from "@/components/ui/Underline";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 
 const TABS = [
   {
@@ -40,6 +41,7 @@ export const OutcomeTabs: React.FC = () => {
   return (
     <section className="bg-page text-fg pb-20 sm:pb-24">
       <Container>
+        <Eyebrow className="text-center">What you get</Eyebrow>
         <h2 className="type-h2 text-center max-w-3xl mx-auto mb-10 sm:mb-12">
           And more, to help you create <Underline>content</Underline> that…
         </h2>

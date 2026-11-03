@@ -4,7 +4,8 @@
 
 /* ---------------------------------------------------------------------------------------------
    Themes. Every colour on the site comes from these variables (Tailwind: page, band, card, fg,
-   fg-2, fg-3, line, accent, wordmark). <html data-theme="light|navy"> picks the set.
+   fg-2, fg-3, line, accent, wordmark). The page is light (cream, like Levexa's slides); any
+   section or card with data-theme="navy" switches itself and everything inside it to navy.
    Channels are "R G B" so Tailwind opacity modifiers work (e.g. bg-page/90).
    Contrast (WCAG AA) is checked for both sets.
    --------------------------------------------------------------------------------------------- */
@@ -22,6 +23,8 @@
   --gold-ink: #8A5F0E;     /* gold text, normal size: 5.3:1 on cream */
   --gold-deep: #A87512;    /* gold text, 24px+: 3.8:1 on cream */
   --focus-ring: #04162A;
+  --show-light: inline;    /* which logo file is visible (see .only-light / .only-navy) */
+  --show-navy: none;
   color-scheme: light;
 }
 
@@ -38,13 +41,17 @@
   --gold-ink: #FEB005;     /* 9.8:1 on navy */
   --gold-deep: #FEB005;
   --focus-ring: #FEB005;
+  --show-light: none;
+  --show-navy: inline;
   color-scheme: dark;
 }
 
-/* Show an element in one theme only (e.g. the light/dark logo files) */
-[data-theme="navy"] .only-light,
-:root:not([data-theme="navy"]) .only-navy {
-  display: none !important;
+/* Show an element in one theme only (e.g. the light/dark logo files); follows the nearest theme */
+.only-light {
+  display: var(--show-light) !important;
+}
+.only-navy {
+  display: var(--show-navy) !important;
 }
 
 :root {

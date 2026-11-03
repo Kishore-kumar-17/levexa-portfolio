@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/Container";
 
 // Band with Lavanya's photo and a line from her own Instagram bio
 export const FounderQuote: React.FC = () => (
-  <section className="bg-band text-fg border-y border-line py-12 sm:py-16">
+  <section data-theme="navy" className="bg-page text-fg py-12 sm:py-16">
     <Container>
       <figure className="flex flex-col sm:flex-row items-center gap-6 sm:gap-10 max-w-5xl mx-auto text-center sm:text-left">
         <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden ring-4 ring-[#FEB005] shrink-0">

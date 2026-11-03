@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { reelTotals } from "@/lib/reelStats";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 
 const COLLAGE = [
   "/images/process/01-discovery.jpg",
@@ -26,7 +27,7 @@ const STATS = [
 
 // "We have delivered": the headline number over a faint photo collage
 export const DeliveredStats: React.FC = () => (
-  <section className="relative isolate overflow-hidden bg-band text-fg py-20 sm:py-24 border-t border-line/70">
+  <section data-theme="navy" className="relative isolate overflow-hidden bg-page text-fg py-20 sm:py-24">
     <div className="absolute inset-0 -z-20 grid grid-cols-3 sm:grid-cols-5 gap-3 p-3 opacity-[0.1]" aria-hidden="true">
       {COLLAGE.map((src) => (
         <div key={src} className="relative aspect-[4/5] rounded-xl overflow-hidden">
@@ -34,10 +35,11 @@ export const DeliveredStats: React.FC = () => (
         </div>
       ))}
     </div>
-    <div className="absolute inset-0 -z-10 bg-gradient-to-b from-band via-band/60 to-band" aria-hidden="true" />
+    <div className="absolute inset-0 -z-10 bg-gradient-to-b from-page via-page/70 to-page" aria-hidden="true" />
 
     <Container>
       <div className="text-center">
+        <Eyebrow>The proof</Eyebrow>
         <h2 className="type-h2">We have delivered</h2>
         <p className="mt-4 text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight text-gold-deep font-display">
           {reelTotals.views}

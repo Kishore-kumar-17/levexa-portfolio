@@ -7,6 +7,7 @@ import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { RotatingText } from "@/components/ui/RotatingText";
 import { GoldArcs } from "@/components/ui/GoldArcs";
+import { DotGrid } from "@/components/ui/DotGrid";
 
 const OUTCOMES = ["leads", "sales", "revenue", "growth"];
 
@@ -19,6 +20,7 @@ const STACK = [
 export const HomeHero: React.FC = () => (
   <section className="relative overflow-hidden bg-page text-fg pt-32 sm:pt-36 lg:pt-40 pb-20 sm:pb-24 lg:pb-28">
     <GoldArcs />
+    <DotGrid className="top-28 right-10" />
 
     <Container className="relative">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">

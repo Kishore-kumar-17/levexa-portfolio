@@ -28,7 +28,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
   return (
     <section className="py-20 lg:py-28 bg-page text-fg border-t border-line relative overflow-hidden">
       <Container className="relative z-10">
-        <div className="max-w-5xl mx-auto rounded-3xl bg-card border border-line text-fg p-10 sm:p-14 lg:p-16 text-center shadow-card-elevated relative overflow-hidden">
+        <div data-theme="navy" className="max-w-5xl mx-auto rounded-3xl bg-page text-fg p-10 sm:p-14 lg:p-16 text-center shadow-card-elevated relative overflow-hidden">
           {/* Subtle gold accent top line */}
           <div className="absolute top-0 left-1/4 right-1/4 h-[3px] bg-gradient-to-r from-transparent via-[#FEB005] to-transparent z-10" />
           

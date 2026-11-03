@@ -52,7 +52,7 @@ export const SiteFooter: React.FC = () => {
   }, [prefersReducedMotion]);
 
   return (
-    <footer className="relative bg-band text-fg-2 overflow-hidden pt-12 sm:pt-16 md:pt-20 pb-0 border-t border-line">
+    <footer data-theme="navy" className="relative bg-page text-fg-2 overflow-hidden pt-12 sm:pt-16 md:pt-20 pb-0 border-t border-line">
       {/* Subtle tactile noise/texture overlay matching the video */}
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]"
