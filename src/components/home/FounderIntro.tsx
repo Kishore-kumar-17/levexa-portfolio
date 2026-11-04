@@ -26,7 +26,7 @@ export const FounderIntro: React.FC = () => (
         <div className="lg:col-span-7">
           <Eyebrow>Who&apos;s behind Levexa</Eyebrow>
           <h2 className="type-h2 mb-7">
-            I&apos;m Lavanya, <br />founder of <Underline>Levexa</Underline>.
+            I&apos;m Lavanya, <br />Founder of <Underline>Levexa</Underline>.
           </h2>
           <p className="type-lead mb-5">
             Levexa is a founder-led growth advisory that helps businesses turn marketing into measurable revenue.
