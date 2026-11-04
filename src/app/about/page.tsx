@@ -13,6 +13,7 @@ import { reelTotals } from "@/lib/reelStats";
 import { constructMetadata } from "@/lib/metadata";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { DotGrid } from "@/components/ui/DotGrid";
+import { PRIMARY_CTA } from "@/data/navigation";
 
 export const metadata: Metadata = constructMetadata({
   title: "About Levexa — Strategic Business Growth Advisory",
@@ -50,7 +51,7 @@ export default function AboutPage() {
             <Underline>clear plan</Underline> and steady execution that move your numbers.
           </>
         }
-        ctaLabel="Work with us"
+        ctaLabel={PRIMARY_CTA}
         ctaHref="/contact"
       />
 

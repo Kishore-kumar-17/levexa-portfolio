@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { reelTotals } from "@/lib/reelStats";
 import { Eyebrow } from "@/components/ui/Eyebrow";
+import { PRIMARY_CTA } from "@/data/navigation";
 
 const COLLAGE = [
   "/images/process/01-discovery.jpg",
@@ -56,7 +57,7 @@ export const DeliveredStats: React.FC = () => (
         </dl>
 
         <Link href="/contact" className="group btn-primary mt-12">
-          Let&apos;s connect
+          {PRIMARY_CTA}
           <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
         </Link>
       </div>

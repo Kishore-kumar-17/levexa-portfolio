@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Encircle } from "@/components/ui/Underline";
 import { Eyebrow } from "@/components/ui/Eyebrow";
+import { PRIMARY_CTA } from "@/data/navigation";
 
 // "Become the go-to name" photo banner
 export const AuthorityBanner: React.FC = () => (
@@ -24,7 +25,7 @@ export const AuthorityBanner: React.FC = () => (
           audience grows and turns into enquiries.
         </p>
         <Link href="/contact" className="group btn-primary mt-9">
-          Contact us
+          {PRIMARY_CTA}
           <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
         </Link>
       </div>

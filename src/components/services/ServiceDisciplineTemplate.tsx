@@ -7,6 +7,7 @@ import { ArrowRight, CheckCircle2, ChevronDown } from "lucide-react";
 import { ClickSpark } from "@/components/ui/ClickSpark";
 import { GoldArcs } from "@/components/ui/GoldArcs";
 import { DotGrid } from "@/components/ui/DotGrid";
+import { PRIMARY_CTA } from "@/data/navigation";
 
 export interface DeliverableDetailed {
   title: string;
@@ -122,7 +123,7 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
                     href="/contact"
                     className="btn-primary"
                   >
-                    Book a growth call
+                    {PRIMARY_CTA}
                   </Link>
                 </ClickSpark>
                 <Link
@@ -268,7 +269,7 @@ export const ServiceDisciplineTemplate: React.FC<ServiceDisciplineTemplateProps>
         title={ctaTitle}
         highlight={ctaHighlight}
         subtitle={ctaSubtitle}
-        primaryCtaText="Book a growth call"
+        primaryCtaText={PRIMARY_CTA}
         secondaryCtaText="Explore all services"
       />
     </div>

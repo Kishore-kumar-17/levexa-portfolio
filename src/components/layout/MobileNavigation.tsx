@@ -7,6 +7,7 @@ import { X, ArrowRight, Phone, Mail } from "lucide-react";
 import { mainNavigation } from "@/data/navigation";
 import { companyConfig } from "@/data/company";
 import { ThemeLogo } from "@/components/ui/ThemeLogo";
+import { PRIMARY_CTA } from "@/data/navigation";
 
 interface MobileNavigationProps {
   isOpen: boolean;
@@ -128,7 +129,7 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
         {/* Footer info & CTA */}
         <div className="pt-6 mt-8 border-t border-line space-y-5">
           <Link href="/contact" onClick={onClose} className="btn-primary w-full">
-            Book a growth call
+            {PRIMARY_CTA}
           </Link>
 
           <div className="space-y-1 text-sm text-fg-3 pt-2">

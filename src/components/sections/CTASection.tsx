@@ -7,6 +7,7 @@ import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { ClickSpark } from "@/components/ui/ClickSpark";
 import { Squares } from "@/components/ui/Squares";
+import { PRIMARY_CTA } from "@/data/navigation";
 
 interface CTASectionProps {
   title?: string;
@@ -21,14 +22,14 @@ export const CTASection: React.FC<CTASectionProps> = ({
   title = "Ready to level up your business to the",
   highlight = "next echelon of growth?",
   subtitle = "Partner directly with Levexa to transform commercial strategy, marketing demand, and sales execution into an interconnected revenue engine.",
-  primaryCtaText = "Book a growth call",
+  primaryCtaText = PRIMARY_CTA,
   secondaryCtaText = "Explore our services",
   secondaryCtaHref = "/services",
 }) => {
   return (
     <section className="py-20 lg:py-28 bg-page text-fg border-t border-line relative overflow-hidden">
       <Container className="relative z-10">
-        <div data-theme="navy" className="max-w-5xl mx-auto rounded-3xl bg-page text-fg p-10 sm:p-14 lg:p-16 text-center shadow-card-elevated relative overflow-hidden">
+        <div data-theme="navy" className="max-w-5xl mx-auto rounded-3xl bg-page text-fg px-4 py-10 sm:p-14 lg:p-16 text-center shadow-card-elevated relative overflow-hidden">
           {/* Subtle gold accent top line */}
           <div className="absolute top-0 left-1/4 right-1/4 h-[3px] bg-gradient-to-r from-transparent via-[#FEB005] to-transparent z-10" />
           

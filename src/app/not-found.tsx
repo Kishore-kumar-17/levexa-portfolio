@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import Link from "next/link";
 import { constructMetadata } from "@/lib/metadata";
+import { PRIMARY_CTA } from "@/data/navigation";
 
 export const metadata: Metadata = constructMetadata({
   title: "Page Not Found",
@@ -33,7 +34,7 @@ export default function NotFound() {
               Back to home
             </Link>
             <Link href="/contact" className="btn-secondary">
-              Contact us
+              {PRIMARY_CTA}
             </Link>
           </div>
         </section>

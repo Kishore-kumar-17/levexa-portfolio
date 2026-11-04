@@ -6,6 +6,7 @@ import { Underline } from "@/components/ui/Underline";
 import { reelBests } from "@/lib/reelStats";
 import { GoldArcs } from "@/components/ui/GoldArcs";
 import { Eyebrow } from "@/components/ui/Eyebrow";
+import { PRIMARY_CTA } from "@/data/navigation";
 
 // Best single-reel results, taken from the reel data
 const MILESTONES = [
@@ -44,7 +45,7 @@ export const Milestones: React.FC = () => (
 
       <div className="text-center mt-12">
         <Link href="/contact" className="group btn-primary">
-          Get started
+          {PRIMARY_CTA}
           <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
         </Link>
       </div>

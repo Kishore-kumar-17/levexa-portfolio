@@ -13,6 +13,7 @@ import { companyConfig } from "@/data/company";
 import { constructMetadata } from "@/lib/metadata";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { DotGrid } from "@/components/ui/DotGrid";
+import { PRIMARY_CTA } from "@/data/navigation";
 
 export const metadata: Metadata = constructMetadata({
   title: "Growth Advisory Services — Strategy, Marketing, Sales & Automation",
@@ -70,7 +71,7 @@ export default function ServicesPage() {
             under one roof, so your brand <Underline>gets results</Underline>.
           </>
         }
-        ctaLabel="Get started"
+        ctaLabel={PRIMARY_CTA}
         ctaHref="/contact"
       />
 

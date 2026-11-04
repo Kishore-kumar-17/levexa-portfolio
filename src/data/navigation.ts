@@ -1,5 +1,8 @@
 import { NavItem } from "@/types";
 
+// The one label for every button that leads to the contact page
+export const PRIMARY_CTA = "Request a Free Consultation";
+
 // The blog page exists but stays out of the menus until the first article is published.
 // When data/blog.ts has a real article, set this to true.
 export const SHOW_BLOG_IN_MENUS = false;

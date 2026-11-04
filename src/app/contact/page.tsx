@@ -10,9 +10,9 @@ import { companyConfig } from "@/data/company";
 import { constructMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Contact Levexa — Request Strategic Growth Consultation",
+  title: "Contact Levexa — Request a Free Consultation",
   description:
-    "Book a free consultation with Levexa to talk about your marketing, sales and growth goals.",
+    "Request a free consultation with Levexa to talk about your marketing, sales and growth goals.",
   path: "/contact",
 });
 

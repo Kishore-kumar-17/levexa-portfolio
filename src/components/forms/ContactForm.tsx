@@ -412,7 +412,7 @@ export const ContactForm: React.FC = () => {
           </>
         ) : (
           <>
-            <span>Book my growth call</span>
+            <span>Send Enquiry</span>
             <ArrowRight className="w-4 h-4" />
           </>
         )}

@@ -8,6 +8,7 @@ import { Container } from "@/components/ui/Container";
 import { MobileNavigation } from "./MobileNavigation";
 import { headerNavigation } from "@/data/navigation";
 import { ThemeLogo } from "@/components/ui/ThemeLogo";
+import { PRIMARY_CTA } from "@/data/navigation";
 
 export const SiteHeader: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -88,7 +89,7 @@ export const SiteHeader: React.FC = () => {
                 href="/contact"
                 className="btn-primary hidden sm:inline-flex !min-h-[44px] !px-5 !py-2.5 !text-sm"
               >
-                Book a growth call
+                {PRIMARY_CTA}
               </Link>
 
               {/* Mobile hamburger */}

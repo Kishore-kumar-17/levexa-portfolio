@@ -8,6 +8,7 @@ import { Container } from "@/components/ui/Container";
 import { RotatingText } from "@/components/ui/RotatingText";
 import { GoldArcs } from "@/components/ui/GoldArcs";
 import { DotGrid } from "@/components/ui/DotGrid";
+import { PRIMARY_CTA } from "@/data/navigation";
 
 const OUTCOMES = ["leads", "sales", "revenue", "growth"];
 
@@ -42,7 +43,7 @@ export const HomeHero: React.FC = () => (
 
           <div className="mt-9 flex flex-col sm:flex-row gap-3 sm:gap-4">
             <Link href="/contact" className="group btn-primary">
-              Get started
+              {PRIMARY_CTA}
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </Link>
             <Link href="/services" className="btn-secondary-dark">

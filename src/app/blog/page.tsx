@@ -10,6 +10,7 @@ import { GetStartedBox } from "@/components/sections/GetStartedBox";
 import { companyConfig } from "@/data/company";
 import { getPosts, formatPostDate, readingMinutes, isSamplePost } from "@/data/blog";
 import { constructMetadata } from "@/lib/metadata";
+import { PRIMARY_CTA } from "@/data/navigation";
 
 export const metadata: Metadata = constructMetadata({
   title: "Blog — Growth, Marketing and Sales Insights",
@@ -34,7 +35,7 @@ export default function BlogPage() {
             want marketing that brings in revenue.
           </>
         }
-        ctaLabel="Talk to us"
+        ctaLabel={PRIMARY_CTA}
         ctaHref="/contact"
       />
 

@@ -138,6 +138,16 @@
   }
 }
 
+/* Small phones: keep long button labels on one line (same tap height) */
+@media (max-width: 400px) {
+  .btn-primary {
+    gap: 0.5rem;
+    padding-inline: 0.75rem;
+    font-size: 15px;
+    letter-spacing: 0;
+  }
+}
+
 /* RotatingText: word slides out upward, the next slides in from below */
 @keyframes rt-out {
   to { transform: translateY(-100%); opacity: 0; }
