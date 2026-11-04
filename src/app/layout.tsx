@@ -6,6 +6,7 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { StructuredData } from "@/components/layout/StructuredData";
 import { WhatsAppFloatingButton } from "@/components/layout/WhatsAppFloatingButton";
 import { constructMetadata } from "@/lib/metadata";
+import { INTRO_INIT_SCRIPT } from "@/lib/intro";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -46,7 +47,12 @@ export default function RootLayout({
       lang="en"
       data-theme="light"
       className={`${inter.variable} ${ibmPlexMono.variable} ${poppins.variable}`}
+      // The intro script below may add a class to <html> before React hydrates
+      suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: INTRO_INIT_SCRIPT }} />
+      </head>
       <body className="bg-page text-fg min-h-screen flex flex-col font-sans antialiased selection:bg-gold selection:text-[#04162A]">
         <StructuredData />
         {/* First Tab stop: lets keyboard users jump past the header menu */}

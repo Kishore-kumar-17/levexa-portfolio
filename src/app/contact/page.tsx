@@ -12,7 +12,7 @@ import { constructMetadata } from "@/lib/metadata";
 export const metadata: Metadata = constructMetadata({
   title: "Contact Levexa — Request Strategic Growth Consultation",
   description:
-    "Book a free consultation with Levexa to talk about your marketing, sales and growth goals. Lavanya replies personally within 24 business hours.",
+    "Book a free consultation with Levexa to talk about your marketing, sales and growth goals.",
   path: "/contact",
 });
 
@@ -41,8 +41,7 @@ export default function ContactPage() {
         title="Contact"
         subtitle={
           <>
-            Get in touch with the Levexa <Underline>team</Underline> by filling in the form below. Lavanya
-            replies personally within 24 business hours.
+            Get in touch with the Levexa <Underline>team</Underline> by filling in the form below.
           </>
         }
         ctaLabel="Get in touch"

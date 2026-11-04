@@ -146,6 +146,17 @@
   from { transform: translateY(100%); opacity: 0; }
 }
 
+/* Home intro (IntroReveal): until it takes over, a plain page-coloured veil covers everything
+   below the header. The class is only ever added by the <head> script, which also removes it
+   as a fallback, so content can never stay hidden. */
+.intro-pending main::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  background: rgb(var(--c-page));
+}
+
 /* Reduced motion support: stop CSS transitions and keyframe loops (JS loops check the same preference) */
 @media (prefers-reduced-motion: reduce) {
   *,

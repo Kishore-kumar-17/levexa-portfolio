@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { MobileNavigation } from "./MobileNavigation";
+import { headerNavigation } from "@/data/navigation";
 import { ThemeLogo } from "@/components/ui/ThemeLogo";
 
 export const SiteHeader: React.FC = () => {
@@ -29,12 +30,6 @@ export const SiteHeader: React.FC = () => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const navLinks = [
-    { label: "About", href: "/about" },
-    { label: "Services", href: "/services" },
-    { label: "Contact", href: "/contact" },
-  ];
 
   return (
     <>
@@ -67,7 +62,7 @@ export const SiteHeader: React.FC = () => {
               className="hidden lg:flex items-center gap-8 xl:gap-10"
               aria-label="Primary Navigation"
             >
-              {navLinks.map((item) => {
+              {headerNavigation.map((item) => {
                 // Service detail pages keep "Services" highlighted
                 const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
                 return (

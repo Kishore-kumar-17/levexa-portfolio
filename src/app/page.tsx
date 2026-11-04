@@ -6,6 +6,7 @@ import { SpecialiseCards } from "@/components/home/SpecialiseCards";
 import { OutcomeTabs } from "@/components/home/OutcomeTabs";
 import { MethodTimeline } from "@/components/home/MethodTimeline";
 import { Milestones } from "@/components/home/Milestones";
+import { Testimonials } from "@/components/home/Testimonials";
 import { AuthorityBanner } from "@/components/home/AuthorityBanner";
 import { FounderIntro } from "@/components/home/FounderIntro";
 import { GetStartedBox } from "@/components/sections/GetStartedBox";
@@ -20,6 +21,7 @@ export default function HomePage() {
       <OutcomeTabs />
       <MethodTimeline />
       <Milestones />
+      <Testimonials />
       <AuthorityBanner />
       <FounderIntro />
       <GetStartedBox />

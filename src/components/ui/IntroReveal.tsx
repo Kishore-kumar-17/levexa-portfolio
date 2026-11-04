@@ -1,343 +1,381 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { ThemeLogo } from "@/components/ui/ThemeLogo";
+import { INTRO_CLASS, INTRO_SEEN_KEY } from "@/lib/intro";
 
-interface IntroRevealProps {
-  onComplete?: () => void;
-}
+/*
+  Home intro: tiny specks grow into a turning ring of cards, then the view pushes through it to
+  reveal the real homepage.
 
-interface RevealCard {
+  The header and WhatsApp button are real and visible throughout. Below them the page is empty:
+  1. Tiny specks in one thin line at the centre drift apart.
+  2. They grow quickly into cards while the ring keeps turning, so cards slide past each other
+     and the ones at the ends turn edge-on.
+  3. The ring settles: a big centre card, small cards tucked behind it, angled cards at the sides.
+     The centre picture cuts straight to the navy Levexa card.
+  4. The view zooms forward: left cards slide out left, right cards slide out right, the Levexa
+     card fades as the camera passes through it, and the plain page lifts off the real homepage.
+
+  Only transform and opacity run per frame (Web Animations API, no library). The real page is
+  never replaced by a picture, and it plays once per browser session. Any click, scroll or key
+  skips it.
+*/
+
+interface RingCard {
   id: string;
-  tag: string;
-  title: string;
-  image?: string;
-  isCenterBrand?: boolean;
+  src: string;
+  /** Angle on the ring when it comes to rest: 0 is the front, ±180 the back */
+  rest: number;
 }
 
-const REVEAL_CARDS: RevealCard[] = [
-  {
-    id: "growth-strategy",
-    tag: "01 // STRATEGY",
-    title: "Growth & Strategy",
-    image:
-      "/images/pillars/01-growth-strategy.jpg",
-  },
-  {
-    id: "branding-marketing",
-    tag: "02 // BRANDING",
-    title: "Branding & Marketing",
-    image:
-      "/images/pillars/02-branding-marketing.jpg",
-  },
-  {
-    id: "levexa-core",
-    tag: "LEVEXA",
-    title: "Commercial Architecture",
-    isCenterBrand: true, // Center gateway brand card with Levexa logo
-  },
-  {
-    id: "sales-conversion",
-    tag: "03 // SALES",
-    title: "Sales & Conversion",
-    image:
-      "/images/pillars/03-sales-conversion.jpg",
-  },
-  {
-    id: "technology-automation",
-    tag: "04 // AUTOMATION",
-    title: "Technology & Automation",
-    image:
-      "/images/pillars/04-technology-automation.jpg",
-  },
+// In ring order
+const RING: RingCard[] = [
+  { id: "centre", src: "/images/process/02-strategy.jpg", rest: 0 },
+  { id: "strategy", src: "/images/pillars/01-growth-strategy.jpg", rest: 62 },
+  { id: "optimise", src: "/images/process/05-optimization.jpg", rest: 126 },
+  { id: "sales", src: "/images/pillars/03-sales-conversion.jpg", rest: 162 },
+  { id: "design", src: "/images/process/03-design.jpg", rest: 175 },
+  { id: "discovery", src: "/images/process/01-discovery.jpg", rest: 180 },
+  { id: "growth", src: "/images/process/06-growth.jpg", rest: -175 },
+  { id: "branding", src: "/images/pillars/02-branding-marketing.jpg", rest: -162 },
+  { id: "develop", src: "/images/process/04-development.jpg", rest: -126 },
+  { id: "tech", src: "/images/pillars/04-technology-automation.jpg", rest: -62 },
 ];
 
-// Cards are laid out once at their final size; the "growing" effect is a scale
-// transform so the animation never triggers layout (no layout shift, no reflow).
-const CARD_WIDTH = 272;
-const CARD_HEIGHT = 360;
+// Cards are laid out at this size and scaled, so the Levexa card's typography keeps its proportions
+const BOX_W = 300;
+const BOX_H = 375;
 
-const FAN_DURATION = 2200; // 2.2s fan-out & rotation from Avea reference
-const FLY_DURATION = 1200; // 1.2s smooth camera fly-through
+// Timeline (ms)
+const SETTLED_AT = 2700; // ring at rest, cards full size
+const CUT_AT = 2650; // centre picture cuts to the Levexa card
+const PUSH_AT = 3050; // the view starts pushing through the ring
+const END_AT = 4250; // the homepage is fully revealed
+const SAMPLE_MS = 40; // keyframe spacing
 
-// Styles for one animation frame. fan/fly are eased progress values (0 to 1).
-function getFrameStyles(fan: number, fly: number, flying: boolean) {
-  // 3D Geometry: starts rotated at -160deg, finishes at 0deg facing camera directly
-  const cylinderRotation = (1 - fan) * -160;
-  const cylinderRadius = 40 + 360 * fan;
-  const cardScale = (36 + 236 * fan) / CARD_WIDTH;
+// Push-through: f is its eased progress (0 to 1)
+const pushProgress = (u: number) => (u < 0.5 ? 8 * u * u * u * u : 1 - Math.pow(-2 * u + 2, 4) / 2);
+const CAMERA_ZOOM = 1.85; // extra scale at the end of the push
+const SPLIT = 0.3; // how far the cards slide apart, as a share of the window width
+const VEIL_FROM = 0.38; // the plain page starts lifting as the cards move aside (no blank moment)...
+const VEIL_TO = 0.85; // ...and is gone by here
+const cardOpacity = (f: number) => Math.max(0, 1 - Math.pow(f, 1.8));
+const frontOpacity = (f: number) => Math.max(0, 1 - f * 2.8); // the Levexa card fades first
 
-  // Fly-through transformations
-  const cameraScale = 1 + fly * 1.35;
-  const cameraZ = fly * 220;
+// Ring motion, measured from the reference: the growth curve, sideways spread and turn
+const RING_TURN = 320; // degrees still to turn at the very start
+const G_SPECK = 0.016; // card size at the start, as a share of full size
+const G_GROWTH_START = 0.03;
+const SIDE_SCALE = 0.88;
+const smooth = (u: number) => {
+  const c = Math.min(1, Math.max(0, u));
+  return c * c * (3 - 2 * c);
+};
+const lerp = (a: number, b: number, u: number) => a + (b - a) * u;
+const rad = (deg: number) => (deg * Math.PI) / 180;
+
+interface Pose {
+  x: number; // from the ring centre, px
+  size: number; // visual width, px
+  ry: number; // card turn, degrees
+  z: number;
+}
+
+// Where every card is at a moment, given w (0 to 1 progress of the ring's journey)
+function poseAt(index: number, w: number, B: number, R: number): Pose {
+  const even = (index * 360) / RING.length;
+  const evenAngle = even > 180 ? even - 360 : even;
+  const settle = smooth((w - 0.6) / 0.4);
+  const turn = RING_TURN * Math.pow(1 - w, 1.6);
+  const raw = lerp(evenAngle, RING[index].rest, settle) + turn;
+  const angle = ((((raw + 180) % 360) + 360) % 360) - 180; // -180..180
+
+  const depth = Math.cos(rad(angle)); // 1 at the front, -1 at the back
+  const growth = w < 0.5 ? lerp(G_SPECK, G_GROWTH_START, w / 0.5) : lerp(G_GROWTH_START, 1, smooth((w - 0.5) / 0.5));
+  const spread = 0.01 + 0.99 * smooth(w);
 
   return {
-    // The overlay fades to reveal the REAL underlying HeroSection (no duplicate text)
-    backdropColor: `rgb(var(--c-page) / ${flying ? Math.max(0, 1 - fly * 1.35) : 1})`,
-    stageOpacity: String(Math.max(0, 1 - Math.pow(fly, 2.2))),
-    cylinderTransform: `scale(${cameraScale}) translateZ(${cameraZ}px) rotateY(${cylinderRotation}deg)`,
-    cards: REVEAL_CARDS.map((card, index) => {
-      // Symmetrical arc from -70deg to +70deg
-      const arcAngle = (index - 2) * 35;
-
-      // During fly-through: Left cards slide left, right cards slide right
-      let flyOffset = 0;
-      if (flying && index < 2) flyOffset = -fly * 420;
-      if (flying && index > 2) flyOffset = fly * 420;
-
-      // Center card fades out faster so camera pushes straight through cleanly
-      const opacity = card.isCenterBrand && flying ? Math.max(0, 1 - fly * 2.8) : 1;
-
-      return {
-        transform: `rotateY(${arcAngle}deg) translateZ(${cylinderRadius}px) translateX(${flyOffset}px) scale(${cardScale})`,
-        opacity: String(opacity),
-      };
-    }),
+    x: R * B * Math.sin(rad(angle)) * spread,
+    // The centre card is the largest; the same depth rule as the reference for the rest
+    size: B * growth * (0.75 + 0.25 * depth) * (index === 0 ? 1 : SIDE_SCALE),
+    // Front half faces out, back half faces the viewer: both edge-on at the sides
+    ry: Math.abs(angle) <= 90 ? angle : angle > 0 ? angle - 180 : angle + 180,
+    z: Math.round(100 * (depth + 1)) + 1,
   };
 }
 
-const INITIAL_FRAME = getFrameStyles(0, 0, false);
+// The ring's journey runs fast at first, so the speck stage is short
+const journey = (t: number) => Math.min(1, Math.pow(t / SETTLED_AT, 0.7));
 
-const TOTAL_DURATION = FAN_DURATION + FLY_DURATION;
-const FAN_SAMPLES = 30;
-const FLY_SAMPLES = 20;
-
-// Samples the eased motion into keyframes for the Web Animations API. Browser-run
-// transform/opacity animations stay off the main thread and never count as layout shifts.
-function buildTimeline() {
-  const frames: { offset: number; frame: ReturnType<typeof getFrameStyles> }[] = [];
-  for (let i = 0; i <= FAN_SAMPLES; i++) {
-    const t = i / FAN_SAMPLES;
-    // Smooth cubic ease-out
-    const fan = 1 - Math.pow(1 - t, 3);
-    frames.push({ offset: (t * FAN_DURATION) / TOTAL_DURATION, frame: getFrameStyles(fan, 0, false) });
-  }
-  for (let i = 1; i <= FLY_SAMPLES; i++) {
-    const ft = i / FLY_SAMPLES;
-    // Smooth quartic ease-in-out
-    const fly = ft < 0.5 ? 8 * ft * ft * ft * ft : 1 - Math.pow(-2 * ft + 2, 4) / 2;
-    frames.push({
-      offset: (FAN_DURATION + ft * FLY_DURATION) / TOTAL_DURATION,
-      frame: getFrameStyles(1, fly, true),
-    });
-  }
-  return frames;
+interface CardPlan {
+  id: string;
+  src: string;
+  isCentre: boolean;
+  left: number;
+  top: number;
+  width: number;
+  height: number;
+  transformFrames: Keyframe[];
+  zFrames: Keyframe[];
+  opacityFrames: Keyframe[];
+  first: string;
 }
 
-export const IntroReveal: React.FC<IntroRevealProps> = ({ onComplete }) => {
-  const [isDone, setIsDone] = useState(false);
-  const overlayRef = useRef<HTMLDivElement>(null);
-  const stageRef = useRef<HTMLDivElement>(null);
-  const cylinderRef = useRef<HTMLDivElement>(null);
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+const tf = (x: number, ry: number, s: number) =>
+  `translate(${x.toFixed(2)}px, 0px) perspective(900px) rotateY(${ry.toFixed(2)}deg) scale(${s.toFixed(5)})`;
 
-  useEffect(() => {
-    let finished = false;
-    const animations: Animation[] = [];
+const offsetOf = (t: number) => t / END_AT;
 
-    const finish = () => {
-      if (finished) return;
-      finished = true;
-      animations.forEach((animation) => animation.cancel());
-      setIsDone(true);
-      if (onComplete) onComplete();
-    };
+function pushSamples(): { offset: number; f: number }[] {
+  const out: { offset: number; f: number }[] = [];
+  for (let t = PUSH_AT; t < END_AT; t += SAMPLE_MS) {
+    out.push({ offset: offsetOf(t), f: pushProgress((t - PUSH_AT) / (END_AT - PUSH_AT)) });
+  }
+  out.push({ offset: 1, f: 1 });
+  return out;
+}
 
-    // Skip the intro entirely for users who prefer reduced motion
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      finish();
-      return;
-    }
+function veilFrames(): Keyframe[] {
+  return [
+    { offset: 0, opacity: 1 },
+    ...pushSamples().map(({ offset, f }) => ({
+      offset,
+      opacity: 1 - smooth((f - VEIL_FROM) / (VEIL_TO - VEIL_FROM)),
+    })),
+  ];
+}
 
-    const timeline = buildTimeline();
-    const timing: KeyframeAnimationOptions = { duration: TOTAL_DURATION, easing: "linear", fill: "forwards" };
-    const animate = (el: HTMLElement | null, keyframes: Keyframe[]) => {
-      if (el) animations.push(el.animate(keyframes, timing));
-    };
+function buildPlan(): CardPlan[] {
+  const W = document.documentElement.clientWidth;
+  const H = window.innerHeight;
+  const mobile = W < 768;
 
-    animate(
-      overlayRef.current,
-      timeline.map(({ offset, frame }) => ({ offset, backgroundColor: frame.backdropColor }))
-    );
-    animate(
-      stageRef.current,
-      timeline.map(({ offset, frame }) => ({ offset, opacity: frame.stageOpacity }))
-    );
-    animate(
-      cylinderRef.current,
-      timeline.map(({ offset, frame }) => ({ offset, transform: frame.cylinderTransform }))
-    );
-    REVEAL_CARDS.forEach((_, index) =>
-      animate(
-        cardRefs.current[index],
-        timeline.map(({ offset, frame }) => ({
-          offset,
-          transform: frame.cards[index].transform,
-          opacity: frame.cards[index].opacity,
-        }))
-      )
-    );
+  // Ring size: fit the space below the header, and keep the angled cards on screen
+  const headerBottom = document.querySelector("header")?.getBoundingClientRect().bottom ?? 0;
+  const rowY = (headerBottom + H) / 2;
+  const areaH = H - headerBottom;
+  const B = mobile ? W * 0.52 : Math.min(W * 0.21, areaH * 0.56, 380);
+  const R = mobile ? 1.3 : Math.min(2.1, Math.max(1.25, ((W / 2) * 0.95 / B - 0.2) / 0.883));
+  const rowX = W / 2;
 
-    animations[0]?.finished.then(finish).catch(() => {
-      // Cancelled (Escape or unmount); nothing to do
+  const times: number[] = [];
+  for (let t = 0; t < SETTLED_AT; t += SAMPLE_MS) times.push(t);
+  times.push(SETTLED_AT);
+  const push = pushSamples();
+
+  return RING.map((card, index): CardPlan => {
+    const isCentre = index === 0;
+    const width = BOX_W;
+    const height = isCentre ? BOX_W : BOX_H;
+
+    const transformFrames: Keyframe[] = [];
+    const zFrames: Keyframe[] = [];
+    let prev: { ry: number; offset: number } | null = null;
+
+    times.forEach((t) => {
+      const pose = poseAt(index, journey(t), B, R);
+      const offset = offsetOf(t);
+      const s = pose.size / width;
+      // A card flips between its two facings at exactly edge-on, where it has no width.
+      // Add that moment as two keyframes, so it never sweeps through face-on.
+      if (prev && Math.abs(pose.ry - prev.ry) > 90) {
+        const mid = (prev.offset + offset) / 2;
+        const sign = prev.ry > 0 ? 1 : -1;
+        transformFrames.push(
+          { offset: mid - 0.00002, transform: tf(pose.x, 90 * sign, s) },
+          { offset: mid + 0.00002, transform: tf(pose.x, -90 * sign, s) }
+        );
+      }
+      transformFrames.push({ offset, transform: tf(pose.x, pose.ry, s) });
+      zFrames.push({ offset, zIndex: pose.z });
+      prev = { ry: pose.ry, offset };
     });
 
-    // Escape skips the intro; the listener only exists while the intro is playing
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") finish();
-    };
-    window.addEventListener("keydown", handleKeyDown);
+    const rest = poseAt(index, 1, B, R);
+    const restS = rest.size / width;
+    const side = Math.sign(card.rest); // left cards go left, right cards go right
+    // Cards fully hidden behind the Levexa card go before it starts fading, so they never show through it
+    const isHiddenBehind = Math.abs(card.rest) >= 170;
 
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-      if (!finished) animations.forEach((animation) => animation.cancel());
+    push.forEach(({ offset, f }) => {
+      const camera = 1 + CAMERA_ZOOM * f;
+      const x = (rest.x + side * f * SPLIT * W) * camera;
+      transformFrames.push({ offset, transform: tf(x, rest.ry, restS * camera) });
+    });
+    zFrames.push({ offset: 1, zIndex: rest.z });
+
+    const opacityFrames: Keyframe[] = isHiddenBehind
+      ? [
+          { offset: 0, opacity: 1 },
+          { offset: offsetOf(PUSH_AT) - 0.0001, opacity: 1 },
+          { offset: offsetOf(PUSH_AT), opacity: 0 },
+          { offset: 1, opacity: 0 },
+        ]
+      : [
+          { offset: 0, opacity: 1 },
+          ...push.map(({ offset, f }) => ({ offset, opacity: isCentre ? frontOpacity(f) : cardOpacity(f) })),
+        ];
+
+    return {
+      id: card.id,
+      src: card.src,
+      isCentre,
+      left: rowX - width / 2,
+      top: rowY - height / 2,
+      width,
+      height,
+      transformFrames,
+      zFrames,
+      opacityFrames,
+      first: transformFrames[0].transform as string,
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  });
+}
+
+export const IntroReveal: React.FC = () => {
+  const [plan, setPlan] = useState<CardPlan[] | null>(null);
+  const veilRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const brandRef = useRef<HTMLDivElement>(null);
+
+  // Step 1: decide whether to play, and measure the page
+  useEffect(() => {
+    const root = document.documentElement;
+    if (!root.classList.contains(INTRO_CLASS)) return;
+    if (window.scrollY > 50) {
+      root.classList.remove(INTRO_CLASS); // reloaded part-way down the page: just show it
+      return;
+    }
+    setPlan(buildPlan());
   }, []);
 
-  if (isDone) return null;
+  // Step 2: run it (layout effect, so the animation's first frame is the first one painted)
+  useLayoutEffect(() => {
+    if (!plan) return;
+    const root = document.documentElement;
+    const animations: Animation[] = [];
+    let done = false;
+    const timing = { duration: END_AT, fill: "both" as const };
+
+    plan.forEach((card, i) => {
+      const el = cardRefs.current[i];
+      if (!el) return;
+      animations.push(el.animate(card.transformFrames, timing));
+      animations.push(el.animate(card.zFrames, timing));
+      animations.push(el.animate(card.opacityFrames, timing));
+    });
+
+    // The hard cut from photo to the Levexa card
+    if (brandRef.current) {
+      animations.push(
+        brandRef.current.animate(
+          [
+            { offset: 0, opacity: 0 },
+            { offset: CUT_AT / END_AT, opacity: 0 },
+            { offset: CUT_AT / END_AT + 0.0001, opacity: 1 },
+            { offset: 1, opacity: 1 },
+          ],
+          timing
+        )
+      );
+    }
+
+    // The plain page lifts off the real homepage as the cards clear
+    if (veilRef.current) animations.push(veilRef.current.animate(veilFrames(), timing));
+
+    // The React veil is on screen now, so the CSS fallback can go
+    root.classList.remove(INTRO_CLASS);
+    try {
+      sessionStorage.setItem(INTRO_SEEN_KEY, "1");
+    } catch {
+      // storage blocked: it will just play again next time
+    }
+
+    const finish = () => {
+      if (done) return;
+      done = true;
+      animations.forEach((a) => a.cancel()); // every element is back to its normal styles
+      SKIP_EVENTS.forEach((type) => window.removeEventListener(type, finish));
+      setPlan(null);
+    };
+    // Ends when the last animation does (or at once if any is cancelled from outside)
+    Promise.all(animations.map((a) => a.finished)).then(finish, finish);
+    SKIP_EVENTS.forEach((type) => window.addEventListener(type, finish, { passive: true }));
+
+    return finish;
+  }, [plan]);
+
+  if (!plan) return null;
 
   return (
-    <div
-      ref={overlayRef}
-      id="intro-reveal-overlay"
-      className="fixed inset-0 z-50 overflow-hidden pointer-events-none"
-      style={{ backgroundColor: INITIAL_FRAME.backdropColor }}
-      aria-hidden="true"
-    >
-      {/* Top Navigation Bar: Anchored on white background */}
-      <header className="absolute top-0 left-0 right-0 z-40 bg-card/95 backdrop-blur-sm border-b border-line transition-colors duration-300 pointer-events-auto">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20 sm:h-24">
-            {/* Logo */}
-            <div className="flex-shrink-0">
-              <div className="relative w-36 sm:w-44 h-8 sm:h-9">
-                <ThemeLogo
-                  alt="Levexa"
-                  fill
-                  sizes="176px"
-                  className="object-contain object-left"
-                  priority
-                />
-              </div>
-            </div>
+    <div id="intro-reveal-overlay" aria-hidden="true" className="pointer-events-none">
+      {/* Plain page colour over everything below the header (keeps the page empty, like the first frame) */}
+      <div ref={veilRef} className="fixed inset-0 z-20 bg-page" />
 
-            {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-8 xl:gap-10">
-              {["About", "Services", "Contact"].map((label) => (
-                <span key={label} className="text-[15px] font-medium text-fg-3">
-                  {label}
-                </span>
-              ))}
-            </nav>
-
-            {/* Right Call-To-Action Button (mirrors the real header) */}
-            <div className="flex items-center">
-              <div className="btn-primary hidden sm:inline-flex !min-h-[44px] !px-5 !py-2.5 !text-sm">
-                Book a growth call
+      <div className="fixed inset-0 z-30 overflow-hidden">
+        {plan.map((card, i) => (
+          <div
+            key={card.id}
+            ref={(el) => {
+              cardRefs.current[i] = el;
+            }}
+            className="absolute overflow-hidden bg-band rounded-2xl shadow-2xl shadow-black/20"
+            style={{
+              left: card.left,
+              top: card.top,
+              width: card.width,
+              height: card.height,
+              transform: card.first,
+            }}
+          >
+            <Image
+              src={card.src}
+              alt=""
+              fill
+              loading="eager"
+              sizes="(max-width: 768px) 60vw, 300px"
+              className="object-cover"
+            />
+            {card.isCentre && (
+              <div ref={brandRef} className="absolute inset-0" style={{ opacity: 0 }}>
+                <BrandCard />
               </div>
-            </div>
+            )}
           </div>
-        </div>
-      </header>
-
-      {/* 3D Perspective Arc & Camera Fly-Through Stage */}
-      <div
-        ref={stageRef}
-        className="absolute inset-0 z-20 flex items-center justify-center pt-16 pointer-events-none"
-        style={{
-          perspective: "1200px",
-          perspectiveOrigin: "50% 50%",
-          opacity: INITIAL_FRAME.stageOpacity,
-        }}
-      >
-        <div
-          ref={cylinderRef}
-          className="relative will-change-transform"
-          style={{
-            width: `${CARD_WIDTH}px`,
-            height: `${CARD_HEIGHT}px`,
-            transformStyle: "preserve-3d",
-            transform: INITIAL_FRAME.cylinderTransform,
-          }}
-        >
-          {REVEAL_CARDS.map((card, index) => (
-            <div
-              key={card.id}
-              ref={(el) => {
-                cardRefs.current[index] = el;
-              }}
-              className="absolute inset-0 rounded-[4px] shadow-2xl overflow-hidden border border-line/90 bg-card will-change-transform"
-              style={{
-                transformStyle: "preserve-3d",
-                transform: INITIAL_FRAME.cards[index].transform,
-                opacity: INITIAL_FRAME.cards[index].opacity,
-              }}
-            >
-              {card.isCenterBrand ? (
-                /* Center Brand Card: Official Levexa Logo in Center Gateway */
-                <div className="relative w-full h-full bg-page flex flex-col items-center justify-center p-6 text-center border-2 border-line/10">
-                  {/* Official Levexa Logo */}
-                  <div className="relative w-44 sm:w-48 h-12 sm:h-14 mb-4">
-                    <ThemeLogo
-                      alt="Levexa Logo"
-                      fill
-                      sizes="192px"
-                      className="object-contain"
-                      priority
-                    />
-                  </div>
-
-                  <div className="text-[10px] font-mono tracking-[0.22em] text-fg uppercase font-bold mb-1">
-                    COMMERCIAL ARCHITECTURE
-                  </div>
-
-                  {/* Gold Signature Accent Line */}
-                  <div className="w-10 h-[3px] bg-accent rounded-full my-3" />
-
-                  <p className="text-[11px] text-fg-3 font-medium tracking-wide max-w-[210px] leading-relaxed">
-                    A Research-Driven Growth Agency for Ambitious Brands
-                  </p>
-
-                  <div className="mt-5 flex items-center gap-1.5 text-[9px] font-mono tracking-wider text-fg-3 uppercase">
-                    <span>01</span>
-                    <span>•</span>
-                    <span>02</span>
-                    <span>•</span>
-                    <span>03</span>
-                    <span>•</span>
-                    <span>04</span>
-                  </div>
-                </div>
-              ) : (
-                /* The 4 Service Boxes: ONLY Image + Clean Caption (No descriptions, no bullet points) */
-                <div className="relative w-full h-full bg-slate-950 text-left overflow-hidden">
-                  {card.image && (
-                    <Image
-                      src={card.image}
-                      alt={card.title}
-                      fill
-                      sizes="280px"
-                      className="object-cover scale-105"
-                      priority
-                    />
-                  )}
-                  {/* Gradient scrim for clean, crisp caption legibility */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex flex-col justify-end p-5 text-white">
-                    <div className="text-[10px] font-mono tracking-widest text-accent uppercase font-bold">
-                      {card.tag}
-                    </div>
-                    <div className="text-lg font-semibold tracking-tight mt-1 text-white leading-tight">
-                      {card.title}
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
+        ))}
       </div>
     </div>
   );
 };
+
+const SKIP_EVENTS = ["keydown", "pointerdown", "wheel", "touchmove", "scroll", "resize"] as const;
+
+// The Levexa card at the centre of the ring (laid out at BOX_W × BOX_W)
+const BrandCard: React.FC = () => (
+  <div data-theme="navy" className="relative w-full h-full bg-page text-fg p-6 flex flex-col overflow-hidden">
+    {/* Slide motif: thick amber arc in the corner */}
+    <svg className="absolute -top-11 -right-11 w-28 h-28 text-[#FEB005]" viewBox="0 0 200 200" fill="none">
+      <circle cx="100" cy="100" r="78" stroke="currentColor" strokeWidth="16" />
+    </svg>
+
+    <div className="relative w-[150px] h-[28px]">
+      <Image src="/levexa-logo-dark-trans.png" alt="" fill sizes="150px" loading="eager" className="object-contain object-left" />
+    </div>
+
+    <div className="mt-auto">
+      <p className="font-display font-extrabold text-[27px] leading-[1.1] tracking-[-0.01em] text-white">
+        Turn marketing into <span className="text-[#FEB005]">measurable revenue.</span>
+      </p>
+      <div className="w-10 h-[3px] bg-[#FEB005] rounded-full my-4" />
+      <ul className="grid grid-cols-2 gap-x-2 gap-y-1.5 text-[10.5px] font-semibold uppercase tracking-[0.08em] text-fg-2">
+        {["Strategy", "Branding", "Sales", "Automation"].map((service, i) => (
+          <li key={service} className="flex items-baseline gap-1.5">
+            <span className="font-display font-bold text-[#FEB005]">0{i + 1}</span>
+            {service}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+);

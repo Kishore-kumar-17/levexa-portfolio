@@ -100,7 +100,7 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
           {/* Nav links */}
           <nav className="mt-8 space-y-1.5" aria-label="Mobile Navigation">
             {mainNavigation.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive = item.href === "/" ? pathname === "/" : pathname === item.href || pathname.startsWith(`${item.href}/`);
               return (
                 <Link
                   key={item.href}
